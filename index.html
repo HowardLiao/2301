@@ -9,9 +9,6 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon-192.png">
 <meta name="theme-color" content="#2F4538">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#FAF7F2;--alt:#F2EEE8;--label:#E8E2D9;--line:#B8AFA3;--ink:#2B2B2B;--mute:#6B6459;--green:#2F4538;--green2:#3E5A4A;--gold:#C8A96A;--brick:#9C5B4A;--white:#FFFFFF;--card:#FFFFFF}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}}
@@ -96,6 +93,20 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .reveal{opacity:0;transform:translateY(14px);transition:all .6s ease}.reveal.in{opacity:1;transform:none}
 .k3{grid-template-columns:repeat(3,1fr)}
 @media (max-width:860px){.kpi .v{font-size:30px}.k3{grid-template-columns:1fr 1fr 1fr}.hero,.grid2,.grid3,.stack,.phase{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.codes{grid-template-columns:1fr 1fr}.comp{grid-template-columns:1fr 50px}.comp .bar{grid-column:1/-1;order:3}.duty{grid-template-columns:1fr}.duty .num{font-size:44px}.duty dl{grid-template-columns:1fr}.ld{position:static}.portrait{max-width:300px}}
+/*print*/
+.doc{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);padding:14px;cursor:pointer;font:inherit;color:var(--ink)}
+.doc img{width:100%;height:220px;object-fit:contain;background:var(--alt);border:1px solid var(--label);pointer-events:none;user-select:none}
+.doc:hover{border-color:var(--gold)}
+.viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
+.viewer[hidden]{display:none}
+.vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
+.vimg{position:relative;max-width:100%;max-height:100%;display:flex}
+.vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
+.vshield{position:absolute;inset:0}
+.vnav{background:transparent;border:1px solid #6B6459;color:#FAF7F2;font-size:30px;width:44px;height:64px;cursor:pointer}
+@media (max-width:860px){.vimg img{max-width:calc(100vw - 20px)}.vnav{position:absolute;bottom:18px;width:52px;height:44px}#vp{left:16px}#vn{right:16px}}
+@media print{body{display:none!important}}
 @media print{header.nav,.btns,.tabs,.tbtn,.calc{display:none}.panel{display:block!important;margin-bottom:16px}section{padding:24px 0;break-inside:avoid-page}.reveal{opacity:1;transform:none}body{font-size:12px}}
 </style>
 </head>
@@ -103,7 +114,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 <header class="nav"><div class="in">
  <div class="brand">廖倫豪 博士<small>× LITEON</small></div>
  <nav class="links" id="links">
-  <a href="#hero">首頁</a><a href="#context">光寶現況</a><a href="#duties">六項職責</a><a href="#fit">職能對照</a><a href="#stack">AI 平台藍圖</a><a href="#portfolio">用例組合</a><a href="#org">組織與 PO</a><a href="#gov">治理</a><a href="#plan">到任計畫</a><a href="#cases">代表案例</a><a href="#profile">學經歷</a><a href="#qa">問答</a><a href="#downloads">下載</a>
+  <a href="#hero">首頁</a><a href="#context">光寶現況</a><a href="#duties">六項職責</a><a href="#fit">職能對照</a><a href="#stack">AI 平台藍圖</a><a href="#portfolio">用例組合</a><a href="#org">組織與 PO</a><a href="#gov">治理</a><a href="#plan">到任計畫</a><a href="#cases">代表案例</a><a href="#profile">學經歷</a><a href="#qa">問答</a><a href="#docs">文件預覽</a>
  </nav>
  <button class="tbtn" id="theme" aria-label="切換深淺色">◐</button>
 </div></header>
@@ -115,7 +126,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
   <h1>把 AI 從單點應用<br>推進為光寶的平台</h1>
   <p class="lead">把 AI 從單點應用推進為可重複使用的平台，讓經營層看得見經濟效益。本頁呈給光寶科技董事長與資訊長，說明我如何以「先串資料、再談 AI」的原則，建立與 SAP、PLM、MES 互補的 AI 平台，並以經營指標交付成果。</p>
   <div class="meta"><span>候選人</span><b>廖倫豪 博士　Howard Liao, Ph.D.</b><span>應徵職務</span><b>IT AI 平台負責人｜台北內湖</b><span>現職</span><b>A 集團 技術副總／CIO</b><span>資格</span><b>資訊科技管理博士・ISO 27001／42001 主導稽核員</b></div>
-  <div class="btns"><a class="btn p" href="#stack">看 AI 平台藍圖</a><a class="btn" href="#plan">180 天到任計畫</a><a class="btn" href="#downloads">文件下載</a><button class="btn" onclick="window.print()">列印／存成 PDF</button><a class="btn" href="mailto:Liao.Howard@gmail.com">Email 聯繫</a></div>
+  <div class="btns"><a class="btn p" href="#stack">看 AI 平台藍圖</a><a class="btn" href="#plan">180 天到任計畫</a><a class="btn" href="#docs">文件線上預覽</a><a class="btn" href="mailto:Liao.Howard@gmail.com">Email 聯繫</a></div>
  </div>
  <div class="portrait"><img src="assets/howard_portrait.jpg" alt="廖倫豪博士肖像" loading="eager"></div>
 </section>
@@ -135,7 +146,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <div class="eyebrow">02 · Mandate</div>
  <h2>職缺六項工作內容 × 我的做法與實績</h2><p class="sub">Six responsibilities, one operating model</p>
  <div class="tabs" id="dtabs"><button class="tab on" data-i="0">01</button><button class="tab" data-i="1">02</button><button class="tab" data-i="2">03</button><button class="tab" data-i="3">04</button><button class="tab" data-i="4">05</button><button class="tab" data-i="5">06</button></div>
- <div class="panel card on" data-p="0"><div class="duty"><div class="num">01</div><div><h3>與高階主管定義優先導入 AI 領域，規劃 AI 平台藍圖</h3><dl><dt>我的做法</dt><dd>以「經濟效益 × 可行性 × 可重用」三軸評分，與事業群主管共同排定投資組合；用一頁式決策表向經營層呈核。</dd><dt>做過的實績</dt><dd>為顧問客戶甲撰寫集團 2027 IT 策略與投資計畫（呈報 CEO 與經管會），以五大策略支柱與 Run／Grow／Transform 預算框架落地。</dd><dt>到任指標</dt><dd><b>90 天內交出 AI 價值地圖與前 5 大用例財務假設</b></dd></dl></div></div></div><div class="panel card" data-p="1"><div class="duty"><div class="num">02</div><div><h3>把零散應用做成可重複使用的資料產品與平台</h3><dl><dt>我的做法</dt><dd>抽出模型閘道、知識庫、資料產品、Agent 編排與監控等共用元件；以黃金路徑讓新用例照範本上線。</dd><dt>做過的實績</dt><dd>B 集團把各專案自建環境改為平台提供標準元件，核心服務零停機、TCO −30%；為顧問客戶乙設計多模型網關與企業任務中樞（Token 成本節省目標 20–40%）。</dd><dt>到任指標</dt><dd><b>新用例上線時間由「月」縮短為「週」</b></dd></dl></div></div></div><div class="panel card" data-p="2"><div class="duty"><div class="num">03</div><div><h3>建立和 SAP、PLM、MES 互補的 AI stack</h3><dl><dt>我的做法</dt><dd>不動 SAP 核心、不重造 MES／PLM；以 API、CDC 與事件串流讀取資料，AI 產出「建議」回寫，經人員核可後執行。</dd><dt>做過的實績</dt><dd>D 公司以 SAP S/4HANA 串接 MES、PLM、APS，加上 Edge AIoT 與 AI 不良預測：良率 +15%、OEE +18%；為顧問客戶丙規劃 PLM→SAP→MES 單一數據流。</dd><dt>到任指標</dt><dd><b>S/4HANA 上線後 6 個月內首批供應鏈 AI 用例上線</b></dd></dl></div></div></div><div class="panel card" data-p="3"><div class="duty"><div class="num">04</div><div><h3>組建 AI 組織與人才梯隊，帶領 AI 技術主管與工程師</h3><dl><dt>我的做法</dt><dd>「中央平台＋事業群嵌入」雙軌組織；技術主管能力模型、九大技術發展路線與接班計畫。</dd><dt>做過的實績</dt><dd>A 集團 IT 團隊 50+ 人；帶領企劃、前端、後端與 DBA 三組逾 30 人完成從零到一的組織重整，建立職務說明與能力評核。</dd><dt>到任指標</dt><dd><b>每位技術主管至少一位可接手人選</b></dd></dl></div></div></div><div class="panel card" data-p="4"><div class="duty"><div class="num">05</div><div><h3>推動業務主導的平台團隊與企業內部 PO 培養，帶動 AI 原生的工作方式</h3><dl><dt>我的做法</dt><dd>PO 學院：業務主管學會寫用例財務假設與驗收標準；Champions 網絡；「主管先學、IT 先試、有成效再擴散」。</dd><dt>做過的實績</dt><dd>A 集團開設主管 AI 工作流特訓，依 ISO 42001 建立使用規範；Agentic AI 工作流使流程自動化效率 +55%。</dd><dt>到任指標</dt><dd><b>第一年 30 位認證 PO</b></dd></dl></div></div></div><div class="panel card" data-p="5"><div class="duty"><div class="num">06</div><div><h3>定期向高階主管與事業單位主管報告成效</h3><dl><dt>我的做法</dt><dd>月度 AI 價值儀表板、季度 AI 投資委員會、半年向董事長報告；用 EBITDA、ROI、TCO 的語言。</dd><dt>做過的實績</dt><dd>直報董事會與 Global CIO 逾 10 年；以平衡計分卡與一頁式決策表每季報告里程碑。</dd><dt>到任指標</dt><dd><b>每季公開檢視效益，財務長確認金額</b></dd></dl></div></div></div>
+ <div class="panel card on" data-p="0"><div class="duty"><div class="num">01</div><div><h3>與高階主管定義優先導入 AI 領域，規劃 AI 平台藍圖</h3><dl><dt>我的做法</dt><dd>以「經濟效益 × 可行性 × 可重用」三軸評分，與事業群主管共同排定投資組合；用一頁式決策表向經營層呈核。</dd><dt>做過的實績</dt><dd>曾為集團撰寫年度 IT 策略與投資計畫並呈報 CEO 與經管會，以策略支柱與 Run／Grow／Transform 預算框架落地。</dd><dt>到任指標</dt><dd><b>90 天內交出 AI 價值地圖與前 5 大用例財務假設</b></dd></dl></div></div></div><div class="panel card" data-p="1"><div class="duty"><div class="num">02</div><div><h3>把零散應用做成可重複使用的資料產品與平台</h3><dl><dt>我的做法</dt><dd>抽出模型閘道、知識庫、資料產品、Agent 編排與監控等共用元件；以黃金路徑讓新用例照範本上線。</dd><dt>做過的實績</dt><dd>B 集團把各專案自建環境改為平台提供標準元件，核心服務零停機、TCO −30%；設計多模型網關與企業任務中樞的參考架構。</dd><dt>到任指標</dt><dd><b>新用例上線時間由「月」縮短為「週」</b></dd></dl></div></div></div><div class="panel card" data-p="2"><div class="duty"><div class="num">03</div><div><h3>建立和 SAP、PLM、MES 互補的 AI stack</h3><dl><dt>我的做法</dt><dd>不動 SAP 核心、不重造 MES／PLM；以 API、CDC 與事件串流讀取資料，AI 產出「建議」回寫，經人員核可後執行。</dd><dt>做過的實績</dt><dd>D 公司以 SAP S/4HANA 串接 MES、PLM、APS，加上 Edge AIoT 與 AI 不良預測：良率 +15%、OEE +18%；規劃 PLM→SAP→MES 單一數據流的整合藍圖。</dd><dt>到任指標</dt><dd><b>S/4HANA 上線後 6 個月內首批供應鏈 AI 用例上線</b></dd></dl></div></div></div><div class="panel card" data-p="3"><div class="duty"><div class="num">04</div><div><h3>組建 AI 組織與人才梯隊，帶領 AI 技術主管與工程師</h3><dl><dt>我的做法</dt><dd>「中央平台＋事業群嵌入」雙軌組織；技術主管能力模型、九大技術發展路線與接班計畫。</dd><dt>做過的實績</dt><dd>A 集團 IT 團隊 50+ 人；帶領企劃、前端、後端與 DBA 三組逾 30 人完成從零到一的組織重整，建立職務說明與能力評核。</dd><dt>到任指標</dt><dd><b>每位技術主管至少一位可接手人選</b></dd></dl></div></div></div><div class="panel card" data-p="4"><div class="duty"><div class="num">05</div><div><h3>推動業務主導的平台團隊與企業內部 PO 培養，帶動 AI 原生的工作方式</h3><dl><dt>我的做法</dt><dd>PO 學院：業務主管學會寫用例財務假設與驗收標準；Champions 網絡；「主管先學、IT 先試、有成效再擴散」。</dd><dt>做過的實績</dt><dd>A 集團開設主管 AI 工作流特訓，依 ISO 42001 建立使用規範；Agentic AI 工作流使流程自動化效率 +55%。</dd><dt>到任指標</dt><dd><b>第一年 30 位認證 PO</b></dd></dl></div></div></div><div class="panel card" data-p="5"><div class="duty"><div class="num">06</div><div><h3>定期向高階主管與事業單位主管報告成效</h3><dl><dt>我的做法</dt><dd>月度 AI 價值儀表板、季度 AI 投資委員會、半年向董事長報告；用 EBITDA、ROI、TCO 的語言。</dd><dt>做過的實績</dt><dd>直報董事會與 Global CIO 逾 10 年；以平衡計分卡與一頁式決策表每季報告里程碑。</dd><dt>到任指標</dt><dd><b>每季公開檢視效益，財務長確認金額</b></dd></dl></div></div></div>
  <h3 style="margin-top:28px">必要條件與加分條件</h3>
  <div class="tw"><table><tr><th>條件</th><th>我的證據</th><th>結果</th></tr>
  <tr><td class="lb">學歷、產業背景不限</td><td>資訊科技管理博士；電子製造、外商軟體、上市櫃平台三種產業</td><td>符合</td></tr><tr><td class="lb">10 年以上帶領 AI／資料團隊</td><td>2010 起任資訊長帶資料與系統團隊；2018 起帶 AIoT 與 AI 良率團隊；2025 起帶 Agentic AI 團隊，累計逾 15 年</td><td>符合</td></tr><tr><td class="lb">主導 AI 平台或產品上線並交出可量化成果</td><td>AI 不良預測：良率 +15%、OEE +18%；Agentic AI：自動化效率 +55%</td><td>符合</td></tr>
@@ -221,7 +232,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <div class="eyebrow">09 · Proof</div>
  <h2>三個代表案例</h2><p class="sub">Outcomes measured in operating metrics</p>
  <div class="tabs" id="ctabs"><button class="tab on" data-i="0">D 公司｜製造業 AI 建在整合好的核心上</button><button class="tab" data-i="1">B 集團｜平台化與零停機</button><button class="tab" data-i="2">A 集團｜AI 治理與 Agent 上線</button></div>
- <div class="panel card on" data-p="0"><p class="mute">D 公司　IT Director｜2018.10 – 2022.09</p><h3>製造業 AI 建在整合好的核心上</h3><p><b>處境：</b>併購後各廠獨立運作、產能不透明，形成數據孤島，引發數億元呆滯庫存。</p><b>作法：</b><ul class="clean"><li>SAP S/4HANA 標準功能優先（Clean Core），串接 MES、PLM、APS</li><li>Edge AIoT 數據平台涵蓋上千台設備，建立 AI 不良預測與預測性維護</li><li>依 IEC 62443 規劃 OT/IT 分段；建立品牌客戶 B2B EDI</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+15%</div><div class="l">良率</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT 維運成本</div></div></div><div class="note"><b>對光寶的意義：</b>S/4HANA 上線後的 AI 擴充、MES 替代料與齊套料建議、新廠複製範本</div></div><div class="panel card" data-p="1"><p class="mute">B 集團　資訊技術處處長｜2022.09 – 2025.04</p><h3>平台化與零停機</h3><p><b>處境：</b>每月推出新產品，舊資料庫無法承受高併發，各專案自建環境，維運負擔大。</p><b>作法：</b><ul class="clean"><li>核心服務遷移至 Kubernetes 並導入 CI/CD，發布週期縮短一半</li><li>建立全球資料管理平台與跨區叢集</li><li>推行 FinOps；建立 ISO 27001 與零信任架構</li></ul><div class="kpis k3"><div class="kpi"><div class="v">零停機</div><div class="l">核心服務</div></div><div class="kpi"><div class="v">−30%</div><div class="l">多雲 TCO</div></div><div class="kpi"><div class="v">×2</div><div class="l">發布速度</div></div></div><div class="note"><b>對光寶的意義：</b>從「各部門自建 AI 工具」遷移到共用平台，新舊並行、可回退</div></div><div class="panel card" data-p="2"><p class="mute">A 集團　技術副總／CIO｜2025.05 – 至今</p><h3>AI 治理與 Agent 上線</h3><p><b>處境：</b>跨國雲端資產破碎、資安人才短缺，員工自行使用各種 AI 工具，資料外洩風險高。</p><b>作法：</b><ul class="clean"><li>主持架構審查委員會，訂定 API-first 與整合標準</li><li>DevSecOps 品質關卡＋ AI 程式審查與測試生成</li><li>依 ISO 42001 訂定 AI 使用規範與資料分級；主管 AI 工作流特訓</li><li>Agentic AI 工作流，高風險動作 Human-in-the-Loop</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+55%</div><div class="l">自動化效率</div></div><div class="kpi"><div class="v">−40%</div><div class="l">Lead Time</div></div><div class="kpi"><div class="v">−35%</div><div class="l">缺陷逃逸</div></div></div><div class="note"><b>對光寶的意義：</b>光寶 AI 使用規範、PO 學院與 Agent 上線的直接範本</div></div>
+ <div class="panel card on" data-p="0"><p class="mute">D 公司　IT Director｜2018.10 – 2022.09</p><h3>製造業 AI 建在整合好的核心上</h3><p><b>處境：</b>併購後各廠獨立運作、產能不透明，形成數據孤島，形成大量呆滯庫存。</p><b>作法：</b><ul class="clean"><li>SAP S/4HANA 標準功能優先（Clean Core），串接 MES、PLM、APS</li><li>Edge AIoT 數據平台涵蓋上千台設備，建立 AI 不良預測與預測性維護</li><li>依 IEC 62443 規劃 OT/IT 分段；建立品牌客戶 B2B EDI</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+15%</div><div class="l">良率</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT 維運成本</div></div></div><div class="note"><b>對光寶的意義：</b>S/4HANA 上線後的 AI 擴充、MES 替代料與齊套料建議、新廠複製範本</div></div><div class="panel card" data-p="1"><p class="mute">B 集團　資訊技術處處長｜2022.09 – 2025.04</p><h3>平台化與零停機</h3><p><b>處境：</b>每月推出新產品，舊資料庫無法承受高併發，各專案自建環境，維運負擔大。</p><b>作法：</b><ul class="clean"><li>核心服務遷移至 Kubernetes 並導入 CI/CD，發布週期縮短一半</li><li>建立全球資料管理平台與跨區叢集</li><li>推行 FinOps；建立 ISO 27001 與零信任架構</li></ul><div class="kpis k3"><div class="kpi"><div class="v">零停機</div><div class="l">核心服務</div></div><div class="kpi"><div class="v">−30%</div><div class="l">多雲 TCO</div></div><div class="kpi"><div class="v">×2</div><div class="l">發布速度</div></div></div><div class="note"><b>對光寶的意義：</b>從「各部門自建 AI 工具」遷移到共用平台，新舊並行、可回退</div></div><div class="panel card" data-p="2"><p class="mute">A 集團　技術副總／CIO｜2025.05 – 至今</p><h3>AI 治理與 Agent 上線</h3><p><b>處境：</b>跨國雲端資產破碎、資安人才短缺，員工自行使用各種 AI 工具，資料外洩風險高。</p><b>作法：</b><ul class="clean"><li>主持架構審查委員會，訂定 API-first 與整合標準</li><li>DevSecOps 品質關卡＋ AI 程式審查與測試生成</li><li>依 ISO 42001 訂定 AI 使用規範與資料分級；主管 AI 工作流特訓</li><li>Agentic AI 工作流，高風險動作 Human-in-the-Loop</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+55%</div><div class="l">自動化效率</div></div><div class="kpi"><div class="v">−40%</div><div class="l">Lead Time</div></div><div class="kpi"><div class="v">−35%</div><div class="l">缺陷逃逸</div></div></div><div class="note"><b>對光寶的意義：</b>光寶 AI 使用規範、PO 學院與 Agent 上線的直接範本</div></div>
  <h3 style="margin-top:26px">全部量化成果</h3>
  <div class="kpis"><div class="kpi"><div class="v">+15%</div><div class="l">產品良率</div><div class="s">D 公司｜AI 不良預測</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div><div class="s">D 公司｜Edge AIoT</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT 維運成本</div><div class="s">D 公司｜系統整併</div></div><div class="kpi"><div class="v">−30%</div><div class="l">多雲 TCO</div><div class="s">B 集團｜FinOps</div></div><div class="kpi"><div class="v">零停機</div><div class="l">核心服務</div><div class="s">B 集團｜平台遷移</div></div><div class="kpi"><div class="v">−40%</div><div class="l">交付 Lead Time</div><div class="s">A 集團｜AI 程式審查</div></div><div class="kpi"><div class="v">−30%</div><div class="l">資安事故年減</div><div class="s">A 集團｜零信任</div></div><div class="kpi"><div class="v">+55%</div><div class="l">流程自動化</div><div class="s">A 集團｜Agentic AI</div></div></div>
  <h3>外部實證</h3>
@@ -233,7 +244,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <h2>學經歷</h2><p class="sub">Education, career &amp; credentials</p>
  <p class="lead">25 年以上資訊經歷、15 年以上資訊長與技術主管職涯，橫跨電子製造、外商軟體與上市櫃數位平台。擅長把董事會的經營目標轉成 IT 與 AI 投資組合，親自主持架構決策，並以良率、OEE、TCO 等經營指標交付成果。持有 ISO 27001 與 ISO 42001 主導稽核員資格，能在創新速度與治理紅線之間取得平衡。</p>
  <div class="grid2">
-  <div><h3>職涯</h3><div class="tl"><div class="it"><div class="dt">2025.05 – 至今</div><b>A 集團｜技術副總／CIO</b><span class="chip">Agentic AI +55%</span><div class="mute">跨國網路科技平台（台北、高雄、上海）</div><div>主持架構審查委員會、API-first 與 Kafka／EDI／IDoc 整合標準；DevSecOps 品質關卡；ISO 42001 AI 治理；Agentic AI 工作流</div></div><div class="it"><div class="dt">2026</div><b>顧問客戶甲～丁｜企業資訊架構顧問</b><span class="chip">AI 架構藍圖</span><div class="mute">紡織、生醫、醫材、新藥</div><div>集團 IT 策略與投資計畫、TOGAF 全架構視圖、PLM／SAP／MES 整合藍圖、資安治理 180 天計畫</div></div><div class="it"><div class="dt">2022.09 – 2025.04</div><b>B 集團｜資訊技術處處長（CIO／CISO）</b><span class="chip">TCO −30%、零停機</span><div class="mute">上櫃數位科技平台（台中、台北、海外）</div><div>核心服務遷移至 Kubernetes；全球資料管理平台；FinOps；ISO 27001 與零信任</div></div><div class="it"><div class="dt">2022</div><b>C 集團｜中央資訊 技術處長</b><span class="chip">企業架構</span><div class="mute">全球電子製造</div><div>集團企業架構決策、差距分析與數位轉型規劃</div></div><div class="it"><div class="dt">2018.10 – 2022.09</div><b>D 公司｜IT Director</b><span class="chip">良率 +15%、OEE +18%</span><div class="mute">跨國電子製造（台灣三地、中國兩地）</div><div>併購後 SAP S/4HANA 整併，串接 MES、PLM、APS；Edge AIoT；IEC 62443；B2B EDI</div></div><div class="it"><div class="dt">2010 – 2018</div><b>E 集團｜資訊長</b><span class="chip">資料治理</span><div class="mute">跨產業控股集團</div><div>集團資訊治理、系統整合與資料團隊</div></div><div class="it"><div class="dt">2007 – 2010</div><b>F 公司｜部門主管</b><span class="chip">—</span><div class="mute">上櫃資訊服務</div><div>SOA 架構、商業入口網站、ITIL 服務治理</div></div><div class="it"><div class="dt">2003 – 2007</div><b>G 公司｜技術經理</b><span class="chip">資料庫</span><div class="mute">美商企業軟體</div><div>大中華區資料庫、中介軟體與 ALM 技術顧問與交付</div></div><div class="it"><div class="dt">長期</div><b>區域醫學中心顧問；公益基金會常務董事</b><span class="chip">醫療資料</span><div class="mute">醫療與公益</div><div>醫療資訊串接、智慧長照與公益數位化</div></div></div></div>
+  <div><h3>職涯</h3><div class="tl"><div class="it"><div class="dt">2025.05 – 至今</div><b>A 集團｜技術副總／CIO</b><span class="chip">Agentic AI +55%</span><div class="mute">跨國網路科技平台（台北、高雄、上海）</div><div>主持架構審查委員會、API-first 與 Kafka／EDI／IDoc 整合標準；DevSecOps 品質關卡；ISO 42001 AI 治理；Agentic AI 工作流</div></div><div class="it"><div class="dt">2026</div><b>企業資訊架構顧問（兼任）</b><span class="chip">AI 架構藍圖</span><div class="mute">多產業，客戶不具名</div><div>集團 IT 策略與投資計畫、企業架構藍圖、ERP 與製造系統整合藍圖、資安治理計畫</div></div><div class="it"><div class="dt">2022.09 – 2025.04</div><b>B 集團｜資訊技術處處長（CIO／CISO）</b><span class="chip">TCO −30%、零停機</span><div class="mute">上櫃數位科技平台（台中、台北、海外）</div><div>核心服務遷移至 Kubernetes；全球資料管理平台；FinOps；ISO 27001 與零信任</div></div><div class="it"><div class="dt">2022</div><b>C 集團｜中央資訊 技術處長</b><span class="chip">企業架構</span><div class="mute">全球電子製造</div><div>集團企業架構決策、差距分析與數位轉型規劃</div></div><div class="it"><div class="dt">2018.10 – 2022.09</div><b>D 公司｜IT Director</b><span class="chip">良率 +15%、OEE +18%</span><div class="mute">跨國電子製造（台灣三地、中國兩地）</div><div>併購後 SAP S/4HANA 整併，串接 MES、PLM、APS；Edge AIoT；IEC 62443；B2B EDI</div></div><div class="it"><div class="dt">2010 – 2018</div><b>E 集團｜資訊長</b><span class="chip">資料治理</span><div class="mute">跨產業控股集團</div><div>集團資訊治理、系統整合與資料團隊</div></div><div class="it"><div class="dt">2007 – 2010</div><b>F 公司｜部門主管</b><span class="chip">—</span><div class="mute">上櫃資訊服務</div><div>SOA 架構、商業入口網站、ITIL 服務治理</div></div><div class="it"><div class="dt">2003 – 2007</div><b>G 公司｜技術經理</b><span class="chip">資料庫</span><div class="mute">美商企業軟體</div><div>大中華區資料庫、中介軟體與 ALM 技術顧問與交付</div></div><div class="it"><div class="dt">長期</div><b>區域醫學中心顧問；公益基金會常務董事</b><span class="chip">醫療資料</span><div class="mute">醫療與公益</div><div>醫療資訊串接、智慧長照與公益數位化</div></div></div></div>
   <div>
    <h3>學歷</h3><div class="card" style="margin-bottom:8px"><b>資訊科技管理博士（2014）</b>　朝陽科技大學<div class="mute">論文：整合系統的商業自助式入口網站植基於調適性服務導向架構資訊科技治理之研究（國家圖書館典藏）</div></div><div class="card" style="margin-bottom:8px"><b>資訊科學碩士（2006）</b>　國立中興大學<div class="mute">資料探勘、決策支援系統、密碼學；醫療雲端照護計畫協同主持人</div></div>
    <h3 style="margin-top:18px">研究與出版</h3><ul class="clean"><li>SCI 國際期刊《Multimedia Tools and Applications》第一作者：Reversible secret-image sharing with high visual quality（2014）</li><li>國際期刊論文：Utilizing GIS and GPS in Designing a Trilingual Tourist APP（2015）</li><li>長期擔任碩博士論文指導與審查</li></ul>
@@ -241,8 +252,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
   </div>
  </div>
  <h3 style="margin-top:20px">代號說明</h3>
- <p class="mute">基於保密，本頁以代號表示其他公司與顧問客戶，面談時可當面說明。</p>
- <div class="codes"><div><b>A 集團</b>跨國網路科技平台集團（現職）</div><div><b>B 集團</b>上櫃數位科技平台集團</div><div><b>C 集團</b>全球電子製造集團</div><div><b>D 公司</b>跨國電子製造公司（多廠區）</div><div><b>E 集團</b>跨產業控股集團</div><div><b>F 公司</b>上櫃資訊服務公司</div><div><b>G 公司</b>美商企業軟體公司</div><div><b>顧問客戶甲～丁</b>紡織、生醫、醫材、新藥等產業之企業資訊架構顧問案</div></div>
+ <p class="mute">基於保密與營業秘密保護，本頁不揭露其他公司與客戶名稱，亦不連結任何外部網站；所有內容均整合於本頁，面談時可當面說明。</p>
+ <div class="codes"><div><b>A 集團</b>跨國網路科技平台集團（現職）</div><div><b>B 集團</b>上櫃數位科技平台集團</div><div><b>C 集團</b>全球電子製造集團</div><div><b>D 公司</b>跨國電子製造公司（多廠區）</div><div><b>E 集團</b>跨產業控股集團</div><div><b>F 公司</b>上櫃資訊服務公司</div><div><b>G 公司</b>美商企業軟體公司</div><div><b>顧問案</b>企業資訊架構顧問案（多產業，客戶不具名）</div></div>
 </section>
 
 <section id="qa" class="reveal">
@@ -255,15 +266,20 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <div class="note" style="margin-top:24px"><b>結語：</b>最好的技術主管，是把技術語言翻譯成經營與風險語言的人。我希望協助光寶把 AI 從單點應用推進為可重複使用的平台，讓每一分投資都看得見回報。</div>
  <div class="btns"><a class="btn p" href="mailto:Liao.Howard@gmail.com">Liao.Howard@gmail.com</a><a class="btn" href="tel:+886975323161">+886-975-323161</a></div>
 </section>
-<section id="downloads" class="reveal">
- <div class="eyebrow">12 · Downloads</div>
- <h2>文件下載</h2><p class="sub">Board deck, interview dossier &amp; CV</p>
+<section id="docs" class="reveal">
+ <div class="eyebrow">12 · Documents</div>
+ <h2>文件線上預覽</h2><p class="sub">View online only — no downloads</p>
+ <p class="mute">以下文件僅提供線上翻頁預覽，不提供下載與列印。</p>
  <div class="grid3">
-  <div class="card"><h3>高階報告簡報（30 頁）</h3><p class="mute">AI 策略、平台藍圖與到任計畫</p><a class="btn p" href="assets/LITEON_AI_Platform_Board_Deck_Howard_Liao.pptx" download>下載 .pptx</a> <a class="btn" href="assets/LITEON_AI_Platform_Board_Deck_Howard_Liao.pdf" target="_blank" rel="noopener">PDF</a></div>
-  <div class="card"><h3>面試報告（20 頁）</h3><p class="mute">職能對照、案例與個人學經歷</p><a class="btn p" href="assets/LITEON_Interview_Dossier_Howard_Liao.docx" download>下載 .docx</a></div>
-  <div class="card"><h3>個人簡歷（10 頁）</h3><p class="mute">學經歷、認證與量化成果</p><a class="btn p" href="assets/Howard_Liao_PhD_CV.docx" download>下載 .docx</a> <a class="btn" href="assets/Howard_Liao_PhD_CV.pdf" target="_blank" rel="noopener">PDF</a></div>
+  <button class="doc" data-d="deck" data-n="30" data-t="高階報告簡報（30 頁）"><img src="assets/preview/deck/01.jpg" alt="高階報告簡報封面" draggable="false" loading="lazy"><b>高階報告簡報</b><span class="mute">30 頁｜AI 策略、平台藍圖與到任計畫</span></button>
+  <button class="doc" data-d="report" data-n="20" data-t="面試報告（20 頁）"><img src="assets/preview/report/01.jpg" alt="面試報告封面" draggable="false" loading="lazy"><b>面試報告</b><span class="mute">20 頁｜職能對照、案例與學經歷</span></button>
+  <button class="doc" data-d="cv" data-n="10" data-t="個人簡歷（10 頁）"><img src="assets/preview/cv/01.jpg" alt="個人簡歷封面" draggable="false" loading="lazy"><b>個人簡歷</b><span class="mute">10 頁｜學經歷、認證與量化成果</span></button>
  </div>
 </section>
+<div id="viewer" class="viewer" hidden>
+ <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="關閉">關閉 ✕</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="上一頁">‹</button><div class="vimg"><img id="vi" alt="文件頁面" draggable="false"><div class="vshield"></div></div><button class="vnav" id="vn" aria-label="下一頁">›</button></div>
+</div>
 </main>
 <footer>© 2026 廖倫豪 博士　Howard Liao, Ph.D.　·　專為光寶科技董事長暨資訊長審閱製作　·　其他公司以代號表示</footer>
 <script>
@@ -297,7 +313,17 @@ $('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(
 // reveal + nav highlight
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
 const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
-addEventListener('beforeprint',()=>$$('.reveal').forEach(x=>x.classList.add('in')));
+
+// document viewer: online preview only
+let VD='',VN=0,VI=1;const V=$('#viewer');
+function vshow(){$('#vi').src='assets/preview/'+VD+'/'+String(VI).padStart(2,'0')+'.jpg';$('#vc').textContent=VI+' / '+VN}
+$$('.doc').forEach(b=>b.onclick=()=>{VD=b.dataset.d;VN=+b.dataset.n;VI=1;$('#vt').textContent=b.dataset.t;V.hidden=false;document.body.style.overflow='hidden';vshow()});
+function vclose(){V.hidden=true;document.body.style.overflow=''}
+$('#vx').onclick=vclose;$('#vp').onclick=()=>{if(VI>1){VI--;vshow()}};$('#vn').onclick=()=>{if(VI<VN){VI++;vshow()}};
+addEventListener('keydown',e=>{if(V.hidden)return;if(e.key==='Escape')vclose();if(e.key==='ArrowLeft')$('#vp').click();if(e.key==='ArrowRight')$('#vn').click()});
+let tx=0;V.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});V.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d>50)$('#vp').click();if(d<-50)$('#vn').click()});
+document.addEventListener('contextmenu',e=>{if(e.target.closest('.viewer,.doc'))e.preventDefault()});
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&['p','s'].includes(e.key.toLowerCase())){e.preventDefault()}});
 // service worker: new network-first worker replaces the old cache-first one
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 </script>
