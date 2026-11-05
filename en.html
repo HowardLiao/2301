@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LITEON AI Platform Blueprint | Dr. Howard Liao</title>
+<meta name="description" content="For the Chairman and CIO of LITEON Technology: AI strategy, platform blueprint and onboarding plan by Dr. Howard Liao, candidate for IT AI Platform Lead.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<meta name="theme-color" content="#2F4538">
+<style>
+:root{--bg:#FAF7F2;--alt:#F2EEE8;--label:#E8E2D9;--line:#B8AFA3;--ink:#2B2B2B;--mute:#6B6459;--green:#2F4538;--green2:#3E5A4A;--gold:#C8A96A;--brick:#9C5B4A;--white:#FFFFFF;--card:#FFFFFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}}
+:root[data-theme="dark"]{--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.75;font-size:16px}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+a{color:var(--green)}
+header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:10px 16px}
+.brand{font-weight:700;color:var(--green);white-space:nowrap}.brand small{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:15px;margin-left:6px;letter-spacing:.06em}
+.links{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}.grid2>*,.grid3>*,.stack>*{min-width:0}.links::-webkit-scrollbar{display:none}
+.links a{white-space:nowrap;text-decoration:none;color:var(--mute);font-size:14px;padding:6px 10px;border-radius:999px}
+.links a.on,.links a:hover{background:var(--label);color:var(--green)}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
+.tbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
+main{max-width:1180px;margin:auto;padding:0 16px}
+section{padding:72px 0 24px;border-bottom:1px solid var(--label)}
+.eyebrow{font-family:"Cormorant Garamond",serif;color:var(--gold);letter-spacing:.18em;font-size:15px;text-transform:uppercase;font-weight:600}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.2;color:var(--green);margin:8px 0 12px}
+h2{font-size:clamp(24px,3.2vw,34px);color:var(--green);margin:6px 0 8px;line-height:1.3}
+h2+.sub{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--mute);font-size:20px;margin:0 0 22px}
+h3{color:var(--green);margin:0 0 6px;font-size:19px}
+.lead{font-size:18px;max-width:780px}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;padding-top:56px}
+.portrait{border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background:var(--label)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;margin-top:20px;color:var(--mute)}.meta b{color:var(--ink);font-weight:500}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:10px 18px;border-radius:2px;text-decoration:none;font-size:15px;border:1px solid var(--green);color:var(--green);background:transparent;cursor:pointer;font-family:inherit}
+.btn.p{background:var(--green);color:var(--bg)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.kpi{min-width:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);padding:16px 14px;text-align:center}
+.kpi .v{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:600;color:var(--green);line-height:1.1}
+.kpi .l{font-weight:700;font-size:14px}.kpi .s{font-size:12px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--card)}
+th{background:var(--green);color:var(--bg);text-align:left;font-weight:500;padding:10px 12px}
+:root[data-theme="dark"] th{color:#1C211E}
+td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}
+tr:nth-child(even) td{background:var(--alt)}
+td.lb{background:var(--label)!important;font-weight:700;color:var(--green);white-space:nowrap}
+.tw{overflow-x:auto;margin:12px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);padding:20px}
+.note{background:var(--label);border-left:4px solid var(--gold);padding:14px 18px;margin:16px 0}
+.note.warn{border-left-color:var(--brick)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;cursor:pointer;font:inherit;font-size:14px;border-radius:2px}
+.tab.on{background:var(--green);color:var(--bg);border-color:var(--green)}
+.panel{display:none}.panel.on{display:block}
+.duty{display:grid;grid-template-columns:90px 1fr;gap:18px}
+.duty .num{font-family:"Cormorant Garamond",serif;font-size:64px;color:var(--gold);line-height:1}
+.duty dl{display:grid;grid-template-columns:110px 1fr;gap:8px 14px;margin:12px 0 0}
+.duty dt{font-weight:700;color:var(--green)}.duty dd{margin:0}
+.bar{height:8px;background:var(--label);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);width:0;transition:width .9s ease}
+.comp{display:grid;grid-template-columns:230px 1fr 60px;gap:6px 14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--label)}
+.comp>*{min-width:0;overflow-wrap:anywhere}.comp .d{grid-column:1/-1;font-size:14px;color:var(--mute);margin-top:-2px}
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.layer{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);padding:12px 14px;margin-bottom:6px;cursor:pointer;font:inherit;color:var(--ink)}
+.layer b{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold);width:44px}
+.layer.on{background:var(--green);color:var(--bg)}.layer.on b{color:var(--gold)}
+.ld{position:sticky;top:80px}
+.matrix{background:var(--card);border:1px solid var(--line);padding:10px}
+.matrix svg{width:100%;height:auto;display:block}
+.calc label{display:block;font-size:14px;margin:12px 0 4px;color:var(--mute)}
+.calc input[type=range]{width:100%;accent-color:var(--green)}
+.out{font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--green);font-weight:600}
+.tl{position:relative;margin-left:8px;border-left:2px solid var(--line);padding-left:22px}
+.tl .it{position:relative;margin-bottom:20px}.tl .it:before{content:"";position:absolute;left:-29px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.tl .dt{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--gold);font-weight:600}
+.chip{display:inline-block;font-size:12px;border:1px solid var(--line);padding:1px 8px;border-radius:999px;color:var(--mute);margin-left:6px}
+details{border:1px solid var(--line);background:var(--card);margin-bottom:8px}
+summary{cursor:pointer;padding:14px 16px;font-weight:500;color:var(--green)}
+details>div{padding:0 16px 14px}
+.phase{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.phase .card{cursor:pointer;transition:background .2s}.phase .card.on{background:var(--green);color:var(--bg)}.phase .card.on h3{color:var(--gold)}
+.phase .card.on .mute{color:var(--label)}
+.mute{color:var(--mute);font-size:14px}
+ul.clean{padding-left:18px;margin:6px 0}ul.clean li{margin:3px 0}
+footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px}
+.codes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.codes div{border:1px solid var(--line);padding:8px 10px;background:var(--card);font-size:13px}.codes b{color:var(--green);display:block}
+.reveal{opacity:0;transform:translateY(14px);transition:all .6s ease}.reveal.in{opacity:1;transform:none}
+.k3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.brand small{display:none}.nav .in{gap:8px}.kpi .v{font-size:30px}.k3{grid-template-columns:1fr 1fr 1fr}.hero,.grid2,.grid3,.stack,.phase{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.codes{grid-template-columns:1fr 1fr}.comp{grid-template-columns:1fr 50px}.comp .bar{grid-column:1/-1;order:3}.duty{grid-template-columns:1fr}.duty .num{font-size:44px}.duty dl{grid-template-columns:1fr}.ld{position:static}.portrait{max-width:300px}}
+/*print*/
+.doc{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);padding:14px;cursor:pointer;font:inherit;color:var(--ink)}
+.doc img{width:100%;height:220px;object-fit:contain;background:var(--alt);border:1px solid var(--label);pointer-events:none;user-select:none}
+.doc:hover{border-color:var(--gold)}
+.viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
+.viewer[hidden]{display:none}
+.vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
+.tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
+.vimg{position:relative;max-width:100%;max-height:100%;display:flex}
+.vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
+.vshield{position:absolute;inset:0}
+.vnav{background:transparent;border:1px solid #6B6459;color:#FAF7F2;font-size:30px;width:44px;height:64px;cursor:pointer}
+@media (max-width:860px){.vimg img{max-width:calc(100vw - 20px)}.vnav{position:absolute;bottom:18px;width:52px;height:44px}#vp{left:16px}#vn{right:16px}}
+@media print{body{display:none!important}}
+@media print{header.nav,.btns,.tabs,.tbtn,.calc{display:none}.panel{display:block!important;margin-bottom:16px}section{padding:24px 0;break-inside:avoid-page}.reveal{opacity:1;transform:none}body{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="in">
+ <div class="brand">Dr. Howard Liao<small>× LITEON</small></div>
+ <nav class="links" id="links">
+  <a href="#hero">Home</a><a href="#context">LITEON today</a><a href="#duties">Six responsibilities</a><a href="#fit">Competency fit</a><a href="#stack">AI platform blueprint</a><a href="#portfolio">Use cases</a><a href="#org">Organization and PO</a><a href="#gov">Governance</a><a href="#plan">Onboarding plan</a><a href="#cases">Cases</a><a href="#profile">Background</a><a href="#qa">Q and A</a><a href="#docs">Documents</a>
+ </nav>
+ <div class="langs"><a href="index.html" class="" hreflang="zh">繁中</a><a href="ja.html" class="" hreflang="ja">日本語</a><a href="en.html" class="on" hreflang="en">EN</a></div>
+ <button class="tbtn" id="theme" aria-label="Theme">◐</button>
+</div></header>
+<main>
+
+<section id="hero" class="hero">
+ <div>
+  <div class="eyebrow">To the Chairman &amp; CIO · LITEON Technology</div>
+  <h1>Move AI from point solutions<br>into a platform for LITEON</h1>
+  <p class="lead">Move AI from point solutions to a reusable platform with economic value visible to leadership. This page is prepared for the Chairman and CIO of LITEON Technology. It explains how I would build an AI platform that complements SAP, PLM and MES on the principle of data first, then AI, and deliver results measured in business metrics.</p>
+  <div class="meta"><span>Candidate</span><b>Dr. Howard Liao</b><span>Position applied for</span><b>IT AI Platform Lead | Neihu, Taipei</b><span>Current role</span><b>Group A VP of Technology/CIO</b><span>Credentials</span><b>Ph.D. in IT Management · ISO 27001/42001 Lead Auditor</b></div>
+  <div class="btns"><a class="btn p" href="#stack">View the AI platform blueprint</a><a class="btn" href="#plan">180-day onboarding plan</a><a class="btn" href="#docs">Online document preview</a><a class="btn" href="mailto:Liao.Howard@gmail.com">Email</a></div>
+ </div>
+ <div class="portrait"><img src="assets/howard_portrait.jpg" alt="Portrait of Dr. Howard Liao" loading="eager"></div>
+</section>
+
+<div class="kpis reveal"><div class="kpi"><div class="v" data-count="+15%">+15%</div><div class="l">Product yield</div><div class="s">Company D | AI defect prediction</div></div><div class="kpi"><div class="v" data-count="+18%">+18%</div><div class="l">OEE</div><div class="s">Company D | Edge AIoT</div></div><div class="kpi"><div class="v" data-count="−25%">−25%</div><div class="l">IT operating cost</div><div class="s">Company D | System consolidation</div></div><div class="kpi"><div class="v" data-count="−30%">−30%</div><div class="l">Multi-cloud TCO</div><div class="s">Group B | FinOps</div></div></div>
+
+<section id="context" class="reveal">
+ <div class="eyebrow">01 · Context</div>
+ <h2>LITEON today: AI revenue is doubling and internal operations must keep up</h2><p class="sub">LITEON at an inflection point</p>
+ <div class="kpis"><div class="kpi"><div class="v">NT$57.4B</div><div class="l">2026 Q3 revenue</div><div class="s">Up 28% year on year</div></div><div class="kpi"><div class="v">15.1%</div><div class="l">Q3 operating margin</div><div class="s">Operating income up 85% year on year</div></div><div class="kpi"><div class="v">&gt;30%</div><div class="l">2026 AI share of revenue</div><div class="s">2027 estimated 40–50%</div></div><div class="kpi"><div class="v">NT$19.7B</div><div class="l">2026 capital expenditure</div><div class="s">Raised from NT$18B</div></div></div>
+ <div class="tw"><table><tr><th>Area</th><th>Key public facts</th><th>What it means for the AI platform</th></tr><tr><td class="lb">Scale</td><td>86 subsidiaries, 112 plants, 20+ locations worldwide</td><td>Build once and replicate across plants; unify data definitions first</td></tr><tr><td class="lb">Capacity</td><td>Vietnam plant opened 2026.11; Kaohsiung Phase 2 in 2026.12; Texas, USA operating in 2027 Q2</td><td>New plants are the best AI pilots: no legacy baggage</td></tr><tr><td class="lb">Products</td><td>8.5kW PSU and BBU in volume production; 110kW Power Shelf, 800VDC Power Rack, 120kW CDU</td><td>Rising product complexity means R and D and quality knowledge need AI assistance</td></tr><tr><td class="lb">ERP</td><td>SAP ECC → S/4HANA, global go-live on 2027.01.04; 16 new functions and 27 process improvements</td><td>AI must extend outside the Clean Core to avoid re-customization</td></tr><tr><td class="lb">Manufacturing</td><td>MES tightly integrated with ERP: alternate parts, kit readiness, work-order scheduling</td><td>The next step is predict, recommend and decide proactively — exactly where agents fit</td></tr><tr><td class="lb">Finance</td><td>After automating consolidated reporting, data integration efficiency improved by over 90%</td><td>A data automation foundation already exists and can extend to analytics and prediction</td></tr><tr><td class="lb">Security</td><td>IT/OT security governance framework built on ISO 27001</td><td>AI governance can plug directly into ISO 42001</td></tr></table></div>
+ <div class="note"><b>The problem behind the problem.</b>When a shortage stops the line, the root cause is rarely the scheduling software. It is delayed engineering changes, unstructured alternate-part specifications and inconsistent data definitions across plants. The AI platform must fix these structural issues first; only then will models be accurate.</div>
+ <p class="mute">Sources: financial media feature report and LITEON’s 2026 Q3 investor conference; figures per the official Market Observation Post System.</p>
+</section>
+
+<section id="duties" class="reveal">
+ <div class="eyebrow">02 · Mandate</div>
+ <h2>Six responsibilities in the job description × my approach and track record</h2><p class="sub">Six responsibilities, one operating model</p>
+ <div class="tabs" id="dtabs"><button class="tab on" data-i="0">01</button><button class="tab" data-i="1">02</button><button class="tab" data-i="2">03</button><button class="tab" data-i="3">04</button><button class="tab" data-i="4">05</button><button class="tab" data-i="5">06</button></div>
+ <div class="panel card on" data-p="0"><div class="duty"><div class="num">01</div><div><h3>Define priority AI domains with senior leadership and plan the AI platform blueprint</h3><dl><dt>My approach</dt><dd>Score on three axes — economic value × feasibility × reusability — and set the investment portfolio together with business-group heads; submit to leadership with a one-page decision sheet.</dd><dt>Track record</dt><dd>Wrote the group’s annual IT strategy and investment plan, presented to the CEO and executive committee, and delivered it through strategic pillars and a Run/Grow/Transform budget framework.</dd><dt>Onboarding KPI</dt><dd><b>Within 90 days, an AI value map and financial assumptions for the top 5 use cases</b></dd></dl></div></div></div><div class="panel card" data-p="1"><div class="duty"><div class="num">02</div><div><h3>Turn scattered applications into reusable data products and platforms</h3><dl><dt>My approach</dt><dd>Extract shared components — model gateway, knowledge base, data products, agent orchestration and monitoring — and let new use cases launch from templates on a golden path.</dd><dt>Track record</dt><dd>At Group B, replaced project-by-project environments with standard platform components: zero downtime for core services and TCO −30%; designed a reference architecture for a multi-model gateway and an enterprise task hub.</dd><dt>Onboarding KPI</dt><dd><b>New use cases go live in weeks instead of months</b></dd></dl></div></div></div><div class="panel card" data-p="2"><div class="duty"><div class="num">03</div><div><h3>Build an AI stack that complements SAP, PLM and MES</h3><dl><dt>My approach</dt><dd>Keep the SAP core untouched and do not rebuild MES/PLM; read data through APIs, CDC and event streams; AI writes back recommendations that are executed only after human approval.</dd><dt>Track record</dt><dd>At Company D, connected SAP S/4HANA with MES, PLM and APS, adding Edge AIoT and AI defect prediction: yield +15%, OEE +18%; designed an integration blueprint for a single PLM→SAP→MES data flow.</dd><dt>Onboarding KPI</dt><dd><b>First supply-chain AI use cases live within 6 months of the S/4HANA go-live</b></dd></dl></div></div></div><div class="panel card" data-p="3"><div class="duty"><div class="num">04</div><div><h3>Build the AI organization and talent pipeline; lead AI technical leads and engineers</h3><dl><dt>My approach</dt><dd>A dual-track organization of central platform + embedded business teams; competency model for technical leads, nine technical career tracks and succession plans.</dd><dt>Track record</dt><dd>Group A IT team of 50+; led three teams of 30+ (planning, front-end, back-end and DBA) through a zero-to-one reorganization, with job descriptions and competency assessments.</dd><dt>Onboarding KPI</dt><dd><b>At least one ready successor for every technical lead</b></dd></dl></div></div></div><div class="panel card" data-p="4"><div class="duty"><div class="num">05</div><div><h3>Build business-led platform teams and develop internal POs to drive AI-native ways of working</h3><dl><dt>My approach</dt><dd>PO Academy: business leaders learn to write use-case financial assumptions and acceptance criteria; Champions network; leaders learn first, IT pilots first, then scale what works.</dd><dt>Track record</dt><dd>At Group A, ran AI workflow training for managers and set usage rules under ISO 42001; Agentic AI workflows raised process automation efficiency by 55%.</dd><dt>Onboarding KPI</dt><dd><b>30 certified POs in year one</b></dd></dl></div></div></div><div class="panel card" data-p="5"><div class="duty"><div class="num">06</div><div><h3>Report results regularly to senior leadership and business unit heads</h3><dl><dt>My approach</dt><dd>Monthly AI value dashboard, quarterly AI investment committee, semi-annual report to the Chairman — in the language of EBITDA, ROI and TCO.</dd><dt>Track record</dt><dd>Reported directly to the Board and Global CIO for 10+ years; quarterly milestone reporting with a balanced scorecard and one-page decision sheet.</dd><dt>Onboarding KPI</dt><dd><b>Benefits reviewed openly every quarter, amounts confirmed by the CFO</b></dd></dl></div></div></div>
+ <h3 style="margin-top:28px">Mandatory and preferred requirements</h3>
+ <div class="tw"><table><tr><th>Requirement</th><th>My evidence</th><th>Result</th></tr>
+ <tr><td class="lb">No restriction on education or industry background</td><td>Ph.D. in IT Management; electronics manufacturing, global software vendors and listed platforms</td><td>Met</td></tr><tr><td class="lb">10+ years leading AI/data teams</td><td>CIO leading data and systems teams since 2010; AIoT and AI yield teams since 2018; Agentic AI team since 2025 — 15+ years in total</td><td>Met</td></tr><tr><td class="lb">Led AI platform or product launches with quantifiable results</td><td>AI defect prediction: yield +15%, OEE +18%; Agentic AI: automation efficiency +55%</td><td>Met</td></tr>
+ <tr><td class="lb">Preferred | Built AI/data platforms and teams from scratch</td><td>Company D Edge AIoT data hub and Group A AI governance and agent platform, both built from scratch</td><td>Met</td></tr><tr><td class="lb">Preferred | Communicating with the C-level and senior leadership</td><td>Reports directly to the Board and Global CIO; reports in EBITDA, TCO and ROIC</td><td>Met</td></tr><tr><td class="lb">Preferred | CIO or IT department head experience</td><td>15+ years as CIO/CISO/CDAIO/Director of IT</td><td>Met</td></tr><tr><td class="lb">Preferred | Digital transformation at large domestic enterprises</td><td>Multi-plant S/4HANA consolidation, zero-downtime migration of global core services, group central IT architecture</td><td>Met</td></tr>
+ </table></div>
+</section>
+
+<section id="fit" class="reveal">
+ <div class="eyebrow">03 · Fit</div>
+ <h2>Technical and managerial competency fit</h2><p class="sub">Technical &amp; managerial competency</p>
+ <div class="tabs" id="ftabs"><button class="tab on" data-i="0">Technical competencies</button><button class="tab" data-i="1">Managerial competencies</button></div>
+ <div class="panel on" data-p="0"><div class="comp"><b>AI platform architecture (LLM gateway/RAG/Agent)</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Three-tier enterprise AI platform: unified governance of multiple LLMs, multi-agent orchestration, human-in-the-loop; AI gateway + Agentic RAG + workflow engine</div></div><div class="comp"><b>AI in production (manufacturing)</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Company D Edge AIoT platform covering 1,000+ machines; AI defect prediction and predictive maintenance: yield +15%, OEE +18%</div></div><div class="comp"><b>AI in production (operations)</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Group A Agentic AI workflows +55%; AI code review Lead Time −40%, defect escape −35%</div></div><div class="comp"><b>Data platforms and data products</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Group B global data management platform; lakehouse Bronze/Silver/Gold layers and data contracts</div></div><div class="comp"><b>SAP/PLM/MES integration</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">SAP S/4HANA connected with MES, PLM and APS; Clean Core custom objects −35%; Kafka/EDI/IDoc integration standards</div></div><div class="comp"><b>Cloud-native and platform engineering</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Kubernetes containers + CI/CD, zero-downtime multi-cloud; official APAC customer case of a global cloud provider</div></div><div class="comp"><b>MLOps/LLMOps</b><div class="bar"><i data-w="66.66666666666666"></i></div><span style="color:var(--gold)">●●○</span><div class="d">DevSecOps quality gates (SAST/DAST/SBOM); design of model evaluation and drift-monitoring processes</div></div><div class="comp"><b>IT/OT security</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">IEC 62443 zoning, zero trust, ISO 27001 Lead Auditor; security incidents −30% year on year</div></div><div class="comp"><b>AI governance</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">ISO 42001 Lead Auditor; AI usage rules and data classification</div></div></div><div class="panel" data-p="1"><div class="comp"><b>Defining priority AI domains</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Reports directly to the Board; aligns with business goals through OGSM and led a 3-year application roadmap</div></div><div class="comp"><b>Budget and investment governance</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">IT budgets from several million to ten million US dollars; CAPEX/OPEX allocation; multi-cloud TCO −30%</div></div><div class="comp"><b>Building teams and pipelines</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Teams of 100+ across Taiwan, China and Europe; built succession plans</div></div><div class="comp"><b>Business leadership and PO development</b><div class="bar"><i data-w="66.66666666666666"></i></div><span style="color:var(--gold)">●●○</span><div class="d">AI workflow training for managers; three-stage enterprise AI adoption; Champions network</div></div><div class="comp"><b>Cross-department change</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Multi-plant consolidation, BPR process reengineering, ISO four-tier governance documents</div></div><div class="comp"><b>Reporting to leadership</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Quarterly reporting on yield, OEE, TCO and Lead Time; keynote speaker at industry conferences</div></div><div class="comp"><b>External partners and SI management</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">SI contracts, SLAs, acceptance gates and vendor scorecards</div></div><div class="comp"><b>Large-enterprise transformation</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Group central IT architecture, multi-plant ERP, global platform migration</div></div></div>
+ <div class="note warn"><b>Candidly: </b>For large-model training and GPU cluster scheduling, my role is architecture decisions and resource governance, not hands-on tuning. After joining I will appoint a senior ML technical lead for this area, while I focus on platform, data and value.</div>
+</section>
+
+<section id="stack" class="reveal">
+ <div class="eyebrow">04 · Platform</div>
+ <h2>LITEON AI platform blueprint: complementing SAP, PLM and MES</h2><p class="sub">Don't touch the core — augment it</p>
+ <p>Design principle: <b>Keep the SAP core untouched; do not rebuild MES/PLM</b>. The AI platform sits beside the three core systems, reading data, making recommendations and acting within authorized limits. Click each layer for details.</p>
+ <div class="stack">
+  <div><button class="layer" data-i="0"><b>L5</b><span><strong>User access</strong></span></button><button class="layer" data-i="1"><b>L4</b><span><strong>AI products</strong></span></button><button class="layer" data-i="2"><b>L3</b><span><strong>Agent orchestration</strong></span></button><button class="layer on" data-i="3"><b>L2</b><span><strong>Models and knowledge</strong></span></button><button class="layer" data-i="4"><b>L1</b><span><strong>Data products</strong></span></button><button class="layer" data-i="5"><b>L0</b><span><strong>Source systems</strong></span></button><button class="layer" data-i="6"><b>Cross-cutting</b><span><strong>Governance and security</strong></span></button></div>
+  <div class="card ld" id="ldetail"></div>
+ </div>
+ <h3 style="margin-top:30px">Division of labor with the three core systems</h3>
+ <div class="tw"><table><tr><th>System</th><th>Their role: records and transactions</th><th>AI platform role: prediction and recommendation</th></tr><tr><td class="lb">SAP S/4HANA</td><td>Orders, purchasing, inventory, financial postings</td><td>Demand forecasting, shortage alerts, anomalous transaction detection, month-end analysis</td></tr><tr><td class="lb">PLM</td><td>BOM, ECN, drawing versions</td><td>Design knowledge search, alternate-part recommendations, ECN impact analysis</td></tr><tr><td class="lb">MES</td><td>Work-order execution, station records, traceability</td><td>Scheduling optimization recommendations, yield prediction, preventive equipment maintenance</td></tr></table></div>
+ <p class="mute">Platform choice compares three routes — SAP-native, public cloud and open-source on-premises — on TCO and data sovereignty before approval, with no single vendor assumed.</p>
+</section>
+
+<section id="portfolio" class="reveal">
+ <div class="eyebrow">05 · Portfolio</div>
+ <h2>Priority AI domains and use-case portfolio</h2><p class="sub">Value × feasibility × reusability</p>
+ <div class="grid2">
+  <div class="matrix"><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="Use-case value and feasibility matrix"></svg></div>
+  <div>
+  <div class="tabs" id="ptabs"><button class="tab on" data-f="all">All</button><button class="tab" data-f="A">A Priority</button><button class="tab" data-f="B">B</button><button class="tab" data-f="C">C Quick wins</button></div>
+  <div class="tw"><table id="uct"></table></div>
+  </div>
+ </div>
+ <div class="card calc" style="margin-top:20px">
+  <h3>Benefit scenario calculator (illustrative)</h3>
+  <p class="mute">The illustrative model below explains the decision logic; the figures are not LITEON data and will be replaced with baselines confirmed by the CFO after I join.</p>
+  <div class="grid3">
+  <div><label>Annual revenue (NT$100M)<span id="v1"></span></label><input type="range" id="s1" min="500" max="3000" step="50" value="2000"></div>
+  <div><label>Inventory as a share of revenue (%)<span id="v2"></span></label><input type="range" id="s2" min="5" max="25" step="1" value="12"></div>
+  <div><label>Inventory reduction from AI shortage alerts (%)<span id="v3"></span></label><input type="range" id="s3" min="1" max="10" step="0.5" value="3"></div>
+  </div>
+  <div class="grid2" style="margin-top:14px"><div><div class="mute">Working capital released (NT$100M)</div><div class="out" id="o1"></div></div><div><div class="mute">Annualized benefit at 6% cost of capital (NT$100M)</div><div class="out" id="o2"></div></div></div>
+ </div>
+</section>
+
+<section id="org" class="reveal">
+ <div class="eyebrow">06 · Organization</div>
+ <h2>AI organization, talent pipeline and PO Academy</h2><p class="sub">Central platform + embedded business teams</p>
+ <div class="tw"><table><tr><th>Team</th><th>Responsibilities</th><th>Key roles</th><th>Year-one headcount (initial estimate)</th></tr><tr><td class="lb">AI platform engineering</td><td>Model gateway, agent orchestration, MLOps/LLMOps, monitoring</td><td>Platform technical lead, platform engineers, SRE</td><td>6–8</td></tr><tr><td class="lb">Data products</td><td>Lakehouse, master data, feature store, data contracts</td><td>Data technical lead, data engineers, data architect</td><td>5–7</td></tr><tr><td class="lb">AI applications and science</td><td>Model development, evaluation, RAG tuning</td><td>ML technical lead, data scientists, AI engineers</td><td>5–7</td></tr><tr><td class="lb">AI governance and security</td><td>ISO 42001, model risk, data classification</td><td>Governance manager (working with the security office)</td><td>1–2</td></tr><tr><td class="lb">Embedded business teams</td><td>Use-case delivery, process redesign</td><td>BU POs, business analysts, Champions</td><td>Staffed by the BU</td></tr></table></div>
+ <div class="grid3" style="margin-top:16px">
+  <div class="card"><h3>L1 Literacy and personal use</h3><p>AI usage rules, data classification, verification habits; AI workflow training for managers.</p><p class="mute">Output: everyone can use it and knows what not to do</p></div>
+  <div class="card"><h3>L2 Department processes and agents</h3><p>Each department picks 1–2 processes, with the business as PO and IT providing the platform.</p><p class="mute">Output: measurable department use cases</p></div>
+  <div class="card"><h3>L3 Cross-department redesign and scale-out</h3><p>Cross-department agent integration, shared knowledge base, Champions network.</p><p class="mute">Output: organization-level value</p></div>
+ </div>
+ <div class="note"><b>PO Academy: </b>Participants are business process owners, not IT staff. Graduation requires completing the course and launching one use case; target of 30 certified POs in year one.</div>
+</section>
+
+<section id="gov" class="reveal">
+ <div class="eyebrow">07 · Governance</div>
+ <h2>AI governance, security and risk</h2><p class="sub">Build on ISO 27001, extend to ISO 42001</p>
+ <div class="grid2">
+  <div class="tw"><table><tr><th>Area</th><th>Mechanism</th><th>Standard</th></tr><tr><td class="lb">Data classification</td><td>Four levels — public, internal, confidential, customer confidential — determining what may go to the cloud or into models</td><td>ISO 27001, Personal Data Protection Act</td></tr><tr><td class="lb">Model risk</td><td>Evaluate accuracy, hallucination rate and bias before go-live; high-risk use cases require human review</td><td>ISO 42001, NIST AI RMF</td></tr><tr><td class="lb">Access and audit</td><td>Model gateway with unified authentication, masking and full logs</td><td>Zero trust</td></tr><tr><td class="lb">OT security</td><td>AI does not control equipment directly; recommendations are executed via MES after human approval</td><td>IEC 62443</td></tr><tr><td class="lb">Suppliers</td><td>Contracts specify that data may not be used for training, and where data is stored</td><td>ISO 27036</td></tr></table></div>
+  <div class="tw"><table><tr><th>Key risks</th><th>Mitigation</th></tr><tr><td class="lb">Competing for resources with the S/4HANA go-live</td><td>Before 2027 Q1, only use cases that do not touch SAP (quality, R and D knowledge)</td></tr><tr><td class="lb">Insufficient data quality</td><td>Build data products and unified definitions first, then models</td></tr><tr><td class="lb">PoC stuck at PoC</td><td>Define go-live criteria, PO and P and L line before starting</td></tr><tr><td class="lb">Shadow AI</td><td>Provide a good official platform plus usage rules, rather than only prohibiting</td></tr><tr><td class="lb">Runaway compute cost</td><td>Token/GPU cost allocated by BU, with quotas and monthly reports</td></tr></table></div>
+ </div>
+ <div class="note warn"><b>Red line: </b>AI must never post, change orders or issue equipment commands without human approval; customer drawings and quotations must never be sent to unapproved external models.</div>
+</section>
+
+<section id="plan" class="reveal">
+ <div class="eyebrow">08 · First 180 Days</div>
+ <h2>First 180 days and year-one KPIs</h2><p class="sub">Listen, decide, deliver — aligned with the S/4HANA cut-over</p>
+ <div class="phase" id="phase"><div class="card on" data-i="0"><div class="eyebrow">Days 1–30</div><h3>Listen</h3><ul class="clean"><li>Interviews with the CIO, business-group heads and the CFO</li><li>Inventory of existing AI applications, data and teams</li><li>Confirm the S/4HANA timeline and integration points</li></ul><p class="mute">Deliverable: AI asset map and current-state diagnosis</p></div><div class="card" data-i="1"><div class="eyebrow">Days 31–60</div><h3>Decide</h3><ul class="clean"><li>Use-case scoring and investment portfolio</li><li>Platform route selection (SAP-native / public cloud / open-source on-prem)</li><li>Organization design and hiring plan</li></ul><p class="mute">Deliverable: AI platform blueprint, financial assumptions for top 5 use cases</p></div><div class="card" data-i="2"><div class="eyebrow">Days 61–90</div><h3>First results</h3><ul class="clean"><li>Platform MVP build starts</li><li>2 quick-win use cases live</li><li>Publish AI usage rules</li></ul><p class="mute">Deliverable: Demonstrable results, first quarterly report</p></div><div class="card" data-i="3"><div class="eyebrow">Days 91–180</div><h3>Scale</h3><ul class="clean"><li>Platform MVP live, aligned with the S/4HANA cut-over</li><li>Grade A use cases piloted at a model plant</li><li>First PO Academy cohort</li></ul><p class="mute">Deliverable: New use-case launch time down to weeks</p></div></div>
+ <h3 style="margin-top:28px">Year-one KPIs (baselines and targets agreed within 60 days of joining)</h3>
+ <div class="tw"><table><tr><th>Category</th><th>Metric</th><th>Direction</th></tr><tr><td class="lb">Economic value</td><td>Verified annualized benefit (confirmed by the CFO)</td><td>Targets agreed within 60 days of joining</td></tr><tr><td class="lb">Platform</td><td>Number of live use cases; time to launch a new use case</td><td>≥ 10; ≤ 4 weeks</td></tr><tr><td class="lb">Adoption</td><td>Monthly active users of the AI platform as a share of employees</td><td>Rising every quarter</td></tr><tr><td class="lb">Organization</td><td>Certified POs; successors for technical leads</td><td>30; one per lead</td></tr><tr><td class="lb">Governance</td><td>Use-case risk assessment completion rate; major security incidents</td><td>100%; zero</td></tr><tr><td class="lb">Cost</td><td>Cost per thousand requests; compute budget attainment</td><td>Down every quarter; ±10%</td></tr></table></div>
+ <p><b>Reporting rhythm: </b>Monthly AI value dashboard; quarterly AI investment committee deciding which use cases enter or exit; semi-annual report to the Chairman on platform maturity and realized value.</p>
+</section>
+
+<section id="cases" class="reveal">
+ <div class="eyebrow">09 · Proof</div>
+ <h2>Three representative cases</h2><p class="sub">Outcomes measured in operating metrics</p>
+ <div class="tabs" id="ctabs"><button class="tab on" data-i="0">Company D | Manufacturing AI built on an integrated core</button><button class="tab" data-i="1">Group B | Platform engineering with zero downtime</button><button class="tab" data-i="2">Group A | AI governance and agents in production</button></div>
+ <div class="panel card on" data-p="0"><p class="mute">Company D  IT Director | 2018.10 – 2022.09</p><h3>Manufacturing AI built on an integrated core</h3><p><b>Situation: </b>After the merger each plant ran independently with no capacity visibility, creating data silos and a large amount of slow-moving inventory.</p><b>Approach: </b><ul class="clean"><li>SAP S/4HANA standard functions first (Clean Core), connected with MES, PLM and APS</li><li>Edge AIoT data platform covering 1,000+ machines, with AI defect prediction and predictive maintenance</li><li>Planned OT/IT segmentation per IEC 62443; built B2B EDI for brand customers</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+15%</div><div class="l">Yield</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT operating cost</div></div></div><div class="note"><b>What it means for LITEON: </b>AI extension after S/4HANA go-live, MES alternate-part and kit-readiness recommendations, replication template for new plants</div></div><div class="panel card" data-p="1"><p class="mute">Group B  Director of Information Technology | 2022.09 – 2025.04</p><h3>Platform engineering with zero downtime</h3><p><b>Situation: </b>New products every month; the old database could not handle peak concurrency; each project built its own environment, creating a heavy operations burden.</p><b>Approach: </b><ul class="clean"><li>Migrated core services to Kubernetes with CI/CD, halving the release cycle</li><li>Built a global data management platform with cross-region clusters</li><li>Introduced FinOps; established ISO 27001 and a zero-trust architecture</li></ul><div class="kpis k3"><div class="kpi"><div class="v">Zero downtime</div><div class="l">Core services</div></div><div class="kpi"><div class="v">−30%</div><div class="l">Multi-cloud TCO</div></div><div class="kpi"><div class="v">×2</div><div class="l">Release speed</div></div></div><div class="note"><b>What it means for LITEON: </b>Move from departmental AI tools to a shared platform, running old and new in parallel with rollback</div></div><div class="panel card" data-p="2"><p class="mute">Group A  VP of Technology/CIO | 2025.05 – present</p><h3>AI governance and agents in production</h3><p><b>Situation: </b>Fragmented multinational cloud assets and a shortage of security talent; employees using AI tools on their own created a high risk of data leakage.</p><b>Approach: </b><ul class="clean"><li>Chaired the architecture review board and set API-first and integration standards</li><li>DevSecOps quality gates + AI code review and test generation</li><li>Set AI usage rules and data classification under ISO 42001; AI workflow training for managers</li><li>Agentic AI workflows with human-in-the-loop for high-risk actions</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+55%</div><div class="l">Automation efficiency</div></div><div class="kpi"><div class="v">−40%</div><div class="l">Lead Time</div></div><div class="kpi"><div class="v">−35%</div><div class="l">Defect escape</div></div></div><div class="note"><b>What it means for LITEON: </b>A direct template for LITEON’s AI usage rules, PO Academy and agent rollout</div></div>
+ <h3 style="margin-top:26px">All quantified results</h3>
+ <div class="kpis"><div class="kpi"><div class="v">+15%</div><div class="l">Product yield</div><div class="s">Company D | AI defect prediction</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div><div class="s">Company D | Edge AIoT</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT operating cost</div><div class="s">Company D | System consolidation</div></div><div class="kpi"><div class="v">−30%</div><div class="l">Multi-cloud TCO</div><div class="s">Group B | FinOps</div></div><div class="kpi"><div class="v">Zero downtime</div><div class="l">Core services</div><div class="s">Group B | Platform migration</div></div><div class="kpi"><div class="v">−40%</div><div class="l">Delivery Lead Time</div><div class="s">Group A | AI code review</div></div><div class="kpi"><div class="v">−30%</div><div class="l">Security incidents, year-on-year reduction</div><div class="s">Group A | Zero trust</div></div><div class="kpi"><div class="v">+55%</div><div class="l">Process automation</div><div class="s">Group A | Agentic AI</div></div></div>
+ <h3>External proof</h3>
+ <div class="tw"><table><tr><th>Type</th><th>Content</th><th>Date</th></tr><tr><td class="lb">Vendor case study</td><td>Official APAC customer success video by a global cloud provider: container platform supporting global high concurrency with zero downtime</td><td>2024.03</td></tr><tr><td class="lb">Media interview</td><td>CIO magazine cover interview: using public cloud services to expand into global markets</td><td>2024.05</td></tr><tr><td class="lb">Technical feature</td><td>IT media feature: building a global data management platform</td><td>2024.09</td></tr><tr><td class="lb">Keynote</td><td>Keynote at a global database vendor conference in Taipei: a global-scale data management platform</td><td>2024.09</td></tr><tr><td class="lb">Keynote</td><td>CIO annual conference: seeing opportunity — cloud management in practice</td><td>2024.05</td></tr><tr><td class="lb">Public-sector course</td><td>Executive Yuan civil service e-learning platform course: cloud management in practice</td><td>2024.06</td></tr></table></div>
+</section>
+
+<section id="profile" class="reveal">
+ <div class="eyebrow">10 · Profile</div>
+ <h2>Background</h2><p class="sub">Education, career &amp; credentials</p>
+ <p class="lead">25+ years in IT and 15+ years as CIO and technology executive across electronics manufacturing, global software vendors and listed digital platforms. I turn board-level business goals into IT and AI investment portfolios, lead architecture decisions personally, and deliver results measured in yield, OEE and TCO. As an ISO 27001 and ISO 42001 Lead Auditor, I balance the speed of innovation with clear governance guardrails.</p>
+ <div class="grid2">
+  <div><h3>Career</h3><div class="tl"><div class="it"><div class="dt">2025.05 – present</div><b>Group A | VP of Technology/CIO</b><span class="chip">Agentic AI +55%</span><div class="mute">Multinational internet technology platform (Taipei, Kaohsiung, Shanghai)</div><div>Chaired the architecture review board; API-first and Kafka/EDI/IDoc integration standards; DevSecOps quality gates; ISO 42001 AI governance; Agentic AI workflows</div></div><div class="it"><div class="dt">2026</div><b>Enterprise information architecture advisor (part-time)</b><span class="chip">AI architecture blueprint</span><div class="mute">Multiple industries, clients not named</div><div>Group IT strategy and investment plans, enterprise architecture blueprints, ERP and manufacturing systems integration blueprints, security governance plans</div></div><div class="it"><div class="dt">2022.09 – 2025.04</div><b>Group B | Director of Information Technology (CIO/CISO)</b><span class="chip">TCO −30%, zero downtime</span><div class="mute">OTC-listed digital technology platform (Taichung, Taipei, overseas)</div><div>Core services migrated to Kubernetes; global data management platform; FinOps; ISO 27001 and zero trust</div></div><div class="it"><div class="dt">2022</div><b>Group C | Director of Central IT Technology</b><span class="chip">Enterprise architecture</span><div class="mute">Global electronics manufacturing</div><div>Group enterprise architecture decisions, gap analysis and digital transformation planning</div></div><div class="it"><div class="dt">2018.10 – 2022.09</div><b>Company D | IT Director</b><span class="chip">Yield +15%, OEE +18%</span><div class="mute">Multinational electronics manufacturing (three sites in Taiwan, two in China)</div><div>Post-merger SAP S/4HANA consolidation connecting MES, PLM and APS; Edge AIoT; IEC 62443; B2B EDI</div></div><div class="it"><div class="dt">2010 – 2018</div><b>Group E | CIO</b><span class="chip">Data governance</span><div class="mute">Cross-industry holding group</div><div>Group IT governance, systems integration and data teams</div></div><div class="it"><div class="dt">2007 – 2010</div><b>Company F | Department head</b><span class="chip">—</span><div class="mute">OTC-listed IT services</div><div>SOA architecture, business portal, ITIL service governance</div></div><div class="it"><div class="dt">2003 – 2007</div><b>Company G | Technical manager</b><span class="chip">Database</span><div class="mute">US enterprise software</div><div>Database, middleware and ALM technical consulting and delivery for Greater China</div></div><div class="it"><div class="dt">Ongoing</div><b>Advisor to a regional medical center; managing director of a charitable foundation</b><span class="chip">Healthcare data</span><div class="mute">Healthcare and nonprofit</div><div>Healthcare data integration, smart long-term care and nonprofit digitalization</div></div></div></div>
+  <div>
+  <h3>Education</h3><div class="card" style="margin-bottom:8px"><b>Ph.D. in IT Management (2014)</b>  Chaoyang University of Technology<div class="mute">Dissertation: A study of an integrated business self-service portal based on adaptive service-oriented architecture IT governance (archived at the National Central Library)</div></div><div class="card" style="margin-bottom:8px"><b>M.S. in Information Science (2006)</b>  National Chung Hsing University<div class="mute">Data mining, decision support systems, cryptography; co-principal investigator of a healthcare cloud care project</div></div>
+  <h3 style="margin-top:18px">Research and publications</h3><ul class="clean"><li>First author, SCI journal Multimedia Tools and Applications: Reversible secret-image sharing with high visual quality (2014)</li><li>International journal paper: Utilizing GIS and GPS in Designing a Trilingual Tourist APP (2015)</li><li>Long-standing thesis supervisor and reviewer for master’s and doctoral students</li></ul>
+  <h3 style="margin-top:18px">Professional certifications</h3><div class="tw"><table><tr><td class="lb">Security and AI governance</td><td>ISO 27001 Lead Auditor, ISO 42001 (AIMS) Lead Auditor</td></tr><tr><td class="lb">Projects and agile</td><td>PMP, ScrumMaster, Agile Coach, ESG Sustainability Manager</td></tr><tr><td class="lb">Systems and supply chain</td><td>ERP supply chain/manufacturing module certification, database vendor certified instructor, international barcode management certification</td></tr><tr><td class="lb">Continuing development</td><td>CISSP/CISM, cloud architect (in preparation)</td></tr></table></div>
+  </div>
+ </div>
+ <h3 style="margin-top:20px">About the codes</h3>
+ <p class="mute">To protect confidentiality and trade secrets, this page does not disclose the names of other companies or clients and does not link to any external website; all content is contained within this page and can be explained in person.</p>
+ <div class="codes"><div><b>Group A</b>Multinational internet technology platform group (current)</div><div><b>Group B</b>OTC-listed digital technology platform group</div><div><b>Group C</b>Global electronics manufacturing group</div><div><b>Company D</b>Multinational electronics manufacturer (multiple plants)</div><div><b>Group E</b>Cross-industry holding group</div><div><b>Company F</b>OTC-listed IT services company</div><div><b>Company G</b>US enterprise software company</div><div><b>Advisory</b>Enterprise information architecture advisory (multiple industries, clients not named)</div></div>
+</section>
+
+<section id="qa" class="reveal">
+ <div class="eyebrow">11 · Dialogue</div>
+ <h2>Expected questions</h2><p class="sub">For the CIO panel and the Chairman</p>
+ <div class="grid2">
+  <div><h3>Round 1 | CIO, technical advisor, CHRO</h3><details><summary>How do the AI platform and the S/4HANA go-live avoid interfering with each other?</summary><div>Before 2027 Q1, only use cases that do not touch SAP; the platform reads via APIs with no core customization; supply-chain use cases follow once the go-live is stable.</div></details><details><summary>How do you keep PoCs from dragging on?</summary><div>Define the PO, go-live criteria and P and L line before starting; the quarterly committee retires use cases without value.</div></details><details><summary>Should the platform be built or bought?</summary><div>Compare three routes on TCO and data sovereignty; components can be bought, but data products and use-case knowledge must be owned in-house.</div></details><details><summary>How would you lead AI technical leads?</summary><div>Give clear architecture principles and decision rights; quarterly architecture reviews; every lead develops a successor.</div></details></div>
+  <div><h3>Round 2 | Chairman</h3><details><summary>How much value can AI create for LITEON?</summary><div>Start with three P and L lines — inventory, yield and cost of quality — and present an estimate confirmed by the CFO within 90 days.</div></details><details><summary>What will LITEON’s AI look like in three years?</summary><div>Every business group has its own AI products; new plants have predictive capability from day one; employees use AI as an everyday tool.</div></details><details><summary>Why you?</summary><div>Has done manufacturing SAP/MES integration, platform engineering and AI governance — and can write the architecture personally; speaks in business metrics.</div></details></div>
+ </div>
+ <div class="note" style="margin-top:24px"><b>Closing: </b>The best technology leader translates the language of technology into the language of business and risk. I want to help LITEON move AI from point solutions to a reusable platform, so that every dollar invested shows a visible return.</div>
+ <div class="btns"><a class="btn p" href="mailto:Liao.Howard@gmail.com">Liao.Howard@gmail.com</a><a class="btn" href="tel:+886975323161">+886-975-323161</a></div>
+</section>
+<section id="docs" class="reveal">
+ <div class="eyebrow">12 · Documents</div>
+ <h2>Online document preview</h2><p class="sub">View online only — no downloads</p>
+ <p class="mute">The documents below are available for online page-by-page preview only; download and printing are not provided.</p>
+ <div class="grid3">
+  <button class="doc" data-d="deck" data-n="30" data-t="Executive briefing deck (30 pages)"><img src="assets/preview/en/deck/01.jpg" alt="Executive briefing deck cover" draggable="false" loading="lazy"><b>Executive briefing deck</b><span class="mute">30 pages | AI strategy, platform blueprint and onboarding plan</span></button>
+  <button class="doc" data-d="report" data-n="20" data-t="Interview dossier (20 pages)"><img src="assets/preview/en/report/01.jpg" alt="Interview dossier cover" draggable="false" loading="lazy"><b>Interview dossier</b><span class="mute">20 pages | Competency fit, case studies and background</span></button>
+  <button class="doc" data-d="cv" data-n="10" data-t="Curriculum vitae (10 pages)"><img src="assets/preview/en/cv/01.jpg" alt="Curriculum vitae cover" draggable="false" loading="lazy"><b>Curriculum vitae</b><span class="mute">10 pages | Background, certifications and quantified results</span></button>
+ </div>
+</section>
+<div id="viewer" class="viewer" hidden>
+ <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="Close">Close ✕</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="Previous page">‹</button><div class="vimg"><img id="vi" alt="Document page" draggable="false"><div class="vshield"></div></div><button class="vnav" id="vn" aria-label="Next page">›</button></div>
+</div>
+</main>
+<footer>© 2026 Dr. Howard Liao  ·  Prepared for review by the Chairman and CIO of LITEON Technology  ·  Other companies shown by code</footer>
+<script>
+const STACK=[["L5","User access","Enterprise messaging, portal, AI assistant interface, executive dashboards","Employees use AI within existing tools, with no new system to learn"],["L4","AI products","Supply-chain planning assistant, quality anomaly agent, R and D knowledge assistant, financial analysis assistant","Every product has a PO, KPIs and versions"],["L3","Agent orchestration","Multi-agent orchestration, workflow engine, human-in-the-loop approval","High-risk actions always require human review"],["L2","Models and knowledge","LLM gateway (multi-model routing, quotas, cost), RAG knowledge base, ML model registry, evaluation","Cloud and on-prem models used together, routed by data classification"],["L1","Data products","Lakehouse (Bronze/Silver/Gold), master data, feature store, data contracts","Part numbers, BOMs, work orders and yield defined consistently worldwide"],["L0","Source systems","SAP S/4HANA, PLM, MES, APS, QMS, test stations, IoT","Read via APIs, CDC and event streams without adding load to the core"],["Cross-cutting","Governance and security","Identity and access, audit logs, model monitoring, cost allocation, ISO 42001","Built into the platform and inherited by every use case"]];
+const UC=[["Supply chain","Shortage alerts, kit-readiness and alternate-part recommendations, demand forecasting","Inventory, line-stop losses from shortages","A",9,7.2],["Manufacturing","Work-order scheduling recommendations, yield prediction, preventive equipment maintenance","Capacity utilization, scrap","A",8.2,5.2],["Quality","Failure analysis knowledge assistant, automatic 8D summaries for customer complaints","Cost of quality, complaint cycle time","A",7.4,8.6],["R and D","Specification and standards search, design review assistant, test report analysis","R and D cycle time","B",6.2,6.3],["Finance","Month-end anomaly analysis, cross-currency forecasting, audit sampling","Labor cost, decision speed","B",5.2,7.6],["Sales","RFQ and quotation analysis, contract clause comparison","Quotation cycle time, gross margin","B",4.6,9],["IT","AI code review, test generation, service desk agent","IT cost, delivery speed","C",3,9.4]];
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+// theme
+try{const t=localStorage.getItem('t');if(t)document.documentElement.dataset.theme=t}catch(e){}
+$('#theme').onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark';try{localStorage.setItem('t',d.dataset.theme)}catch(e){}};
+// generic tabs
+function tabs(id,sec){const box=$(id);box.addEventListener('click',ev=>{const b=ev.target.closest('.tab');if(!b||b.dataset.i===undefined)return;$$('.tab',box).forEach(x=>x.classList.toggle('on',x===b));$$('.panel',sec).forEach(p=>p.classList.toggle('on',p.dataset.p===b.dataset.i));fill()})}
+tabs('#dtabs',$('#duties'));tabs('#ftabs',$('#fit'));tabs('#ctabs',$('#cases'));
+function fill(){$$('.panel.on.bar i').forEach(i=>i.style.width=i.dataset.w+'%')}
+// stack
+function showLayer(i){$$('.layer').forEach((b,k)=>b.classList.toggle('on',k===i));const l=STACK[i];$('#ldetail').innerHTML='<div class="eyebrow">'+l[0]+'</div><h3>'+l[1]+'</h3><p><b>Components: </b>'+l[2]+'</p><p><b>Design focus: </b>'+l[3]+'</p>'}
+$$('.layer').forEach((b,i)=>b.onclick=()=>showLayer(i));showLayer(3);
+// matrix
+const col={A:'var(--green)',B:'var(--gold)',C:'var(--brick)'};let F='all';
+function draw(){const s=$('#mx');let h='<rect x="50" y="20" width="450" height="310" fill="none" stroke="var(--line)"/>';
+h+='<line x1="275" y1="20" x2="275" y2="330" stroke="var(--line)" stroke-dasharray="4 4"/><line x1="50" y1="175" x2="500" y2="175" stroke="var(--line)" stroke-dasharray="4 4"/>';
+h+='<text x="275" y="365" text-anchor="middle" font-size="13" fill="var(--mute)">Feasibility (data readiness, process owner) →</text><text x="18" y="175" font-size="13" fill="var(--mute)" transform="rotate(-90 18 175)" text-anchor="middle">Economic value →</text>';
+h+='<text x="490" y="40" text-anchor="end" font-size="12" fill="var(--gold)">Priority investment</text>';
+UC.forEach(u=>{const x=50+(u[5]/10)*450,y=330-(u[4]/10)*310,on=F==='all'||F===u[3];h+='<g opacity="'+(on?1:.18)+'"><circle cx="'+x+'" cy="'+y+'" r="'+(u[3]==='A'?22:16)+'" fill="'+col[u[3]]+'" fill-opacity=".85"/><text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" font-size="13" fill="#FAF7F2" font-weight="700">'+u[0]+'</text></g>'});
+s.innerHTML=h;$('#uct').innerHTML='<tr><th>Area</th><th>Representative use cases</th><th>P and L lines</th><th>Priority</th></tr>'+UC.filter(u=>F==='all'||F===u[3]).map(u=>'<tr><td class="lb">'+u[0]+'</td><td>'+u[1]+'</td><td>'+u[2]+'</td><td>'+u[3]+'</td></tr>').join('')}
+$('#ptabs').addEventListener('click',ev=>{const b=ev.target.closest('.tab');if(!b)return;F=b.dataset.f;$$('#ptabs.tab').forEach(x=>x.classList.toggle('on',x===b));draw()});draw();
+// calc
+function calc(){const a=+$('#s1').value,b=+$('#s2').value,c=+$('#s3').value;$('#v1').textContent=': '+a;$('#v2').textContent=': '+b;$('#v3').textContent=': '+c;const inv=a*b/100,rel=inv*c/100;$('#o1').textContent=rel.toFixed(1);$('#o2').textContent=(rel*0.06).toFixed(2)}
+['#s1','#s2','#s3'].forEach(i=>$(i).oninput=calc);calc();
+// phase
+$('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(!c)return;$$('#phase.card').forEach(x=>x.classList.toggle('on',x===c))});
+// reveal + nav highlight
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
+const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+// document viewer: online preview only
+let VD='',VN=0,VI=1;const V=$('#viewer');
+function vshow(){$('#vi').src='assets/preview/en/'+VD+'/'+String(VI).padStart(2,'0')+'.jpg';$('#vc').textContent=VI+' / '+VN}
+$$('.doc').forEach(b=>b.onclick=()=>{VD=b.dataset.d;VN=+b.dataset.n;VI=1;$('#vt').textContent=b.dataset.t;V.hidden=false;document.body.style.overflow='hidden';vshow()});
+function vclose(){V.hidden=true;document.body.style.overflow=''}
+$('#vx').onclick=vclose;$('#vp').onclick=()=>{if(VI>1){VI--;vshow()}};$('#vn').onclick=()=>{if(VI<VN){VI++;vshow()}};
+addEventListener('keydown',e=>{if(V.hidden)return;if(e.key==='Escape')vclose();if(e.key==='ArrowLeft')$('#vp').click();if(e.key==='ArrowRight')$('#vn').click()});
+let tx=0;V.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});V.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d>50)$('#vp').click();if(d<-50)$('#vn').click()});
+document.addEventListener('contextmenu',e=>{if(e.target.closest('.viewer,.doc'))e.preventDefault()});
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&['p','s'].includes(e.key.toLowerCase())){e.preventDefault()}});
+// service worker: new network-first worker replaces the old cache-first one
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script>
+</body>
+</html>

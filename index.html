@@ -20,9 +20,10 @@ a{color:var(--green)}
 header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav .in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:10px 16px}
 .brand{font-weight:700;color:var(--green);white-space:nowrap}.brand small{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:15px;margin-left:6px;letter-spacing:.06em}
-.links{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}.links::-webkit-scrollbar{display:none}
+.links{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}.grid2>*,.grid3>*,.stack>*{min-width:0}.links::-webkit-scrollbar{display:none}
 .links a{white-space:nowrap;text-decoration:none;color:var(--mute);font-size:14px;padding:6px 10px;border-radius:999px}
 .links a.on,.links a:hover{background:var(--label);color:var(--green)}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
 .tbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
 main{max-width:1180px;margin:auto;padding:0 16px}
 section{padding:72px 0 24px;border-bottom:1px solid var(--label)}
@@ -65,7 +66,7 @@ td.lb{background:var(--label)!important;font-weight:700;color:var(--green);white
 .duty dt{font-weight:700;color:var(--green)}.duty dd{margin:0}
 .bar{height:8px;background:var(--label);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);width:0;transition:width .9s ease}
 .comp{display:grid;grid-template-columns:230px 1fr 60px;gap:6px 14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--label)}
-.comp .d{grid-column:1/-1;font-size:14px;color:var(--mute);margin-top:-2px}
+.comp>*{min-width:0;overflow-wrap:anywhere}.comp .d{grid-column:1/-1;font-size:14px;color:var(--mute);margin-top:-2px}
 .stack{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .layer{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);padding:12px 14px;margin-bottom:6px;cursor:pointer;font:inherit;color:var(--ink)}
 .layer b{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold);width:44px}
@@ -92,14 +93,15 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .codes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.codes div{border:1px solid var(--line);padding:8px 10px;background:var(--card);font-size:13px}.codes b{color:var(--green);display:block}
 .reveal{opacity:0;transform:translateY(14px);transition:all .6s ease}.reveal.in{opacity:1;transform:none}
 .k3{grid-template-columns:repeat(3,1fr)}
-@media (max-width:860px){.kpi .v{font-size:30px}.k3{grid-template-columns:1fr 1fr 1fr}.hero,.grid2,.grid3,.stack,.phase{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.codes{grid-template-columns:1fr 1fr}.comp{grid-template-columns:1fr 50px}.comp .bar{grid-column:1/-1;order:3}.duty{grid-template-columns:1fr}.duty .num{font-size:44px}.duty dl{grid-template-columns:1fr}.ld{position:static}.portrait{max-width:300px}}
+@media (max-width:860px){.brand small{display:none}.nav .in{gap:8px}.kpi .v{font-size:30px}.k3{grid-template-columns:1fr 1fr 1fr}.hero,.grid2,.grid3,.stack,.phase{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.codes{grid-template-columns:1fr 1fr}.comp{grid-template-columns:1fr 50px}.comp .bar{grid-column:1/-1;order:3}.duty{grid-template-columns:1fr}.duty .num{font-size:44px}.duty dl{grid-template-columns:1fr}.ld{position:static}.portrait{max-width:300px}}
 /*print*/
 .doc{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);padding:14px;cursor:pointer;font:inherit;color:var(--ink)}
 .doc img{width:100%;height:220px;object-fit:contain;background:var(--alt);border:1px solid var(--label);pointer-events:none;user-select:none}
 .doc:hover{border-color:var(--gold)}
 .viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
 .viewer[hidden]{display:none}
-.vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
+.tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
 .vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
 .vimg{position:relative;max-width:100%;max-height:100%;display:flex}
 .vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
@@ -116,7 +118,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <nav class="links" id="links">
   <a href="#hero">首頁</a><a href="#context">光寶現況</a><a href="#duties">六項職責</a><a href="#fit">職能對照</a><a href="#stack">AI 平台藍圖</a><a href="#portfolio">用例組合</a><a href="#org">組織與 PO</a><a href="#gov">治理</a><a href="#plan">到任計畫</a><a href="#cases">代表案例</a><a href="#profile">學經歷</a><a href="#qa">問答</a><a href="#docs">文件預覽</a>
  </nav>
- <button class="tbtn" id="theme" aria-label="切換深淺色">◐</button>
+ <div class="langs"><a href="index.html" class="on" hreflang="zh">繁中</a><a href="ja.html" class="" hreflang="ja">日本語</a><a href="en.html" class="" hreflang="en">EN</a></div>
+ <button class="tbtn" id="theme" aria-label="Theme">◐</button>
 </div></header>
 <main>
 
@@ -271,9 +274,9 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <h2>文件線上預覽</h2><p class="sub">View online only — no downloads</p>
  <p class="mute">以下文件僅提供線上翻頁預覽，不提供下載與列印。</p>
  <div class="grid3">
-  <button class="doc" data-d="deck" data-n="30" data-t="高階報告簡報（30 頁）"><img src="assets/preview/deck/01.jpg" alt="高階報告簡報封面" draggable="false" loading="lazy"><b>高階報告簡報</b><span class="mute">30 頁｜AI 策略、平台藍圖與到任計畫</span></button>
-  <button class="doc" data-d="report" data-n="20" data-t="面試報告（20 頁）"><img src="assets/preview/report/01.jpg" alt="面試報告封面" draggable="false" loading="lazy"><b>面試報告</b><span class="mute">20 頁｜職能對照、案例與學經歷</span></button>
-  <button class="doc" data-d="cv" data-n="10" data-t="個人簡歷（10 頁）"><img src="assets/preview/cv/01.jpg" alt="個人簡歷封面" draggable="false" loading="lazy"><b>個人簡歷</b><span class="mute">10 頁｜學經歷、認證與量化成果</span></button>
+  <button class="doc" data-d="deck" data-n="30" data-t="高階報告簡報（30 頁）"><img src="assets/preview/zh/deck/01.jpg" alt="高階報告簡報封面" draggable="false" loading="lazy"><b>高階報告簡報</b><span class="mute">30 頁｜AI 策略、平台藍圖與到任計畫</span></button>
+  <button class="doc" data-d="report" data-n="20" data-t="面試報告（20 頁）"><img src="assets/preview/zh/report/01.jpg" alt="面試報告封面" draggable="false" loading="lazy"><b>面試報告</b><span class="mute">20 頁｜職能對照、案例與學經歷</span></button>
+  <button class="doc" data-d="cv" data-n="10" data-t="個人簡歷（10 頁）"><img src="assets/preview/zh/cv/01.jpg" alt="個人簡歷封面" draggable="false" loading="lazy"><b>個人簡歷</b><span class="mute">10 頁｜學經歷、認證與量化成果</span></button>
  </div>
 </section>
 <div id="viewer" class="viewer" hidden>
@@ -316,7 +319,7 @@ const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';
 
 // document viewer: online preview only
 let VD='',VN=0,VI=1;const V=$('#viewer');
-function vshow(){$('#vi').src='assets/preview/'+VD+'/'+String(VI).padStart(2,'0')+'.jpg';$('#vc').textContent=VI+' / '+VN}
+function vshow(){$('#vi').src='assets/preview/zh/'+VD+'/'+String(VI).padStart(2,'0')+'.jpg';$('#vc').textContent=VI+' / '+VN}
 $$('.doc').forEach(b=>b.onclick=()=>{VD=b.dataset.d;VN=+b.dataset.n;VI=1;$('#vt').textContent=b.dataset.t;V.hidden=false;document.body.style.overflow='hidden';vshow()});
 function vclose(){V.hidden=true;document.body.style.overflow=''}
 $('#vx').onclick=vclose;$('#vp').onclick=()=>{if(VI>1){VI--;vshow()}};$('#vn').onclick=()=>{if(VI<VN){VI++;vshow()}};

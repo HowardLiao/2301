@@ -1,26 +1,11 @@
-# 光寶科技 IT AI 平台負責人｜AI 策略與平台藍圖
+# LITEON IT AI Platform Lead — AI Strategy & Platform Blueprint
 
-**報告人**：廖倫豪 博士（Howard Liao, Ph.D.）
-**呈報對象**：光寶科技 董事長、資訊長
+**繁體中文** `index.html` · **日本語** `ja.html` · **English** `en.html`
 
-本頁說明候選人如何把 AI 從單點應用推進為可重複使用、與 SAP、PLM、MES 互補的企業平台，並以經營指標交付成果。
+報告人／Presenter／発表者：廖倫豪 博士（Dr. Howard Liao）
+呈報對象／Audience／報告先：光寶科技 董事長、資訊長／LITEON Chairman and CIO／LITEON 会長・CIO
 
-## 內容
-1. 光寶現況與 AI 平台的含義
-2. 職缺六項工作內容 × 做法與實績
-3. 技術職能與管理職能對照
-4. AI 平台藍圖（L0–L5 與橫向治理）
-5. AI 用例組合與效益情境試算
-6. AI 組織、人才梯隊與 PO 學院
-7. AI 治理、資安與風險
-8. 到任 180 天計畫與第一年 KPI
-9. 代表案例與外部實證
-10. 學經歷
-11. 預期問答
+- 文件僅提供線上翻頁預覽，不提供下載與列印。Documents are view-only online; no download or printing. 文書はオンライン閲覧のみで、ダウンロード・印刷はできません。
+- 基於保密與營業秘密保護，不揭露其他公司與客戶名稱，亦不連結外部網站。Other companies and clients are not named, and no external sites are linked. 守秘義務と営業秘密保護のため、他社・顧客名は開示せず、外部サイトへのリンクもありません。
 
-## 說明
-- 基於保密，其他公司與顧問客戶一律以代號表示，面談時可當面說明。
-- 光寶相關數據取自公開資訊（2026 年 11 月），以公開資訊觀測站為準。
-- 單一靜態 HTML，支援手機與深色模式；文件僅提供線上翻頁預覽，不提供下載與列印。
-
-© 2026 廖倫豪 博士
+© 2026 廖倫豪 博士 / Dr. Howard Liao

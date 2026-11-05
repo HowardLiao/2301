@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LITEON AIプラットフォームのブループリント｜廖倫豪 博士</title>
+<meta name="description" content="LITEON会長・CIO各位：IT AIプラットフォーム責任者候補 廖倫豪 博士によるAI戦略、プラットフォームのブループリント、着任計画。">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon-192.png">
+<meta name="theme-color" content="#2F4538">
+<style>
+:root{--bg:#FAF7F2;--alt:#F2EEE8;--label:#E8E2D9;--line:#B8AFA3;--ink:#2B2B2B;--mute:#6B6459;--green:#2F4538;--green2:#3E5A4A;--gold:#C8A96A;--brick:#9C5B4A;--white:#FFFFFF;--card:#FFFFFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}}
+:root[data-theme="dark"]{--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP","Meiryo",sans-serif;line-height:1.75;font-size:16px}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+a{color:var(--green)}
+header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:10px 16px}
+.brand{font-weight:700;color:var(--green);white-space:nowrap}.brand small{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:15px;margin-left:6px;letter-spacing:.06em}
+.links{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}.grid2>*,.grid3>*,.stack>*{min-width:0}.links::-webkit-scrollbar{display:none}
+.links a{white-space:nowrap;text-decoration:none;color:var(--mute);font-size:14px;padding:6px 10px;border-radius:999px}
+.links a.on,.links a:hover{background:var(--label);color:var(--green)}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
+.tbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
+main{max-width:1180px;margin:auto;padding:0 16px}
+section{padding:72px 0 24px;border-bottom:1px solid var(--label)}
+.eyebrow{font-family:"Cormorant Garamond",serif;color:var(--gold);letter-spacing:.18em;font-size:15px;text-transform:uppercase;font-weight:600}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.2;color:var(--green);margin:8px 0 12px}
+h2{font-size:clamp(24px,3.2vw,34px);color:var(--green);margin:6px 0 8px;line-height:1.3}
+h2+.sub{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--mute);font-size:20px;margin:0 0 22px}
+h3{color:var(--green);margin:0 0 6px;font-size:19px}
+.lead{font-size:18px;max-width:780px}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;padding-top:56px}
+.portrait{border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background:var(--label)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;margin-top:20px;color:var(--mute)}.meta b{color:var(--ink);font-weight:500}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-block;padding:10px 18px;border-radius:2px;text-decoration:none;font-size:15px;border:1px solid var(--green);color:var(--green);background:transparent;cursor:pointer;font-family:inherit}
+.btn.p{background:var(--green);color:var(--bg)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+.kpi{min-width:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);padding:16px 14px;text-align:center}
+.kpi .v{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:600;color:var(--green);line-height:1.1}
+.kpi .l{font-weight:700;font-size:14px}.kpi .s{font-size:12px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--card)}
+th{background:var(--green);color:var(--bg);text-align:left;font-weight:500;padding:10px 12px}
+:root[data-theme="dark"] th{color:#1C211E}
+td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}
+tr:nth-child(even) td{background:var(--alt)}
+td.lb{background:var(--label)!important;font-weight:700;color:var(--green);white-space:nowrap}
+.tw{overflow-x:auto;margin:12px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);padding:20px}
+.note{background:var(--label);border-left:4px solid var(--gold);padding:14px 18px;margin:16px 0}
+.note.warn{border-left-color:var(--brick)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;cursor:pointer;font:inherit;font-size:14px;border-radius:2px}
+.tab.on{background:var(--green);color:var(--bg);border-color:var(--green)}
+.panel{display:none}.panel.on{display:block}
+.duty{display:grid;grid-template-columns:90px 1fr;gap:18px}
+.duty .num{font-family:"Cormorant Garamond",serif;font-size:64px;color:var(--gold);line-height:1}
+.duty dl{display:grid;grid-template-columns:110px 1fr;gap:8px 14px;margin:12px 0 0}
+.duty dt{font-weight:700;color:var(--green)}.duty dd{margin:0}
+.bar{height:8px;background:var(--label);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);width:0;transition:width .9s ease}
+.comp{display:grid;grid-template-columns:230px 1fr 60px;gap:6px 14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--label)}
+.comp>*{min-width:0;overflow-wrap:anywhere}.comp .d{grid-column:1/-1;font-size:14px;color:var(--mute);margin-top:-2px}
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.layer{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);padding:12px 14px;margin-bottom:6px;cursor:pointer;font:inherit;color:var(--ink)}
+.layer b{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold);width:44px}
+.layer.on{background:var(--green);color:var(--bg)}.layer.on b{color:var(--gold)}
+.ld{position:sticky;top:80px}
+.matrix{background:var(--card);border:1px solid var(--line);padding:10px}
+.matrix svg{width:100%;height:auto;display:block}
+.calc label{display:block;font-size:14px;margin:12px 0 4px;color:var(--mute)}
+.calc input[type=range]{width:100%;accent-color:var(--green)}
+.out{font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--green);font-weight:600}
+.tl{position:relative;margin-left:8px;border-left:2px solid var(--line);padding-left:22px}
+.tl .it{position:relative;margin-bottom:20px}.tl .it:before{content:"";position:absolute;left:-29px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.tl .dt{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--gold);font-weight:600}
+.chip{display:inline-block;font-size:12px;border:1px solid var(--line);padding:1px 8px;border-radius:999px;color:var(--mute);margin-left:6px}
+details{border:1px solid var(--line);background:var(--card);margin-bottom:8px}
+summary{cursor:pointer;padding:14px 16px;font-weight:500;color:var(--green)}
+details>div{padding:0 16px 14px}
+.phase{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.phase .card{cursor:pointer;transition:background .2s}.phase .card.on{background:var(--green);color:var(--bg)}.phase .card.on h3{color:var(--gold)}
+.phase .card.on .mute{color:var(--label)}
+.mute{color:var(--mute);font-size:14px}
+ul.clean{padding-left:18px;margin:6px 0}ul.clean li{margin:3px 0}
+footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px}
+.codes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.codes div{border:1px solid var(--line);padding:8px 10px;background:var(--card);font-size:13px}.codes b{color:var(--green);display:block}
+.reveal{opacity:0;transform:translateY(14px);transition:all .6s ease}.reveal.in{opacity:1;transform:none}
+.k3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.brand small{display:none}.nav .in{gap:8px}.kpi .v{font-size:30px}.k3{grid-template-columns:1fr 1fr 1fr}.hero,.grid2,.grid3,.stack,.phase{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.codes{grid-template-columns:1fr 1fr}.comp{grid-template-columns:1fr 50px}.comp .bar{grid-column:1/-1;order:3}.duty{grid-template-columns:1fr}.duty .num{font-size:44px}.duty dl{grid-template-columns:1fr}.ld{position:static}.portrait{max-width:300px}}
+/*print*/
+.doc{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);padding:14px;cursor:pointer;font:inherit;color:var(--ink)}
+.doc img{width:100%;height:220px;object-fit:contain;background:var(--alt);border:1px solid var(--label);pointer-events:none;user-select:none}
+.doc:hover{border-color:var(--gold)}
+.viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
+.viewer[hidden]{display:none}
+.vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
+.tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
+.vimg{position:relative;max-width:100%;max-height:100%;display:flex}
+.vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
+.vshield{position:absolute;inset:0}
+.vnav{background:transparent;border:1px solid #6B6459;color:#FAF7F2;font-size:30px;width:44px;height:64px;cursor:pointer}
+@media (max-width:860px){.vimg img{max-width:calc(100vw - 20px)}.vnav{position:absolute;bottom:18px;width:52px;height:44px}#vp{left:16px}#vn{right:16px}}
+@media print{body{display:none!important}}
+@media print{header.nav,.btns,.tabs,.tbtn,.calc{display:none}.panel{display:block!important;margin-bottom:16px}section{padding:24px 0;break-inside:avoid-page}.reveal{opacity:1;transform:none}body{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="in">
+ <div class="brand">廖倫豪 博士<small>× LITEON</small></div>
+ <nav class="links" id="links">
+  <a href="#hero">ホーム</a><a href="#context">LITEONの現状</a><a href="#duties">六つの職務</a><a href="#fit">コンピテンシーの照合</a><a href="#stack">AIプラットフォームのブループリント</a><a href="#portfolio">ユースケース</a><a href="#org">組織とPO</a><a href="#gov">ガバナンス</a><a href="#plan">着任計画</a><a href="#cases">代表事例</a><a href="#profile">経歴</a><a href="#qa">問答</a><a href="#docs">文書閲覧</a>
+ </nav>
+ <div class="langs"><a href="index.html" class="" hreflang="zh">繁中</a><a href="ja.html" class="on" hreflang="ja">日本語</a><a href="en.html" class="" hreflang="en">EN</a></div>
+ <button class="tbtn" id="theme" aria-label="Theme">◐</button>
+</div></header>
+<main>
+
+<section id="hero" class="hero">
+ <div>
+  <div class="eyebrow">To the Chairman &amp; CIO · LITEON Technology</div>
+  <h1>AIを単発のアプリケーションから<br>LITEONのプラットフォームへ</h1>
+  <p class="lead">AIを単発のアプリケーションから再利用可能なプラットフォームへ進化させ、経営層に目に見える経済効果を示す。本ページはLITEONの会長およびCIOに向けて、「まずデータをつなぎ、それからAI」という原則でSAP・PLM・MESを補完するAIプラットフォームをどう構築し、経営指標で成果を出すかを説明するものです。</p>
+  <div class="meta"><span>候補者</span><b>廖倫豪 博士（Howard Liao, Ph.D.）</b><span>応募職種</span><b>IT AIプラットフォーム責任者｜台北・内湖</b><span>現職</span><b>A社グループ　技術担当副社長／CIO</b><span>資格</span><b>情報技術管理学博士・ISO 27001／42001主任審査員</b></div>
+  <div class="btns"><a class="btn p" href="#stack">AIプラットフォームのブループリントを見る</a><a class="btn" href="#plan">着任後180日の計画</a><a class="btn" href="#docs">文書のオンライン閲覧</a><a class="btn" href="mailto:Liao.Howard@gmail.com">メールで連絡</a></div>
+ </div>
+ <div class="portrait"><img src="assets/howard_portrait.jpg" alt="廖倫豪 博士の肖像" loading="eager"></div>
+</section>
+
+<div class="kpis reveal"><div class="kpi"><div class="v" data-count="+15%">+15%</div><div class="l">製品の歩留まり</div><div class="s">D社｜AI不良予測</div></div><div class="kpi"><div class="v" data-count="+18%">+18%</div><div class="l">OEE</div><div class="s">D社｜Edge AIoT</div></div><div class="kpi"><div class="v" data-count="−25%">−25%</div><div class="l">IT運用コスト</div><div class="s">D社｜システム統合</div></div><div class="kpi"><div class="v" data-count="−30%">−30%</div><div class="l">マルチクラウドTCO</div><div class="s">B社グループ｜FinOps</div></div></div>
+
+<section id="context" class="reveal">
+ <div class="eyebrow">01 · Context</div>
+ <h2>LITEONの現状：AI関連売上が倍増し、社内オペレーションも追いつく必要がある</h2><p class="sub">LITEON at an inflection point</p>
+ <div class="kpis"><div class="kpi"><div class="v">574億元</div><div class="l">2026年第3四半期の売上高</div><div class="s">前年比28%増</div></div><div class="kpi"><div class="v">15.1%</div><div class="l">第3四半期の営業利益率</div><div class="s">営業利益は前年比85%増</div></div><div class="kpi"><div class="v">&gt;30%</div><div class="l">2026年のAI関連売上比率</div><div class="s">2027年は40〜50%の見込み</div></div><div class="kpi"><div class="v">197億元</div><div class="l">2026年の設備投資</div><div class="s">180億元から上方修正</div></div></div>
+ <div class="tw"><table><tr><th>項目</th><th>公開情報の要点</th><th>AIプラットフォームへの示唆</th></tr><tr><td class="lb">規模</td><td>子会社86社、工場112か所、世界20以上の拠点</td><td>一度構築して複数工場へ展開。まずデータ定義を統一</td></tr><tr><td class="lb">生産能力</td><td>ベトナム新工場が2026.11に開業、高雄第2期が2026.12、米国テキサスが2027年第2四半期に稼働</td><td>新工場はAIの最適なパイロット：過去のしがらみがない</td></tr><tr><td class="lb">製品</td><td>8.5kW PSU・BBUを量産、110kW Power Shelf、800VDC Power Rack、120kW CDU</td><td>製品の複雑化に伴い、研究開発と品質のナレッジにAIの支援が必要</td></tr><tr><td class="lb">ERP</td><td>SAP ECC → S/4HANA、2027.01.04に全世界同時稼働。新機能16項目、プロセス改善27項目</td><td>AIはClean Coreの外側で拡張し、再カスタマイズを避ける必要がある</td></tr><tr><td class="lb">製造</td><td>MESとERPが密接に連携：代替部品、キット充足、作業指示のスケジューリング</td><td>次のステップは「予測し、提案し、自ら判断する」こと――まさにエージェントの出番</td></tr><tr><td class="lb">財務</td><td>連結決算の自動化により、データ連携の効率が90%以上向上</td><td>データ自動化の基盤がすでにあり、分析と予測へ拡張できる</td></tr><tr><td class="lb">セキュリティ</td><td>ISO 27001に基づくIT／OTセキュリティガバナンスの枠組み</td><td>AIガバナンスはそのままISO 42001に接続できる</td></tr></table></div>
+ <div class="note"><b>問題の裏にある問題。</b>欠品でラインが止まるとき、根本原因はスケジューリングソフトではないことがほとんどです。設計変更の遅れ、構造化されていない代替部品仕様、工場ごとに異なるデータ定義こそが原因です。AIプラットフォームはまずこれらの構造的な問題を解決する必要があり、そうして初めてモデルが正確になります。</div>
+ <p class="mute">出典：経済メディアの特集記事、LITEON 2026年第3四半期の決算説明会の公開情報。数値は公開情報観測所（MOPS）を正とします。</p>
+</section>
+
+<section id="duties" class="reveal">
+ <div class="eyebrow">02 · Mandate</div>
+ <h2>求人票の六つの職務内容 × 私のアプローチと実績</h2><p class="sub">Six responsibilities, one operating model</p>
+ <div class="tabs" id="dtabs"><button class="tab on" data-i="0">01</button><button class="tab" data-i="1">02</button><button class="tab" data-i="2">03</button><button class="tab" data-i="3">04</button><button class="tab" data-i="4">05</button><button class="tab" data-i="5">06</button></div>
+ <div class="panel card on" data-p="0"><div class="duty"><div class="num">01</div><div><h3>経営幹部とAIを優先導入する領域を定め、AIプラットフォームのブループリントを策定</h3><dl><dt>私のアプローチ</dt><dd>「経済効果×実現可能性×再利用性」の三軸で評価し、事業グループ長と共に投資ポートフォリオを決定。1枚の意思決定シートで経営層に上申します。</dd><dt>これまでの実績</dt><dd>グループの年次IT戦略・投資計画を策定してCEOと経営会議に提出し、戦略の柱とRun／Grow／Transformの予算フレームワークで実行に移しました。</dd><dt>着任後の指標</dt><dd><b>90日以内にAI価値マップと上位5ユースケースの財務仮説を提出</b></dd></dl></div></div></div><div class="panel card" data-p="1"><div class="duty"><div class="num">02</div><div><h3>散在するアプリケーションを再利用可能なデータプロダクトとプラットフォームにする</h3><dl><dt>私のアプローチ</dt><dd>モデルゲートウェイ、ナレッジベース、データプロダクト、エージェント・オーケストレーション、監視などの共通コンポーネントを切り出し、ゴールデンパスで新しいユースケースをテンプレートから立ち上げます。</dd><dt>これまでの実績</dt><dd>B社グループで、プロジェクトごとの個別環境をプラットフォームの標準コンポーネントに置き換え、コアサービスのゼロダウンタイムとTCO−30%を実現。マルチモデル・ゲートウェイとエンタープライズ・タスクハブの参照アーキテクチャを設計。</dd><dt>着任後の指標</dt><dd><b>新ユースケースの稼働までを「月」から「週」に短縮</b></dd></dl></div></div></div><div class="panel card" data-p="2"><div class="duty"><div class="num">03</div><div><h3>SAP・PLM・MESを補完するAIスタックを構築</h3><dl><dt>私のアプローチ</dt><dd>SAPのコアには手を入れず、MES／PLMを作り直さない。API、CDC、イベントストリームでデータを読み取り、AIは「提案」として書き戻し、人の承認後に実行します。</dd><dt>これまでの実績</dt><dd>D社でSAP S/4HANAをMES・PLM・APSと連携し、Edge AIoTとAI不良予測を導入：歩留まり+15%、OEE+18%。PLM→SAP→MESの単一データフローを実現する統合ブループリントを設計。</dd><dt>着任後の指標</dt><dd><b>S/4HANA稼働後6か月以内に最初のサプライチェーンAIユースケースを本番稼働</b></dd></dl></div></div></div><div class="panel card" data-p="3"><div class="duty"><div class="num">04</div><div><h3>AI組織と人材パイプラインを構築し、AIテクニカルリードとエンジニアを率いる</h3><dl><dt>私のアプローチ</dt><dd>「中央プラットフォーム＋事業グループ組み込み」のデュアルトラック組織。テクニカルリードの能力モデル、九つの技術キャリアトラックと後継者計画。</dd><dt>これまでの実績</dt><dd>A社グループのITチームは50名超。企画、フロントエンド、バックエンド・DBAの3チーム計30名超を率いてゼロからの組織再編を行い、職務記述書と能力評価を整備しました。</dd><dt>着任後の指標</dt><dd><b>すべてのテクニカルリードに後任候補を最低1名</b></dd></dl></div></div></div><div class="panel card" data-p="4"><div class="duty"><div class="num">05</div><div><h3>事業部門主導のプラットフォームチームと社内POの育成を推進し、AIネイティブな働き方を広げる</h3><dl><dt>私のアプローチ</dt><dd>POアカデミー：事業部門の管理職がユースケースの財務仮説と受入基準を書けるようにする。Championsネットワーク。「管理職が先に学び、ITが先に試し、成果が出たら展開する」。</dd><dt>これまでの実績</dt><dd>A社グループで管理職向けAIワークフロー研修を実施し、ISO 42001に基づく利用規程を策定。Agentic AIワークフローにより業務自動化効率を55%向上。</dd><dt>着任後の指標</dt><dd><b>初年度に認定PO30名</b></dd></dl></div></div></div><div class="panel card" data-p="5"><div class="duty"><div class="num">06</div><div><h3>経営幹部と事業部門長に定期的に成果を報告</h3><dl><dt>私のアプローチ</dt><dd>月次のAI価値ダッシュボード、四半期のAI投資委員会、半期ごとの会長報告。EBITDA・ROI・TCOの言葉で報告します。</dd><dt>これまでの実績</dt><dd>取締役会とGlobal CIOへの直属報告は10年以上。バランス・スコアカードと1枚の意思決定シートで四半期ごとにマイルストーンを報告。</dd><dt>着任後の指標</dt><dd><b>四半期ごとに効果を公開でレビューし、金額はCFOが確認</b></dd></dl></div></div></div>
+ <h3 style="margin-top:28px">必須要件と歓迎要件</h3>
+ <div class="tw"><table><tr><th>要件</th><th>私の根拠</th><th>結果</th></tr>
+ <tr><td class="lb">学歴・業界経験は不問</td><td>情報技術管理学博士。電子製造、外資系ソフトウェア、上場プラットフォームの3業界</td><td>該当</td></tr><tr><td class="lb">AI／データチームを率いた経験10年以上</td><td>2010年からCIOとしてデータ・システムチームを統括、2018年からAIoT・AI歩留まりチーム、2025年からAgentic AIチームを率い、通算15年以上</td><td>該当</td></tr><tr><td class="lb">AIプラットフォームまたはプロダクトの本番稼働を主導し、定量的な成果を出した</td><td>AI不良予測：歩留まり+15%、OEE+18%。Agentic AI：自動化効率+55%</td><td>該当</td></tr>
+ <tr><td class="lb">歓迎要件｜AI／データ基盤とチームをゼロから構築</td><td>D社のEdge AIoTデータハブ、A社グループのAIガバナンスとエージェント基盤、いずれもゼロから構築</td><td>該当</td></tr><tr><td class="lb">歓迎要件｜Cレベル・経営幹部とのコミュニケーション</td><td>取締役会とGlobal CIOに直属し、EBITDA・TCO・ROICで報告</td><td>該当</td></tr><tr><td class="lb">歓迎要件｜CIOまたはIT部門長の経験</td><td>CIO／CISO／CDAIO／技術部門長として15年以上</td><td>該当</td></tr><tr><td class="lb">歓迎要件｜国内大手企業のDX推進</td><td>複数工場のS/4HANA統合、グローバルなコアサービスの無停止移行、グループ中央の情報アーキテクチャ</td><td>該当</td></tr>
+ </table></div>
+</section>
+
+<section id="fit" class="reveal">
+ <div class="eyebrow">03 · Fit</div>
+ <h2>技術コンピテンシーとマネジメント・コンピテンシーの照合</h2><p class="sub">Technical &amp; managerial competency</p>
+ <div class="tabs" id="ftabs"><button class="tab on" data-i="0">技術コンピテンシー</button><button class="tab" data-i="1">マネジメント・コンピテンシー</button></div>
+ <div class="panel on" data-p="0"><div class="comp"><b>AIプラットフォーム・アーキテクチャ（LLMゲートウェイ／RAG／エージェント）</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">企業AIプラットフォームの三層アーキテクチャ：複数LLMの統合ガバナンス、マルチエージェント・オーケストレーション、Human-in-the-Loop。AIゲートウェイ＋Agentic RAG＋ワークフローエンジン</div></div><div class="comp"><b>AIの本番導入（製造）</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">D社のEdge AIoTプラットフォームは1,000台超の設備をカバー。AI不良予測と予知保全で歩留まり+15%、OEE+18%</div></div><div class="comp"><b>AIの本番導入（業務運営）</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">A社グループのAgentic AIワークフロー+55%、AIコードレビューでリードタイム−40%、不具合流出−35%</div></div><div class="comp"><b>データ基盤とデータプロダクト</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">B社グループのグローバルデータ管理基盤、レイクハウスのBronze／Silver／Gold階層とデータ契約</div></div><div class="comp"><b>SAP／PLM／MES統合</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">SAP S/4HANAとMES・PLM・APSを連携、Clean Coreでカスタムオブジェクト−35%、Kafka／EDI／IDoc統合標準</div></div><div class="comp"><b>クラウドネイティブとプラットフォーム・エンジニアリング</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">Kubernetesコンテナ化＋CI/CD、マルチクラウドでゼロダウンタイム。グローバルクラウド事業者のAPAC公式顧客事例</div></div><div class="comp"><b>MLOps／LLMOps</b><div class="bar"><i data-w="66.66666666666666"></i></div><span style="color:var(--gold)">●●○</span><div class="d">DevSecOps品質ゲート（SAST／DAST／SBOM）、モデル評価とドリフト監視プロセスの設計</div></div><div class="comp"><b>IT／OTセキュリティ</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">IEC 62443のゾーニング、ゼロトラスト、ISO 27001主任審査員。セキュリティインシデント前年比−30%</div></div><div class="comp"><b>AIガバナンス</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">ISO 42001主任審査員、AI利用規程とデータ分類</div></div></div><div class="panel" data-p="1"><div class="comp"><b>AIの優先領域の定義</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">取締役会に直属。OGSMで経営目標と整合させ、3か年のアプリケーション・ロードマップを主導</div></div><div class="comp"><b>予算と投資のガバナンス</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">数百万〜1,000万米ドル規模のIT予算、CAPEX／OPEXの配分、マルチクラウドTCO−30%</div></div><div class="comp"><b>チームと人材パイプラインの構築</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">台湾・中国・欧州で100名超のチーム。後継者計画を整備</div></div><div class="comp"><b>事業部門主導とPO育成</b><div class="bar"><i data-w="66.66666666666666"></i></div><span style="color:var(--gold)">●●○</span><div class="d">管理職向けAIワークフロー研修、三段階の全社AI導入、Championsネットワーク</div></div><div class="comp"><b>部門横断の変革</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">複数工場の統合、BPRによる業務改革、ISO 4階層のガバナンス文書体系</div></div><div class="comp"><b>経営層への報告</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">歩留まり、OEE、TCO、リードタイムで四半期ごとに報告。業界カンファレンスで基調講演</div></div><div class="comp"><b>外部パートナーとSIの管理</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">SI契約、SLA、受入基準、ベンダー・スコアカード</div></div><div class="comp"><b>大企業の変革</b><div class="bar"><i data-w="100"></i></div><span style="color:var(--gold)">●●●</span><div class="d">グループ中央の情報アーキテクチャ、複数工場のERP、グローバルな基盤移行</div></div></div>
+ <div class="note warn"><b>率直に申し上げると：</b>大規模モデルの学習やGPUクラスタのスケジューリングについて、私の役割はアーキテクチャの意思決定とリソースガバナンスであり、現場でのチューニングではありません。着任後はこの領域にシニアMLテクニカルリードを配置し、私はプラットフォーム、データ、価値創出に注力します。</div>
+</section>
+
+<section id="stack" class="reveal">
+ <div class="eyebrow">04 · Platform</div>
+ <h2>LITEON AIプラットフォームのブループリント：SAP・PLM・MESを補完</h2><p class="sub">Don't touch the core — augment it</p>
+ <p>設計原則：<b>SAPのコアには手を入れず、MES／PLMを作り直さない</b>。AIプラットフォームは三つの基幹システムの横に位置し、データを読み取り、提案を行い、権限の範囲内で実行します。各レイヤーをクリックすると説明が表示されます。</p>
+ <div class="stack">
+  <div><button class="layer" data-i="0"><b>L5</b><span><strong>ユーザー接点</strong></span></button><button class="layer" data-i="1"><b>L4</b><span><strong>AIプロダクト</strong></span></button><button class="layer" data-i="2"><b>L3</b><span><strong>エージェント・オーケストレーション</strong></span></button><button class="layer on" data-i="3"><b>L2</b><span><strong>モデルとナレッジ</strong></span></button><button class="layer" data-i="4"><b>L1</b><span><strong>データプロダクト</strong></span></button><button class="layer" data-i="5"><b>L0</b><span><strong>ソースシステム</strong></span></button><button class="layer" data-i="6"><b>横断</b><span><strong>ガバナンスとセキュリティ</strong></span></button></div>
+  <div class="card ld" id="ldetail"></div>
+ </div>
+ <h3 style="margin-top:30px">三つの基幹システムとの役割分担</h3>
+ <div class="tw"><table><tr><th>システム</th><th>基幹システムの役割：記録と取引</th><th>AIプラットフォームの役割：予測と提案</th></tr><tr><td class="lb">SAP S/4HANA</td><td>受注、購買、在庫、財務転記</td><td>需要予測、欠品アラート、異常取引の検知、月次決算の分析</td></tr><tr><td class="lb">PLM</td><td>BOM、ECN、図面バージョン</td><td>設計ナレッジ検索、代替部品の推奨、ECN影響分析</td></tr><tr><td class="lb">MES</td><td>作業指示の実行、工程記録、トレーサビリティ</td><td>スケジューリング最適化の提案、歩留まり予測、設備の予防保全</td></tr></table></div>
+ <p class="mute">プラットフォームはSAPネイティブ、パブリッククラウド、オープンソースのオンプレミスの三ルートをTCOとデータ主権で比較してから上申し、特定ベンダーを前提としません。</p>
+</section>
+
+<section id="portfolio" class="reveal">
+ <div class="eyebrow">05 · Portfolio</div>
+ <h2>AIの優先導入領域とユースケース・ポートフォリオ</h2><p class="sub">Value × feasibility × reusability</p>
+ <div class="grid2">
+  <div class="matrix"><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="ユースケースの価値と実現可能性のマトリクス"></svg></div>
+  <div>
+   <div class="tabs" id="ptabs"><button class="tab on" data-f="all">すべて</button><button class="tab" data-f="A">A　優先</button><button class="tab" data-f="B">B</button><button class="tab" data-f="C">C　クイックウィン</button></div>
+   <div class="tw"><table id="uct"></table></div>
+  </div>
+ </div>
+ <div class="card calc" style="margin-top:20px">
+  <h3>効果シナリオの試算（参考）</h3>
+  <p class="mute">以下は意思決定のロジックを説明するための試算モデルであり、数値はLITEONの実データではありません。着任後にCFOが確認したベースラインに置き換えます。</p>
+  <div class="grid3">
+   <div><label>年間売上高（億元）<span id="v1"></span></label><input type="range" id="s1" min="500" max="3000" step="50" value="2000"></div>
+   <div><label>売上高に対する在庫比率（%）<span id="v2"></span></label><input type="range" id="s2" min="5" max="25" step="1" value="12"></div>
+   <div><label>AI欠品アラートによる在庫削減率（%）<span id="v3"></span></label><input type="range" id="s3" min="1" max="10" step="0.5" value="3"></div>
+  </div>
+  <div class="grid2" style="margin-top:14px"><div><div class="mute">解放される運転資金（億元）</div><div class="out" id="o1"></div></div><div><div class="mute">資本コスト6%での年間効果（億元）</div><div class="out" id="o2"></div></div></div>
+ </div>
+</section>
+
+<section id="org" class="reveal">
+ <div class="eyebrow">06 · Organization</div>
+ <h2>AI組織、人材パイプライン、POアカデミー</h2><p class="sub">Central platform + embedded business teams</p>
+ <div class="tw"><table><tr><th>チーム</th><th>職責</th><th>主な役割</th><th>初年度の人数（概算）</th></tr><tr><td class="lb">AIプラットフォーム・エンジニアリング</td><td>モデルゲートウェイ、エージェント・オーケストレーション、MLOps／LLMOps、監視</td><td>プラットフォームのテクニカルリード、プラットフォームエンジニア、SRE</td><td>6–8</td></tr><tr><td class="lb">データプロダクト</td><td>レイクハウス、マスターデータ、フィーチャーストア、データ契約</td><td>データテクニカルリード、データエンジニア、データアーキテクト</td><td>5–7</td></tr><tr><td class="lb">AIアプリケーションとサイエンス</td><td>モデル開発、評価、RAGのチューニング</td><td>MLテクニカルリード、データサイエンティスト、AIエンジニア</td><td>5–7</td></tr><tr><td class="lb">AIガバナンスとセキュリティ</td><td>ISO 42001、モデルリスク、データ分類</td><td>ガバナンス・マネージャー（情報セキュリティ部門と連携）</td><td>1–2</td></tr><tr><td class="lb">事業グループ組み込みチーム</td><td>ユースケースの実装、業務プロセスの再設計</td><td>事業部門のPO、ビジネスアナリスト、Champions</td><td>事業部門が配置</td></tr></table></div>
+ <div class="grid3" style="margin-top:16px">
+  <div class="card"><h3>L1　リテラシーと個人での活用</h3><p>AI利用規程、データ分類、検証の習慣。管理職向けAIワークフロー研修。</p><p class="mute">成果：全員が使えて、やってはいけないことを理解している</p></div>
+  <div class="card"><h3>L2　部門プロセスとエージェント</h3><p>各部門が1〜2のプロセスを選び、事業部門がPO、ITがプラットフォームを提供。</p><p class="mute">成果：測定可能な部門ユースケース</p></div>
+  <div class="card"><h3>L3　部門横断の業務改革と全社展開</h3><p>部門横断のエージェント連携、共有ナレッジベース、Championsネットワーク。</p><p class="mute">成果：組織レベルの効果</p></div>
+ </div>
+ <div class="note"><b>POアカデミー：</b>対象は事業部門のプロセスオーナーであり、IT部門ではありません。研修修了に加えユースケースを1件本番稼働させて初めて修了とし、初年度に認定PO30名を目標とします。</div>
+</section>
+
+<section id="gov" class="reveal">
+ <div class="eyebrow">07 · Governance</div>
+ <h2>AIガバナンス、セキュリティ、リスク</h2><p class="sub">Build on ISO 27001, extend to ISO 42001</p>
+ <div class="grid2">
+  <div class="tw"><table><tr><th>項目</th><th>仕組み</th><th>基準</th></tr><tr><td class="lb">データ分類</td><td>公開／社内／機密／顧客機密の4段階。クラウドやモデルに渡せる範囲を決定</td><td>ISO 27001、個人情報保護法</td></tr><tr><td class="lb">モデルリスク</td><td>本番前に正確性、ハルシネーション率、バイアスを評価。高リスクのユースケースは人のレビューが必須</td><td>ISO 42001、NIST AI RMF</td></tr><tr><td class="lb">権限と監査</td><td>モデルゲートウェイで認証、マスキング、完全なログを一元化</td><td>ゼロトラスト</td></tr><tr><td class="lb">OTセキュリティ</td><td>AIは設備を直接制御しない。提案はMESと人の承認を経て実行</td><td>IEC 62443</td></tr><tr><td class="lb">サプライヤー</td><td>データを学習に使用しないこと、データの保管場所を契約で明記</td><td>ISO 27036</td></tr></table></div>
+  <div class="tw"><table><tr><th>主要リスク</th><th>対策</th></tr><tr><td class="lb">S/4HANA稼働とのリソースの取り合い</td><td>2027年第1四半期まではSAPに触れないユースケース（品質、研究開発ナレッジ）のみ</td></tr><tr><td class="lb">データ品質の不足</td><td>まずデータプロダクトと定義の統一、それからモデル</td></tr><tr><td class="lb">PoCがPoCのまま終わる</td><td>開始前に本番稼働の条件、PO、損益科目を定義</td></tr><tr><td class="lb">シャドーAI</td><td>禁止するだけでなく、使いやすい公式プラットフォームと利用規程を提供</td></tr><tr><td class="lb">計算資源コストの膨張</td><td>トークン／GPUコストを事業部門別に配賦し、クォータと月次報告で管理</td></tr></table></div>
+ </div>
+ <div class="note warn"><b>レッドライン：</b>AIが人の承認なしに転記、オーダー変更、設備指令を行うことは禁止。顧客図面と見積を未承認の外部モデルに送ることも禁止します。</div>
+</section>
+
+<section id="plan" class="reveal">
+ <div class="eyebrow">08 · First 180 Days</div>
+ <h2>着任後180日の計画と初年度の指標</h2><p class="sub">Listen, decide, deliver — aligned with the S/4HANA cut-over</p>
+ <div class="phase" id="phase"><div class="card on" data-i="0"><div class="eyebrow">1〜30日目</div><h3>傾聴</h3><ul class="clean"><li>CIO、事業グループ長、CFOへのヒアリング</li><li>既存のAIアプリケーション、データ、チームの棚卸し</li><li>S/4HANAのスケジュールと連携ポイントを確認</li></ul><p class="mute">成果物：AI資産マップと現状診断</p></div><div class="card" data-i="1"><div class="eyebrow">31〜60日目</div><h3>方向づけ</h3><ul class="clean"><li>ユースケースの評価と投資ポートフォリオ</li><li>プラットフォームの三ルート選定（SAPネイティブ／パブリッククラウド／オープンソースのオンプレミス）</li><li>組織設計と採用計画</li></ul><p class="mute">成果物：AIプラットフォームのブループリント、上位5ユースケースの財務仮説</p></div><div class="card" data-i="2"><div class="eyebrow">61〜90日目</div><h3>最初の成果</h3><ul class="clean"><li>プラットフォームMVPの構築開始</li><li>クイックウィンのユースケース2件を本番稼働</li><li>AI利用規程を公開</li></ul><p class="mute">成果物：目に見える成果、最初の四半期報告</p></div><div class="card" data-i="3"><div class="eyebrow">91〜180日目</div><h3>展開</h3><ul class="clean"><li>プラットフォームMVPを本番稼働、S/4HANAの切替に合わせる</li><li>Aランクのユースケースをモデル工場で試行</li><li>POアカデミー第1期</li></ul><p class="mute">成果物：新ユースケースの立ち上げを週単位へ</p></div></div>
+ <h3 style="margin-top:28px">初年度KPI（ベースラインと目標は着任後60日以内に共同で設定）</h3>
+ <div class="tw"><table><tr><th>区分</th><th>指標</th><th>方向</th></tr><tr><td class="lb">経済効果</td><td>検証済みの年間効果（CFOが確認）</td><td>目標は着任後60日以内に共同で設定</td></tr><tr><td class="lb">プラットフォーム</td><td>本番稼働中のユースケース数、新ユースケースの立ち上げ期間</td><td>10件以上、4週間以内</td></tr><tr><td class="lb">利用</td><td>AIプラットフォームの月間アクティブユーザー比率</td><td>四半期ごとに向上</td></tr><tr><td class="lb">組織</td><td>認定PO、テクニカルリードの後任候補</td><td>30名、各リーダーに1名</td></tr><tr><td class="lb">ガバナンス</td><td>ユースケースのリスク評価完了率、重大セキュリティインシデント</td><td>100%、ゼロ</td></tr><tr><td class="lb">コスト</td><td>1,000リクエストあたりのコスト、計算資源予算の達成率</td><td>四半期ごとに低減、±10%以内</td></tr></table></div>
+ <p><b>報告サイクル：</b>月次のAI価値ダッシュボード、四半期のAI投資委員会でユースケースの採否を決定、半期ごとに会長へプラットフォームの成熟度と実現した効果を報告。</p>
+</section>
+
+<section id="cases" class="reveal">
+ <div class="eyebrow">09 · Proof</div>
+ <h2>三つの代表事例</h2><p class="sub">Outcomes measured in operating metrics</p>
+ <div class="tabs" id="ctabs"><button class="tab on" data-i="0">D社｜統合されたコアの上に築く製造業AI</button><button class="tab" data-i="1">B社グループ｜プラットフォーム化とゼロダウンタイム</button><button class="tab" data-i="2">A社グループ｜AIガバナンスとエージェントの本番稼働</button></div>
+ <div class="panel card on" data-p="0"><p class="mute">D社　IT Director｜2018.10 – 2022.09</p><h3>統合されたコアの上に築く製造業AI</h3><p><b>状況：</b>買収後は各工場が独立して運営され、生産能力が見えず、データのサイロ化と大量の滞留在庫が生じていました。</p><b>取り組み：</b><ul class="clean"><li>SAP S/4HANAの標準機能を優先（Clean Core）し、MES・PLM・APSと連携</li><li>1,000台超の設備をカバーするEdge AIoTデータ基盤、AI不良予測と予知保全</li><li>IEC 62443に基づきOT／ITのセグメンテーションを設計し、ブランド顧客向けB2B EDIを構築</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+15%</div><div class="l">歩留まり</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT運用コスト</div></div></div><div class="note"><b>LITEONにとっての意味：</b>S/4HANA稼働後のAI拡張、MESの代替部品・キット充足の提案、新工場への展開テンプレート</div></div><div class="panel card" data-p="1"><p class="mute">B社グループ　情報技術部門長｜2022.09 – 2025.04</p><h3>プラットフォーム化とゼロダウンタイム</h3><p><b>状況：</b>毎月新製品を投入する中、旧データベースは高い同時接続に耐えられず、プロジェクトごとに環境を個別構築していたため運用負荷が大きい状態でした。</p><b>取り組み：</b><ul class="clean"><li>コアサービスをKubernetesへ移行しCI/CDを導入、リリースサイクルを半減</li><li>グローバルデータ管理基盤とリージョン横断クラスタを構築</li><li>FinOpsを導入し、ISO 27001とゼロトラスト・アーキテクチャを確立</li></ul><div class="kpis k3"><div class="kpi"><div class="v">ゼロダウンタイム</div><div class="l">コアサービス</div></div><div class="kpi"><div class="v">−30%</div><div class="l">マルチクラウドTCO</div></div><div class="kpi"><div class="v">×2</div><div class="l">リリース速度</div></div></div><div class="note"><b>LITEONにとっての意味：</b>「部門ごとのAIツール」から共通プラットフォームへ移行。新旧並行で切り戻し可能</div></div><div class="panel card" data-p="2"><p class="mute">A社グループ　技術担当副社長／CIO｜2025.05 – 現在</p><h3>AIガバナンスとエージェントの本番稼働</h3><p><b>状況：</b>多国籍に分散したクラウド資産とセキュリティ人材の不足。社員が各自でAIツールを使い、情報漏えいのリスクが高い状態でした。</p><b>取り組み：</b><ul class="clean"><li>アーキテクチャ審査委員会を主宰し、API-firstと統合標準を策定</li><li>DevSecOps品質ゲート＋AIコードレビューとテスト生成</li><li>ISO 42001に基づくAI利用規程とデータ分類を策定、管理職向けAIワークフロー研修</li><li>Agentic AIワークフロー、高リスク操作はHuman-in-the-Loop</li></ul><div class="kpis k3"><div class="kpi"><div class="v">+55%</div><div class="l">自動化効率</div></div><div class="kpi"><div class="v">−40%</div><div class="l">Lead Time</div></div><div class="kpi"><div class="v">−35%</div><div class="l">不具合流出</div></div></div><div class="note"><b>LITEONにとっての意味：</b>LITEONのAI利用規程、POアカデミー、エージェント本番化の直接のひな形</div></div>
+ <h3 style="margin-top:26px">すべての定量成果</h3>
+ <div class="kpis"><div class="kpi"><div class="v">+15%</div><div class="l">製品の歩留まり</div><div class="s">D社｜AI不良予測</div></div><div class="kpi"><div class="v">+18%</div><div class="l">OEE</div><div class="s">D社｜Edge AIoT</div></div><div class="kpi"><div class="v">−25%</div><div class="l">IT運用コスト</div><div class="s">D社｜システム統合</div></div><div class="kpi"><div class="v">−30%</div><div class="l">マルチクラウドTCO</div><div class="s">B社グループ｜FinOps</div></div><div class="kpi"><div class="v">ゼロダウンタイム</div><div class="l">コアサービス</div><div class="s">B社グループ｜基盤移行</div></div><div class="kpi"><div class="v">−40%</div><div class="l">デリバリーのリードタイム</div><div class="s">A社グループ｜AIコードレビュー</div></div><div class="kpi"><div class="v">−30%</div><div class="l">セキュリティインシデントの前年比削減</div><div class="s">A社グループ｜ゼロトラスト</div></div><div class="kpi"><div class="v">+55%</div><div class="l">業務自動化</div><div class="s">A社グループ｜Agentic AI</div></div></div>
+ <h3>外部からの評価</h3>
+ <div class="tw"><table><tr><th>種類</th><th>内容</th><th>時期</th></tr><tr><td class="lb">ベンダー公式事例</td><td>グローバルクラウド事業者のAPAC公式顧客成功事例動画：コンテナ基盤で世界規模の高同時接続を支え、ゼロダウンタイム</td><td>2024.03</td></tr><tr><td class="lb">メディアインタビュー</td><td>CIO専門誌の表紙インタビュー：パブリッククラウドを活用してグローバル市場を開拓</td><td>2024.05</td></tr><tr><td class="lb">技術特集</td><td>IT専門メディアの特集：グローバルデータ管理基盤の構築</td><td>2024.09</td></tr><tr><td class="lb">基調講演</td><td>グローバルデータベースベンダーの台北カンファレンスで基調講演：グローバル規模のデータ管理基盤</td><td>2024.09</td></tr><tr><td class="lb">基調講演</td><td>CIO年次カンファレンス：機会を見抜く――クラウド管理の実務</td><td>2024.05</td></tr><tr><td class="lb">公共部門向け講座</td><td>行政院人事行政総処の公務員向けeラーニング講座：クラウド管理の実務</td><td>2024.06</td></tr></table></div>
+</section>
+
+<section id="profile" class="reveal">
+ <div class="eyebrow">10 · Profile</div>
+ <h2>経歴</h2><p class="sub">Education, career &amp; credentials</p>
+ <p class="lead">25年以上のIT経験と15年以上のCIO・技術責任者としてのキャリアを持ち、電子製造、外資系ソフトウェア、上場デジタルプラットフォームを横断。取締役会の経営目標をITとAIの投資ポートフォリオに落とし込み、アーキテクチャの意思決定を自ら主導し、歩留まり・OEE・TCOなどの経営指標で成果を出してきました。ISO 27001およびISO 42001の主任審査員として、イノベーションのスピードとガバナンスの一線を両立させます。</p>
+ <div class="grid2">
+  <div><h3>キャリア</h3><div class="tl"><div class="it"><div class="dt">2025.05 – 現在</div><b>A社グループ｜技術担当副社長／CIO</b><span class="chip">Agentic AI +55%</span><div class="mute">多国籍のインターネット・テクノロジー基盤（台北、高雄、上海）</div><div>アーキテクチャ審査委員会を主宰、API-firstとKafka／EDI／IDoc統合標準、DevSecOps品質ゲート、ISO 42001 AIガバナンス、Agentic AIワークフロー</div></div><div class="it"><div class="dt">2026</div><b>企業情報アーキテクチャ・アドバイザー（兼任）</b><span class="chip">AIアーキテクチャのブループリント</span><div class="mute">複数業界、顧客名非公開</div><div>グループIT戦略・投資計画、エンタープライズアーキテクチャのブループリント、ERPと製造システムの統合ブループリント、セキュリティガバナンス計画</div></div><div class="it"><div class="dt">2022.09 – 2025.04</div><b>B社グループ｜情報技術部門長（CIO／CISO）</b><span class="chip">TCO−30%、ゼロダウンタイム</span><div class="mute">店頭上場のデジタル・テクノロジー基盤（台中、台北、海外）</div><div>コアサービスをKubernetesへ移行、グローバルデータ管理基盤、FinOps、ISO 27001とゼロトラスト</div></div><div class="it"><div class="dt">2022</div><b>C社グループ｜中央情報技術部門長</b><span class="chip">エンタープライズアーキテクチャ</span><div class="mute">グローバル電子製造</div><div>グループのエンタープライズアーキテクチャの意思決定、ギャップ分析、DX計画</div></div><div class="it"><div class="dt">2018.10 – 2022.09</div><b>D社｜IT Director</b><span class="chip">歩留まり+15%、OEE+18%</span><div class="mute">多国籍の電子製造（台湾3拠点、中国2拠点）</div><div>買収後のSAP S/4HANA統合、MES・PLM・APS連携、Edge AIoT、IEC 62443、B2B EDI</div></div><div class="it"><div class="dt">2010 – 2018</div><b>E社グループ｜CIO</b><span class="chip">データガバナンス</span><div class="mute">異業種を擁する持株グループ</div><div>グループのITガバナンス、システム統合、データチーム</div></div><div class="it"><div class="dt">2007 – 2010</div><b>F社｜部門長</b><span class="chip">—</span><div class="mute">店頭上場のITサービス</div><div>SOAアーキテクチャ、ビジネスポータル、ITILサービスガバナンス</div></div><div class="it"><div class="dt">2003 – 2007</div><b>G社｜テクニカルマネージャー</b><span class="chip">データベース</span><div class="mute">米国のエンタープライズ・ソフトウェア</div><div>大中華圏のデータベース、ミドルウェア、ALMの技術コンサルティングとデリバリー</div></div><div class="it"><div class="dt">長期</div><b>地域医療センターの顧問、公益財団法人の常務理事</b><span class="chip">医療データ</span><div class="mute">医療と公益</div><div>医療情報の連携、スマート介護、公益分野のデジタル化</div></div></div></div>
+  <div>
+   <h3>学歴</h3><div class="card" style="margin-bottom:8px"><b>情報技術管理学博士（2014）</b>　朝陽科技大学<div class="mute">博士論文：適応型サービス指向アーキテクチャのITガバナンスに基づく統合ビジネス・セルフサービスポータルの研究（国家図書館所蔵）</div></div><div class="card" style="margin-bottom:8px"><b>情報科学修士（2006）</b>　国立中興大学<div class="mute">データマイニング、意思決定支援システム、暗号学。医療クラウドケア計画の共同研究者</div></div>
+   <h3 style="margin-top:18px">研究と論文</h3><ul class="clean"><li>SCI国際誌『Multimedia Tools and Applications』筆頭著者：Reversible secret-image sharing with high visual quality（2014）</li><li>国際誌論文：Utilizing GIS and GPS in Designing a Trilingual Tourist APP（2015）</li><li>修士・博士論文の指導と審査を長年担当</li></ul>
+   <h3 style="margin-top:18px">専門資格</h3><div class="tw"><table><tr><td class="lb">セキュリティとAIガバナンス</td><td>ISO 27001主任審査員、ISO 42001（AIMS）主任審査員</td></tr><tr><td class="lb">プロジェクトとアジャイル</td><td>PMP、ScrumMaster、Agile Coach、ESGサステナビリティ・マネージャー</td></tr><tr><td class="lb">システムとサプライチェーン</td><td>ERPサプライチェーン／製造モジュール専門認定、データベースベンダー認定講師、国際バーコード管理士</td></tr><tr><td class="lb">継続的な研鑽</td><td>CISSP／CISM、クラウドアーキテクト（準備中）</td></tr></table></div>
+  </div>
+ </div>
+ <h3 style="margin-top:20px">コードについて</h3>
+ <p class="mute">守秘義務と営業秘密保護のため、本ページでは他社および顧客の名称を開示せず、外部サイトへのリンクも一切設けていません。すべての内容は本ページ内に集約しており、面談時に直接ご説明します。</p>
+ <div class="codes"><div><b>A社グループ</b>多国籍のインターネット・テクノロジー基盤グループ（現職）</div><div><b>B社グループ</b>店頭上場のデジタル・テクノロジー基盤グループ</div><div><b>C社グループ</b>グローバル電子製造グループ</div><div><b>D社</b>多国籍の電子製造企業（複数工場）</div><div><b>E社グループ</b>異業種を擁する持株グループ</div><div><b>F社</b>店頭上場のITサービス企業</div><div><b>G社</b>米国のエンタープライズ・ソフトウェア企業</div><div><b>アドバイザリー</b>企業情報アーキテクチャのアドバイザリー案件（複数業界、顧客名非公開）</div></div>
+</section>
+
+<section id="qa" class="reveal">
+ <div class="eyebrow">11 · Dialogue</div>
+ <h2>想定問答</h2><p class="sub">For the CIO panel and the Chairman</p>
+ <div class="grid2">
+  <div><h3>一次面接｜CIO、技術顧問、人事責任者</h3><details><summary>AIプラットフォームとS/4HANAの稼働が互いに干渉しないようにするには？</summary><div>2027年第1四半期まではSAPに触れないユースケースのみとし、プラットフォームはAPIで読み取り、コアのカスタマイズは行いません。本番稼働が安定してからサプライチェーンのユースケースに接続します。</div></details><details><summary>PoCが終わらない事態をどう防ぐか？</summary><div>開始前にPO、本番稼働の条件、損益科目を定義し、四半期の委員会で効果のないユースケースを廃止します。</div></details><details><summary>プラットフォームは自社構築か購入か？</summary><div>三つのルートをTCOとデータ主権で比較します。コンポーネントは購入してもよいが、データプロダクトとユースケースの知見は必ず自社で保有します。</div></details><details><summary>AIテクニカルリードをどう率いるか？</summary><div>明確なアーキテクチャ原則と意思決定権を与え、四半期ごとにアーキテクチャをレビューし、各リーダーが後継者を育成します。</div></details></div>
+  <div><h3>二次面接｜会長</h3><details><summary>AIはLITEONにどれだけの価値を生み出せるか？</summary><div>在庫、歩留まり、品質コストの三つの科目から着手し、90日以内にCFOが確認した試算を提示します。</div></details><details><summary>3年後のLITEONのAIはどのような姿か？</summary><div>すべての事業グループが自らのAIプロダクトを持ち、新工場は稼働初日から予測能力を備え、社員がAIを日常のツールとして使っている状態です。</div></details><details><summary>なぜあなたなのか？</summary><div>製造業のSAP／MES統合、プラットフォーム化、AIガバナンスのすべてを経験し、自らアーキテクチャを書くこともできます。経営指標で語ります。</div></details></div>
+ </div>
+ <div class="note" style="margin-top:24px"><b>結び：</b>最良の技術リーダーとは、技術の言葉を経営とリスクの言葉に翻訳できる人です。LITEONがAIを単発のアプリケーションから再利用可能なプラットフォームへと進化させ、すべての投資が目に見えるリターンを生むよう支援したいと考えています。</div>
+ <div class="btns"><a class="btn p" href="mailto:Liao.Howard@gmail.com">Liao.Howard@gmail.com</a><a class="btn" href="tel:+886975323161">+886-975-323161</a></div>
+</section>
+<section id="docs" class="reveal">
+ <div class="eyebrow">12 · Documents</div>
+ <h2>文書のオンライン閲覧</h2><p class="sub">View online only — no downloads</p>
+ <p class="mute">以下の文書はオンラインでのページ閲覧のみで、ダウンロードと印刷はできません。</p>
+ <div class="grid3">
+  <button class="doc" data-d="deck" data-n="30" data-t="経営層向けプレゼンテーション（全30ページ）"><img src="assets/preview/ja/deck/01.jpg" alt="経営層向けプレゼンテーションの表紙" draggable="false" loading="lazy"><b>経営層向けプレゼンテーション</b><span class="mute">全30ページ｜AI戦略、プラットフォームのブループリント、着任計画</span></button>
+  <button class="doc" data-d="report" data-n="20" data-t="面接レポート（全20ページ）"><img src="assets/preview/ja/report/01.jpg" alt="面接レポートの表紙" draggable="false" loading="lazy"><b>面接レポート</b><span class="mute">全20ページ｜コンピテンシーの適合、事例、経歴</span></button>
+  <button class="doc" data-d="cv" data-n="10" data-t="職務経歴書（全10ページ）"><img src="assets/preview/ja/cv/01.jpg" alt="職務経歴書の表紙" draggable="false" loading="lazy"><b>職務経歴書</b><span class="mute">全10ページ｜経歴、資格、定量成果</span></button>
+ </div>
+</section>
+<div id="viewer" class="viewer" hidden>
+ <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="閉じる">閉じる ✕</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="前のページ">‹</button><div class="vimg"><img id="vi" alt="文書ページ" draggable="false"><div class="vshield"></div></div><button class="vnav" id="vn" aria-label="次のページ">›</button></div>
+</div>
+</main>
+<footer>© 2026 廖倫豪 博士（Howard Liao, Ph.D.）　·　LITEON会長・CIOのご審閲用に作成　·　他社はコードで表記</footer>
+<script>
+const STACK=[["L5","ユーザー接点","企業向けメッセージングツール、ポータル、AIアシスタント画面、経営ダッシュボード","社員は既存のツールの中でAIを使い、新しいシステムを覚える必要がない"],["L4","AIプロダクト","サプライチェーン計画アシスタント、品質異常エージェント、研究開発ナレッジアシスタント、財務分析アシスタント","すべてのプロダクトにPO、KPI、バージョンを設定"],["L3","エージェント・オーケストレーション","マルチエージェント・オーケストレーション、ワークフローエンジン、Human-in-the-Loop承認","高リスクな操作は必ず人がレビュー"],["L2","モデルとナレッジ","LLMゲートウェイ（マルチモデルのルーティング、クォータ、コスト）、RAGナレッジベース、MLモデルレジストリ、評価","クラウドとオンプレミスのモデルを併用し、データ分類に応じてルーティング"],["L1","データプロダクト","レイクハウス（Bronze／Silver／Gold）、マスターデータ、フィーチャーストア、データ契約","品番、BOM、作業指示、歩留まりの定義を全世界で統一"],["L0","ソースシステム","SAP S/4HANA、PLM、MES、APS、QMS、テスト工程、IoT","API、CDC、イベントストリームで読み取り、コアに負荷をかけない"],["横断","ガバナンスとセキュリティ","ID・権限、監査ログ、モデル監視、コスト配賦、ISO 42001","プラットフォームに組み込み、すべてのユースケースが自動的に継承"]];
+const UC=[["サプライチェーン","欠品アラート、キット充足と代替部品の推奨、需要予測","在庫、欠品によるライン停止損失","A",9,7.2],["製造","作業指示のスケジューリング提案、歩留まり予測、設備の予防保全","稼働率、スクラップ","A",8.2,5.2],["品質","故障解析ナレッジ・アシスタント、顧客クレームの8D自動要約","品質コスト、クレーム対応期間","A",7.4,8.6],["研究開発","仕様・規格の検索、設計レビュー・アシスタント、試験報告の分析","研究開発リードタイム","B",6.2,6.3],["財務","月次決算の異常分析、複数通貨の予測、監査サンプリング","人件費、意思決定のスピード","B",5.2,7.6],["営業","RFQと見積の分析、契約条項の比較","見積リードタイム、粗利","B",4.6,9],["IT","AIコードレビュー、テスト生成、サービスデスク・エージェント","ITコスト、デリバリー速度","C",3,9.4]];
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+// theme
+try{const t=localStorage.getItem('t');if(t)document.documentElement.dataset.theme=t}catch(e){}
+$('#theme').onclick=()=>{const d=document.documentElement;const cur=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.dataset.theme=cur==='dark'?'light':'dark';try{localStorage.setItem('t',d.dataset.theme)}catch(e){}};
+// generic tabs
+function tabs(id,sec){const box=$(id);box.addEventListener('click',ev=>{const b=ev.target.closest('.tab');if(!b||b.dataset.i===undefined)return;$$('.tab',box).forEach(x=>x.classList.toggle('on',x===b));$$('.panel',sec).forEach(p=>p.classList.toggle('on',p.dataset.p===b.dataset.i));fill()})}
+tabs('#dtabs',$('#duties'));tabs('#ftabs',$('#fit'));tabs('#ctabs',$('#cases'));
+function fill(){$$('.panel.on .bar i').forEach(i=>i.style.width=i.dataset.w+'%')}
+// stack
+function showLayer(i){$$('.layer').forEach((b,k)=>b.classList.toggle('on',k===i));const l=STACK[i];$('#ldetail').innerHTML='<div class="eyebrow">'+l[0]+'</div><h3>'+l[1]+'</h3><p><b>構成要素：</b>'+l[2]+'</p><p><b>設計のポイント：</b>'+l[3]+'</p>'}
+$$('.layer').forEach((b,i)=>b.onclick=()=>showLayer(i));showLayer(3);
+// matrix
+const col={A:'var(--green)',B:'var(--gold)',C:'var(--brick)'};let F='all';
+function draw(){const s=$('#mx');let h='<rect x="50" y="20" width="450" height="310" fill="none" stroke="var(--line)"/>';
+h+='<line x1="275" y1="20" x2="275" y2="330" stroke="var(--line)" stroke-dasharray="4 4"/><line x1="50" y1="175" x2="500" y2="175" stroke="var(--line)" stroke-dasharray="4 4"/>';
+h+='<text x="275" y="365" text-anchor="middle" font-size="13" fill="var(--mute)">実現可能性（データの準備度、プロセスオーナー）→</text><text x="18" y="175" font-size="13" fill="var(--mute)" transform="rotate(-90 18 175)" text-anchor="middle">経済効果 →</text>';
+h+='<text x="490" y="40" text-anchor="end" font-size="12" fill="var(--gold)">優先投資</text>';
+UC.forEach(u=>{const x=50+(u[5]/10)*450,y=330-(u[4]/10)*310,on=F==='all'||F===u[3];h+='<g opacity="'+(on?1:.18)+'"><circle cx="'+x+'" cy="'+y+'" r="'+(u[3]==='A'?22:16)+'" fill="'+col[u[3]]+'" fill-opacity=".85"/><text x="'+x+'" y="'+(y+5)+'" text-anchor="middle" font-size="13" fill="#FAF7F2" font-weight="700">'+u[0]+'</text></g>'});
+s.innerHTML=h;$('#uct').innerHTML='<tr><th>領域</th><th>代表的なユースケース</th><th>影響する科目</th><th>優先度</th></tr>'+UC.filter(u=>F==='all'||F===u[3]).map(u=>'<tr><td class="lb">'+u[0]+'</td><td>'+u[1]+'</td><td>'+u[2]+'</td><td>'+u[3]+'</td></tr>').join('')}
+$('#ptabs').addEventListener('click',ev=>{const b=ev.target.closest('.tab');if(!b)return;F=b.dataset.f;$$('#ptabs .tab').forEach(x=>x.classList.toggle('on',x===b));draw()});draw();
+// calc
+function calc(){const a=+$('#s1').value,b=+$('#s2').value,c=+$('#s3').value;$('#v1').textContent='：'+a;$('#v2').textContent='：'+b;$('#v3').textContent='：'+c;const inv=a*b/100,rel=inv*c/100;$('#o1').textContent=rel.toFixed(1);$('#o2').textContent=(rel*0.06).toFixed(2)}
+['#s1','#s2','#s3'].forEach(i=>$(i).oninput=calc);calc();
+// phase
+$('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(!c)return;$$('#phase .card').forEach(x=>x.classList.toggle('on',x===c))});
+// reveal + nav highlight
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
+const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+
+// document viewer: online preview only
+let VD='',VN=0,VI=1;const V=$('#viewer');
+function vshow(){$('#vi').src='assets/preview/ja/'+VD+'/'+String(VI).padStart(2,'0')+'.jpg';$('#vc').textContent=VI+' / '+VN}
+$$('.doc').forEach(b=>b.onclick=()=>{VD=b.dataset.d;VN=+b.dataset.n;VI=1;$('#vt').textContent=b.dataset.t;V.hidden=false;document.body.style.overflow='hidden';vshow()});
+function vclose(){V.hidden=true;document.body.style.overflow=''}
+$('#vx').onclick=vclose;$('#vp').onclick=()=>{if(VI>1){VI--;vshow()}};$('#vn').onclick=()=>{if(VI<VN){VI++;vshow()}};
+addEventListener('keydown',e=>{if(V.hidden)return;if(e.key==='Escape')vclose();if(e.key==='ArrowLeft')$('#vp').click();if(e.key==='ArrowRight')$('#vn').click()});
+let tx=0;V.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});V.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d>50)$('#vp').click();if(d<-50)$('#vn').click()});
+document.addEventListener('contextmenu',e=>{if(e.target.closest('.viewer,.doc'))e.preventDefault()});
+addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&['p','s'].includes(e.key.toLowerCase())){e.preventDefault()}});
+// service worker: new network-first worker replaces the old cache-first one
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
