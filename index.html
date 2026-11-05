@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark theme-obsidian scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Howard Liao Ph.D. ｜ 光寶科技 (2301.TW) 全球 AI 策略、資料產品與製造中樞演進藍圖</title>
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Howard Liao Ph.D. ｜ 光寶科技 (2301.TW) 全球 AI 策略與平台演進藍圖">
+  <meta property="og:description" content="27+ 年工程與 IT 淬鍊、20+ 年 C-Level 治理經驗。聚焦光寶 S/4HANA 升級與製造端 MES 互補 AI Stack，讓 ERP 更 AI，深挖問題背後的問題。">
+  <meta property="og:image" content="assets/howard_portrait.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://howardliao.github.io/2301/">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <meta name="theme-color" content="#0c0a09">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            liteon: {
+              blue: '#005baa',
+              dark: '#003e75',
+              accent: '#00a3e0',
+              gold: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang TC', 'Noto Sans TC', 'sans-serif'],
+            mono: ['SF Mono', 'Menlo', 'Monaco', 'Courier New', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Theme Definitions */
+    .theme-obsidian {
+      --bg-primary: #09090b;
+      --bg-secondary: #18181b;
+      --bg-card: rgba(24, 24, 27, 0.85);
+      --border-color: #27272a;
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.18);
+      --brand-blue: #005baa;
+    }
+    .theme-pharaoh {
+      --bg-primary: #12100e;
+      --bg-secondary: #1c1815;
+      --bg-card: rgba(28, 24, 21, 0.88);
+      --border-color: #382f28;
+      --text-main: #fbf7f0;
+      --text-muted: #baa998;
+      --accent: #d97706;
+      --accent-glow: rgba(217, 119, 6, 0.22);
+      --brand-blue: #0284c7;
+    }
+    .theme-milan {
+      --bg-primary: #faf8f5;
+      --bg-secondary: #f2eee8;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --border-color: #e5ded4;
+      --text-main: #262320;
+      --text-muted: #6e6761;
+      --accent: #b45309;
+      --accent-glow: rgba(180, 83, 9, 0.12);
+      --brand-blue: #0369a1;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .card-glass {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .badge-accent {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print, header, nav, #bottom-nav, #fab-container, #theme-selector, #pwa-banner {
+        display: none !important;
+      }
+      .card-glass {
+        background: transparent !important;
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        margin-bottom: 1.5rem !important;
+      }
+      .print-unfold {
+        display: block !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+    }
+
+    /* Accessibility Font Sizing */
+    html.font-sm { font-size: 14px; }
+    html.font-md { font-size: 16px; }
+    html.font-lg { font-size: 18px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- PWA Install Prompt Banner (Mobile Only) -->
+  <div id="pwa-banner" class="hidden no-print bg-gradient-to-r from-blue-900 via-amber-900 to-zinc-900 text-white text-xs px-4 py-2 border-b border-amber-500/30 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <i data-lucide="smartphone" class="w-4 h-4 text-amber-400"></i>
+      <span>將「光寶 AI 策略藍圖」加入手機主畫面，支援離線即時查閱</span>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button id="pwa-install-btn" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded text-[11px] transition">立即安裝</button>
+      <button onclick="document.getElementById('pwa-banner').style.display='none'" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="sticky top-0 z-50 card-glass border-b transition-all duration-200 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand & Position -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-500 to-blue-700 flex items-center justify-center font-bold text-white shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+          2301
+        </div>
+        <div>
+          <div class="font-bold tracking-tight text-sm sm:text-base flex items-center space-x-2">
+            <span>Howard Liao Ph.D.</span>
+            <span class="text-[11px] px-1.5 py-0.5 rounded badge-accent font-mono font-medium hidden sm:inline-block">VP of AI / C-Level</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 group-hover:text-amber-400 transition-colors">
+            光寶科技 (2301.TW) 全球 AI 策略與平台演進藍圖
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm font-medium">
+        <a href="#strategy" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">策略定位</a>
+        <a href="#capabilities" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">職能逐條對照</a>
+        <a href="#erp-mes-stack" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">S/4HANA 與 MES 互補</a>
+        <a href="#org-po" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">組織與 PO 培養</a>
+        <a href="#qualifications" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">條件稽核</a>
+        <a href="#profile" class="px-3 py-1.5 rounded-md hover:bg-zinc-800/60 hover:text-amber-400 transition">個人資歷</a>
+      </nav>
+
+      <!-- Action & Utility Controls -->
+      <div class="flex items-center space-x-2">
+        <!-- Font Size Adjuster -->
+        <div class="hidden sm:flex items-center border border-zinc-700 rounded-lg p-0.5 bg-zinc-800/40 text-xs">
+          <button onclick="setFontSize('font-sm')" class="px-1.5 py-0.5 rounded text-zinc-400 hover:text-white">A-</button>
+          <button onclick="setFontSize('font-md')" class="px-1.5 py-0.5 rounded text-zinc-400 hover:text-white font-bold">A</button>
+          <button onclick="setFontSize('font-lg')" class="px-1.5 py-0.5 rounded text-zinc-400 hover:text-white">A+</button>
+        </div>
+
+        <!-- Theme Selector Toggle -->
+        <button id="theme-toggle-btn" onclick="cycleTheme()" title="切換主題風格" class="p-2 rounded-lg border border-zinc-700 bg-zinc-800/50 hover:border-amber-500 text-zinc-300 hover:text-amber-400 transition">
+          <i data-lucide="palette" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Print Action -->
+        <button onclick="window.print()" title="列印高管專屬版本 (Cmd+P)" class="hidden sm:flex items-center space-x-1 p-2 rounded-lg border border-zinc-700 bg-zinc-800/50 hover:border-amber-500 text-zinc-300 hover:text-amber-400 transition text-xs">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span class="hidden lg:inline">列印</span>
+        </button>
+
+        <!-- Mobile Drawer Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-zinc-700 bg-zinc-800/50 text-zinc-300 hover:text-white">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden md:hidden no-print transition-opacity">
+    <div class="fixed right-0 top-0 bottom-0 w-72 bg-zinc-950 border-l border-zinc-800 p-6 flex flex-col justify-between overflow-y-auto">
+      <div class="space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+          <div class="flex items-center space-x-2">
+            <div class="w-7 h-7 rounded bg-amber-500 text-black font-bold flex items-center justify-center text-xs">2301</div>
+            <span class="font-bold text-sm text-white">光寶 AI 策略門戶</span>
+          </div>
+          <button onclick="toggleMobileMenu()" class="text-zinc-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-3 text-sm">
+          <a href="#strategy" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="compass" class="w-4 h-4 text-amber-500"></i><span>策略定位與光寶脈絡</span></a>
+          <a href="#capabilities" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="layers" class="w-4 h-4 text-amber-500"></i><span>光寶職能逐條對照</span></a>
+          <a href="#erp-mes-stack" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="cpu" class="w-4 h-4 text-amber-500"></i><span>S/4HANA 與 MES 互補</span></a>
+          <a href="#org-po" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="users" class="w-4 h-4 text-amber-500"></i><span>組織變革與 PO 培養</span></a>
+          <a href="#qualifications" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500"></i><span>必要與加分條件稽核</span></a>
+          <a href="#profile" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="user-check" class="w-4 h-4 text-amber-500"></i><span>個人資歷與高管背景</span></a>
+          <a href="#roadmap" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg hover:bg-zinc-900 text-zinc-300 hover:text-amber-400 flex items-center space-x-3"><i data-lucide="calendar" class="w-4 h-4 text-amber-500"></i><span>180 天落地路線圖</span></a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-zinc-800 space-y-3">
+        <div class="text-xs text-zinc-400">一鍵對接 Howard Liao Ph.D.</div>
+        <button onclick="copyText('liao.howard@gmail.com', '已複製電子郵件')" class="w-full py-2 px-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs rounded-lg flex items-center justify-between text-zinc-200">
+          <span>liao.howard@gmail.com</span>
+          <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
+        </button>
+        <button onclick="copyText('howardliao', '已複製 LINE ID')" class="w-full py-2 px-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs rounded-lg flex items-center justify-between text-zinc-200">
+          <span>LINE: howardliao</span>
+          <i data-lucide="copy" class="w-3.5 h-3.5 text-emerald-400"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: HERO & EXECUTIVE BENTO METRICS  -->
+    <!-- ========================================== -->
+    <section id="hero" class="pt-4 sm:pt-8">
+      <div class="card-glass rounded-3xl p-6 sm:p-10 border shadow-2xl relative overflow-hidden">
+        <!-- Ambient Background Glow -->
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Portrait & Direct Contact Card -->
+          <div class="lg:col-span-4 flex flex-col items-center text-center space-y-4">
+            <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-xl bg-zinc-900 p-1 group">
+              <!-- Safe Headshot with Object-Contain (Memory Rule: No Head Clipping) -->
+              <img src="assets/howard_portrait.jpg" alt="Howard Liao Ph.D." class="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 right-2 bg-emerald-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-md">
+                <span class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+                <span>Ready for 2301</span>
+              </div>
+            </div>
+
+            <div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center space-x-2">
+                <span>Howard Liao Ph.D.</span>
+              </h1>
+              <div class="text-xs sm:text-sm text-amber-400 font-medium mt-1">廖倫豪 博士 ｜ 資訊管理博士</div>
+              <div class="text-xs text-zinc-400 mt-1">Forward-Deployed AI Architect & Player-Coach C-Level</div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 justify-center text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300">27+ 年 IT & 工程</span>
+              <span class="px-2.5 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300">20+ 年高管治理</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300">ISO 42001 / 27001</span>
+            </div>
+
+            <div class="w-full pt-2 flex flex-col sm:flex-row gap-2 justify-center no-print">
+              <a href="assets/Howard_Liao_PhD_CV.pdf" download class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>下載正式履歷 (PDF)</span>
+              </a>
+              <button onclick="copyText('liao.howard@gmail.com', '已複製 Email 連結')" class="px-3 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 text-xs flex items-center justify-center space-x-1.5 transition">
+                <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+                <span>Email 聯繫</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Executive Summary & 4 Bento Impact Metrics -->
+          <div class="lg:col-span-8 space-y-6">
+            <!-- Pitch Banner -->
+            <div class="space-y-2">
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-500/40 text-blue-300 text-xs font-semibold">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                <span>光寶科技 (2301.TW) 高階技術職能與管理職能全景對位報告</span>
+              </div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight leading-snug">
+                把 AI 從單一應用推進為可重複使用的製造中樞平台，為光寶帶來看得見的經濟效益
+              </h2>
+              <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                呼應光寶科技資訊長李逢堉「深挖問題背後的問題」之管理哲學。在集團 86 家子公司、112 座工廠邁向 SAP S/4HANA 升級（2027/01/04 同步上線）之際，以雙環數據總線（Kafka + Debezium CDC + OT MQTT）貫通 PLM、SAP 與 MES，將替代料選用、齊套料排程與製程調機推進至全自動 AI 閉環。
+              </p>
+            </div>
+
+            <!-- 4 C-Level Business Impact Bento Grid (Memory Standard) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
+              <!-- Metric 1: Capital Governance -->
+              <div class="card-glass p-4 rounded-2xl border border-zinc-800 hover:border-amber-500/50 transition-colors group">
+                <div class="text-zinc-400 text-[11px] font-medium flex items-center justify-between">
+                  <span>資本治理</span>
+                  <i data-lucide="coins" class="w-3.5 h-3.5 text-amber-400"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black text-amber-400 mt-2 font-mono">
+                  $<span class="counter" data-target="10">0</span>M+
+                </div>
+                <div class="text-[11px] text-zinc-400 mt-1 leading-tight">
+                  跨國科技預算與投資組合對齊
+                </div>
+              </div>
+
+              <!-- Metric 2: Zero Outage -->
+              <div class="card-glass p-4 rounded-2xl border border-zinc-800 hover:border-emerald-500/50 transition-colors group">
+                <div class="text-zinc-400 text-[11px] font-medium flex items-center justify-between">
+                  <span>維運韌性</span>
+                  <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black text-emerald-400 mt-2 font-mono">
+                  <span class="counter" data-target="100">0</span>%
+                </div>
+                <div class="text-[11px] text-zinc-400 mt-1 leading-tight">
+                  Zero Outage 零非計畫停機紀錄
+                </div>
+              </div>
+
+              <!-- Metric 3: TCO Reduction -->
+              <div class="card-glass p-4 rounded-2xl border border-zinc-800 hover:border-blue-500/50 transition-colors group">
+                <div class="text-zinc-400 text-[11px] font-medium flex items-center justify-between">
+                  <span>TCO 總成本</span>
+                  <i data-lucide="trending-down" class="w-3.5 h-3.5 text-blue-400"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black text-blue-400 mt-2 font-mono">
+                  -<span class="counter" data-target="30">0</span>%
+                </div>
+                <div class="text-[11px] text-zinc-400 mt-1 leading-tight">
+                  雲端與 AI Token 智能調度優化
+                </div>
+              </div>
+
+              <!-- Metric 4: Deployment Velocity -->
+              <div class="card-glass p-4 rounded-2xl border border-zinc-800 hover:border-purple-500/50 transition-colors group">
+                <div class="text-zinc-400 text-[11px] font-medium flex items-center justify-between">
+                  <span>交付速度</span>
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-400"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-black text-purple-400 mt-2 font-mono">
+                  +<span class="counter" data-target="100">0</span>%
+                </div>
+                <div class="text-[11px] text-zinc-400 mt-1 leading-tight">
+                  平台化與資料產品重複使用速度
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Alignment Tags -->
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80 text-[11px] text-zinc-400 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-amber-400 font-bold">光寶關鍵對齊點：</span>
+                <span>SAP S/4HANA 全球升級</span>
+                <span class="text-zinc-600">•</span>
+                <span>MES 替代料/齊套料全自動化</span>
+                <span class="text-zinc-600">•</span>
+                <span>從 0 到 1 破冰老臣防衛</span>
+                <span class="text-zinc-600">•</span>
+                <span>業務 PO 梯隊培育</span>
+              </div>
+              <div class="text-zinc-400">GitHub 倉庫 100% 程式碼與架構圖在線</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: LITE-ON STRATEGIC DECONSTRUCTION -->
+    <!-- ========================================== -->
+    <section id="strategy" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="target" class="w-6 h-6 text-amber-400"></i>
+            <span>光寶現況脈絡解構：深挖「問題背後的問題」</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            基於《商業周刊》最新報導與光寶官方科技佈局，精準對位李逢堉資訊長的戰略地平線
+          </p>
+        </div>
+        <span class="text-xs font-mono px-2.5 py-1 rounded bg-blue-900/40 text-blue-300 border border-blue-500/30 hidden sm:inline-block">
+          Case Analysis: 2301.TW
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1: Global Footprint & S/4HANA -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 space-y-4 hover:border-zinc-700 transition">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
+            <i data-lucide="globe" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-base font-bold text-white">1. 全球骨幹升級戰（現在進行式）</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            光寶旗下 86 間子公司、112 座製造工廠、20 多個跨國據點，目前全速進行 SAP ECC 升級至 S/4HANA（含 16 項新功能與 27 項流程優化），將於 <strong>2027 年 1 月 4 日同步切換</strong>，停機時間控制於 72 小時內。
+          </p>
+          <div class="p-3 rounded-lg bg-zinc-900/80 text-[11px] text-zinc-400 border border-zinc-800">
+            <strong class="text-zinc-200">轉型啟發：</strong>骨幹必須穩健。數據一致性與沖銷自動化已奠定基礎，月結從「核對」轉為「分析」，為 AI 提供標準化的即時資料源。
+          </div>
+        </div>
+
+        <!-- Card 2: Next Milestone - Let ERP be More AI -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 space-y-4 hover:border-amber-500/30 transition">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-bold">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-base font-bold text-white">2. 下一個里程碑：「讓 ERP 更 AI」</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            李逢堉資訊長指出，S/4HANA 上線只是開端，下一個目標是<strong>「能預測、能建議、在製造端主動判斷的系統」</strong>。痛點集中於：<strong>MES 與 ERP 串聯、替代料選用、齊套料規劃、工單排程全自動化</strong>。
+          </p>
+          <div class="p-3 rounded-lg bg-zinc-900/80 text-[11px] text-zinc-400 border border-zinc-800">
+            <strong class="text-amber-300">突破方向：</strong>非僅外掛 LLM 對話框，而是將 AI 模型深度嵌入生管、採購與現場工單事件流，打造具備自動判斷決策能力的 AI Agent。
+          </div>
+        </div>
+
+        <!-- Card 3: Deep Digging Leadership -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 space-y-4 hover:border-purple-500/30 transition">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold">
+            <i data-lucide="workflow" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-base font-bold text-white">3. 管理靈魂：「深挖問題背後的問題」</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            見招拆招只能解決眼前關卡。當製造現場反映缺料停線時，核心問題往往不是排程軟體，而是 PLM 設計變更延遲、替代料認證規格未結構化、以及各廠數據度量不一致。
+          </p>
+          <div class="p-3 rounded-lg bg-zinc-900/80 text-[11px] text-zinc-400 border border-zinc-800">
+            <strong class="text-purple-300">管理實踐：</strong>不只鑽研演算法，更站在業務與廠長身旁，以業務價值為核心，把問題從根因結構化解構並予以平台化交付。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: 6 WORK SCOPES & GITHUB TRACEABILITY -->
+    <!-- ========================================== -->
+    <section id="capabilities" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="git-branch" class="w-6 h-6 text-amber-400"></i>
+            <span>光寶六大工作內容 ＆ 我的 GitHub 實體工程逐條對照</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            每一項光寶要求的管理與技術職能，皆有真實已上線倉庫、全套架構圖及量化成果支持
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- SCOPE 1: AI Strategy & Roadmap -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 1</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">與高階主管定義優先導入 AI 領域，規劃 AI 平台藍圖</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/RSI" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/RSI</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://howardliao.github.io/RSI/" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Live 戰情白皮書</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>C-Level 戰略轉譯與藍圖落地實績</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                在信源全球（RSI）專案中，主導撰寫《2027 年 IT 策略與投資計畫》（呈報對象為 CEO 暨經管會）。將企業目標拆解為五大策略支柱，其中<strong>策略支柱二「AI、資料與流程自動化」</strong>規劃了跨國製造湖倉貫通與智慧產線。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                在《大江生醫 8436》專案中，依據 TOGAF 框架繪製 <strong>32 全架構視圖</strong>（Phase A 願景、Phase B 業務架構、Phase C 數據與應用架構、Phase D 技術架構至 Phase H 治理變更）。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【實體驗證文件與工具】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><code>CEO_STRATEGIC_PLAN_2027.md</code>：18 頁 CEO 專屬決策簡報與 Run/Grow/Transform 預算表。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><code>TCI_8436_Howard_Architecture_32.drawio</code>：全視圖原生架構圖。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>管理層成熟度訪談題庫：涵蓋 COO 生產副總、CFO 財務長、海外總廠長等 30+ 題深度訪綱。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCOPE 2: Reusable Data Products & Platform -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 2</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">把零散應用做成可重複使用的資料產品與平台</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/8436" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/8436</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://howardliao.github.io/8436/" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Live 審閱入口</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>從「各自造輪子」到「平台共用中樞」</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>HowardRoute（多模型網關）</strong>：封裝 250+ 開源與閉源模型，提供單一相容 OpenAI API 的端點，內建 Smart Routing 自動分流演算法，依據 Query 複雜度派發模型，<strong>直接節省 20~40% Token 營運成本</strong>，具備毫秒級 Failover 熔斷備援。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>HowardAGent（企業任務中樞）</strong>：Agentic RAG（準確率 95%）、財務傳票與採購單 OCR 自動對齊、客服 Copilot，並透過 Apache APISIX + Keycloak 統一管制影子 API 與資安存取。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【可重複使用平台特徵】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>零程式碼重複</strong>：各業務單位只需呼叫標準 API，無須自行維護模型微調與部署管線。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>Token 與成本視覺化</strong>：內建計費與調用度量，為 C-Level 提供看得見的 ROI 與成本分攤數據。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>資安左移</strong>：防止敏感機密圖面與顧客資料直接暴露給公有雲端模型。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCOPE 3: Complementary AI Stack for SAP, PLM, MES -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 3</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">建立和 SAP、PLM、MES 互補的 AI stack</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/4163" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/4163</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://howardliao.github.io/4163/" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Live 專利/製造入口</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>「把 PLM、SAP、MES 串成一條數據流」（4163 實戰）</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>原則：先串資料，再談 AI；減少客製化技術債</strong>。PLM 設計變更自動同步 SAP 物料與 MES 現場工單，杜絕人工重複謄打與用錯 BOM 版本。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>雙環 Data Bus 數據總線（8436 實戰）</strong>：IT 骨幹（Kafka）＋ OT 機台訊號（EMQX MQTT）＋ <strong>Debezium SAP CDC</strong>（捕捉 SAP 即時數據異動），不對生產資料庫造成額外查詢負載，實現即時特徵工程入湖。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【精準直擊光寶當前製造痛點】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>替代料智能推薦（Part Substitution）</strong>：結合 PLM 規格參數庫與 SAP 即時庫存，在料況波動時由 AI 自動演算可行替代料並驗證相容性。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>齊套料動態規劃（Kit Readiness）</strong>：MES 工單開立前由 Agent 動態核對齊套率，未達臨界值不排產，防止產線半套停滯。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>跨國電子製造實績</strong>：曾於泓晏科技負責跨國電子製造數據整合，深入熟悉 EMS 產線與供應鏈節奏。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCOPE 4: AI Talent & Engineering Leadership -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 4</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">組建 AI 組織與人才梯隊，帶領 AI 技術主管與工程師</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/journey" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/journey</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://howardliao.github.io/journey/" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>Live 復盤門戶</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>《組織從零到一的降維突圍實戰報告》（真實戰場紀錄）</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                面對開國老臣山頭與強烈防禦心理（地位防衛、利益防衛、關係防衛），不強推高大上的教條，而是運用 <strong>ORID 焦點討論法與逆向提問</strong>，引導資深技術同仁共同「承認能力、同意問題、建立公平規則」。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                為後端、前端與資料工程師訂定 <strong>9 大技術發展路線（A~I）</strong>，並藉由「人才九宮格」突破資深主管單點壟斷，讓有潛力的技術工程師挑大樑並扛起核心 Feature KPI。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【人才梯隊建置成果】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>三大團隊引導</strong>：企劃營運組 (10人)、前端工程組 (9人)、後端與DBA組 (14人) 全員體系化賦能。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>標準化 JD</strong>：資深架構師與工程主管職務說明書（JD），能力量化可考評。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>高階組織憲章（6446）</strong>：制定 9~14 人 CISO/CIO/AI 架構團隊權責與量化 KPI。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCOPE 5: Business-Led Platform & PO Cultivation -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 5</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">推動業務主導的平台團隊與企業內部 PO 培養，帶動 AI 原生的工作方式</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/journey" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/journey</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://github.com/HowardLiao/4163" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/4163</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>從接單傳話筒轉型為「業務與技術對齊的內部 PO」</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>「三好一支援」工作坊</strong>：盤點業務企劃與現場生管的深層需求，解決「成熟產品沒事做、新專案天天救火」的結構性混亂。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                <strong>5 大構面「指標字典」</strong>：建立企劃、營運、行銷、介接、專案的共同度量，以「0.1% DAU 對賭打平團隊成本」的露骨商業算盤爭取沙盒快跑，讓業務負責人學會用商業價值引領平台開發。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【Departmental AI 落地推動法】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>主管先學、資訊部先試、有成效再擴散</strong>：杜絕自嗨型 AI，直接鎖定業務部門真實痛點。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>四大部門專屬課題</strong>：生產（製程知識庫問答）、品保（影像輔助判讀/客訴分析）、業務（規格比對與報價）、管理（制度與法規精準應答）。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCOPE 6: Regular C-Level / BU Reporting -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 hover:border-amber-500/40 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-black font-extrabold text-xs">工作內容 6</span>
+              <h4 class="text-base sm:text-lg font-bold text-white">定期向高階主管與事業單位主管報告成效</h4>
+            </div>
+            <div class="flex items-center space-x-2">
+              <a href="https://github.com/HowardLiao/RSI" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>HowardLiao/RSI</span>
+              </a>
+              <span class="text-zinc-600">|</span>
+              <a href="https://howardliao.github.io/portfolio/" target="_blank" class="text-xs text-blue-400 hover:underline flex items-center space-x-1">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>作品集 Live</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm text-zinc-300">
+            <div class="space-y-2">
+              <div class="font-semibold text-amber-300 flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                <span>用 C-Level 懂的語言（EBITDA、ROI、TCO）報告進度</span>
+              </div>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                不講技術黑話。在《RSI》中建立 <strong>CEO Balanced Scorecard</strong> 與一頁式決策審核表（One-Page Decision Sheet），每季以平準化里程碑（總部築底 -> 示範廠攻堅 -> 跨國工廠複製 -> 集團收官）向事業主管與董事會透明報告。
+              </p>
+              <p class="text-zinc-400 leading-relaxed text-xs">
+                在《4163》推動「四大立竿見影場景」：首波上線 1 週內以量化效益報告交付跨部門主管（如財務發票 OCR 辨識對齊 SAP 採購單工時 -75%、智慧法規知識問答初次解決率 +40%），迅速爭取組織信任。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+              <div class="text-xs font-mono text-zinc-400">【成效回報機制矩陣】</div>
+              <ul class="text-xs space-y-1.5 text-zinc-300">
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>月度戰情報告</strong>：各事業部（BU）Token 成本效益與自動化工時省減排行榜。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>季度經管會審查</strong>：S/4HANA 整合進度、替代料庫存優化率、製程良率回歸曲線。</span></li>
+                <li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><strong>年度 IT 投資盤點</strong>：Run/Grow/Transform 三向資源實際支出與原預算差異分析。</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 4: ARCHITECTURE BLUEPRINT (SAP + MES) -->
+    <!-- ========================================== -->
+    <section id="erp-mes-stack" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="cpu" class="w-6 h-6 text-amber-400"></i>
+            <span>光寶次世代 AI Stack：與 SAP S/4HANA、PLM、MES 互補技術拓撲</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            基於 8436 與 4163 實戰架構，實現「讓 ERP 更 AI，在製造端主動判斷」
+          </p>
+        </div>
+        <span class="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 hidden sm:inline-block">
+          Architecture Blueprint
+        </span>
+      </div>
+
+      <!-- Interactive 4-Layer Architecture Diagram -->
+      <div class="card-glass p-6 sm:p-8 rounded-3xl border border-zinc-800 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Layer 1: Edge & OT Layer -->
+          <div class="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-3">
+            <div class="text-xs font-bold text-blue-400 flex items-center justify-between">
+              <span>Layer 1: OT 製造現場</span>
+              <i data-lucide="factory" class="w-4 h-4"></i>
+            </div>
+            <div class="text-sm font-bold text-white">112 座工廠與機台邊緣</div>
+            <p class="text-[11px] text-zinc-400">
+              SMT 產線、AOI 光學檢測、CNC 機台、HMI 控制器、RFID 批號追溯。
+            </p>
+            <div class="p-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-[10px] font-mono text-zinc-300">
+              EMQX MQTT Broker<br>Air-Gapped 實體分區隔離
+            </div>
+          </div>
+
+          <!-- Layer 2: Core Data Bus -->
+          <div class="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-3">
+            <div class="text-xs font-bold text-amber-400 flex items-center justify-between">
+              <span>Layer 2: 雙環 Data Bus</span>
+              <i data-lucide="repeat" class="w-4 h-4"></i>
+            </div>
+            <div class="text-sm font-bold text-white">即時數據總線中樞</div>
+            <p class="text-[11px] text-zinc-400">
+              無縫捕獲 SAP S/4HANA、MES 工單與 PLM BOM 異動，零資料庫查詢負載。
+            </p>
+            <div class="p-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-[10px] font-mono text-zinc-300">
+              Debezium SAP CDC<br>Apache Kafka 骨幹串流
+            </div>
+          </div>
+
+          <!-- Layer 3: AI Engine & Model Gate -->
+          <div class="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-3">
+            <div class="text-xs font-bold text-purple-400 flex items-center justify-between">
+              <span>Layer 3: AI 決策中樞</span>
+              <i data-lucide="bot" class="w-4 h-4"></i>
+            </div>
+            <div class="text-sm font-bold text-white">HowardRoute & Pro</div>
+            <p class="text-[11px] text-zinc-400">
+              替代料推演演算法、齊套料即時比對、工單排程優化引擎、AutoML 參數推薦。
+            </p>
+            <div class="p-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-[10px] font-mono text-zinc-300">
+              OpenAI 相容網關 (0% Markup)<br>Domain Twin 製造虛擬代理
+            </div>
+          </div>
+
+          <!-- Layer 4: Enterprise Applications -->
+          <div class="p-5 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-3">
+            <div class="text-xs font-bold text-emerald-400 flex items-center justify-between">
+              <span>Layer 4: 業務與決策端</span>
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            </div>
+            <div class="text-sm font-bold text-white">S/4HANA 閉環回填</div>
+            <p class="text-[11px] text-zinc-400">
+              生管排程自動調整、採購異常預警、總部與 86 家子公司全球戰情室決策。
+            </p>
+            <div class="p-2.5 rounded-lg bg-zinc-950 border border-zinc-800 text-[10px] font-mono text-zinc-300">
+              SAP S/4HANA 標準 API<br>MES 工單狀態雙向閉環
+            </div>
+          </div>
+        </div>
+
+        <!-- Practical Flow Highlight -->
+        <div class="p-4 rounded-2xl bg-zinc-950/70 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm shrink-0">
+              !
+            </div>
+            <div class="text-zinc-300">
+              <strong class="text-white">光寶架構核心原則：</strong>先串資料，再談 AI。減少 SAP 客製化技術債，將繁重運算與多模態推論移往 AI 專屬微服務層，維持核心 ERP 升級穩定性與升級相容性。
+            </div>
+          </div>
+          <div class="text-amber-400 font-mono text-[11px] shrink-0">
+            符合 FDA / ISO 42001 / ALCOA+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 5: REQUIREMENTS & QUALIFICATIONS   -->
+    <!-- ========================================== -->
+    <section id="qualifications" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="check-square" class="w-6 h-6 text-emerald-400"></i>
+            <span>必要條件與加分條件自檢核定表</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            光寶官方職缺所有必要與加分條件，逐條匹配並附實體驗證連結
+          </p>
+        </div>
+      </div>
+
+      <div class="card-glass rounded-3xl overflow-hidden border border-zinc-800">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-zinc-900/90 text-zinc-400 border-b border-zinc-800 text-[11px] font-mono uppercase tracking-wider">
+              <tr>
+                <th class="p-4">條件類別</th>
+                <th class="p-4">光寶科技官方條件</th>
+                <th class="p-4">Howard Liao Ph.D. 具體履歷與成果</th>
+                <th class="p-4 text-center">查核結果</th>
+                <th class="p-4">GitHub 關聯倉庫</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-800/60 text-zinc-300">
+              <!-- Mandatory 1 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-amber-400">必要條件 1</td>
+                <td class="p-4 font-medium text-white">學歷、產業背景不限</td>
+                <td class="p-4">
+                  <strong>資訊管理博士 (Ph.D.)</strong> ＆ <strong>國立中興大學 資訊科學碩士</strong>。具備完整的電腦科學演算法與企業管理雙重學養。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">100% 符合</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/portfolio/" target="_blank" class="text-blue-400 hover:underline">portfolio</a></td>
+              </tr>
+              <!-- Mandatory 2 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-amber-400">必要條件 2</td>
+                <td class="p-4 font-medium text-white">10 年以上帶領 AI／資料團隊經驗</td>
+                <td class="p-4">
+                  <strong>27+ 年 IT & 工程經驗、20+ 年 C-Level 管理歷練</strong>。長期領導資料工程師、AI 研發團隊與跨國系統架構師，經歷軟體、跨國製造與雲端多次技術典範轉移。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">遠超 10 年</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/Howard_CISO/" target="_blank" class="text-blue-400 hover:underline">Howard_CISO</a></td>
+              </tr>
+              <!-- Mandatory 3 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-amber-400">必要條件 3</td>
+                <td class="p-4 font-medium text-white">主導 AI 平台或產品上線並交出可量化成果</td>
+                <td class="p-4">
+                  首頁 4 大 C-Level 商業衝擊量化背書：<strong>0M+ 資本治理、100% Zero Outage、-30% TCO、+100% 部署速度</strong>。自研 HowardRoute（Token 節省 20~40%）、Agentic RAG（95% 準確率）。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">數據完全查核</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/8436/" target="_blank" class="text-blue-400 hover:underline">8436</a></td>
+              </tr>
+              <!-- Bonus 1 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-blue-400">加分條件 1</td>
+                <td class="p-4 font-medium text-white">從零建立 AI／資料平台與團隊經驗</td>
+                <td class="p-4">
+                  《組織從零到一的降維突圍實戰報告》（）：詳實記載破除開國老臣山頭防衛、組建 35+ 人平台與研發梯隊，從混亂隕石開發走向制度閉環與平台交付。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">實戰驗證</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/journey/" target="_blank" class="text-blue-400 hover:underline">journey</a></td>
+              </tr>
+              <!-- Bonus 2 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-blue-400">加分條件 2</td>
+                <td class="p-4 font-medium text-white">具備與 C Level 或 高階主管溝通能力</td>
+                <td class="p-4">
+                  長期向董事會、CEO、審計委員會、COO 呈報策略與投資規劃。擅長將複雜演算法翻譯為 EBITDA 衝擊、ROI 與合規防線。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">100% 符合</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/RSI/" target="_blank" class="text-blue-400 hover:underline">RSI</a></td>
+              </tr>
+              <!-- Bonus 3 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-blue-400">加分條件 3</td>
+                <td class="p-4 font-medium text-white">具備 CIO 或 IT 部門主管經驗</td>
+                <td class="p-4">
+                  曾任<strong>上市櫃科技娛樂集團 (6542.TWO) CIO / CISO / CDAIO</strong>、<strong>鴻海中央資訊技術處長</strong>（主責企業架構決策、SWOT差距分析、商業戰略轉譯、數位轉型計畫）。
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">完整 CIO 履歷</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/6446/" target="_blank" class="text-blue-400 hover:underline">6446</a></td>
+              </tr>
+              <!-- Bonus 4 -->
+              <tr class="hover:bg-zinc-900/40 transition">
+                <td class="p-4 font-bold text-blue-400">加分條件 4</td>
+                <td class="p-4 font-medium text-white">國內大型企業數位轉型專案推動經驗</td>
+                <td class="p-4">
+                  • 跨國電子製造業：泓晏科技數據整合<br>
+                  • 跨國機能成衣巨擘：信源全球 (RSI) 2027 策略藍圖<br>
+                  • 醫療器材精密製造：鐿鈦科技 (4163) PLM/SAP/MES 整合<br>
+                  • 全球生醫研發製造：大江生醫 (8436) 全架構治理
+                </td>
+                <td class="p-4 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">跨產業實績</span></td>
+                <td class="p-4"><a href="https://howardliao.github.io/4163/" target="_blank" class="text-blue-400 hover:underline">4163</a> / RSI</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 6: HOWARD PROFILE & TRACK RECORD   -->
+    <!-- ========================================== -->
+    <section id="profile" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="user-check" class="w-6 h-6 text-amber-400"></i>
+            <span>個人資歷與核心經歷 (Howard Liao Ph.D.)</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            客觀可查證之學歷、職歷與重大里程碑（嚴格保護特定隱私項目）
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Left: Education & Credentials -->
+        <div class="card-glass p-6 rounded-2xl border border-zinc-800 space-y-4">
+          <h4 class="text-base font-bold text-white flex items-center space-x-2 border-b border-zinc-800 pb-2">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-400"></i>
+            <span>學歷與專業認證</span>
+          </h4>
+          <div class="space-y-3 text-xs">
+            <div>
+              <div class="font-bold text-white">資訊管理博士 (Ph.D.)</div>
+              <div class="text-zinc-400">Ph.D. in Information Management</div>
+            </div>
+            <div>
+              <div class="font-bold text-white">國立中興大學 資訊科學碩士</div>
+              <div class="text-zinc-400">National Chung Hsing University · M.S. in Computer Science</div>
+            </div>
+            <div class="pt-2 border-t border-zinc-800/80 space-y-1.5">
+              <div class="text-zinc-400 font-mono">【核心國際資格】</div>
+              <div class="text-zinc-300">• ISO/IEC 27001 Lead Auditor 主導稽核員</div>
+              <div class="text-zinc-300">• ISO/IEC 42001 AI 管理系統標準實務</div>
+              <div class="text-zinc-300">• 專案管理師 (PMP) 規範實務</div>
+              <div class="text-zinc-300">• 金管會 GenAI 核心指引與合規治理</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle & Right: Key Roles & Highlights (2 Cols) -->
+        <div class="md:col-span-2 card-glass p-6 rounded-2xl border border-zinc-800 space-y-4">
+          <h4 class="text-base font-bold text-white flex items-center space-x-2 border-b border-zinc-800 pb-2">
+            <i data-lucide="briefcase" class="w-4 h-4 text-amber-400"></i>
+            <span>代表性高階職歷與戰略成果</span>
+          </h4>
+          
+          <div class="space-y-4 text-xs sm:text-sm">
+            <!-- Foxconn -->
+            <div class="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm">鴻海科技集團（Foxconn）</span>
+                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-mono">中央資訊 技術處長</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                主責大型企業架構決策、SWOT 差距分析、商業戰略轉譯與集團數位轉型推動。奠定超大型製造網絡與供應鏈複雜架構之頂層設計思維。
+              </p>
+            </div>
+
+            <!-- 6542 -->
+            <div class="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm">上市櫃數位科技與娛樂集團 (6542.TWO)</span>
+                <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-mono">資訊長 CIO / CISO / CDAIO</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                全面掌管集團技術戰略、跨國多雲架構、高併發交易防護與 ISO 27001 資安認證；創下 100% Zero Outage 紀錄，降低 30% 基礎設施持有成本。
+              </p>
+            </div>
+
+            <!-- Shenxin / SX -->
+            <div class="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm">盛欣網絡科技 (SX)</span>
+                <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px] font-mono">技術副總 VP of Technology</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                主導研發團隊敏捷轉型，從零建立 Agentic AI 落地體系、建立產品 PO 制度、導入內控交易循環與 ISO 42001 人工智慧治理體系。
+              </p>
+            </div>
+
+            <!-- Industry Advisory -->
+            <div class="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm">高階製造與生醫產業 企業資訊架構執行顧問</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-mono">C-Level Lead Architect</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                主導信源全球 (RSI) 2027 IT 策略藍圖、鐿鈦科技 (4163) PLM/SAP/MES 整合藍圖、大江生醫 (8436) 企業資訊策略與 32 全架構視圖設計。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 7: ONBOARDING ROADMAP (30/60/90/180) -->
+    <!-- ========================================== -->
+    <section id="roadmap" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="milestone" class="w-6 h-6 text-amber-400"></i>
+            <span>到任光寶 180 天落地行動計畫（對齊 2027/01/04 S/4HANA 上線）</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            倒排工期、步步為營，在不干擾 ERP 核心升級的前提下，將 AI Stack 穩健推向製造現場
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- 30 Days -->
+        <div class="card-glass p-5 rounded-2xl border border-zinc-800 space-y-3">
+          <div class="text-xs font-mono font-bold text-amber-400">DAY 01 ~ DAY 30</div>
+          <h4 class="text-base font-bold text-white">傾聽訪談與深度盤點</h4>
+          <ul class="text-xs text-zinc-400 space-y-2">
+            <li>• 訪談資訊長李逢堉、事業部主管與海外示範廠廠長。</li>
+            <li>• 深入盤點 SAP ECC 歷史技術債與 S/4HANA 升級介接端點。</li>
+            <li>• 盤查 112 座工廠之 MES、PLM 與產線感測器孤島現況。</li>
+          </ul>
+          <div class="pt-2 border-t border-zinc-800 text-[11px] text-zinc-300 font-medium">
+            交付：光寶 AI 現況盤點與痛點診斷報告
+          </div>
+        </div>
+
+        <!-- 60 Days -->
+        <div class="card-glass p-5 rounded-2xl border border-zinc-800 space-y-3">
+          <div class="text-xs font-mono font-bold text-amber-400">DAY 31 ~ DAY 60</div>
+          <h4 class="text-base font-bold text-white">藍圖確定與試點挑選</h4>
+          <ul class="text-xs text-zinc-400 space-y-2">
+            <li>• 發表「光寶次世代 AI 平台拓撲藍圖 (TOGAF BDAT)」。</li>
+            <li>• 選定首波立竿見影場景（如：替代料智慧推薦、齊套料即時預警）。</li>
+            <li>• 成立第一期「平台試驗沙盒組」，招募首批業務 PO。</li>
+          </ul>
+          <div class="pt-2 border-t border-zinc-800 text-[11px] text-zinc-300 font-medium">
+            交付：AI 平台架構藍圖 ＆ 首波 POC 規格書
+          </div>
+        </div>
+
+        <!-- 90 Days -->
+        <div class="card-glass p-5 rounded-2xl border border-zinc-800 space-y-3">
+          <div class="text-xs font-mono font-bold text-amber-400">DAY 61 ~ DAY 90</div>
+          <h4 class="text-base font-bold text-white">示範廠貫通與 POC 驗收</h4>
+          <ul class="text-xs text-zinc-400 space-y-2">
+            <li>• 部署雙環 Data Bus（Kafka + Debezium CDC + EMQX MQTT）。</li>
+            <li>• 於示範工廠完成 MES 與 AI 模型即時推理串接。</li>
+            <li>• 首波 POC 上線，驗證替代料推薦準確度與生管工時節省。</li>
+          </ul>
+          <div class="pt-2 border-t border-zinc-800 text-[11px] text-zinc-300 font-medium">
+            交付：首批 POC 量化經濟效益回報（1 週見成果）
+          </div>
+        </div>
+
+        <!-- 180 Days -->
+        <div class="card-glass p-5 rounded-2xl border border-zinc-800 space-y-3">
+          <div class="text-xs font-mono font-bold text-amber-400">DAY 91 ~ DAY 180</div>
+          <h4 class="text-base font-bold text-white">S/4HANA 閉環與規模複製</h4>
+          <ul class="text-xs text-zinc-400 space-y-2">
+            <li>• 對齊 2027/01/04 全球 S/4HANA 上線，正式掛載 AI 網關中樞。</li>
+            <li>• 啟動製造執行系統（MES）工單全自動智慧派工閉環。</li>
+            <li>• 建立全集團 AI Token 計費分攤與持續訓練機制。</li>
+          </ul>
+          <div class="pt-2 border-t border-zinc-800 text-[11px] text-zinc-300 font-medium">
+            交付：光寶集團可重複使用 AI 平台正式投產
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 8: GITHUB ALL-IN-ONE REPO EXPLORER -->
+    <!-- ========================================== -->
+    <section id="repos" class="space-y-6 scroll-mt-20">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="folder-git-2" class="w-6 h-6 text-amber-400"></i>
+            <span>HowardLiao GitHub 關聯工程倉庫全景導引</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+            點擊可直接跳轉至各專案倉庫原始碼或線上展示戰情室
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+        <!-- Repo 1: 8436 -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/8436</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-amber-400 text-[10px]">AI 平台與架構</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            HowardRoute 多模型調度網關、HowardAGent、HowardPro 工業預測大腦、32 全架構視圖。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/8436" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/8436/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+
+        <!-- Repo 2: 4163 -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/4163</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-blue-400 text-[10px]">PLM・SAP・MES</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            把 PLM、SAP、MES 串成一條數據流；Departmental AI 普及法；四大立竿見影場景。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/4163" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/4163/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+
+        <!-- Repo 3: RSI -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/RSI</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-purple-400 text-[10px]">CEO 戰略與投資</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            信源全球 2027 IT 策略白皮書、18 頁 CEO 簡報、AI Use Case & ROI 模型、跨國湖倉貫通。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/RSI" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/RSI/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+
+        <!-- Repo 4: journey -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/journey</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-emerald-400 text-[10px]">組織與 PO 培養</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            組織從零到一降維突圍實戰、ORID 化解老臣防衛、9 大技術階梯、三好一支援工作坊。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/journey" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/journey/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+
+        <!-- Repo 5: 6446 -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/6446</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-rose-400 text-[10px]">高階資安與合規</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            藥華醫藥戰情專區、ISO 42001 人工智慧治理、CIO/CTO/CISO 權責章程與量化 KPI。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/6446" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/6446/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+
+        <!-- Repo 6: Howard_CISO & portfolio -->
+        <div class="card-glass p-4 rounded-xl border border-zinc-800 space-y-2 hover:border-amber-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="font-mono font-bold text-white text-sm">HowardLiao/portfolio</span>
+            <span class="px-2 py-0.5 rounded bg-zinc-800 text-amber-400 text-[10px]">高管主作品集</span>
+          </div>
+          <p class="text-zinc-400 text-[11px]">
+            Howard Liao Ph.D. 全球數位作品集，記載 4 大 C-Level 商業衝擊量化數據與完整學經歷。
+          </p>
+          <div class="pt-2 flex items-center justify-between">
+            <a href="https://github.com/HowardLiao/portfolio" target="_blank" class="text-zinc-400 hover:text-white flex items-center space-x-1"><i data-lucide="github" class="w-3.5 h-3.5"></i><span>Repo</span></a>
+            <a href="https://howardliao.github.io/portfolio/" target="_blank" class="text-blue-400 hover:underline flex items-center space-x-1"><i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Live Demo</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky Mobile Bottom Navigation (Hand-Friendly for Mobile) -->
+  <div id="bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-zinc-950/95 border-t border-zinc-800 backdrop-blur-md px-2 py-2 flex items-center justify-around text-[10px] text-zinc-400 no-print">
+    <a href="#hero" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="home" class="w-4 h-4"></i>
+      <span>首頁</span>
+    </a>
+    <a href="#strategy" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="target" class="w-4 h-4"></i>
+      <span>光寶脈絡</span>
+    </a>
+    <a href="#capabilities" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="git-branch" class="w-4 h-4"></i>
+      <span>職能對照</span>
+    </a>
+    <a href="#erp-mes-stack" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="cpu" class="w-4 h-4"></i>
+      <span>AI Stack</span>
+    </a>
+    <a href="#qualifications" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="check-square" class="w-4 h-4"></i>
+      <span>條件查核</span>
+    </a>
+    <a href="#profile" class="flex flex-col items-center space-y-1 hover:text-amber-400">
+      <i data-lucide="user" class="w-4 h-4"></i>
+      <span>個人資歷</span>
+    </a>
+  </div>
+
+  <!-- Floating Action Button (FAB) for Low-Friction Connection (Memory Rule) -->
+  <div id="fab-container" class="fixed bottom-16 md:bottom-8 right-4 md:right-8 z-40 no-print flex flex-col items-end space-y-2">
+    <!-- Quick Contact Popup (Hidden by Default) -->
+    <div id="fab-menu" class="hidden card-glass p-3 rounded-2xl border border-zinc-800 shadow-2xl space-y-2 mb-2 w-56 text-xs transition-all duration-300">
+      <div class="text-[11px] font-bold text-amber-400 border-b border-zinc-800 pb-1.5 flex items-center justify-between">
+        <span>高管直連快速對接</span>
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+      </div>
+      <button onclick="copyText('liao.howard@gmail.com', '已複製 Email 郵件地址'); toggleFab();" class="w-full text-left p-2 rounded-lg hover:bg-zinc-800/80 flex items-center justify-between text-zinc-300 hover:text-white transition">
+        <span class="truncate">liao.howard@gmail.com</span>
+        <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400 shrink-0"></i>
+      </button>
+      <button onclick="copyText('howardliao', '已複製 LINE ID'); toggleFab();" class="w-full text-left p-2 rounded-lg hover:bg-zinc-800/80 flex items-center justify-between text-zinc-300 hover:text-white transition">
+        <span>LINE: howardliao</span>
+        <i data-lucide="copy" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+      </button>
+      <a href="assets/Howard_Liao_PhD_CV.pdf" download class="w-full text-left p-2 rounded-lg hover:bg-zinc-800/80 flex items-center justify-between text-zinc-300 hover:text-white transition">
+        <span>下載高階履歷 (PDF)</span>
+        <i data-lucide="download" class="w-3.5 h-3.5 text-blue-400 shrink-0"></i>
+      </a>
+      <a href="https://howardliao.github.io/portfolio/" target="_blank" class="w-full text-left p-2 rounded-lg hover:bg-zinc-800/80 flex items-center justify-between text-zinc-300 hover:text-white transition">
+        <span>前往線上完整作品集</span>
+        <i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400 shrink-0"></i>
+      </a>
+    </div>
+
+    <!-- Main FAB Trigger -->
+    <button onclick="toggleFab()" class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold flex items-center justify-center shadow-lg shadow-amber-500/30 transition-transform active:scale-95">
+      <i data-lucide="message-square" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <!-- Toast Notification Message -->
+  <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-black px-4 py-2 rounded-full font-bold text-xs shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 flex items-center space-x-2">
+    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+    <span id="toast-msg">已複製到剪貼簿</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-800/80 py-8 bg-zinc-950/60 text-center text-xs text-zinc-500 space-y-2 mb-12 md:mb-0">
+    <div>
+      © 2026 <strong>Howard Liao Ph.D. (廖倫豪 博士)</strong> ｜ 專為光寶科技 (2301.TW) 高階主管與獵頭審查訂製
+    </div>
+    <div class="text-[11px] text-zinc-600">
+      遵循 ISO/IEC 42001 人工智慧治理體系 ＆ ISO/IEC 27001 資訊安全管理標準 ｜ 未經授權請勿轉載
+    </div>
+  </footer>
+
+  <!-- Scripts: Theme, Counter, FAB, Toast, PWA -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => {
+          console.log('SW registration failed:', err);
+        });
+      });
+    }
+
+    // PWA Install Event Handler
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const banner = document.getElementById('pwa-banner');
+      if (banner) banner.classList.remove('hidden');
+    });
+
+    const installBtn = document.getElementById('pwa-install-btn');
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            document.getElementById('pwa-banner').style.display = 'none';
+          }
+          deferredPrompt = null;
+        }
+      });
+    }
+
+    // Theme Switcher Logic (Deep Obsidian, Egyptian Pharaoh, Milan Warm Amber)
+    const themes = ['theme-obsidian', 'theme-pharaoh', 'theme-milan'];
+    let currentThemeIdx = 0;
+
+    function cycleTheme() {
+      const html = document.documentElement;
+      themes.forEach(t => html.classList.remove(t));
+      currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+      const newTheme = themes[currentThemeIdx];
+      html.classList.add(newTheme);
+
+      if (newTheme === 'theme-milan') {
+        html.classList.remove('dark');
+      } else {
+        html.classList.add('dark');
+      }
+
+      showToast("已切換至風格: " + newTheme.replace("theme-", "").toUpperCase());
+    }
+
+    // Font Sizing Logic
+    function setFontSize(sizeClass) {
+      const html = document.documentElement;
+      html.classList.remove('font-sm', 'font-md', 'font-lg');
+      html.classList.add(sizeClass);
+      showToast("已切換至風格: " + newTheme.replace("theme-", "").toUpperCase());
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    // FAB Toggle
+    function toggleFab() {
+      const menu = document.getElementById('fab-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Toast Notification & Clipboard Copy
+    function copyText(text, msg) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(msg || '已複製到剪貼簿');
+      }).catch(() => {
+        showToast('複製失敗，請手動複製');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2200);
+    }
+
+    // Bento Counter Jump Animation (Memory Standard)
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 1200;
+        const step = target / (duration / 25);
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            counter.innerText = target;
+            clearInterval(timer);
+          } else {
+            counter.innerText = Math.floor(current);
+          }
+        }, 25);
+      });
+    }
+
+    // Trigger Counter Animation on Page Load
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounters();
+    });
+  </script>
+</body>
+</html>

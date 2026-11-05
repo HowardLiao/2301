@@ -1,0 +1,20 @@
+{
+  "name": "Howard Liao Ph.D. | 光寶科技 (2301) 全球 AI 策略與平台演進藍圖",
+  "short_name": "LITEON AI 2301",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0c0a09",
+  "theme_color": "#0c0a09",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
