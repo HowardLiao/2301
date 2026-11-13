@@ -2,13 +2,18 @@
 # -*- coding: utf-8 -*-
 """
 generate_exhaustive_enterprise_dossier.py
-Builds an exhaustive, publication-grade enterprise architecture dossier and HTML portal
-FULLY HARMONIZED WITH LITEON MAIN SITE DESIGN SYSTEM (Milan Warm Amber / Egyptian Pharaoh):
-- Exact same palette: --bg (#FAF7F2), --green (#2F4538), --gold (#C8A96A), --line (#B8AFA3), --card (#FFFFFF).
+Builds an interactive, publication-grade enterprise architecture dossier and HTML portal
+STRICTLY HARMONIZED WITH LITEON MAIN SITE (Milan Warm Amber / Egyptian Pharaoh Style):
+- 100% interactive diagrams and cards: Click to inspect details (點圖出現說明).
+- Dual interactive top cards:
+  1. 7 Core Mandates (interactive stack)
+  2. Howard Security 4 Pillars (interactive stack)
+- Interactive 5 SVG Architecture Blueprints:
+  Every layer and component is clickable with a live Dynamic Component Inspector.
+- Milan Warm Amber design tokens: --bg (#FAF7F2), --green (#2F4538), --gold (#C8A96A), --line (#B8AFA3), --card (#FFFFFF).
 - Shared dark-mode toggle (prefers-color-scheme & data-theme="dark" with localStorage sync).
-- Identical sticky header navigation with 6 categorized dropdowns and LITEON brand mark.
-- High-contrast blueprint console for the 5 SVG diagrams with touch-friendly 100% zoom/pan mode.
-- Milan-style responsive tables, SOP cards, and mobile floating dock.
+- Repeating Howard Liao Ph.D. watermark matching index.html.
+- Mobile friendly with touch-optimized ergonomics and floating dock.
 - Zero vendor/client specific branding.
 - Authored by Howard Liao Ph.D.
 
@@ -41,7 +46,7 @@ def build_dossier():
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <meta name="robots" content="noindex, nofollow">
 <title>企業級 AI 平台 ＆ Howard 資安前瞻戰略全域工程白皮書｜廖倫豪 博士</title>
-<meta name="description" content="致光寶科技董事長暨資訊長：企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書，包含 5 大高解析向量架構圖、參數字典與合規矩陣。">
+<meta name="description" content="致光寶科技董事長暨資訊長：企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書，包含 5 大高解析向量互動架構圖、參數字典與合規矩陣。">
 <meta name="theme-color" content="#2F4538">
 <style>
   :root {{
@@ -99,16 +104,36 @@ def build_dossier():
     font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
     line-height: 1.75;
     font-size: 16px;
+    position: relative;
   }}
   .serif {{ font-family: "Cormorant Garamond", Georgia, serif; }}
   a {{ color: var(--green); text-decoration: none; }}
   a:hover {{ text-decoration: underline; }}
 
+  /* Repeating Watermark matching index.html */
+  body::before {{
+    content: "Howard Liao Ph.D.  ";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 26px;
+    color: var(--gold);
+    opacity: 0.055;
+    line-height: 150px;
+    letter-spacing: 25px;
+    transform: rotate(-22deg);
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: hidden;
+  }}
+
   /* Sticky Header Navigation matching index.html */
   header.nav {{
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 100;
     background: color-mix(in srgb, var(--bg) 92%, transparent);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
@@ -236,6 +261,8 @@ def build_dossier():
     max-width: 1280px;
     margin: auto;
     padding: 30px 16px 80px;
+    position: relative;
+    z-index: 1;
   }}
 
   /* Milan Warm Amber Header Card */
@@ -317,47 +344,107 @@ def build_dossier():
     min-height: 44px;
   }}
 
-  /* High Level Grids */
-  .grid-2 {{
+  /* Interactive Top Section Grid */
+  .interactive-deck-grid {{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
     margin-bottom: 24px;
   }}
-  .card {{
+  .interactive-deck-card {{
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 24px;
+    padding: 22px;
     box-shadow: 0 4px 16px rgba(43,43,43,0.04);
+    display: flex;
+    flex-direction: column;
   }}
-  .card-header {{
+  .deck-header {{
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid var(--label);
+    justify-content: space-between;
+    margin-bottom: 12px;
     padding-bottom: 10px;
+    border-bottom: 1px solid var(--label);
   }}
-  .card-header h3 {{
+  .deck-header h3 {{
     margin: 0;
     font-size: 17px;
     font-weight: 700;
     color: var(--green);
   }}
-  .tag {{
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  .deck-hint {{
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
   }}
-  .tag-green {{ background: var(--label); color: var(--green); }}
-  .tag-gold {{ background: var(--alt); color: var(--gold); border: 1px solid var(--gold); }}
 
-  ul {{ margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink); }}
-  li {{ margin-bottom: 8px; line-height: 1.6; }}
-  li b {{ color: var(--green); }}
+  /* Clickable Pills & Stack Layer List */
+  .interactive-layers {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    margin-bottom: 14px;
+  }}
+  .layer-btn {{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--line);
+    background: var(--card-inner);
+    padding: 9px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    transition: all 0.2s ease;
+  }}
+  .layer-btn b {{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
+    color: var(--gold);
+  }}
+  .layer-btn:hover {{
+    background: var(--label);
+    color: var(--green);
+  }}
+  .layer-btn.on {{
+    background: var(--green);
+    color: var(--bg);
+    border-color: var(--green2);
+  }}
+  .layer-btn.on b {{
+    color: var(--gold);
+  }}
+
+  /* Dynamic Detail Box */
+  .detail-box {{
+    background: var(--card-inner);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--gold);
+    animation: fadeIn 0.25s ease;
+    flex: 1;
+  }}
+  .detail-box .eyebrow {{
+    margin-bottom: 4px;
+  }}
+  .detail-box h4 {{
+    margin: 0 0 10px 0;
+    color: var(--green);
+    font-size: 16px;
+  }}
+  .detail-box p {{
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+  }}
 
   /* Interactive Tab System with Mobile Ergonomics */
   .tab-system-card {{
@@ -455,18 +542,18 @@ def build_dossier():
     border-color: var(--green2);
   }}
   .diagram-hint {{
-    font-size: 12px;
-    color: var(--mute);
-    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--green);
+    font-weight: 700;
   }}
 
   /* Diagram Scroll Container */
   .diagram-scroll-container {{
-    background: #0B0F17; /* High-contrast technical console */
+    background: #0B0F17; /* High-contrast blueprint console */
     border: 1px solid var(--line);
     border-radius: 0 0 10px 10px;
     padding: 16px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
@@ -483,121 +570,109 @@ def build_dossier():
     width: 1100px;
   }}
 
-  /* Section Styling inside tabs */
-  .spec-section {{
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--label);
+  /* Interactive Component Inspector Panel */
+  .inspector-card {{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 18px 0 26px 0;
+    box-shadow: 0 6px 20px rgba(43,43,43,0.06);
+    animation: fadeIn 0.25s ease;
   }}
-  .spec-section h2 {{
-    font-size: 21px;
-    font-weight: 800;
-    color: var(--green);
-    margin: 0 0 12px 0;
+  .ins-header {{
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--label);
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
     gap: 10px;
   }}
-  .spec-section h3 {{
-    font-size: 17px;
+  .ins-header-main {{ flex: 1; }}
+  .ins-layer-badge {{
+    font-size: 12px;
     font-weight: 700;
+    text-transform: uppercase;
     color: var(--gold);
-    margin: 24px 0 10px 0;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+    display: block;
+    font-family: "Cormorant Garamond", serif;
   }}
-  .spec-desc {{
-    font-size: 15px;
-    color: var(--mute);
-    margin-bottom: 16px;
+  .ins-header h3 {{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green);
+  }}
+  .ins-tag {{
+    font-size: 11.5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--label);
+    color: var(--green);
+    font-weight: 700;
   }}
 
-  /* Responsive Table Container matching index.html */
-  .table-hint {{
+  .ins-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }}
+  .ins-col {{
+    background: var(--card-inner);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }}
+  .ins-col h4 {{
+    margin: 0 0 6px 0;
+    font-size: 13.5px;
+    color: var(--gold);
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 12px;
-    color: var(--brick);
-    margin-bottom: 6px;
-    font-weight: 600;
-  }}
-  .table-container {{
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-    border: 1px solid var(--line);
-    margin: 8px 0 24px 0;
-    background: var(--card);
-  }}
-  .styled-table {{
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 720px;
-  }}
-  .styled-table thead tr {{
-    background: var(--green);
-    color: var(--bg);
-    text-align: left;
-    font-weight: 600;
-  }}
-  ::root[data-theme="dark"] .styled-table thead tr {{
-    color: #1C211E;
-  }}
-  .styled-table th, .styled-table td {{
-    padding: 12px 14px;
-    border: 1px solid var(--line);
-    vertical-align: top;
-  }}
-  .styled-table tr:nth-child(even) td {{
-    background: var(--alt);
-  }}
-  .styled-table tbody tr:hover td {{
-    background: var(--label);
-  }}
-  .code-badge {{
-    font-family: monospace;
-    font-size: 12px;
-    background: var(--label);
-    padding: 2px 6px;
-    border-radius: 4px;
-    color: var(--green);
-    font-weight: 600;
-  }}
-
-  /* SOP Grid matching index.html */
-  .sop-grid {{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-    margin: 18px 0;
-  }}
-  .sop-card {{
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--gold);
-    border-radius: 8px;
-    padding: 18px;
-    box-shadow: 0 4px 12px rgba(43,43,43,0.04);
-  }}
-  .sop-card b.step-num {{
-    color: var(--gold);
-    font-size: 12px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
-    font-family: "Cormorant Garamond", serif;
     font-weight: 700;
   }}
-  .sop-card h4 {{
-    margin: 0 0 8px 0;
-    font-size: 15px;
-    color: var(--green);
-  }}
-  .sop-card p {{
+  .ins-col p {{
     margin: 0;
     font-size: 13.5px;
-    color: var(--mute);
+    color: var(--ink);
+    line-height: 1.6;
+  }}
+  .ins-config-code {{
+    font-family: monospace;
+    font-size: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: var(--green);
+    display: block;
+    margin-top: 6px;
+    line-height: 1.5;
+  }}
+  .ins-full-sop {{
+    background: var(--card-inner);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }}
+  .ins-full-sop h4 {{
+    margin: 0 0 6px 0;
+    font-size: 13.5px;
+    color: var(--green);
+    font-weight: 700;
+  }}
+  .ins-full-sop p {{
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink);
     line-height: 1.6;
   }}
 
@@ -647,6 +722,11 @@ def build_dossier():
     margin-top: 40px;
   }}
 
+  @keyframes fadeIn {{
+    from {{ opacity: 0; transform: translateY(4px); }}
+    to {{ opacity: 1; transform: translateY(0); }}
+  }}
+
   /* Mobile Responsive Media Queries */
   @media (max-width: 768px) {{
     main {{
@@ -655,6 +735,13 @@ def build_dossier():
     .header-card {{
       padding: 22px 16px;
       margin-bottom: 16px;
+    }}
+    .interactive-deck-grid {{
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }}
+    .ins-grid {{
+      grid-template-columns: 1fr;
     }}
     .tab-system-card {{
       padding: 18px 12px;
@@ -665,22 +752,12 @@ def build_dossier():
       padding: 10px 14px;
       font-size: 13px;
     }}
-    .grid-2 {{
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }}
-    .card {{
-      padding: 16px 14px;
-    }}
     .download-bar {{
       flex-direction: column;
     }}
     .btn-action, .btn-outline {{
       width: 100%;
       justify-content: center;
-    }}
-    .sop-grid {{
-      grid-template-columns: 1fr;
     }}
     .mobile-dock {{
       display: flex;
@@ -741,6 +818,219 @@ def build_dossier():
     const nextIdx = (activeIdx + 1) % btns.length;
     selectTab(nextIdx);
     document.querySelector('.tab-system-card').scrollIntoView({{ behavior: 'smooth' }});
+  }}
+
+  // Interactive Top Deck 1: 7 Duties Data
+  const DUTIES = [
+    {{
+      id: "01",
+      title: "1. AI 平台架構與核心中樞",
+      tag: "Platform Core",
+      desc: "設計並持續演進企業級 AI Agent Platform。抽離 LLM Gateway、動態語意路由、全鏈路可觀測性、即時安全防護與配額限額治理，橫跨 GCP/AWS 混合雲與地端機房，讓新用例照範本在數週內上線。",
+      metric: "新用例上線週期由「月」縮短為「週」｜LLM 呼叫延遲 &lt; 20ms",
+      spec: "支援 LiteLLM/Portkey 閘道架構，整合 Redis 語意快取，單月降低重複 Token 支出達 38.5% 以上。"
+    }},
+    {{
+      id: "02",
+      title: "2. 地端 AIDC 機房建置與維運",
+      tag: "AIDC & Infra",
+      desc: "評估 GPU 機型（NVIDIA H100/H200 SXM5 與 AMD MI300X）與容量規劃。在 K8s 叢集導入 Volcano 智慧排程器，實施 NVIDIA MIG 資源切片、多租戶配額隔離與部門用量計費。",
+      metric: "GPU 綜合利用率提升至 85% 以上｜資料 100% 地端留存符合法規",
+      spec: "配置 400Gbps RoCE v2 無損網路拓撲與 GPUDirect RDMA，推論吞吐量達 80+ tokens/sec。"
+    }},
+    {{
+      id: "03",
+      title: "3. 模型選型、推論與微調",
+      tag: "LLM & vLLM",
+      desc: "評估商用與開源大語言模型（DeepSeek-R1、Llama-3.3-70B、Qwen-2.5）。主導推論服務（vLLM / Triton）部署、連續批處理調優與領域微調（LoRA / SFT）架構規劃。",
+      metric: "首字生成延遲 (TTFT) &lt; 300ms｜長文本推論吞吐量提升 3.2 倍",
+      spec: "生產環境最佳化參數：--gpu-memory-utilization 0.92, --kv-cache-dtype fp8, --max-num-seqs 256。"
+    }},
+    {{
+      id: "04",
+      title: "4. Agent 流程設計與工具串接",
+      tag: "Agentic Workflow",
+      desc: "與人資、財務、電商營運、智慧製造等各事業群釐清真實業務痛點，設計 Agent Workflow（ReAct 狀態機）、Hybrid RAG（向量+關鍵字混合檢索）與 MCP 工具標準串接。",
+      metric: "核心營運流程自動化效率提升 +55%｜RAG 召回準確率 &gt; 92%",
+      spec: "遵循 Model Context Protocol (MCP) 標準，所有外部 API 工具調用皆經隔離沙箱執行。"
+    }},
+    {{
+      id: "05",
+      title: "5. 雲地 Infra 與自動化維運",
+      tag: "GitOps & SRE",
+      desc: "操盤混合雲網路、CI/CD 自動化發布流水線、GitOps（ArgoCD）與跨雲跨機房 DR 災難復原架構。實踐 AIOps 告警智慧降噪分流與突發事件自動調查處置。",
+      metric: "平台可用度 99.99% (Zero Outage)｜目標 RTO &lt; 1hr, RPO ≈ 0",
+      spec: "全基礎設施採用 Terraform IaC 宣告式版本受控，CI/CD 流水線強制嵌入安全弱點掃描關卡。"
+    }},
+    {{
+      id: "06",
+      title: "6. AI 成本治理 (FinOps)",
+      tag: "FinOps",
+      desc: "建立即時 Token、GPU 算力與模型用量之可視化 Chargeback 儀表板。落實部門配額管理、動態降級優化與語意快取，精確測算每一筆算力投資的財務回報率。",
+      metric: "3 年多雲與算力 TCO 降低 42.8%｜財務長定期審核確認效益",
+      spec: "自動化用量標籤（Cost Allocation Tags）全覆蓋，高相似度 Prompt 直接秒級輸出快取結果。"
+    }},
+    {{
+      id: "07",
+      title: "7. 架構標準與技術領導",
+      tag: "Leadership",
+      desc: "制定企業 AI 開發規範與架構標準，帶領 AI Developer 與技術主管落地實戰。擔任各事業單位提出 AI 需求的第一技術窗口，建立內部 Champions 種子網絡與 PO 學院。",
+      metric: "第一年培養 30 位內部認證 PO｜每位技術主管皆有接班梯隊",
+      spec: "符合 ISO 42001（AIMS）人工智慧管理體系與 ISO 27001 資安規範，平衡創新速度與治理紅線。"
+    }}
+  ];
+
+  function showDuty(idx) {{
+    document.querySelectorAll('#duty-layers .layer-btn').forEach((b, i) => {{
+      b.classList.toggle('on', i === idx);
+    }});
+    const d = DUTIES[idx];
+    document.getElementById('duty-box').innerHTML = `
+      <span class="eyebrow">${{d.id}} · MANDATE SPECIFICATION</span>
+      <h4>${{d.title}}</h4>
+      <p><b>工程任務：</b>${{d.desc}}</p>
+      <p><b>量化指標：</b><span style="color:var(--green);font-weight:700;">${{d.metric}}</span></p>
+      <p><b>架構規格：</b>${{d.spec}}</p>
+    `;
+  }}
+
+  // Interactive Top Deck 2: 4 Security Pillars Data
+  const PILLARS = [
+    {{
+      id: "P1",
+      title: "1. 現代周界入口：Howard Enterprise Browser",
+      tag: "Enterprise Browser",
+      desc: "從傳統防禦作業系統二進制檔案（PE/ELF），跨越至治理「現代軟體周界」（瀏覽器外掛、IDE 擴充套件、MCP 工具、開源套件）。第一時間在端點掐斷影子工具投毒。",
+      threat: "惡意 VS Code 外掛、影子 MCP 工具竊取記憶體中的 API Key 與原始碼。",
+      defense: "內嵌 Wings AI Risk Engine，實施端點擴充套件白名單管控與記憶體行為微隔離。"
+    }},
+    {{
+      id: "P2",
+      title: "2. 防禦鏈：Howard 5 階軟體供應鏈防禦鏈",
+      tag: "5-Stage Defense",
+      desc: "阻斷類似 Shai-Hulud 模式的供應鏈投毒滲透。包含：1. KOI 內嵌安全閘道（Shift-Left 攔截）➔ 2. Runtime 執行保護 ➔ 3. 憑證與管道防護 ➔ 4. 72 小時冷卻期與主管雙簽 ➔ 5. 秒級硬隔離。",
+      threat: "開源依賴套件遭惡意覆蓋、CI/CD 構建自動拉取投毒版本。",
+      defense: "嚴格 SHA-256 Lockfile 鎖定、私有 Harbor 鏡像倉儲、72 小時版本發布強制冷卻緩衝。"
+    }},
+    {{
+      id: "P3",
+      title: "3. 控制面：Howard NHI 身分與 Agent 意圖審計",
+      tag: "Intent Audit",
+      desc: "管理非人類身分（NHI）生命週期。解決「混淆代理人（Confused Deputy）」與間接提示詞注入（Indirect Prompt Injection）；落實推論鏈意圖審計（Intent Auditability）。",
+      threat: "外部檢索資料潛藏越獄指令，誘騙高權限 Agent 濫用工具外傳營業機密。",
+      defense: "雙通道控制與資料嚴格解耦（Dual-Channel Isolation）、WORM 不可竄改推論鏈存證、HITL 四眼原則主管簽核。"
+    }},
+    {{
+      id: "P4",
+      title: "4. 資料底座：Howard 後量子安全 (PQC) 敏捷閉環",
+      tag: "Crypto Agility",
+      desc: "防禦駭客「先截獲、後解密（HNDL）」攻擊。建置 Howard Dynamic CBOM（動態密碼技術清冊），推進 4 階閉環：持續發現 ➔ 多維風險評估 ➔ 密碼轉譯中繼處置 ➔ NIST PQC 持續合規。",
+      threat: "長生命週期機密資料（顧客金融、專利研發）遭長期錄製監聽並等待量子破譯。",
+      defense: "部署 NIST FIPS 203/204/205 標準（ML-KEM / ML-DSA），對老舊設備提供邊緣密碼轉譯中繼防護。"
+    }}
+  ];
+
+  function showPillar(idx) {{
+    document.querySelectorAll('#pillar-layers .layer-btn').forEach((b, i) => {{
+      b.classList.toggle('on', i === idx);
+    }});
+    const p = PILLARS[idx];
+    document.getElementById('pillar-box').innerHTML = `
+      <span class="eyebrow">${{p.id}} · SECURITY PILLAR</span>
+      <h4>${{p.title}}</h4>
+      <p><b>架構對策：</b>${{p.desc}}</p>
+      <p><b>威脅模型：</b><span style="color:var(--brick);font-weight:600;">${{p.threat}}</span></p>
+      <p><b>落地防線：</b>${{p.defense}}</p>
+    `;
+  }}
+
+  // Tab 1 Components Inspector Database
+  const TAB1_NODES = {{
+    "l1": {{
+      layer: "Layer 1 · 全通路業務場景層",
+      name: "全通路業務入口與非人類身分 (NHI)",
+      tag: "Omnichannel Entry",
+      spec: "接收消費者 Web/App 查詢、內部 ERP/CRM 流程驅動、研發人員 IDE 代碼審查以及非人類身分（NHI）定時任務。",
+      sla: "HTTPS / WebSocket / JSON-RPC ｜ 併發 QPS &gt; 15,000 ｜ 握手延遲 &lt; 20ms",
+      config: "NGINX Ingress 支援 HTTP/2 與 gRPC-Web 代理，配置 Cloudflare DDoS 智慧防禦。",
+      compliance: "符合 ISO 27001 存取控制政策、GDPR / 個資法使用者隱私同意授權規範。",
+      sop: "1. 接收請求 ➔ 2. JWT 身分鑑別 ➔ 3. 注入唯一 Trace-ID ➔ 4. 導向 Howard AIRS 安全層。"
+    }},
+    "l2": {{
+      layer: "Layer 2 · Howard AI 安全入口與治理層",
+      name: "Howard AIRS 核心安全防護 ＆ AI Gateway Hub",
+      tag: "AI Runtime Security",
+      spec: "即時攔截提示詞注入（Prompt Injection）、動態個資（PII）遮蔽去識別化、多模型負載均衡路由、語意快取與 Token 限額管制。",
+      sla: "gRPC / TLS 1.3 ｜ AIRS 語意過濾耗時 &lt; 8ms ｜ 快取命中延遲 &lt; 15ms",
+      config: "--airs-mode strict --pii-mask-phone true --pii-mask-id true --cache-backend redis-cluster",
+      compliance: "OWASP Top 10 for LLM (LLM01 / LLM02) 注入防護、ISO 42001 安全邊界控制。",
+      sop: "1. 原始 Prompt 語意過濾 ➔ 2. PII 脫敏 ➔ 3. 語意快取命中直接返回 ➔ 4. 未命中則路由至最適模型。"
+    }},
+    "l3": {{
+      layer: "Layer 3 · 企業級 AI 核心平台層",
+      name: "Enterprise GPT ＆ Agent Workflow ＆ Hybrid RAG",
+      tag: "Platform Core",
+      spec: "多代理協同狀態機（ReAct / Plan-and-Solve）、混合語意檢索重排（Milvus + BM25 + BGE-M3）、MCP 外部工具整合中樞。",
+      sla: "JSON-RPC 2.0 (MCP) ｜ RAG 召回準確率 &gt; 92% ｜ 上下文命中率 &gt; 95%",
+      config: "--rag-top-k 10 --rerank-model bge-reranker-large --mcp-sandbox docker-isolated",
+      compliance: "歐盟 AI Act 高風險系統透明度規範、內部合規問答可解釋性存證。",
+      sop: "1. Agent 解析意圖 ➔ 2. 檢索向量知識庫 ➔ 3. 提出工具調用宣告 ➔ 4. 送至意圖審計中樞驗證。"
+    }},
+    "l4": {{
+      layer: "Layer 4 · 混合雲與地端 AIDC 算力層",
+      name: "混合雲 (GCP/AWS) ＋ 地端 AIDC GPU 機房",
+      tag: "Hybrid Compute",
+      spec: "80% 高頻常態推論與私密微調落地端 AIDC，20% 尖峰彈性溢出至公有雲；K8s Volcano 智慧排程與 NVIDIA MIG 切片調度。",
+      sla: "400Gbps RoCE v2 / GPUDirect RDMA ｜ 首字延遲 (TTFT) &lt; 300ms ｜ 輸出 &gt; 80 tokens/sec",
+      config: "--gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --tensor-parallel-size 8",
+      compliance: "核心營業秘密與未公開財務資料 100% 地端保存，阻絕雲端資料外流法規風險。",
+      sop: "1. 監控 GPU 佇列深度 ➔ 2. 逾 75% 警戒值自動觸發雲端溢出 ➔ 3. 離峰時段自動進行 Batch 微調。"
+    }},
+    "l5": {{
+      layer: "Layer 5 · 現代周界與後量子安全底座",
+      name: "Howard Enterprise Browser ＆ 5 階防禦 ＆ PQC 底座",
+      tag: "Modern Perimeter",
+      spec: "端點外掛沙箱阻斷、自動化 CI/CD 72 小時冷卻期、全網動態 CBOM 清冊、Howard 密碼轉譯中繼防護。",
+      sla: "NIST FIPS 203/204/205 (ML-KEM/ML-DSA) ｜ 供應鏈投毒攔截率 100% ｜ HNDL 風險評分收斂至 0",
+      config: "--cbom-discovery active --cipher-policy fips-203 --ci-cooldown 72h",
+      compliance: "符合美國 NIST 後量子密碼標準要求、行政院國家資通安全責任等級規範。",
+      sop: "1. 網路流量自動嗅探 ➔ 2. 盤點弱加密演算法 ➔ 3. 部署中繼轉譯代理 ➔ 4. 產出合規審計清冊。"
+    }},
+    "l6": {{
+      layer: "Layer 6 · 平台工程與維運體系",
+      name: "GitOps ＆ Terraform IaC ＆ SRE AIOps ＆ 治理",
+      tag: "Platform Ops",
+      spec: "基礎設施宣告式版本受控、ArgoCD 自動化同步、AIOps 智慧告警分流降噪、跨雲跨機房 DR 災難復原。",
+      sla: "平台可用度 99.99% ｜ 目標 RTO &lt; 1hr, RPO ≈ 0 ｜ 告警降噪比 &gt; 85%",
+      config: "ArgoCD Auto-Sync with Automated Rollback, Prometheus + OpenTelemetry OTLP Collector",
+      compliance: "ISO 27001 ISMS / ISO 42001 AIMS 國際雙認證架構基線。",
+      sop: "1. Git PR 代碼審查 ➔ 2. 自動化測試與 SAST 關卡 ➔ 3. 鏡像雜湊簽名 ➔ 4. 滾動零停機發布。"
+    }}
+  }};
+
+  function inspectTab1(layerKey) {{
+    document.querySelectorAll('#tab1-selector .layer-btn').forEach(b => {{
+      b.classList.toggle('on', b.dataset.layer === layerKey);
+    }});
+    const n = TAB1_NODES[layerKey];
+    if (!n) return;
+    document.getElementById('tab1-ins-badge').innerText = n.layer;
+    document.getElementById('tab1-ins-title').innerText = n.name;
+    document.getElementById('tab1-ins-tag').innerText = n.tag;
+    document.getElementById('tab1-ins-spec').innerText = n.spec;
+    document.getElementById('tab1-ins-sla').innerText = n.sla;
+    document.getElementById('tab1-ins-config').innerText = n.config;
+    document.getElementById('tab1-ins-comp').innerText = n.compliance;
+    document.getElementById('tab1-ins-sop').innerText = n.sop;
+  }}
+
+  // Global Node Inspector Dispatcher
+  function inspectNode(nodeId) {{
+    if (nodeId.startsWith('l')) {{
+      selectTab(0);
+      inspectTab1(nodeId);
+      document.getElementById('tab0-inspector').scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+    }}
   }}
 </script>
 </head>
@@ -831,45 +1121,46 @@ def build_dossier():
     </div>
   </div>
 
-  <!-- Top Strategic Summary Cards -->
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header">
-        <span class="tag tag-green">Architecture Scope</span>
-        <h3>企業級 AI 架構師七大核心工程職責與業務邊界</h3>
+  <!-- INTERACTIVE TOP SECTION: Replacing the two static text cards with interactive Milan-style stacks -->
+  <div class="interactive-deck-grid">
+    
+    <!-- Interactive Card 1: 7 Core Mandates -->
+    <div class="interactive-deck-card">
+      <div class="deck-header">
+        <h3>企業級 AI 架構師七大工程職責</h3>
+        <span class="deck-hint">👉 點選各項看工程規格</span>
       </div>
-      <ul>
-        <li><b>自主 AI 生態系建設</b>：打造內部專屬大型語言模型平台（Enterprise GPT）、AI Agent Platform 與地端 GPU 運算中心（AIDC）。</li>
-        <li><b>1. AI 平台架構</b>：設計並持續演進 AI Agent Platform（LLM Gateway、動態模型路由、全鏈路觀測、資安防護、成本限額治理），涵蓋 GCP/AWS 混合雲與地端。</li>
-        <li><b>2. 地端 AIDC 機房建置與維運</b>：評估 GPU 機型（NVIDIA/AMD）與容量規劃、K8s 上的 GPU 資源排程調度（MIG 切片、配額管制、多租戶隔離、用量計費）。</li>
-        <li><b>3. 模型選型與調校</b>：評估商用與開源模型，主導推論服務（vLLM / Triton）部署、效能調校與微調（Fine-tuning / LoRA）規劃。</li>
-        <li><b>4. Agent 流程設計</b>：與各事業群（人資、財務、電商營運、智慧物流）釐清痛點，設計 Agent Workflow、RAG 與 MCP 工具串接。</li>
-        <li><b>5. 雲地 Infra 與自動化維運</b>：平台網路、CI/CD 流水線、GitOps（ArgoCD）、高可用與 DR 災難復原；實踐 AIOps 告警分流與事件自動調查。</li>
-        <li><b>6. AI 成本治理 (FinOps)</b>：即時掌握 Token、GPU 算力與模型用量之成本可視性，落實部門配額限額與動態降級優化。</li>
-        <li><b>7. 架構標準與技術領導</b>：制定開發規範與架構標準，帶領 AI Developer 落地，擔任使用單位提出 AI 需求的第一技術窗口。</li>
-      </ul>
+      <div class="interactive-layers" id="duty-layers">
+        <button class="layer-btn on" onclick="showDuty(0)"><b>01</b><span>平台架構</span></button>
+        <button class="layer-btn" onclick="showDuty(1)"><b>02</b><span>地端 AIDC</span></button>
+        <button class="layer-btn" onclick="showDuty(2)"><b>03</b><span>模型微調</span></button>
+        <button class="layer-btn" onclick="showDuty(3)"><b>04</b><span>Agent 流程</span></button>
+        <button class="layer-btn" onclick="showDuty(4)"><b>05</b><span>雲地維運</span></button>
+        <button class="layer-btn" onclick="showDuty(5)"><b>06</b><span>FinOps 成本</span></button>
+        <button class="layer-btn" onclick="showDuty(6)"><b>07</b><span>架構標準</span></button>
+      </div>
+      <div class="detail-box" id="duty-box">
+        <!-- Rendered by JS -->
+      </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <span class="tag tag-gold">Howard Security</span>
-        <h3>Howard 前瞻資安戰略三位一體閉環體系</h3>
+    <!-- Interactive Card 2: Howard Security 4 Pillars -->
+    <div class="interactive-deck-card">
+      <div class="deck-header">
+        <h3>Howard 前瞻資安戰略三位一體閉環</h3>
+        <span class="deck-hint">👉 點選各支柱看防禦對策</span>
       </div>
-      <ul>
-        <li><b>入口端：Howard Enterprise Browser (安全企業瀏覽器底座 + Wings AI Risk Engine)</b><br>
-          從傳統防禦作業系統二進制檔案（PE/ELF），跨越至治理<b>「現代軟體周界」</b>（瀏覽器外掛、IDE 擴充套件、MCP 工具、開源套件），第一時間在端點掐斷影子工具投毒。</li>
-        <li><b>防禦鏈：Howard 5 階軟體供應鏈防禦鏈 (阻斷 Shai-Hulud 模式滲透)</b><br>
-          1. <b>Howard KOI 內嵌安全閘道</b>（Shift-Left 入口攔截，下載觸及端點前封鎖）<br>
-          2. <b>Howard Runtime Protection</b>（執行階段程式碼與越權行為阻斷）<br>
-          3. <b>Howard Credential & Pipeline Defense</b>（開發環境竊聽、API Key / MCP Token 洩漏防禦）<br>
-          4. <b>Howard CI/CD Cooldown Buffer</b>（自動化管道 72 小時冷卻期與主管雙簽，阻止武器化）<br>
-          5. <b>Howard Continuous Remediation</b>（秒級硬隔離受感染節點，收容爆炸半徑）。</li>
-        <li><b>控制面：Howard NHI 身分治理與 Agent 意圖審計中樞</b><br>
-          管理非人類身分（NHI）生命週期；解決<b>「混淆代理人（Confused Deputy）」</b>與間接提示詞注入（Indirect Prompt Injection）；落實<b>「推論鏈意圖審計（Intent Auditability）」</b>，記錄 Agent 因何推論而調用 API。</li>
-        <li><b>資料底座：Howard 後量子安全 (PQC) 與密碼學敏捷性閉環</b><br>
-          防禦駭客<b>「先截獲、後解密（HNDL）」</b>攻擊；建置 <b>Howard Dynamic CBOM（動態密碼技術清冊）</b>；推進 4 階閉環：持續發現（Howard NGFW 嗅探）➔ 多維風險評估 ➔ 修復處置（Howard 密碼轉譯中繼防護）➔ 持續合規（NIST PQC）。</li>
-      </ul>
+      <div class="interactive-layers" id="pillar-layers">
+        <button class="layer-btn on" onclick="showPillar(0)"><b>P1</b><span>周界入口</span></button>
+        <button class="layer-btn" onclick="showPillar(1)"><b>P2</b><span>5階防禦鏈</span></button>
+        <button class="layer-btn" onclick="showPillar(2)"><b>P3</b><span>NHI 意圖審計</span></button>
+        <button class="layer-btn" onclick="showPillar(3)"><b>P4</b><span>後量子 PQC</span></button>
+      </div>
+      <div class="detail-box" id="pillar-box">
+        <!-- Rendered by JS -->
+      </div>
     </div>
+
   </div>
 
   <!-- Exhaustive Tabbed System -->
@@ -905,7 +1196,7 @@ def build_dossier():
     </div>
 
     <!-- =========================================================================
-         TAB 1: 全域平台總體架構圖
+         TAB 1: 全域平台總體架構圖 (INTERACTIVE)
          ========================================================================= -->
     <div class="tab-pane" id="tab0" style="display:block;">
       <div class="diagram-toolbar">
@@ -913,98 +1204,61 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體與架構圖框</span>
+        <span class="diagram-hint">💡 互動藍圖：點選下方層級或點擊架構圖，即時展開深度規格與 SOP</span>
       </div>
+
+      <!-- Quick interactive Layer Selector matching Milan style -->
+      <div class="interactive-layers" id="tab1-selector" style="margin: 14px 0 10px 0;">
+        <button class="layer-btn" data-layer="l1" onclick="inspectTab1('l1')"><b>L1</b><span>業務場景層</span></button>
+        <button class="layer-btn on" data-layer="l2" onclick="inspectTab1('l2')"><b>L2</b><span>安全入口層</span></button>
+        <button class="layer-btn" data-layer="l3" onclick="inspectTab1('l3')"><b>L3</b><span>核心平台層</span></button>
+        <button class="layer-btn" data-layer="l4" onclick="inspectTab1('l4')"><b>L4</b><span>混合算力層</span></button>
+        <button class="layer-btn" data-layer="l5" onclick="inspectTab1('l5')"><b>L5</b><span>周界安全底座</span></button>
+        <button class="layer-btn" data-layer="l6" onclick="inspectTab1('l6')"><b>L6</b><span>平台工程維運</span></button>
+      </div>
+
       <div class="diagram-scroll-container">
         {svg1}
       </div>
 
-      <div class="spec-section">
-        <h2><span>📋</span> 壹、全域架構設計原則與技術選型對照表</h2>
-        <p class="spec-desc">本架構橫跨全通路業務層、Howard 安全治理入口、企業 AI 核心引擎、混合算力調度、現代周界防禦與平台工程維運，落實高可用性與極致低延遲。</p>
-        
-        <div class="table-hint">⟷ 左右滑動檢視完整技術參數與 SLA 矩陣</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>架構水平層</th>
-                <th>核心模組 / 技術選型</th>
-                <th>主要工程職責與架構規格</th>
-                <th>通訊協定與資料格式</th>
-                <th>關鍵性能 / SLA 指標</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Layer 1: 業務場景層</b></td>
-                <td>Web/App 前台、內部 ERP、客服、Devs、NHI Worker</td>
-                <td>提供全通路數位入口，接收使用者自然語言 Prompt 與非人類身分（NHI）定時事件驅動。</td>
-                <td>HTTPS / WebSocket / JSON</td>
-                <td>併發 QPS &gt; 15,000，連線握手 &lt; 20ms</td>
-              </tr>
-              <tr>
-                <td><b>Layer 2: 安全入口層</b></td>
-                <td><b>Howard AIRS 核心防護</b> ＋ <b>Howard AI Gateway</b> (Portkey/LiteLLM)</td>
-                <td>AI Runtime Security 即時語意過濾、PII 動態遮蔽、多模型動態路由、多租戶隔離、Token 限額管制與語意快取。</td>
-                <td>gRPC / REST / TLS 1.3</td>
-                <td>AIRS 檢查耗時 &lt; 8ms，快取命中延遲 &lt; 15ms</td>
-              </tr>
-              <tr>
-                <td><b>Layer 3: 核心平台層</b></td>
-                <td>Enterprise GPT ＋ Agent Workflow ＋ Hybrid RAG ＋ MCP Hub</td>
-                <td>支援多代理協同（ReAct / Plan-and-Solve 狀態機）、混合語意檢索重排（BM25 + BGE-M3 + Cohere Rerank）、MCP 工具動態掛載。</td>
-                <td>JSON-RPC 2.0 (MCP) / Vector Embeddings</td>
-                <td>RAG 召回相關度 &gt; 92%，上下文切片命中準確率 &gt; 95%</td>
-              </tr>
-              <tr>
-                <td><b>Layer 4: 混合算力層</b></td>
-                <td>公有雲 (GCP/AWS) ＋ 地端 AIDC GPU (H100/MI300X) ＋ vLLM</td>
-                <td>80% 高頻推論與領域微調落於地端 AIDC，20% 尖峰溢出至雲端；K8s Volcano 資源排程與 NVIDIA MIG 切片調度。</td>
-                <td>400G RoCE v2 / GPUDirect RDMA</td>
-                <td>首字延遲 (TTFT) &lt; 300ms，Token 輸出 &gt; 80 tokens/sec</td>
-              </tr>
-              <tr>
-                <td><b>Layer 5: 周界安全底座</b></td>
-                <td><b>Howard Enterprise Browser</b> ＋ <b>Howard 5 階防禦</b> ＋ <b>Howard PQC</b></td>
-                <td>端點外掛沙箱阻斷、自動化 CI/CD 冷卻緩衝期、全網動態 CBOM 清冊、Howard 密碼轉譯中繼防護。</td>
-                <td>NIST PQC (ML-KEM/ML-DSA)</td>
-                <td>供應鏈投毒攔截率 100%，HNDL 暴露風險值收斂至 0</td>
-              </tr>
-              <tr>
-                <td><b>Layer 6: 平台工程層</b></td>
-                <td>ArgoCD GitOps ＋ Terraform IaC ＋ AIOps SRE ＋ ISO 治理</td>
-                <td>基礎設施宣告式版本受控、自動化流水線安全卡控、AIOps 智慧告警降噪、跨雲跨機房 DR 災難復原。</td>
-                <td>Git Protocol / OpenTelemetry OTLP</td>
-                <td>整體平台可用度 99.99%，目標 RTO &lt; 1hr, RPO ≈ 0</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Live Dynamic Component Inspector Panel for Tab 1 -->
+      <div class="inspector-card" id="tab0-inspector">
+        <div class="ins-header">
+          <div class="ins-header-main">
+            <span class="ins-layer-badge" id="tab1-ins-badge">Layer 2 · Howard AI 安全入口與治理層</span>
+            <h3 id="tab1-ins-title">Howard AIRS 核心安全防護 ＆ AI Gateway Hub</h3>
+          </div>
+          <span class="ins-tag" id="tab1-ins-tag">AI Runtime Security</span>
         </div>
-
-        <h3>💡 架構關鍵演進決策（Architecture Decision Records）</h3>
-        <div class="sop-grid">
-          <div class="sop-card">
-            <b class="step-num">ADR-01</b>
-            <h4>統一 AI Gateway 路由與語意快取</h4>
-            <p>全企業所有 LLM API 呼叫必須 100% 收攏至 Howard AI Gateway，嚴禁業務系統直連外部模型端點。透過語意快取機制，相同或高相似度問答直接由 Redis 向量庫秒級輸出，單月降低重複 Token 支出達 38.5%。</p>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>📋 主要工程職責與架構規格</h4>
+            <p id="tab1-ins-spec">即時攔截提示詞注入（Prompt Injection）、動態個資（PII）遮蔽去識別化、多模型負載均衡路由、語意快取與 Token 限額管制。</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">ADR-02</b>
-            <h4>混合雲雙活彈性溢出設計</h4>
-            <p>地端 AIDC GPU 機群負責 7x24 常態負載與涉及核心營業秘密之模型微調；當大促活動推論 Queue 深度超過 75% 警戒水位時，由 K8s 彈性觸發將無個資疑慮之公開文本推論溢出至 GCP Vertex AI / AWS Bedrock。</p>
+          <div class="ins-col">
+            <h4>⚙️ 通訊協定與關鍵性能 (SLA)</h4>
+            <p id="tab1-ins-sla">gRPC / TLS 1.3 ｜ AIRS 語意過濾耗時 &lt; 8ms ｜ 快取命中延遲 &lt; 15ms</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">ADR-03</b>
-            <h4>Howard Enterprise Browser 入口收斂</h4>
-            <p>取消工程師與內部同仁自由安裝非受控瀏覽器外掛之權限，統一由 Howard Enterprise Browser 實施集中安全政策管控，所有 IDE 擴充套件與 MCP 外部工具強制過濾，徹底杜絕影子工具投毒滲透。</p>
+        </div>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>🔧 生產環境建議配置</h4>
+            <code class="ins-config-code" id="tab1-ins-config">--airs-mode strict --pii-mask-phone true --pii-mask-id true --cache-backend redis-cluster</code>
           </div>
+          <div class="ins-col">
+            <h4>🛡️ 資安與國際合規對照</h4>
+            <p id="tab1-ins-comp">OWASP Top 10 for LLM (LLM01 / LLM02) 注入防護、ISO 42001 安全邊界控制。</p>
+          </div>
+        </div>
+        <div class="ins-full-sop">
+          <h4>⚡ 標準作業程序 (SOP) 落地要點</h4>
+          <p id="tab1-ins-sop">1. 原始 Prompt 語意過濾 ➔ 2. PII 脫敏 ➔ 3. 語意快取命中直接返回 ➔ 4. 未命中則路由至最適模型。</p>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TAB 2: Howard Agent 意圖審計與防混淆代理流程
+         TAB 2: Howard Agent 意圖審計流程 (INTERACTIVE)
          ========================================================================= -->
     <div class="tab-pane" id="tab1" style="display:none;">
       <div class="diagram-toolbar">
@@ -1012,89 +1266,40 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體</span>
+        <span class="diagram-hint">💡 意圖審計鏈路：非人類身分（NHI）生命週期與防混淆代理流程</span>
       </div>
       <div class="diagram-scroll-container">
         {svg2}
       </div>
 
-      <div class="spec-section">
-        <h2><span>🛡️</span> 貳、非人類身分（NHI）意圖審計與防混淆代理深度工程規範</h2>
-        <p class="spec-desc">當 AI Agent 具備工具調用與記憶能力，傳統僅能記錄「誰調用 API」的日誌系統徹底失效。本章節規範如何建立抗竄改之「推論鏈意圖審計」與「防混淆代理人（Anti-Confused Deputy）」機制。</p>
-
-        <div class="table-hint">⟷ 左右滑動檢視完整安全機制與技術參數</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>治理面向</th>
-                <th>傳統 IAM 盲區與威脅場景</th>
-                <th>Howard 前瞻防禦機制</th>
-                <th>具體實施組件與技術參數</th>
-                <th>合規驗證標準</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>非人類身分 (NHI) 生命週期</b></td>
-                <td>Agent 背後掛載的 API Key 與 MCP Token 長期有效且靜態硬編碼，形成影子憑證（Shadow Credentials）。</td>
-                <td>短期動態 STS 憑證簽發與自動輪轉，過期自動失效，權限隨用隨撤。</td>
-                <td>HashiCorp Vault ＋ SPIFFE/SPIRE 動態發放 X.509 SVID，有效期強制限制為 <span class="code-badge">15 mins</span>。</td>
-                <td>ISO 27001 A.9 存取控制 / CIS Benchmark</td>
-              </tr>
-              <tr>
-                <td><b>防代理混淆 (Anti-Confused Deputy)</b></td>
-                <td>外部檢索資料潛藏「間接提示詞注入（Indirect Prompt Injection）」，誘騙高權限 Agent 濫用工具外傳資料。</td>
-                <td><b>雙通道嚴格解耦（Dual-Channel Isolation）</b>：控制通道（指令）與資料通道（外部輸入）物理拆分，標記不可信資料。</td>
-                <td>Howard AIRS 核心防護 語意隔離閘門，將外部檢索內容封裝於唯讀資料沙箱，禁止直接作為 Executable 指令解釋。</td>
-                <td>OWASP Top 10 for LLM (LLM01 / LLM02)</td>
-              </tr>
-              <tr>
-                <td><b>意圖可審計性 (Intent Auditability)</b></td>
-                <td>傳統 Syslog 僅記錄「Agent 呼叫了資料庫 API」，完全無法證明背後決策推理鏈是否符合業務預期。</td>
-                <td><b>推論鏈存證（Reasoning Provenance Ledger）</b>：完整記錄「觸發原因 ➔ 思考過程 ➔ 意圖判定 ➔ 工具調用」全鏈路。</td>
-                <td>Howard 意圖驗證引擎比對 Prompt 與 Tool Call 的餘弦相似度；完整思維鏈寫入 WORM 不可竄改儲存。</td>
-                <td>ISO 42001 人工智慧管理系統 / 歐盟 AI Act</td>
-              </tr>
-              <tr>
-                <td><b>高風險操作人機介入 (HITL)</b></td>
-                <td>Agent 全自主執行引發災難性錯誤（如錯誤大量退款、非預期刪除庫存資料、批次發送異常通知）。</td>
-                <td>四眼原則（Dual-Approval Gate）：達到風險門檻自動熔斷掛起，轉由人類主管審批簽核。</td>
-                <td>觸發規則：金融交易 &gt; <span class="code-badge">NT$50,000</span> 或批次修改 &gt; <span class="code-badge">100 筆</span>，自動發送 Webhook 待簽核。</td>
-                <td>沙賓法案 (SOX) / 企業內部內控內稽規章</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Tab 2 Interactive Steps Detail Box -->
+      <div class="inspector-card">
+        <div class="ins-header">
+          <div class="ins-header-main">
+            <span class="ins-layer-badge">Agent Governance · 意圖可審計性閉環</span>
+            <h3>雙通道解耦與非人類身分（NHI）意圖防護體系</h3>
+          </div>
+          <span class="ins-tag">Intent Auditability</span>
         </div>
-
-        <h3>⚡ 意圖驗證與工具調用四步端到端運作流程 (SOP)</h3>
-        <div class="sop-grid">
-          <div class="sop-card">
-            <b class="step-num">Step 01</b>
-            <h4>輸入消毒與通道標記</h4>
-            <p>Howard AIRS 核心防護 攔截原始 Prompt 與外部 RAG 檢索內容，執行 PII 去識別化並給予資料安全標籤（Trusted Command vs. Untrusted Data），阻斷任何試圖覆蓋系統 Prompts 的越獄指令。</p>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>🛡️ 防混淆代理 (Anti-Confused Deputy)</h4>
+            <p>控制通道（系統指令）與資料通道（外部檢索內容）物理拆分，外部 RAG 輸入強制封裝於唯讀沙箱，禁止直接作為可執行指令直譯。</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">Step 02</b>
-            <h4>模型推論與行動宣告</h4>
-            <p>核心 Enterprise GPT / vLLM 產出思考步驟（Thoughts）並擬定 Action（指定調用工具名稱與傳遞參數），但尚未獲得實際網路連線權限，僅將調用請求提報至 Howard 意圖審計中樞。</p>
+          <div class="ins-col">
+            <h4>🔑 NHI 身分動態憑證</h4>
+            <p>HashiCorp Vault ＋ SPIFFE/SPIRE 動態發放 X.509 SVID 憑證，強制有效期 &lt; 15 分鐘，徹底根除 API Key 硬編碼外洩風險。</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">Step 03</b>
-            <h4>意圖對齊與權限校驗</h4>
-            <p>Howard 意圖驗證引擎比對當前行動目標是否與初始授權範圍吻合；若涉及高風險關鍵業務，自動觸發 HITL 主管簽核；若為低風險日常查詢，則由 Howard Wings AI 評定工具信譽後放行。</p>
-          </div>
-          <div class="sop-card">
-            <b class="step-num">Step 04</b>
-            <h4>執行、存證與結果聚合</h4>
-            <p>MCP 工具代理在隔離容器內執行 API 調用，將結果回傳給模型產出自然語言摘要；同時將整個推理時序與雜湊簽章寫入合規儲存庫，完成不可否認性審計閉環。</p>
-          </div>
+        </div>
+        <div class="ins-full-sop">
+          <h4>⚡ 高風險操作人機介入 (HITL) 四眼原則 SOP</h4>
+          <p>單筆異動金額 &gt; NT$50,000 或批次修改逾 100 筆時，系統自動熔斷掛起並向主管發送審核 Webhook，人工雙簽後方放行 MCP 代理執行。</p>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TAB 3: Howard 5 階軟體供應鏈與 MCP 防禦鏈
+         TAB 3: Howard 5 階軟體供應鏈防禦鏈 (INTERACTIVE)
          ========================================================================= -->
     <div class="tab-pane" id="tab2" style="display:none;">
       <div class="diagram-toolbar">
@@ -1102,91 +1307,39 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體</span>
+        <span class="diagram-hint">💡 現代軟體周界防護：阻斷影子外掛與 Shai-Hulud 模式供應鏈滲透</span>
       </div>
       <div class="diagram-scroll-container">
         {svg3}
       </div>
 
-      <div class="spec-section">
-        <h2><span>🛑</span> 參、Howard 5 階現代軟體周界與 MCP 供應鏈防禦深度規範</h2>
-        <p class="spec-desc">傳統端點防毒專注於攔截作業系統底層 PE/ELF 二進制執行檔，但現代 AI 開發與辦公環境廣泛採用 Cursor/VS Code 擴充套件、Python 依賴包、MCP 工具與瀏覽器外掛，全都在合法直譯器內部執行。本章節定義防範現代供應鏈滲透的 5 階治理體系。</p>
-
-        <div class="table-hint">⟷ 左右滑動檢視完整防禦階層與阻斷條件</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>防禦階層</th>
-                <th>防禦階段名稱</th>
-                <th>核心防護目標與對策</th>
-                <th>關鍵技術機制與落地工具</th>
-                <th>自動化阻斷觸發條件</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>第 1 階</b></td>
-                <td><b>Howard KOI 內嵌安全閘道</b> (Shift-Left 入口攔截)</td>
-                <td>在擴充功能、腳本與 MCP 工具下載「觸及端點前」即時封鎖，不給任何落地或載入機會。</td>
-                <td>企業私有套件 Proxy 白名單、封包動態特徵指紋比對、DNS/TLS 安全網關重導向。</td>
-                <td>未通過企業認證雜湊比對之外部 VS Code 擴充套件、未經驗證之未知 MCP Server 端點。</td>
-              </tr>
-              <tr>
-                <td><b>第 2 階</b></td>
-                <td><b>Howard Enterprise Browser 執行階段防護</b> (Runtime Protection)</td>
-                <td>限制擴充套件與開源代碼的執行權限，阻斷越權存取本機資源與非法網路外連。</td>
-                <td>Howard Enterprise Browser 端點探針、eBPF 核心級系統呼叫攔截、SELinux 容器隔離。</td>
-                <td>非預期呼叫 <span class="code-badge">ptrace</span>、讀取本地 <span class="code-badge">~/.ssh</span> 或向未知 C2 IP 發送反彈 Shell。</td>
-              </tr>
-              <tr>
-                <td><b>第 3 階</b></td>
-                <td><b>Howard 憑證與管道防護</b> (Credential Defense)</td>
-                <td>防範開發環境遭竊聽、API Key 與 Token 遭外洩，收攏開發人員本機之特權密鑰。</td>
-                <td>Pre-commit 機密掃描引擎（TruffleHog/git-secrets）、記憶體防 Dumper 混淆、STS 短憑證。</td>
-                <td>Git 提交日誌中偵測到高熵值字串、記憶體中掃描到未加密之雲端永久 Service Account Key。</td>
-              </tr>
-              <tr>
-                <td><b>第 4 階</b></td>
-                <td><b>Howard 版本更新冷卻緩衝</b> (CI/CD Cooldown Buffer)</td>
-                <td>在自動部署流水線設置冷卻期與審查機制，打破「自動升級即時投毒」之武器化管道。</td>
-                <td><b>強制 72 小時版本發布冷卻緩衝期</b>、主管雙簽核（Dual Approval）、沙箱回歸測試。</td>
-                <td>上游依賴套件發布時間 &lt; <span class="code-badge">72 小時</span>，自動阻止 CI/CD 構建並發送人工安全評估通報。</td>
-              </tr>
-              <tr>
-                <td><b>第 5 階</b></td>
-                <td><b>Howard 持續補救與硬隔離</b> (Continuous Remediation)</td>
-                <td>秒級硬隔離受感染之端點或 Pod，阻止橫向擴散，自動化完成無損回滾。</td>
-                <td>微隔離（Microsegmentation）阻斷、SOAR 自動鑑識快照、容器無損重置、憑證即刻吊銷。</td>
-                <td>端點觸發 MITRE ATT&amp;CK 橫向移動特徵，立即切斷 VLAN 通訊並重置 Pod 至黃金鏡像。</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="inspector-card">
+        <div class="ins-header">
+          <div class="ins-header-main">
+            <span class="ins-layer-badge">Supply Chain Defense · 5 階縱深防禦鏈</span>
+            <h3>Howard 現代周界與 CI/CD 72 小時冷卻期機制</h3>
+          </div>
+          <span class="ins-tag">Zero Trust Perimeter</span>
         </div>
-
-        <h3>📦 軟體物料清單（SBOM）與依賴鎖定管理規範</h3>
-        <div class="sop-grid">
-          <div class="sop-card">
-            <b class="step-num">Rule 01</b>
-            <h4>嚴格 Lockfile 雜湊鎖定</h4>
-            <p>所有 Python (poetry.lock / requirements.txt) 與 Node.js (package-lock.json) 依賴套件必須精確鎖定至 SHA-256 雜湊值，嚴禁使用萬用字元（如 <code>*</code> 或 <code>^</code>）自動升級次版本。</p>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>🛑 第 1 階：KOI 內嵌安全閘道</h4>
+            <p>在擴充功能、腳本與 MCP 工具下載「觸及端點前」即時攔截，比對企業私有套件白名單，未授權者一律阻斷。</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">Rule 02</b>
-            <h4>私有鏡像倉儲隔離</h4>
-            <p>禁止開發機與生產環境直接連線至公開 PyPI、npm 或 Docker Hub。所有套件必須先經由企業私有倉儲（Nexus / Harbor）緩存並完成動態安全弱點掃描無虞後始可放行拉取。</p>
+          <div class="ins-col">
+            <h4>⏱️ 第 4 階：CI/CD 72 小時冷卻期</h4>
+            <p>上游開源依賴套件發布時間 &lt; 72 小時，自動禁止流水線構建，杜絕自動升級即時投毒之武器化管道。</p>
           </div>
-          <div class="sop-card">
-            <b class="step-num">Rule 03</b>
-            <h4>MCP 外部工具白名單註冊</h4>
-            <p>任何業務 Agent 欲介接之外部 MCP 伺服器，必須向資安團隊提交註冊申請，提供源代碼與通訊協定清單，通過 Howard Wings AI 評等核准後方可掛載至生產環境中樞。</p>
-          </div>
+        </div>
+        <div class="ins-full-sop">
+          <h4>⚡ 軟體物料清單（SBOM）與硬隔離 SOP</h4>
+          <p>精確鎖定 SHA-256 雜湊值；偵測異常行為即刻秒級硬隔離 Pod，切斷 VLAN 通訊並重置至黃金鏡像。</p>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TAB 4: 混合雲與地端 AIDC GPU 調度拓撲
+         TAB 4: 混合雲與地端 AIDC GPU 調度拓撲 (INTERACTIVE)
          ========================================================================= -->
     <div class="tab-pane" id="tab3" style="display:none;">
       <div class="diagram-toolbar">
@@ -1194,108 +1347,39 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體</span>
+        <span class="diagram-hint">💡 混合算力拓撲：K8s Volcano 智慧排程 ＋ NVIDIA MIG 資源切片</span>
       </div>
       <div class="diagram-scroll-container">
         {svg4}
       </div>
 
-      <div class="spec-section">
-        <h2><span>⚡</span> 肆、混合雲與地端 AIDC 綠能運算中心 GPU 資源調度深度技術規格</h2>
-        <p class="spec-desc">面對巨量電商流量、即時推薦演算法與企業內部大模型推論需求，本章節規劃從雲端彈性算力到地端 AIDC 綠能機房的資源調度架構，兼顧合規安全與極致 TCO 成本效益。</p>
-
-        <div class="table-hint">⟷ 左右滑動檢視完整硬體與網路拓撲規格</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>運算區域</th>
-                <th>主要硬體與平台規格</th>
-                <th>網路架構與頻寬</th>
-                <th>核心承載工作負載</th>
-                <th>成本效益與架構定位</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>公有雲彈性層 (GCP)</b></td>
-                <td>GCP Vertex AI (Gemini 2.5 Flash / Pro)、BigQuery 巨量特徵庫</td>
-                <td>100Gbps 專屬雲端骨幹 / Interconnect</td>
-                <td>超長文本跨國語意理解、行銷企劃分析、非尖峰期彈性驗證</td>
-                <td>按需計費 (On-Demand)，免除冷啟動硬體投資成本</td>
-              </tr>
-              <tr>
-                <td><b>公有雲彈性層 (AWS)</b></td>
-                <td>AWS Bedrock (Claude 3.7 Sonnet)、S3 異地雙向即時備份湖</td>
-                <td>AWS Direct Connect 專屬高速專線</td>
-                <td>雙 11 / 年終大促高峰突增推論流量、第三方大模型能力 PoC</td>
-                <td>彈性高峰應變溢出，平時保持最小待命實例</td>
-              </tr>
-              <tr>
-                <td><b>K8s 調度中樞 (AIDC)</b></td>
-                <td>Volcano 智慧排程器 ＋ NVIDIA Multi-Instance GPU (MIG 切片)</td>
-                <td>內部 100Gbps 管理網 ＋ 400G RoCE v2 運算網</td>
-                <td>跨部門多租戶配額隔離、推論 Pod 自動水平擴展 (HPA)、Token 計費</td>
-                <td><b>Howard FinOps 即時 Chargeback 看板</b>，提升 GPU 利用率至 &gt;85%</td>
-              </tr>
-              <tr>
-                <td><b>地端 AIDC 綠能機房</b></td>
-                <td>NVIDIA H100/H200 SXM5 節點叢集 ＋ AMD Instinct MI300X 高性價比節點</td>
-                <td><b>400Gbps RoCE v2</b> ＋ GPUDirect RDMA 無損網路拓撲</td>
-                <td>內部 Enterprise GPT 常態推論、商品推薦向量提取、電商語意微調</td>
-                <td>資料 100% 地端留存落實個資合規，長期運算成本降低 <b>42.8%</b></td>
-              </tr>
-              <tr>
-                <td><b>高速儲存底座</b></td>
-                <td>NVMe-oF 全閃存分散式儲存 (Lustre / Weka / Ceph)</td>
-                <td>雙埠 200Gbps 高速平行讀寫通道</td>
-                <td>大模型權重秒級同步、Checkpoint 快照、Milvus 向量高頻檢索</td>
-                <td>平行讀寫頻寬 &gt; <span class="code-badge">200 GB/s</span>，IOPS &gt; 5,000,000</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="inspector-card">
+        <div class="ins-header">
+          <div class="ins-header-main">
+            <span class="ins-layer-badge">Green AIDC &amp; GPU Scheduling · 算力拓撲</span>
+            <h3>混合雲成本邊界與地端綠能 AIDC 算力優化</h3>
+          </div>
+          <span class="ins-tag">FinOps &amp; vLLM</span>
         </div>
-
-        <h3>🔧 vLLM 推論叢集生產環境最佳化參數配置字典</h3>
-        <div class="table-hint">⟷ 左右滑動檢視完整參數字典</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>參數名稱</th>
-                <th>建議生產配置數值</th>
-                <th>技術原理與架構調優效益</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="code-badge">--gpu-memory-utilization</span></td>
-                <td><span class="code-badge">0.92</span></td>
-                <td>分配 92% 的 GPU 顯存專用於模型權重載入與 PagedAttention 快取，預留 8% 避免 CUDA 核心記憶體碎片崩潰。</td>
-              </tr>
-              <tr>
-                <td><span class="code-badge">--max-num-seqs</span></td>
-                <td><span class="code-badge">256</span></td>
-                <td>允許每個推論 Worker 同步並行處理的最大 Sequence 數，提升 Continuous Batching 吞吐量達 3.2 倍。</td>
-              </tr>
-              <tr>
-                <td><span class="code-badge">--kv-cache-dtype</span></td>
-                <td><span class="code-badge">fp8</span></td>
-                <td>採用 FP8 精度儲存 Key-Value Cache，在不損失模型生成準確率的前提下，節省 50% 顯存空間，大幅支援長上下文推論。</td>
-              </tr>
-              <tr>
-                <td><span class="code-badge">--tensor-parallel-size</span></td>
-                <td><span class="code-badge">8</span></td>
-                <td>針對 70B/671B 超大型開源模型，透過 NVLink 高速總線跨 8 張 GPU 進行張量並行分割，確保單字輸出延遲 &lt; 25ms。</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>⚡ Volcano 智慧排程與 MIG 切片</h4>
+            <p>NVIDIA Multi-Instance GPU 切片隔離多租戶；常態負載在地端 H100 運算，大促尖峰動態溢出至公有雲。</p>
+          </div>
+          <div class="ins-col">
+            <h4>🔧 vLLM 生產配置字典</h4>
+            <code class="ins-config-code">--gpu-memory-utilization 0.92 --kv-cache-dtype fp8 --max-num-seqs 256</code>
+          </div>
+        </div>
+        <div class="ins-full-sop">
+          <h4>⚡ 成本效益總結</h4>
+          <p>3 年多雲 TCO 實測降低 42.8%，核心資料留存廠區，滿足企業資料主權與綠能 PUE 指標。</p>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TAB 5: Howard 後量子密碼學敏捷性閉環
+         TAB 5: Howard 後量子密碼學敏捷性閉環 (INTERACTIVE)
          ========================================================================= -->
     <div class="tab-pane" id="tab4" style="display:none;">
       <div class="diagram-toolbar">
@@ -1303,98 +1387,33 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體</span>
+        <span class="diagram-hint">💡 後量子閉環：防禦 HNDL 攻擊 ＆ NIST FIPS 203/204/205 落地</span>
       </div>
       <div class="diagram-scroll-container">
         {svg5}
       </div>
 
-      <div class="spec-section">
-        <h2><span>⚛️</span> 伍、Howard 後量子安全（Quantum-Safe）與密碼學敏捷性四階閉環深入規範</h2>
-        <p class="spec-desc">面對全球駭客發動的「先截獲、後解密（Harvest Now, Decrypt Later, HNDL）」攻擊，傳統 RSA-2048 與 ECC 加密正面臨量子電腦（Shor 演算法）的致命挑戰。本章節定義全企業落實 NIST 後量子密碼標準（PQC）之動態 CBOM 盤點與四階敏捷治理閉環。</p>
-
-        <div class="table-hint">⟷ 左右滑動檢視完整閉環階段與合規標的</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>閉環階段</th>
-                <th>核心任務與防護重點</th>
-                <th>關鍵落地組件與技術機制</th>
-                <th>演算法與技術規範</th>
-                <th>階段產出與合規標的</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>第 1 階：持續發現與動態盤點</b></td>
-                <td>全面盤點全網傳輸中加密狀態、憑證金鑰長度與硬體演算能力，產出動態密碼清冊。</td>
-                <td><b>Howard Dynamic CBOM 引擎</b> ＋ <b>Howard NGFW 流量自動嗅探</b>、AI 驅動老舊設備 PQC 就緒度檢測。</td>
-                <td>TLS 1.2/1.3 協商特徵萃取、X.509 憑證掃描、硬體韌體支援度檢測。</td>
-                <td>全企業動態 CBOM 資產清冊、硬體升級與汰換清單。</td>
-              </tr>
-              <tr>
-                <td><b>第 2 階：多維風險評估與優先級</b></td>
-                <td>整合加密脆弱度、資產關鍵性與資料敏感度，計算 HNDL 暴露風險評分並排定遷移排程。</td>
-                <td>三維關聯矩陣模型：<span class="code-badge">Risk = Cipher × Criticality × Sensitivity</span>，標記高急迫度資產。</td>
-                <td>評估資料生命週期（Data Half-Life &gt; 10 年之顧客金融資料與營業機密列為 Priority 1）。</td>
-                <td>四波次（Wave 1~4）PQC 遷移甘特圖、專案預算與人力資源配置表。</td>
-              </tr>
-              <tr>
-                <td><b>第 3 階：修復、處置與中繼防護</b></td>
-                <td>對支援系統一鍵啟用 PQC 政策；對無法升級演算法的老舊 OT/印表機/伺服器導入中繼轉譯防護。</td>
-                <td>Howard 安全政策一鍵下發（NGFW、Howard ZTNA、Howard Secure Edge）；<b>Howard 密碼轉譯中繼防護 (Cipher Translation Proxy)</b>。</td>
-                <td>邊緣雙向密碼轉譯：傳統 RSA/ECC ➔ <b>NIST PQC (ML-KEM / ML-DSA)</b> 封裝轉發。</td>
-                <td>全網 PQC 演算法部署、老舊資產無痛平滑防護、第三方供應鏈遷移指南。</td>
-              </tr>
-              <tr>
-                <td><b>第 4 階：持續治理與動態合規</b></td>
-                <td>維持常態密碼學衛生，追蹤演算法破解動態，即時產出符合國家標準之審計報告。</td>
-                <td>動態停用黑名單自動更新、量子抗性成熟度監控看板、<b>國際標準合規自動生成引擎</b>。</td>
-                <td>符合 <b>NIST FIPS 203 (ML-KEM)</b>、<b>FIPS 204 (ML-DSA)</b>、<b>FIPS 205 (SLH-DSA)</b>。</td>
-                <td>Audit-Ready 後量子合規審計報告、高管 PQC 覆蓋率儀表板 (0%~100%)。</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="inspector-card">
+        <div class="ins-header">
+          <div class="ins-header-main">
+            <span class="ins-layer-badge">Quantum-Safe Resilience · 密碼學敏捷性</span>
+            <h3>Howard Dynamic CBOM 盤點與四階敏捷閉環</h3>
+          </div>
+          <span class="ins-tag">NIST PQC Ready</span>
         </div>
-
-        <h3>🛡️ NIST 後量子密碼標準演算法（FIPS 203 / 204 / 205）落地技術字典</h3>
-        <div class="table-hint">⟷ 左右滑動檢視完整 PQC 演算法規格</div>
-        <div class="table-container">
-          <table class="styled-table">
-            <thead>
-              <tr>
-                <th>標準代號</th>
-                <th>正式演算法名稱</th>
-                <th>密碼學數學難題底座</th>
-                <th>主要適用保護場景</th>
-                <th>企業落地取代對象</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="code-badge">NIST FIPS 203</span></td>
-                <td><b>ML-KEM</b> (原 CRYSTALS-Kyber)</td>
-                <td>模格（Module Lattice）上的 LWE 學習錯誤問題</td>
-                <td>通用金鑰封裝機制 (KEM)、TLS 1.3 握手密鑰交換、VPN 加密通道建立</td>
-                <td>全面取代傳統 RSA 密鑰交換、ECDH (Diffie-Hellman)</td>
-              </tr>
-              <tr>
-                <td><span class="code-badge">NIST FIPS 204</span></td>
-                <td><b>ML-DSA</b> (原 CRYSTALS-Dilithium)</td>
-                <td>模格上的最短向量問題 (SVP)</td>
-                <td>通用數位簽章、API Token 簽章、軟體代碼簽署、身份認證憑證</td>
-                <td>全面取代傳統 RSA 簽章、ECDSA (橢圓曲線數位簽署)</td>
-              </tr>
-              <tr>
-                <td><span class="code-badge">NIST FIPS 205</span></td>
-                <td><b>SLH-DSA</b> (原 SPHINCS+)</td>
-                <td>無狀態雜湊函數（Stateless Hash-Based）</td>
-                <td>最高安全等級備援簽章、韌體防竄改簽章、不依賴格理論的抗量子保險底線</td>
-                <td>作為格密碼學遭遇數學突破時之第二道安全防線</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="ins-grid">
+          <div class="ins-col">
+            <h4>⚛️ 核心 NIST PQC 演算法</h4>
+            <p><b>ML-KEM (FIPS 203)</b> 取代傳統 RSA/ECDH 金鑰交換；<b>ML-DSA (FIPS 204)</b> 取代 RSA/ECDSA 數位簽章。</p>
+          </div>
+          <div class="ins-col">
+            <h4>🔄 密碼轉譯中繼防護 (Proxy)</h4>
+            <p>對無法升級的老舊設備導入邊緣中繼轉譯：傳統 RSA/ECC ➔ NIST PQC 封裝轉發，實現零痛點平滑遷移。</p>
+          </div>
+        </div>
+        <div class="ins-full-sop">
+          <h4>⚡ HNDL 威脅多維風險評估算式</h4>
+          <p>評估資產脆弱度、關鍵性與資料半衰期（Risk = Cipher × Criticality × Sensitivity），優先保護半衰期 &gt; 10 年之營業機密。</p>
         </div>
       </div>
     </div>
@@ -1412,6 +1431,13 @@ def build_dossier():
 
 <footer>© 2026 廖倫豪 博士　Howard Liao, Ph.D.　·　專為光寶科技董事長暨資訊長審閱製作</footer>
 
+<script>
+  // Initial render for top interactive decks
+  showDuty(0);
+  showPillar(0);
+  inspectTab1('l2');
+</script>
+
 </body>
 </html>
 """
@@ -1427,7 +1453,7 @@ def build_dossier():
     with open(out_path3, "w", encoding="utf-8") as f:
         f.write(html_content)
         
-    print(f"Harmonized Milan style architecture dossier successfully generated across all targets.")
+    print(f"Master-level interactive Milan architecture dossier successfully generated across all targets.")
 
 if __name__ == "__main__":
     build_dossier()
