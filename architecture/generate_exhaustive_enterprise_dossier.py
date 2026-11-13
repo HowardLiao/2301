@@ -3,14 +3,13 @@
 """
 generate_exhaustive_enterprise_dossier.py
 Builds an exhaustive, publication-grade enterprise architecture dossier and HTML portal
-with MASTER-LEVEL MOBILE ERGONOMICS (手機友善度與親和性):
-- Fluid responsive layouts (no horizontal clipping or jitter).
-- Touch-friendly compact tabs with mobile labels & smooth horizontal snapping.
-- Interactive Diagram Viewing Modes: [📱 適應螢幕 / 🔍 100% 高解析滑動檢視].
-- Responsive table containers with horizontal touch scrolling (min-width: 680px) & swipe hints.
-- Mobile bottom floating quick dock for navigation, download, and back-to-top.
-- Apple HIG compliant 44x44px touch targets.
-- Zero vendor/client branding (independent proprietary Howard architecture).
+FULLY HARMONIZED WITH LITEON MAIN SITE DESIGN SYSTEM (Milan Warm Amber / Egyptian Pharaoh):
+- Exact same palette: --bg (#FAF7F2), --green (#2F4538), --gold (#C8A96A), --line (#B8AFA3), --card (#FFFFFF).
+- Shared dark-mode toggle (prefers-color-scheme & data-theme="dark" with localStorage sync).
+- Identical sticky header navigation with 6 categorized dropdowns and LITEON brand mark.
+- High-contrast blueprint console for the 5 SVG diagrams with touch-friendly 100% zoom/pan mode.
+- Milan-style responsive tables, SOP cards, and mobile floating dock.
+- Zero vendor/client specific branding.
 - Authored by Howard Liao Ph.D.
 
 Author: Howard Liao Ph.D.
@@ -40,85 +39,256 @@ def build_dossier():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-<title>企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書</title>
+<meta name="robots" content="noindex, nofollow">
+<title>企業級 AI 平台 ＆ Howard 資安前瞻戰略全域工程白皮書｜廖倫豪 博士</title>
+<meta name="description" content="致光寶科技董事長暨資訊長：企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書，包含 5 大高解析向量架構圖、參數字典與合規矩陣。">
+<meta name="theme-color" content="#2F4538">
 <style>
   :root {{
-    --primary: #D97706;
-    --primary-dark: #B45309;
-    --primary-light: #FFFBEB;
-    --card-bg: #141417;
-    --card-inner: #1C1C22;
-    --border-color: #27272A;
-    --text-main: #FAFAFA;
-    --text-muted: #A1A1AA;
-    --accent-blue: #38BDF8;
-    --accent-emerald: #34D399;
-    --accent-purple: #A78BFA;
-    --accent-rose: #FB7185;
-    --accent-amber: #F59E0B;
+    --bg: #FAF7F2;
+    --alt: #F2EEE8;
+    --label: #E8E2D9;
+    --line: #B8AFA3;
+    --ink: #2B2B2B;
+    --mute: #6B6459;
+    --green: #2F4538;
+    --green2: #3E5A4A;
+    --gold: #C8A96A;
+    --brick: #9C5B4A;
+    --white: #FFFFFF;
+    --card: #FFFFFF;
+    --card-inner: #F8F5EE;
   }}
+  @media (prefers-color-scheme: dark) {{
+    :root:not([data-theme="light"]) {{
+      --bg: #1C211E;
+      --alt: #232A26;
+      --label: #2C342F;
+      --line: #4A524C;
+      --ink: #ECE7DF;
+      --mute: #B3AC9F;
+      --green: #A9C2B1;
+      --green2: #8FAE9A;
+      --gold: #D4B87C;
+      --brick: #D08E7C;
+      --card: #242B27;
+      --card-inner: #1C211E;
+    }}
+  }}
+  :root[data-theme="dark"] {{
+    --bg: #1C211E;
+    --alt: #232A26;
+    --label: #2C342F;
+    --line: #4A524C;
+    --ink: #ECE7DF;
+    --mute: #B3AC9F;
+    --green: #A9C2B1;
+    --green2: #8FAE9A;
+    --gold: #D4B87C;
+    --brick: #D08E7C;
+    --card: #242B27;
+    --card-inner: #1C211E;
+  }}
+
   * {{ box-sizing: border-box; }}
-  html {{
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }}
+  html {{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }}
   body {{
     margin: 0;
-    padding: 24px 20px 80px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
-    color: var(--text-main);
-    background-color: #09090B;
-    line-height: 1.65;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+    line-height: 1.75;
+    font-size: 16px;
   }}
-  .container {{ max-width: 1520px; margin: 0 auto; }}
+  .serif {{ font-family: "Cormorant Garamond", Georgia, serif; }}
+  a {{ color: var(--green); text-decoration: none; }}
+  a:hover {{ text-decoration: underline; }}
 
-  /* Header Banner */
-  .header-card {{
-    background: linear-gradient(135deg, rgba(217, 119, 6, 0.22) 0%, rgba(20, 20, 24, 0.98) 100%);
-    border: 1px solid rgba(217, 119, 6, 0.45);
-    border-radius: 14px;
-    padding: 30px;
-    margin-bottom: 24px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+  /* Sticky Header Navigation matching index.html */
+  header.nav {{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
   }}
-  .badge {{
-    display: inline-block;
-    padding: 4px 12px;
-    font-size: 11px;
-    font-weight: 800;
+  .nav .in {{
+    max-width: 1280px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 10px 16px;
+  }}
+  .brand {{
+    font-weight: 700;
+    color: var(--green);
+    white-space: nowrap;
+    text-decoration: none;
+  }}
+  .brand small {{
+    color: var(--gold);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 15px;
+    margin-left: 6px;
+    letter-spacing: .06em;
+  }}
+
+  .links {{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+  }}
+  .nav-item {{ position: relative; }}
+  .nav-link {{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--mute);
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: all .2s ease;
+    font-weight: 500;
+  }}
+  .nav-link .arr {{ font-size: 10px; opacity: .6; transition: transform .2s ease; }}
+  .nav-item:hover .nav-link .arr {{ transform: rotate(180deg); }}
+  .nav-link.on, .nav-link:hover {{
+    background: var(--label);
+    color: var(--green);
+    font-weight: 600;
+  }}
+  .nav-drop {{
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 170px;
+    z-index: 100;
+    flex-direction: column;
+  }}
+  .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop {{
+    display: flex;
+    animation: dropFade .2s ease;
+  }}
+  @keyframes dropFade {{
+    from {{ opacity: 0; transform: translateY(-4px); }}
+    to {{ opacity: 1; transform: translateY(0); }}
+  }}
+  .nav-drop a {{
+    padding: 8px 14px;
+    font-size: 13.5px;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    display: block;
+    transition: background .15s ease, color .15s ease;
+  }}
+  .nav-drop a:hover {{
+    background: var(--label);
+    color: var(--green);
+  }}
+
+  .langs {{
+    display: flex;
+    gap: 2px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 2px;
+  }}
+  .langs a {{
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--mute);
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }}
+  .langs a.on {{
+    background: var(--green);
+    color: var(--bg);
+  }}
+  .tbtn {{
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+  }}
+
+  /* Page Layout */
+  main {{
+    max-width: 1280px;
+    margin: auto;
+    padding: 30px 16px 80px;
+  }}
+
+  /* Milan Warm Amber Header Card */
+  .header-card {{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--gold);
+    border-radius: 12px;
+    padding: 32px 30px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(43,43,43,0.05);
+  }}
+  .eyebrow {{
+    font-family: "Cormorant Garamond", serif;
+    color: var(--gold);
+    letter-spacing: .18em;
+    font-size: 14px;
     text-transform: uppercase;
-    border-radius: 20px;
-    background: var(--primary);
-    color: #000;
-    margin-bottom: 12px;
-    letter-spacing: 0.8px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: inline-block;
   }}
   h1 {{
-    margin: 0 0 12px 0;
-    font-size: clamp(22px, 4vw, 30px);
+    font-size: clamp(24px, 3.8vw, 36px);
+    line-height: 1.25;
+    color: var(--green);
+    margin: 4px 0 14px;
     font-weight: 800;
-    color: #FFF;
-    line-height: 1.3;
   }}
-  .meta {{
-    color: var(--text-muted);
-    font-size: 13.5px;
-    margin-bottom: 18px;
-    line-height: 1.6;
+  .meta-bar {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--mute);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--label);
   }}
-  .meta b {{ color: #FBBF24; }}
+  .meta-bar b {{ color: var(--green); font-weight: 700; }}
+
   .download-bar {{
     display: flex;
     gap: 12px;
-    margin-top: 18px;
+    margin-top: 20px;
     flex-wrap: wrap;
   }}
   .btn-action {{
-    background: #D97706;
-    color: #000;
+    background: var(--green);
+    color: var(--bg) !important;
     font-weight: 700;
     text-decoration: none;
-    padding: 12px 22px;
+    padding: 11px 22px;
     border-radius: 8px;
     font-size: 13.5px;
     display: inline-flex;
@@ -127,14 +297,18 @@ def build_dossier():
     transition: all 0.2s;
     min-height: 44px;
   }}
-  .btn-action:hover {{ background: #F59E0B; transform: translateY(-2px); }}
+  .btn-action:hover {{
+    background: var(--green2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47,69,56,0.25);
+  }}
   .btn-outline {{
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--border-color);
-    color: #FAFAFA;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
     font-weight: 600;
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 11px 18px;
     border-radius: 8px;
     font-size: 13px;
     display: inline-flex;
@@ -151,36 +325,48 @@ def build_dossier():
     margin-bottom: 24px;
   }}
   .card {{
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 22px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(43,43,43,0.04);
   }}
   .card-header {{
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--label);
     padding-bottom: 10px;
   }}
-  .card-header h3 {{ margin: 0; font-size: 16px; font-weight: 700; color: #FFF; }}
-  .tag {{ font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }}
-  .tag-blue {{ background: rgba(56, 189, 248, 0.15); color: var(--accent-blue); }}
-  .tag-amber {{ background: rgba(245, 158, 11, 0.15); color: #F59E0B; }}
+  .card-header h3 {{
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--green);
+  }}
+  .tag {{
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }}
+  .tag-green {{ background: var(--label); color: var(--green); }}
+  .tag-gold {{ background: var(--alt); color: var(--gold); border: 1px solid var(--gold); }}
 
-  ul {{ margin: 0; padding-left: 20px; font-size: 13.5px; color: #E4E4E7; }}
-  li {{ margin-bottom: 8px; }}
-  li b {{ color: #FFF; }}
+  ul {{ margin: 0; padding-left: 20px; font-size: 14.5px; color: var(--ink); }}
+  li {{ margin-bottom: 8px; line-height: 1.6; }}
+  li b {{ color: var(--green); }}
 
   /* Interactive Tab System with Mobile Ergonomics */
   .tab-system-card {{
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: 14px;
     padding: 26px;
     margin-top: 24px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 25px rgba(43,43,43,0.05);
   }}
   .tab-nav-wrapper {{
     position: relative;
@@ -189,7 +375,7 @@ def build_dossier():
   .tab-nav {{
     display: flex;
     gap: 10px;
-    border-bottom: 2px solid rgba(255,255,255,0.1);
+    border-bottom: 2px solid var(--label);
     padding-bottom: 14px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -199,10 +385,10 @@ def build_dossier():
   .tab-nav::-webkit-scrollbar {{ display: none; }}
   
   .tab-btn {{
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border-color);
-    color: #A1A1AA;
-    padding: 12px 18px;
+    background: var(--alt);
+    border: 1px solid var(--line);
+    color: var(--mute);
+    padding: 11px 18px;
     border-radius: 8px;
     font-size: 13.5px;
     font-weight: 700;
@@ -214,26 +400,27 @@ def build_dossier():
     gap: 8px;
     min-height: 44px;
     scroll-snap-align: start;
+    font-family: inherit;
   }}
   .tab-btn:hover {{
-    background: rgba(255,255,255,0.12);
-    color: #FFF;
+    background: var(--label);
+    color: var(--green);
   }}
   .tab-btn.active {{
-    background: #D97706;
-    color: #000;
-    border-color: #F59E0B;
-    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+    background: var(--green);
+    color: var(--bg);
+    border-color: var(--green2);
+    box-shadow: 0 4px 12px rgba(47,69,56,0.3);
   }}
   .tab-text-mobile {{ display: none; }}
 
-  /* Diagram Controls Toolbar */
+  /* Diagram Blueprint Console */
   .diagram-toolbar {{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #11141C;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--alt);
+    border: 1px solid var(--line);
     border-bottom: none;
     border-radius: 10px 10px 0 0;
     padding: 10px 14px;
@@ -246,9 +433,9 @@ def build_dossier():
     align-items: center;
   }}
   .mode-btn {{
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #D4D4D8;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 12px;
@@ -259,28 +446,30 @@ def build_dossier():
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    font-family: inherit;
   }}
-  .mode-btn:hover {{ background: rgba(255,255,255,0.15); color: #FFF; }}
+  .mode-btn:hover {{ background: var(--label); color: var(--green); }}
   .mode-btn.active {{
-    background: #3B82F6;
-    color: #FFF;
-    border-color: #60A5FA;
+    background: var(--green);
+    color: var(--bg);
+    border-color: var(--green2);
   }}
   .diagram-hint {{
-    font-size: 11.5px;
-    color: var(--text-muted);
+    font-size: 12px;
+    color: var(--mute);
+    font-weight: 500;
   }}
 
   /* Diagram Scroll Container */
   .diagram-scroll-container {{
-    background: #0B0F17;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #0B0F17; /* High-contrast technical console */
+    border: 1px solid var(--line);
     border-radius: 0 0 10px 10px;
     padding: 16px;
     margin-bottom: 28px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
   }}
   .diagram-scroll-container svg {{
     display: block;
@@ -298,36 +487,36 @@ def build_dossier():
   .spec-section {{
     margin-top: 24px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--label);
   }}
   .spec-section h2 {{
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 800;
-    color: #FFF;
-    margin: 0 0 14px 0;
+    color: var(--green);
+    margin: 0 0 12px 0;
     display: flex;
     align-items: center;
     gap: 10px;
   }}
   .spec-section h3 {{
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-    color: #F59E0B;
-    margin: 20px 0 10px 0;
+    color: var(--gold);
+    margin: 24px 0 10px 0;
   }}
   .spec-desc {{
-    font-size: 14px;
-    color: #D4D4D8;
+    font-size: 15px;
+    color: var(--mute);
     margin-bottom: 16px;
   }}
 
-  /* Responsive Table Container */
+  /* Responsive Table Container matching index.html */
   .table-hint {{
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 11.5px;
-    color: var(--accent-amber);
+    font-size: 12px;
+    color: var(--brick);
     margin-bottom: 6px;
     font-weight: 600;
   }}
@@ -336,41 +525,47 @@ def build_dossier():
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--line);
     margin: 8px 0 24px 0;
-    background: var(--card-inner);
+    background: var(--card);
   }}
   .styled-table {{
     width: 100%;
     border-collapse: collapse;
-    font-size: 13px;
-    min-width: 720px; /* Prevents awkward column squeezing */
+    font-size: 14px;
+    min-width: 720px;
   }}
   .styled-table thead tr {{
-    background: rgba(217, 119, 6, 0.15);
-    color: #F59E0B;
+    background: var(--green);
+    color: var(--bg);
     text-align: left;
-    font-weight: 700;
-    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+  }}
+  ::root[data-theme="dark"] .styled-table thead tr {{
+    color: #1C211E;
   }}
   .styled-table th, .styled-table td {{
     padding: 12px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid var(--line);
     vertical-align: top;
   }}
-  .styled-table tbody tr:hover {{
-    background: rgba(255,255,255,0.03);
+  .styled-table tr:nth-child(even) td {{
+    background: var(--alt);
+  }}
+  .styled-table tbody tr:hover td {{
+    background: var(--label);
   }}
   .code-badge {{
     font-family: monospace;
-    font-size: 11.5px;
-    background: rgba(255,255,255,0.08);
+    font-size: 12px;
+    background: var(--label);
     padding: 2px 6px;
     border-radius: 4px;
-    color: #38BDF8;
+    color: var(--green);
+    font-weight: 600;
   }}
 
-  /* SOP Grid */
+  /* SOP Grid matching index.html */
   .sop-grid {{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -378,29 +573,32 @@ def build_dossier():
     margin: 18px 0;
   }}
   .sop-card {{
-    background: var(--card-inner);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
     border-radius: 8px;
     padding: 18px;
-    border-left: 4px solid #D97706;
+    box-shadow: 0 4px 12px rgba(43,43,43,0.04);
   }}
   .sop-card b.step-num {{
-    color: #F59E0B;
-    font-size: 11.5px;
+    color: var(--gold);
+    font-size: 12px;
     text-transform: uppercase;
     display: block;
     margin-bottom: 6px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
   }}
   .sop-card h4 {{
     margin: 0 0 8px 0;
-    font-size: 14.5px;
-    color: #FFF;
+    font-size: 15px;
+    color: var(--green);
   }}
   .sop-card p {{
     margin: 0;
-    font-size: 12.5px;
-    color: #A1A1AA;
-    line-height: 1.5;
+    font-size: 13.5px;
+    color: var(--mute);
+    line-height: 1.6;
   }}
 
   /* Mobile Floating Dock */
@@ -411,20 +609,20 @@ def build_dossier():
     left: 16px;
     right: 16px;
     z-index: 1000;
-    background: rgba(20, 20, 24, 0.94);
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(217, 119, 6, 0.4);
+    border: 1px solid var(--gold);
     border-radius: 30px;
     padding: 8px 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     justify-content: space-around;
     align-items: center;
   }}
   .dock-btn {{
     background: transparent;
     border: none;
-    color: #E2E8F0;
-    font-size: 12px;
+    color: var(--ink);
+    font-size: 12.5px;
     font-weight: 700;
     cursor: pointer;
     display: flex;
@@ -436,17 +634,26 @@ def build_dossier():
     text-decoration: none;
   }}
   .dock-btn.highlight {{
-    background: #D97706;
-    color: #000;
+    background: var(--green);
+    color: var(--bg);
+  }}
+
+  footer {{
+    padding: 50px 16px 40px;
+    text-align: center;
+    color: var(--mute);
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
   }}
 
   /* Mobile Responsive Media Queries */
   @media (max-width: 768px) {{
-    body {{
-      padding: 12px 10px 85px;
+    main {{
+      padding: 16px 10px 85px;
     }}
     .header-card {{
-      padding: 20px 16px;
+      padding: 22px 16px;
       margin-bottom: 16px;
     }}
     .tab-system-card {{
@@ -481,6 +688,19 @@ def build_dossier():
   }}
 </style>
 <script>
+  // Theme sync with index.html
+  try {{
+    const t = localStorage.getItem('t');
+    if (t) document.documentElement.dataset.theme = t;
+  }} catch(e) {{}}
+
+  function toggleTheme() {{
+    const d = document.documentElement;
+    const cur = d.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    d.dataset.theme = cur === 'dark' ? 'light' : 'dark';
+    try {{ localStorage.setItem('t', d.dataset.theme); }} catch(e) {{}}
+  }}
+
   function selectTab(idx) {{
     const btns = document.querySelectorAll('.tab-btn');
     const panes = document.querySelectorAll('.tab-pane');
@@ -525,16 +745,77 @@ def build_dossier():
 </script>
 </head>
 <body>
-<div class="container">
 
-  <!-- Header Card -->
-  <div class="header-card">
-    <div class="badge">Enterprise Strategic Technical Dossier</div>
-    <h1>企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書</h1>
-    <div class="meta">
-      <b>專業職能</b>：企業級 AI 架構師 / AI Architect ｜ <b>呈報主管</b>：總經理、技術長、資安長 ｜ <b>架構與策略總設計</b>：<b>Howard Liao Ph.D.</b>
+<!-- Harmonized Sticky Header matching index.html -->
+<header class="nav">
+  <div class="in">
+    <a href="index.html" class="brand">廖倫豪 博士<small>× LITEON</small></a>
+    <nav class="links" id="links">
+      <div class="nav-item">
+        <a href="index.html#hero" class="nav-link">首頁</a>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="index.html#context" class="nav-link">光寶與職能 <span class="arr">▾</span></a>
+        <div class="nav-drop">
+          <a href="index.html#context">光寶現況</a>
+          <a href="index.html#duties">六項職責</a>
+          <a href="index.html#fit">職能對照</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="index.html#stack" class="nav-link">平台與架構 <span class="arr">▾</span></a>
+        <div class="nav-drop">
+          <a href="index.html#stack">AI 平台藍圖</a>
+          <a href="index.html#arch">AI 架構</a>
+          <a href="index.html#portfolio">用例組合</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="index.html#plan" class="nav-link">到任與治理 <span class="arr">▾</span></a>
+        <div class="nav-drop">
+          <a href="index.html#plan">180 天到任計畫</a>
+          <a href="index.html#org">組織與 PO</a>
+          <a href="index.html#gov">AI 治理</a>
+          <a href="index.html#hive">實施藍圖</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="index.html#cases" class="nav-link">案例與資歷 <span class="arr">▾</span></a>
+        <div class="nav-drop">
+          <a href="index.html#cases">代表案例</a>
+          <a href="index.html#works">架構作品集</a>
+          <a href="index.html#profile">學經歷</a>
+          <a href="index.html#qa">問答 (Q&A)</a>
+        </div>
+      </div>
+      <div class="nav-item has-drop">
+        <a href="architecture.html" class="nav-link on">文件報告 <span class="arr">▾</span></a>
+        <div class="nav-drop">
+          <a href="index.html#docs">文件線上預覽</a>
+          <a href="architecture.html" style="font-weight:700;color:var(--green)">企業 AI 架構白皮書</a>
+        </div>
+      </div>
+    </nav>
+    <div class="langs">
+      <a href="architecture.html" class="on" hreflang="zh">繁中</a>
+      <a href="index.html" hreflang="zh">光寶門戶</a>
     </div>
-    <p style="margin:0; font-size:14px; color:#D4D4D8;">
+    <button class="tbtn" id="theme" aria-label="Theme" onclick="toggleTheme()">◐</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Header Card in Milan Warm Amber style -->
+  <div class="header-card">
+    <div class="eyebrow">Enterprise Strategic Technical Whitepaper · LITEON Special Edition</div>
+    <h1>企業級 AI 平台架構師 ＆ Howard 資安前瞻戰略全域工程白皮書</h1>
+    <div class="meta-bar">
+      <span>呈報對象：<b>光寶科技 董事長、資訊長</b></span>
+      <span>應徵職能：<b>企業級 AI 架構師 / AI Platform Lead</b></span>
+      <span>架構與策略總設計：<b>Howard Liao Ph.D.</b></span>
+    </div>
+    <p style="margin:0; font-size:15px; color:var(--mute); line-height:1.75;">
       本白皮書精準整併 <b>企業自主 AI 生態系建設核心需求</b>（Enterprise GPT、AI Agent Platform、地端 AIDC 綠能運算中心）與 <b>Howard 前瞻資安戰略三位一體閉環</b>。全域資安組件全面採用 <b>Howard</b> 自主化架構命名，提供企業級零信任、5 階軟體供應鏈攔截、非人類身分（NHI）意圖審計與後量子密碼學敏捷性（Crypto Agility）完整工程規範、參數字典、SOP 與落地準則。
     </p>
     <div class="download-bar">
@@ -554,7 +835,7 @@ def build_dossier():
   <div class="grid-2">
     <div class="card">
       <div class="card-header">
-        <span class="tag tag-blue">Architecture Scope</span>
+        <span class="tag tag-green">Architecture Scope</span>
         <h3>企業級 AI 架構師七大核心工程職責與業務邊界</h3>
       </div>
       <ul>
@@ -571,7 +852,7 @@ def build_dossier():
 
     <div class="card">
       <div class="card-header">
-        <span class="tag tag-amber">Howard Security</span>
+        <span class="tag tag-gold">Howard Security</span>
         <h3>Howard 前瞻資安戰略三位一體閉環體系</h3>
       </div>
       <ul>
@@ -632,7 +913,7 @@ def build_dossier():
           <button class="mode-btn active" onclick="toggleDiagramMode('fit', this)">📱 適應螢幕</button>
           <button class="mode-btn" onclick="toggleDiagramMode('scroll', this)">🔍 100% 高解析 (橫向滑動)</button>
         </div>
-        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體</span>
+        <span class="diagram-hint">💡 提示：點擊「100% 高解析」可橫向滑動細看字體與架構圖框</span>
       </div>
       <div class="diagram-scroll-container">
         {svg1}
@@ -829,7 +1110,7 @@ def build_dossier():
 
       <div class="spec-section">
         <h2><span>🛑</span> 參、Howard 5 階現代軟體周界與 MCP 供應鏈防禦深度規範</h2>
-        <p class="spec-desc">傳統端點防毒專注於攔截作業系統底層 PE/ELF 二進制執行檔，但現代 AI 開發與辦公環境廣泛採用 Cursor/VS Code 擴充套件、Python 依賴包、MCP 工具與瀏覽器外掛，全都在合法直譯器內部執行。本章節定義防範類似沙丘巨蟲（Shai-Hulud）供應鏈滲透的 5 階治理體系。</p>
+        <p class="spec-desc">傳統端點防毒專注於攔截作業系統底層 PE/ELF 二進制執行檔，但現代 AI 開發與辦公環境廣泛採用 Cursor/VS Code 擴充套件、Python 依賴包、MCP 工具與瀏覽器外掛，全都在合法直譯器內部執行。本章節定義防範現代供應鏈滲透的 5 階治理體系。</p>
 
         <div class="table-hint">⟷ 左右滑動檢視完整防禦階層與阻斷條件</div>
         <div class="table-container">
@@ -1127,7 +1408,10 @@ def build_dossier():
     <button class="dock-btn" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})"><span>🔝</span> 頂部</button>
   </div>
 
-</div>
+</main>
+
+<footer>© 2026 廖倫豪 博士　Howard Liao, Ph.D.　·　專為光寶科技董事長暨資訊長審閱製作</footer>
+
 </body>
 </html>
 """
@@ -1143,7 +1427,7 @@ def build_dossier():
     with open(out_path3, "w", encoding="utf-8") as f:
         f.write(html_content)
         
-    print(f"Master-level mobile ergonomics dossier generated across all destinations.")
+    print(f"Harmonized Milan style architecture dossier successfully generated across all targets.")
 
 if __name__ == "__main__":
     build_dossier()
