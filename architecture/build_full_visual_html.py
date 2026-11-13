@@ -5,7 +5,7 @@ build_full_visual_html.py
 Embeds 5 high-resolution, publication-grade SVG enterprise architecture diagrams
 ALL 5 SIMULTANEOUSLY VISIBLE directly into the executive HTML summary page.
 Card heights and swimlane bounds dynamically adjust so text NEVER clips or overflows borders.
-Zero vendor/client branding (no momo, no PA).
+Zero vendor/client branding (independent proprietary Howard architecture).
 
 Author: Howard Liao Ph.D.
 """
@@ -79,7 +79,7 @@ def generate_svg_page1():
     svg.append("""
     <rect x="20" y="15" width="1400" height="58" rx="8" fill="#18181B" stroke="#D97706" stroke-width="2"/>
     <text x="720" y="38" font-size="16" font-weight="800" fill="#F59E0B" text-anchor="middle" font-family="sans-serif">企業級 AI 平台 ＆ Howard 資安防禦全域架構圖 (Blueprint)</text>
-    <text x="720" y="58" font-size="11.5" fill="#A1A1AA" text-anchor="middle" font-family="sans-serif">Enterprise GPT・AI Agent Platform・地端 AIDC・Howard Prisma AIRS・後量子密碼防線 ｜ 架構總設計：Howard Liao Ph.D.</text>
+    <text x="720" y="58" font-size="11.5" fill="#A1A1AA" text-anchor="middle" font-family="sans-serif">Enterprise GPT・AI Agent Platform・地端 AIDC・Howard AIRS 核心防護・後量子密碼防線 ｜ 架構總設計：Howard Liao Ph.D.</text>
     """)
     
     # Layer 1: Business Access (y=90, h=165)
@@ -92,8 +92,8 @@ def generate_svg_page1():
     svg.append(svg_card(1200, 132, 205, 105, "非人類身分 (NHI)", "自主 Agentic Worker\n背景定時批次排程作業", "NHI Identity", "#1F2937", "#2563EB", "#93C5FD"))
 
     # Layer 2: Howard Edge Security (y=270, h=175)
-    svg.append(svg_lane(20, 270, 1400, 175, "【Howard AI 安全入口與治理層】Howard Prisma AIRS & AI Gateway Hub", "#1C1917", "#7F1D1D", "#F87171"))
-    svg.append(svg_card(35, 312, 265, 115, "Howard Prisma AIRS", "AI Runtime Security 全生命週期防護\n提示詞注入攔截・越獄防禦\n客戶隱私個資 (PII) 自動遮蔽去識別", "Runtime Sec", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
+    svg.append(svg_lane(20, 270, 1400, 175, "【Howard AI 安全入口與治理層】Howard AIRS 核心閘門 & AI Gateway Hub", "#1C1917", "#7F1D1D", "#F87171"))
+    svg.append(svg_card(35, 312, 265, 115, "Howard AIRS 核心防護", "AI Runtime Security 全生命週期防護\n提示詞注入攔截・越獄防禦\n客戶隱私個資 (PII) 自動遮蔽去識別", "Runtime Sec", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(318, 312, 265, 115, "Howard AI Gateway", "多模型動態路由・多租戶隔離\n智慧語意快取 (Semantic Cache)\n負載平衡與防抖自動降級", "LLM Gateway", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(601, 312, 265, 115, "Howard FinOps 治理中樞", "Token / GPU 即時用量計費 (Chargeback)\n部門配額設限 (Resource Quota)\n成本效益可視化分析儀表板", "Cost Control", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(884, 312, 265, 115, "Howard NHI 身分與意圖審計", "機器身分生命週期憑證管理\n防代理混淆 (Confused Deputy)\n推論鏈 Intent Auditability 存證", "Identity Auth", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
@@ -158,7 +158,7 @@ def generate_svg_page2():
 
     cur_x = start_x + col_w + spacing
     svg.append(svg_lane(cur_x, 90, col_w, 850, "2. Howard 安全中樞 (Security Guardrails)", "#1C1917", "#7F1D1D", "#F87171"))
-    svg.append(svg_card(cur_x+15, 135, col_w-30, 120, "Howard Prisma AIRS 核心閘門", "• 語意安全過濾與惡意語法攔截\n• 客戶隱私個資 (PII) 自動遮蔽去識別\n• 越獄與敏感詞動態偵測即刻阻斷", "Runtime Sec", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
+    svg.append(svg_card(cur_x+15, 135, col_w-30, 120, "Howard AIRS 核心安全閘門", "• 語意安全過濾與惡意語法攔截\n• 客戶隱私個資 (PII) 自動遮蔽去識別\n• 越獄與敏感詞動態偵測即刻阻斷", "Runtime Sec", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(cur_x+15, 275, col_w-30, 125, "Howard 防混淆代理防護", "• 嚴格區隔「指令通道」與「資料通道」\n• 標記不可信外部資料，防止誘騙挾持\n• <b>阻斷攻擊者利用 Agent 特權呼叫工具</b>", "Anti-Deputy", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(cur_x+15, 425, col_w-30, 120, "Howard 意圖驗證引擎 (Intent Verifier)", "• 比對 Agent 工具呼叫是否符合原始目標\n• 參數合理性與資料敏感度動態檢驗\n• 越權調用即刻熔斷攔截並告警", "Intent Verify", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
     svg.append(svg_card(cur_x+15, 565, col_w-30, 120, "Howard Wings AI Risk Engine", "• 即時評估 MCP 工具之安全信譽評等\n• 動態監控 API 請求頻率與封包特徵\n• 阻斷未經認證之外部 MCP 服務呼叫", "Tool Risk", "#292524", "#DC2626", "#FECACA", tag_bg="#EF4444"))
@@ -342,7 +342,7 @@ def generate_svg_page5():
             ("資料壽命半衰期分析模型", "量化機密商業合約、研發專利與財務資料\n計算量子威脅時間窗與密碼破譯臨界點\n強制排定前置防護時程表")
         ]),
         ("第 3 階：修復、處置與中繼防護", "Remediation & Translation", "#7F1D1D", "#DC2626", "#FECACA", [
-            ("Howard 政策一鍵自動下發", "對 Howard NGFW、GlobalProtect、Prisma Access\n一鍵啟用量子安全演算法政策\n秒級完成全網安全邊界升級"),
+            ("Howard 政策一鍵自動下發", "對 Howard NGFW、Howard ZTNA、Howard Secure Edge\n一鍵啟用量子安全演算法政策\n秒級完成全網安全邊界升級"),
             ("Howard 密碼轉譯中繼防護", "針對無法升級演算法的老舊系統與設備\n由邊緣閘道進行雙向加密轉譯，實現無痛中繼防護\n延長老舊資產合規服役壽命"),
             ("第三方軟硬體遷移指南", "為企業生態圈外部合作供應商\n產出標準 PQC API 介接規範與升級合規指引\n建立供應鏈量子安全防禦統一戰線"),
             ("混合雙模密鑰過渡協議", "同時封裝傳統 ECDH 與 ML-KEM\n確保過渡期向下相容與抗量子雙重防線\n實現平滑無感演算法切換升級")

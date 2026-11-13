@@ -10,7 +10,7 @@ with MASTER-LEVEL MOBILE ERGONOMICS (手機友善度與親和性):
 - Responsive table containers with horizontal touch scrolling (min-width: 680px) & swipe hints.
 - Mobile bottom floating quick dock for navigation, download, and back-to-top.
 - Apple HIG compliant 44x44px touch targets.
-- Zero vendor/client branding (no momo, no PA).
+- Zero vendor/client branding (independent proprietary Howard architecture).
 - Authored by Howard Liao Ph.D.
 
 Author: Howard Liao Ph.D.
@@ -664,7 +664,7 @@ def build_dossier():
               </tr>
               <tr>
                 <td><b>Layer 2: 安全入口層</b></td>
-                <td><b>Howard Prisma AIRS</b> ＋ <b>Howard AI Gateway</b> (Portkey/LiteLLM)</td>
+                <td><b>Howard AIRS 核心防護</b> ＋ <b>Howard AI Gateway</b> (Portkey/LiteLLM)</td>
                 <td>AI Runtime Security 即時語意過濾、PII 動態遮蔽、多模型動態路由、多租戶隔離、Token 限額管制與語意快取。</td>
                 <td>gRPC / REST / TLS 1.3</td>
                 <td>AIRS 檢查耗時 &lt; 8ms，快取命中延遲 &lt; 15ms</td>
@@ -765,7 +765,7 @@ def build_dossier():
                 <td><b>防代理混淆 (Anti-Confused Deputy)</b></td>
                 <td>外部檢索資料潛藏「間接提示詞注入（Indirect Prompt Injection）」，誘騙高權限 Agent 濫用工具外傳資料。</td>
                 <td><b>雙通道嚴格解耦（Dual-Channel Isolation）</b>：控制通道（指令）與資料通道（外部輸入）物理拆分，標記不可信資料。</td>
-                <td>Howard Prisma AIRS 語意隔離閘門，將外部檢索內容封裝於唯讀資料沙箱，禁止直接作為 Executable 指令解釋。</td>
+                <td>Howard AIRS 核心防護 語意隔離閘門，將外部檢索內容封裝於唯讀資料沙箱，禁止直接作為 Executable 指令解釋。</td>
                 <td>OWASP Top 10 for LLM (LLM01 / LLM02)</td>
               </tr>
               <tr>
@@ -791,7 +791,7 @@ def build_dossier():
           <div class="sop-card">
             <b class="step-num">Step 01</b>
             <h4>輸入消毒與通道標記</h4>
-            <p>Howard Prisma AIRS 攔截原始 Prompt 與外部 RAG 檢索內容，執行 PII 去識別化並給予資料安全標籤（Trusted Command vs. Untrusted Data），阻斷任何試圖覆蓋系統 Prompts 的越獄指令。</p>
+            <p>Howard AIRS 核心防護 攔截原始 Prompt 與外部 RAG 檢索內容，執行 PII 去識別化並給予資料安全標籤（Trusted Command vs. Untrusted Data），阻斷任何試圖覆蓋系統 Prompts 的越獄指令。</p>
           </div>
           <div class="sop-card">
             <b class="step-num">Step 02</b>
@@ -1062,7 +1062,7 @@ def build_dossier():
               <tr>
                 <td><b>第 3 階：修復、處置與中繼防護</b></td>
                 <td>對支援系統一鍵啟用 PQC 政策；對無法升級演算法的老舊 OT/印表機/伺服器導入中繼轉譯防護。</td>
-                <td>Howard 安全政策一鍵下發（NGFW、GlobalProtect、Prisma Access）；<b>Howard 密碼轉譯中繼防護 (Cipher Translation Proxy)</b>。</td>
+                <td>Howard 安全政策一鍵下發（NGFW、Howard ZTNA、Howard Secure Edge）；<b>Howard 密碼轉譯中繼防護 (Cipher Translation Proxy)</b>。</td>
                 <td>邊緣雙向密碼轉譯：傳統 RSA/ECC ➔ <b>NIST PQC (ML-KEM / ML-DSA)</b> 封裝轉發。</td>
                 <td>全網 PQC 演算法部署、老舊資產無痛平滑防護、第三方供應鏈遷移指南。</td>
               </tr>

@@ -20,9 +20,18 @@ a{color:var(--green)}
 header.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav .in{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:10px 16px}
 .brand{font-weight:700;color:var(--green);white-space:nowrap}.brand small{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:15px;margin-left:6px;letter-spacing:.06em}
-.links{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}.grid2>*,.grid3>*,.stack>*{min-width:0}.links::-webkit-scrollbar{display:none}
-.links a{white-space:nowrap;text-decoration:none;color:var(--mute);font-size:14px;padding:6px 10px;border-radius:999px}
-.links a.on,.links a:hover{background:var(--label);color:var(--green)}
+.links{display:flex;gap:6px;align-items:center;flex:1;min-width:0;overflow:visible}.grid2>*,.grid3>*,.stack>*{min-width:0}
+.nav-item{position:relative}
+.nav-link{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;text-decoration:none;color:var(--mute);font-size:14px;padding:6px 14px;border-radius:999px;transition:all .2s ease;font-weight:500}
+.nav-link .arr{font-size:10px;opacity:.6;transition:transform .2s ease}
+.nav-item:hover .nav-link .arr{transform:rotate(180deg)}
+.nav-link.on,.nav-link:hover{background:var(--label);color:var(--green);font-weight:600}
+.nav-drop{display:none;position:absolute;top:calc(100% + 4px);left:0;background:var(--card);border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.15);border-radius:10px;padding:6px;min-width:170px;z-index:100;flex-direction:column}
+.nav-item:hover .nav-drop,.nav-item:focus-within .nav-drop{display:flex;animation:dropFade .2s ease}
+@keyframes dropFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.nav-drop a{padding:8px 14px;font-size:13.5px;color:var(--ink);text-decoration:none;border-radius:6px;white-space:nowrap;display:block;transition:background .15s ease,color .15s ease}
+.nav-drop a:hover{background:var(--label);color:var(--green)}
+@media (max-width:768px){.links{overflow-x:auto;scrollbar-width:none}.links::-webkit-scrollbar{display:none}.nav-item.has-drop .nav-drop{display:none!important}}
 .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
 .tbtn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:13px}
 main{max-width:1180px;margin:auto;padding:0 16px}
@@ -195,7 +204,50 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 <header class="nav"><div class="in">
  <div class="brand">Dr. Howard Liao<small>× LITEON</small></div>
  <nav class="links" id="links">
-  <a href="#hero">Home</a><a href="#context">LITEON today</a><a href="#duties">Six responsibilities</a><a href="#fit">Competency fit</a><a href="#stack">AI platform blueprint</a><a href="#arch">AI architecture</a><a href="#portfolio">Use cases</a><a href="#org">Organization and PO</a><a href="#gov">Governance</a><a href="#plan">Onboarding plan</a><a href="#hive">Blueprint</a><a href="#cases">Cases</a><a href="#works">Portfolio</a><a href="#profile">Background</a><a href="#qa">Q and A</a><a href="#docs">Documents</a>
+  <div class="nav-item">
+    <a href="#hero" class="nav-link">Home</a>
+  </div>
+  <div class="nav-item has-drop">
+    <a href="#context" class="nav-link" data-group="context,duties,fit">Fit &amp; Duties <span class="arr">▾</span></a>
+    <div class="nav-drop">
+      <a href="#context">LITEON Today</a>
+      <a href="#duties">Six Responsibilities</a>
+      <a href="#fit">Competency Fit</a>
+    </div>
+  </div>
+  <div class="nav-item has-drop">
+    <a href="#stack" class="nav-link" data-group="stack,arch,portfolio">Platform &amp; Arch <span class="arr">▾</span></a>
+    <div class="nav-drop">
+      <a href="#stack">Platform Blueprint</a>
+      <a href="#arch">AI Architecture</a>
+      <a href="#portfolio">Use Cases</a>
+    </div>
+  </div>
+  <div class="nav-item has-drop">
+    <a href="#plan" class="nav-link" data-group="org,gov,plan,hive">Plan &amp; Gov <span class="arr">▾</span></a>
+    <div class="nav-drop">
+      <a href="#plan">180-Day Plan</a>
+      <a href="#org">Organization &amp; PO</a>
+      <a href="#gov">AI Governance</a>
+      <a href="#hive">Implementation Blueprint</a>
+    </div>
+  </div>
+  <div class="nav-item has-drop">
+    <a href="#cases" class="nav-link" data-group="cases,works,profile,qa">Cases &amp; Profile <span class="arr">▾</span></a>
+    <div class="nav-drop">
+      <a href="#cases">Key Cases</a>
+      <a href="#works">Architecture Portfolio</a>
+      <a href="#profile">Background &amp; Credentials</a>
+      <a href="#qa">Q &amp; A</a>
+    </div>
+  </div>
+  <div class="nav-item has-drop">
+    <a href="#docs" class="nav-link" data-group="docs">Documents <span class="arr">▾</span></a>
+    <div class="nav-drop">
+      <a href="#docs">Online Document Preview</a>
+      <a href="architecture.html">Enterprise AI Whitepaper</a>
+    </div>
+  </div>
  </nav>
  <div class="langs"><a href="index.html" class="" hreflang="zh">繁中</a><a href="ja.html" class="" hreflang="ja">日本語</a><a href="en.html" class="on" hreflang="en">EN</a></div>
  <button class="tbtn" id="theme" aria-label="Theme">◐</button>
@@ -466,7 +518,7 @@ function calc(){const a=+$('#s1').value,b=+$('#s2').value,c=+$('#s3').value;$('#
 $('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(!c)return;$$('#phase.card').forEach(x=>x.classList.toggle('on',x===c))});
 // reveal + nav highlight
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
-const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))},{passive:true});
+const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links .nav-link').forEach(a=>{const group=(a.dataset.group||'').split(',');const href=(a.getAttribute('href')||'').replace('#','');const on=(href===cur)||group.includes(cur);a.classList.toggle('on',on)})},{passive:true});
 
 // document viewer: online preview only
 let VD='',VN=0,VI=1;const V=$('#viewer');

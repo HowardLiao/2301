@@ -619,7 +619,7 @@
     
     <rect x="20" y="15" width="1400" height="58" rx="8" fill="#18181B" stroke="#D97706" stroke-width="2"/>
     <text x="720" y="38" font-size="16" font-weight="800" fill="#F59E0B" text-anchor="middle" font-family="sans-serif">企業級 AI 平台 ＆ Howard 資安防禦全域架構圖 (Blueprint)</text>
-    <text x="720" y="58" font-size="11.5" fill="#A1A1AA" text-anchor="middle" font-family="sans-serif">Enterprise GPT・AI Agent Platform・地端 AIDC・Howard Prisma AIRS・後量子密碼防線 ｜ 架構總設計：Howard Liao Ph.D.</text>
+    <text x="720" y="58" font-size="11.5" fill="#A1A1AA" text-anchor="middle" font-family="sans-serif">Enterprise GPT・AI Agent Platform・地端 AIDC・Howard AIRS 核心防護・後量子密碼防線 ｜ 架構總設計：Howard Liao Ph.D.</text>
     
     <g transform="translate(20,90)">
       <rect width="1400" height="165" rx="10" fill="#111827" stroke="#1E3A8A" stroke-width="1.5"/>
@@ -672,13 +672,13 @@
     <g transform="translate(20,270)">
       <rect width="1400" height="175" rx="10" fill="#1C1917" stroke="#7F1D1D" stroke-width="1.5"/>
       <rect width="1400" height="32" rx="10" fill="#7F1D1D" opacity="0.4"/>
-      <text x="16" y="21" font-size="12.5" font-weight="800" fill="#F87171" font-family="sans-serif">【Howard AI 安全入口與治理層】Howard Prisma AIRS &amp; AI Gateway Hub</text>
+      <text x="16" y="21" font-size="12.5" font-weight="800" fill="#F87171" font-family="sans-serif">【Howard AI 安全入口與治理層】Howard AIRS 核心閘門 &amp; AI Gateway Hub</text>
     </g>
     <g transform="translate(35,312)">
 <rect width="265" height="117" rx="8" fill="#292524" stroke="#DC2626" stroke-width="1.5"/>
 <rect x="12" y="8" width="137" height="18" rx="4" fill="#EF4444"/>
 <text x="80.5" y="21" font-size="10" font-weight="700" fill="#000" text-anchor="middle" font-family="sans-serif">Runtime Sec</text>
-<text x="14" y="44" font-size="12" font-weight="700" fill="#FECACA" font-family="sans-serif">Howard Prisma AIRS</text>
+<text x="14" y="44" font-size="12" font-weight="700" fill="#FECACA" font-family="sans-serif">Howard AIRS 核心防護</text>
 <text x="14" y="62" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">AI Runtime Security 全生命週期防護</text>
 <text x="14" y="79" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">提示詞注入攔截・越獄防禦</text>
 <text x="14" y="96" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">客戶隱私個資 (PII) 自動遮蔽去識別</text>
@@ -932,7 +932,7 @@
               </tr>
               <tr>
                 <td><b>Layer 2: 安全入口層</b></td>
-                <td><b>Howard Prisma AIRS</b> ＋ <b>Howard AI Gateway</b> (Portkey/LiteLLM)</td>
+                <td><b>Howard AIRS 核心防護</b> ＋ <b>Howard AI Gateway</b> (Portkey/LiteLLM)</td>
                 <td>AI Runtime Security 即時語意過濾、PII 動態遮蔽、多模型動態路由、多租戶隔離、Token 限額管制與語意快取。</td>
                 <td>gRPC / REST / TLS 1.3</td>
                 <td>AIRS 檢查耗時 &lt; 8ms，快取命中延遲 &lt; 15ms</td>
@@ -1072,7 +1072,7 @@
 <rect width="305" height="120" rx="8" fill="#292524" stroke="#DC2626" stroke-width="1.5"/>
 <rect x="12" y="8" width="137" height="18" rx="4" fill="#EF4444"/>
 <text x="80.5" y="21" font-size="10" font-weight="700" fill="#000" text-anchor="middle" font-family="sans-serif">Runtime Sec</text>
-<text x="14" y="44" font-size="12" font-weight="700" fill="#FECACA" font-family="sans-serif">Howard Prisma AIRS 核心閘門</text>
+<text x="14" y="44" font-size="12" font-weight="700" fill="#FECACA" font-family="sans-serif">Howard AIRS 核心安全閘門</text>
 <text x="14" y="62" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">• 語意安全過濾與惡意語法攔截</text>
 <text x="14" y="79" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">• 客戶隱私個資 (PII) 自動遮蔽去識別</text>
 <text x="14" y="96" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">• 越獄與敏感詞動態偵測即刻阻斷</text>
@@ -1231,7 +1231,7 @@
                 <td><b>防代理混淆 (Anti-Confused Deputy)</b></td>
                 <td>外部檢索資料潛藏「間接提示詞注入（Indirect Prompt Injection）」，誘騙高權限 Agent 濫用工具外傳資料。</td>
                 <td><b>雙通道嚴格解耦（Dual-Channel Isolation）</b>：控制通道（指令）與資料通道（外部輸入）物理拆分，標記不可信資料。</td>
-                <td>Howard Prisma AIRS 語意隔離閘門，將外部檢索內容封裝於唯讀資料沙箱，禁止直接作為 Executable 指令解釋。</td>
+                <td>Howard AIRS 核心防護 語意隔離閘門，將外部檢索內容封裝於唯讀資料沙箱，禁止直接作為 Executable 指令解釋。</td>
                 <td>OWASP Top 10 for LLM (LLM01 / LLM02)</td>
               </tr>
               <tr>
@@ -1257,7 +1257,7 @@
           <div class="sop-card">
             <b class="step-num">Step 01</b>
             <h4>輸入消毒與通道標記</h4>
-            <p>Howard Prisma AIRS 攔截原始 Prompt 與外部 RAG 檢索內容，執行 PII 去識別化並給予資料安全標籤（Trusted Command vs. Untrusted Data），阻斷任何試圖覆蓋系統 Prompts 的越獄指令。</p>
+            <p>Howard AIRS 核心防護 攔截原始 Prompt 與外部 RAG 檢索內容，執行 PII 去識別化並給予資料安全標籤（Trusted Command vs. Untrusted Data），阻斷任何試圖覆蓋系統 Prompts 的越獄指令。</p>
           </div>
           <div class="sop-card">
             <b class="step-num">Step 02</b>
@@ -1942,7 +1942,7 @@
         <g transform="translate(747,175)">
 <rect width="311" height="125" rx="8" fill="#18181B" stroke="#DC2626" stroke-width="1.5"/>
 <text x="14" y="24" font-size="12" font-weight="700" fill="#FECACA" font-family="sans-serif">Howard 政策一鍵自動下發</text>
-<text x="14" y="42" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">對 Howard NGFW、GlobalProtect、Prisma Access</text>
+<text x="14" y="42" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">對 Howard NGFW、Howard ZTNA、Howard Secure Edge</text>
 <text x="14" y="59" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">一鍵啟用量子安全演算法政策</text>
 <text x="14" y="76" font-size="10.5" fill="#A1A1AA" font-family="sans-serif">秒級完成全網安全邊界升級</text>
 </g><g transform="translate(747,316)">
@@ -2038,7 +2038,7 @@
               <tr>
                 <td><b>第 3 階：修復、處置與中繼防護</b></td>
                 <td>對支援系統一鍵啟用 PQC 政策；對無法升級演算法的老舊 OT/印表機/伺服器導入中繼轉譯防護。</td>
-                <td>Howard 安全政策一鍵下發（NGFW、GlobalProtect、Prisma Access）；<b>Howard 密碼轉譯中繼防護 (Cipher Translation Proxy)</b>。</td>
+                <td>Howard 安全政策一鍵下發（NGFW、Howard ZTNA、Howard Secure Edge）；<b>Howard 密碼轉譯中繼防護 (Cipher Translation Proxy)</b>。</td>
                 <td>邊緣雙向密碼轉譯：傳統 RSA/ECC ➔ <b>NIST PQC (ML-KEM / ML-DSA)</b> 封裝轉發。</td>
                 <td>全網 PQC 演算法部署、老舊資產無痛平滑防護、第三方供應鏈遷移指南。</td>
               </tr>

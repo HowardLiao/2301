@@ -116,13 +116,13 @@ def build_all_diagrams(output_path):
     p1 = builder.add_page("p1_overview", "1. 企業級 AI 平台 ＆ Howard 全域架構圖", 1550, 1380)
     p1.add_banner(
         "企業級 AI 平台與 Howard 資安防禦全域架構圖",
-        "整合 Enterprise GPT、AI Agent Platform、地端 AIDC、Howard Prisma AIRS 與後量子密碼防線",
+        "整合 Enterprise GPT、AI Agent Platform、地端 AIDC、Howard AIRS 核心防護 與後量子密碼防線",
         "Howard Liao Ph.D.", x=50, y=20, w=1420, h=65
     )
 
     # Layer 1: Business Users & Clients (h=170)
     l1 = p1.add_swimlane("【使用者與全通路上層業務場景】Consumers, Operations & Corporate Departments", 50, 100, 1420, 170, fill="#F0F9FF", stroke="#0284C7", font_color="#0369A1")
-    c_momo_web = p1.add_card("全通路數位入口 Web / App\n• 消費者端 AI 購物助手\n• 智慧搜尋與個人化推薦", l1, 20, 42, 215, 110, fill="#FFFFFF", stroke="#0284C7")
+    c_enterprise_web = p1.add_card("全通路數位入口 Web / App\n• 消費者端 AI 購物助手\n• 智慧搜尋與個人化推薦", l1, 20, 42, 215, 110, fill="#FFFFFF", stroke="#0284C7")
     c_hr_fin = p1.add_card("企業內部營運場景\n• HR 人資行政審核 Agent\n• 財務報銷自動化 Agent", l1, 255, 42, 215, 110, fill="#FFFFFF", stroke="#0284C7")
     c_ops_log = p1.add_card("電商營運與智慧物流\n• 庫存水位智慧預測\n• 智慧物流派件調度", l1, 490, 42, 215, 110, fill="#FFFFFF", stroke="#0284C7")
     c_cs_live = p1.add_card("智慧客服中心\n• 7x24 全時段對話客服\n• 售後投訴智慧分流處理", l1, 725, 42, 215, 110, fill="#FFFFFF", stroke="#0284C7")
@@ -130,8 +130,8 @@ def build_all_diagrams(output_path):
     c_nhi_agents = p1.add_card("非人類身分 (NHI)\n• 自主 Agentic Worker\n• 背景定時批次排程作業", l1, 1195, 42, 205, 110, fill="#FFFFFF", stroke="#0284C7")
 
     # Layer 2: Howard Edge & Gateway Security (h=180)
-    l2 = p1.add_swimlane("【Howard AI 安全入口與治理層】Howard Prisma AIRS & AI Gateway Hub", 50, 285, 1420, 180, fill="#FEF2F2", stroke="#EF4444", font_color="#991B1B")
-    c_hw_airs = p1.add_card("<b>Howard Prisma AIRS</b>\nAI Runtime Security 全生命週期防護\n• 提示詞注入攔截・越獄防禦\n• 客戶隱私個資 (PII) 自動遮蔽去識別", l2, 20, 42, 265, 120, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337", rounded=1)
+    l2 = p1.add_swimlane("【Howard AI 安全入口與治理層】Howard AIRS 核心閘門 & AI Gateway Hub", 50, 285, 1420, 180, fill="#FEF2F2", stroke="#EF4444", font_color="#991B1B")
+    c_hw_airs = p1.add_card("<b>Howard AIRS 核心防護</b>\nAI Runtime Security 全生命週期防護\n• 提示詞注入攔截・越獄防禦\n• 客戶隱私個資 (PII) 自動遮蔽去識別", l2, 20, 42, 265, 120, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337", rounded=1)
     c_hw_gateway = p1.add_card("<b>Howard AI Gateway (Portkey / LiteLLM)</b>\n多模型動態路由・多租戶隔離\n• 智慧語意快取 (Semantic Cache)\n• 負載平衡與防抖自動降級", l2, 305, 42, 265, 120, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337", rounded=1)
     c_hw_finops = p1.add_card("<b>Howard FinOps & Token 治理中樞</b>\nToken / GPU 即時用量計費 (Chargeback)\n• 部門配額設限 (Resource Quota)\n• 成本效益可視化分析儀表板", l2, 590, 42, 265, 120, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337", rounded=1)
     c_hw_nhi = p1.add_card("<b>Howard NHI 身分與意圖審計中樞</b>\n機器身分生命週期憑證管理\n• 防代理混淆 (Confused Deputy)\n• 推論鏈 Intent Auditability 存證", l2, 875, 42, 265, 120, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337", rounded=1)
@@ -139,7 +139,7 @@ def build_all_diagrams(output_path):
 
     # Layer 3: Enterprise AI Agent Platform & RAG (h=185)
     l3 = p1.add_swimlane("【企業級 AI 核心平台】Enterprise GPT & Agent Platform Ecosystem", 50, 480, 1420, 185, fill="#FAF5FF", stroke="#8B5CF6", font_color="#581C87")
-    c_momo_gpt = p1.add_card("<b>Enterprise GPT 企業大腦平台</b>\n企業內部專屬 LLM 互動平台\n• 內部法規 FAQ 與公文自動起草\n• 跨部門知識問答檢索助手", l3, 20, 42, 265, 125, fill="#FFFFFF", stroke="#8B5CF6", shape="component")
+    c_enterprise_gpt = p1.add_card("<b>Enterprise GPT 企業大腦平台</b>\n企業內部專屬 LLM 互動平台\n• 內部法規 FAQ 與公文自動起草\n• 跨部門知識問答檢索助手", l3, 20, 42, 265, 125, fill="#FFFFFF", stroke="#8B5CF6", shape="component")
     c_agent_flow = p1.add_card("<b>AI Agent Workflow 引擎</b>\n多代理協同架構・任務拆解排程\n• Stateful ReAct / Plan-and-Solve 循環\n• 自動上下文維護與狀態轉移", l3, 305, 42, 265, 125, fill="#FFFFFF", stroke="#8B5CF6", shape="component")
     c_rag_core = p1.add_card("<b>全鏈路 RAG 檢索增強系統</b>\n多路召回 (語意向量 + 關鍵字重排)\n• 企業級文件智慧解析與切片\n• 商品目錄與制度規章知識庫", l3, 590, 42, 265, 125, fill="#FFFFFF", stroke="#8B5CF6", shape="component")
     c_mcp_hub = p1.add_card("<b>MCP (Model Context Protocol) 工具中樞</b>\n標準化外部工具動態調用協定\n• ERP / WMS / CRM / 訂單資料庫介接\n• 權限隔離沙箱與參數校驗", l3, 875, 42, 265, 125, fill="#FFFFFF", stroke="#8B5CF6", shape="component")
@@ -170,7 +170,7 @@ def build_all_diagrams(output_path):
     p1.add_card("雙員工治理與規範手冊\n• 人類員工 vs. 數位員工規則分流管轄\n• 嚴格落實 ISO 27001 / ISO 42001", l6, 1160, 42, 240, 100, fill="#FFFFFF", stroke="#475569")
 
     # Connectors
-    p1.add_edge(c_momo_web, c_hw_airs, "HTTPS / User Prompt", stroke="#0284C7")
+    p1.add_edge(c_enterprise_web, c_hw_airs, "HTTPS / User Prompt", stroke="#0284C7")
     p1.add_edge(c_hw_airs, c_hw_gateway, "Sanitized Request", stroke="#EF4444")
     p1.add_edge(c_hw_gateway, c_agent_flow, "Route to Agent", stroke="#8B5CF6")
     p1.add_edge(c_agent_flow, c_rag_core, "Retrieve Knowledge", stroke="#8B5CF6")
@@ -199,7 +199,7 @@ def build_all_diagrams(output_path):
     state_ctx = p2.add_card("<b>執行環境記憶 (Session Context)</b>\n• 短期交談歷程 (Chat History)\n• Agent 當前狀態與變數槽位\n• 任務初始目標約束錨定", box_in, 20, 495, col_w-40, 125, fill="#FFFFFF", stroke="#0284C7")
 
     box_sec = p2.add_swimlane("2. Howard 核心安全防護中樞 (Howard Security Guardrails)", 410, 100, col_w, 900, fill="#FEF2F2", stroke="#EF4444", font_color="#991B1B")
-    hw_air_in = p2.add_card("<b>Howard Prisma AIRS 核心閘門</b>\n• 語意安全過濾與惡意語法攔截\n• 客戶隱私個資 (PII) 自動遮蔽去識別\n• 越獄與敏感詞動態偵測即刻阻斷", box_sec, 20, 50, col_w-40, 125, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337")
+    hw_air_in = p2.add_card("<b>Howard AIRS 核心安全閘門</b>\n• 語意安全過濾與惡意語法攔截\n• 客戶隱私個資 (PII) 自動遮蔽去識別\n• 越獄與敏感詞動態偵測即刻阻斷", box_sec, 20, 50, col_w-40, 125, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337")
     hw_deputy = p2.add_card("<b>Howard 防混淆代理防護 (Anti-Confused Deputy)</b>\n• 嚴格區隔「指令通道」與「資料通道」\n• 標記不可信外部資料，防止誘騙挾持\n• 阻斷攻擊者利用 Agent 特權呼叫工具", box_sec, 20, 195, col_w-40, 135, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337")
     hw_verify = p2.add_card("<b>Howard 意圖驗證引擎 (Intent Verifier)</b>\n• 比對 Agent 工具呼叫是否符合原始目標\n• 參數合理性與資料敏感度動態檢驗\n• 越權調用即刻熔斷攔截並告警", box_sec, 20, 350, col_w-40, 125, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337")
     hw_wings = p2.add_card("<b>Howard Wings AI Risk Engine</b>\n• 即時評估 MCP 工具之安全信譽評等\n• 動態監控 API 請求頻率與封包特徵\n• 阻斷未經認證之外部 MCP 服務呼叫", box_sec, 20, 495, col_w-40, 125, fill="#FFF1F2", stroke="#F43F5E", font_color="#881337")
@@ -339,7 +339,7 @@ def build_all_diagrams(output_path):
     p5.add_card("<b>PQC 遷移優先排程與波次</b>\n依業務影響度自動生成波次 (Waves)\n產出跨部門遷移甘特圖與落地時程建議\n動態追蹤修復預算與人力資源", q2, 20, 370, col_w-40, 140, fill="#FFFFFF", stroke="#D97706")
 
     q3 = p5.add_swimlane("第 3 階：修復、處置與中繼防護 (Remediation & Translation)", 770, 100, col_w, 860, fill="#FEF2F2", stroke="#EF4444", font_color="#991B1B")
-    p5.add_card("<b>Howard 政策一鍵自動下發</b>\n對 Howard NGFW、GlobalProtect、Prisma Access\n一鍵啟用量子安全演算法政策\n秒級完成全網安全邊界升級", q3, 20, 50, col_w-40, 135, fill="#FFFFFF", stroke="#EF4444")
+    p5.add_card("<b>Howard 政策一鍵自動下發</b>\n對 Howard NGFW、Howard ZTNA、Howard Secure Edge\n一鍵啟用量子安全演算法政策\n秒級完成全網安全邊界升級", q3, 20, 50, col_w-40, 135, fill="#FFFFFF", stroke="#EF4444")
     p5.add_card("<b>Howard 密碼轉譯中繼防護\n(Cipher Translation Proxy)</b>\n針對無法升級演算法的老舊系統與設備\n由邊緣閘道進行雙向加密轉譯，實現無痛中繼防護\n延長老舊資產合規服役壽命", q3, 20, 205, col_w-40, 145, fill="#FFF1F2", stroke="#EF4444", font_color="#881337")
     p5.add_card("<b>第三方軟硬體遷移指南</b>\n為企業生態圈外部合作供應商\n產出標準 PQC API 介接規範與升級合規指引\n建立供應鏈量子安全防禦統一戰線", q3, 20, 370, col_w-40, 140, fill="#FFFFFF", stroke="#EF4444")
 
@@ -358,6 +358,6 @@ def build_all_diagrams(output_path):
 
 if __name__ == "__main__":
     out_file1 = "/Users/howardliao/Desktop/HermesAgent/Temp/Enterprise_AI_Architect_Howard_Security_Architecture.drawio"
-    out_file2 = "/Users/howardliao/Desktop/HermesAgent/Temp/momo_AI_Architect_Howard_Security_Architecture.drawio"
+    out_file2 = "/Users/howardliao/Desktop/HermesAgent/Temp/Enterprise_AI_Architect_Howard_Security_Architecture.drawio"
     build_all_diagrams(out_file1)
     build_all_diagrams(out_file2)
