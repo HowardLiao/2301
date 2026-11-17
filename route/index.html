@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>企業級 AI 路由戰略與光寶 Howard Route 主權混合雲架構｜廖倫豪 博士 × LITEON</title>
+<meta name="description" content="深度比較 Google Vertex、AWS Bedrock、Microsoft Foundry、OpenAI、Claude、MixRoute、OpenRouter 與光寶 Howard Route 八大方案之架構優缺點、製造業主權與 FinOps 實質降本。">
+<link rel="icon" href="../assets/icon-192.png">
+<meta name="theme-color" content="#2F4538">
+<style>
+:root{
+  --bg:#FAF7F2;
+  --alt:#F2EEE8;
+  --label:#E8E2D9;
+  --line:#B8AFA3;
+  --ink:#2B2B2B;
+  --mute:#6B6459;
+  --green:#2F4538;
+  --green2:#3E5A4A;
+  --gold:#C8A96A;
+  --brick:#9C5B4A;
+  --white:#FFFFFF;
+  --card:#FFFFFF;
+  --howard:#1b4332;
+  --howard-border:#2d6a4f;
+  --howard-bg:#e8f5e9;
+  --howard-gold:#d4af37;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C211E;
+    --alt:#232A26;
+    --label:#2C342F;
+    --line:#4A524C;
+    --ink:#ECE7DF;
+    --mute:#B3AC9F;
+    --green:#A9C2B1;
+    --green2:#8FAE9A;
+    --gold:#D4B87C;
+    --brick:#D08E7C;
+    --card:#242B27;
+    --howard:#2d6a4f;
+    --howard-border:#52b788;
+    --howard-bg:#1e3328;
+    --howard-gold:#e9c46a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C211E;
+  --alt:#232A26;
+  --label:#2C342F;
+  --line:#4A524C;
+  --ink:#ECE7DF;
+  --mute:#B3AC9F;
+  --green:#A9C2B1;
+  --green2:#8FAE9A;
+  --gold:#D4B87C;
+  --brick:#D08E7C;
+  --card:#242B27;
+  --howard:#2d6a4f;
+  --howard-border:#52b788;
+  --howard-bg:#1e3328;
+  --howard-gold:#e9c46a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  line-height:1.75;
+  font-size:16px;
+}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Header & Nav */
+header.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:color-mix(in srgb,var(--bg) 94%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav .in{
+  max-width:1240px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 18px;
+}
+.brand{font-weight:700;color:var(--green);font-size:17px;white-space:nowrap}
+.brand small{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:15px;margin-left:6px;letter-spacing:.06em}
+.links{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  flex:1;
+  min-width:0;
+  scrollbar-width:none;
+}
+.links::-webkit-scrollbar{display:none}
+.links a{
+  white-space:nowrap;
+  color:var(--mute);
+  font-size:14px;
+  padding:6px 12px;
+  border-radius:999px;
+  transition:all .2s ease;
+}
+.links a.on,.links a:hover{
+  background:var(--label);
+  color:var(--green);
+  text-decoration:none;
+}
+.tbtn{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  border-radius:999px;
+  padding:5px 12px;
+  cursor:pointer;
+  font:inherit;
+  font-size:13px;
+}
+
+/* Layout & Typography */
+main{max-width:1240px;margin:auto;padding:0 20px}
+section{padding:60px 0 30px;border-bottom:1px solid var(--label)}
+.eyebrow{
+  font-family:"Cormorant Garamond",serif;
+  color:var(--gold);
+  letter-spacing:.18em;
+  font-size:15px;
+  text-transform:uppercase;
+  font-weight:600;
+}
+h1{font-size:clamp(30px,4.5vw,48px);line-height:1.25;color:var(--green);margin:10px 0 16px}
+h2{font-size:clamp(24px,3vw,34px);color:var(--green);margin:8px 0 10px;line-height:1.3}
+h2+.sub{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--mute);font-size:19px;margin:0 0 24px}
+h3{color:var(--green);margin:0 0 8px;font-size:20px}
+p.lead{font-size:18px;max-width:880px;color:var(--ink);line-height:1.7}
+
+/* Bento KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:28px 0}
+.kpi{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:3px solid var(--gold);
+  padding:20px 16px;
+  text-align:center;
+  border-radius:2px;
+}
+.kpi.hero-kpi{border-top-color:var(--green)}
+.kpi .v{font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:700;color:var(--green);line-height:1.1}
+.kpi .l{font-weight:700;font-size:15px;margin-top:4px}
+.kpi .s{font-size:12.5px;color:var(--mute);margin-top:2px}
+
+/* Cards & Grid */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);padding:22px;border-radius:2px}
+.card.highlight{border:2px solid var(--gold);background:color-mix(in srgb,var(--card) 95%,var(--gold))}
+.card.howard-special{
+  border:2px solid var(--howard-border);
+  background:var(--howard-bg);
+  position:relative;
+  box-shadow:0 4px 16px rgba(45, 106, 79, 0.12);
+}
+.card.howard-special h3{color:var(--howard-border)}
+.badge{
+  display:inline-block;
+  padding:3px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.badge.gold{background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--gold);border:1px solid var(--gold)}
+.badge.green{background:color-mix(in srgb,var(--green) 20%,transparent);color:var(--green);border:1px solid var(--green)}
+.badge.brick{background:color-mix(in srgb,var(--brick) 20%,transparent);color:var(--brick);border:1px solid var(--brick)}
+
+/* Callout Note */
+.note{background:var(--label);border-left:4px solid var(--gold);padding:16px 20px;margin:20px 0;font-size:15px}
+.note.warn{border-left-color:var(--brick)}
+.note.howard{border-left-color:var(--howard-border);background:var(--howard-bg)}
+
+/* Responsive Table */
+.tw{overflow-x:auto;margin:24px 0;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--card);min-width:1080px}
+th{background:var(--green);color:var(--bg);text-align:left;font-weight:600;padding:12px 14px;border:1px solid var(--line)}
+:root[data-theme="dark"] th{color:#1C211E}
+td{border:1px solid var(--line);padding:12px 14px;vertical-align:top}
+tr:nth-child(even) td{background:var(--alt)}
+td.lb{background:var(--label)!important;font-weight:700;color:var(--green);white-space:nowrap}
+td.hw{background:color-mix(in srgb,var(--howard-bg) 80%,transparent)!important;font-weight:600;border-left:2px solid var(--howard-border);border-right:2px solid var(--howard-border)}
+th.hw{background:var(--howard-border);color:#fff}
+
+/* Interactive Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.tab{
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--ink);
+  padding:9px 18px;
+  cursor:pointer;
+  font:inherit;
+  font-size:14px;
+  border-radius:2px;
+  transition:all .2s ease;
+}
+.tab.on,.tab:hover{background:var(--green);color:var(--bg);border-color:var(--green)}
+.tab.on{font-weight:600}
+.panel{display:none}
+.panel.on{display:block}
+
+/* Diagram Container */
+.diag-container{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:24px;
+  margin:24px 0;
+  border-radius:4px;
+  overflow-x:auto;
+}
+.diag-container svg{
+  display:block;
+  margin:auto;
+  max-width:100%;
+  height:auto;
+}
+
+/* Pipeline Step */
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.pipeline-step{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:4px solid var(--green);
+  padding:18px 14px;
+  position:relative;
+}
+.pipeline-step .step-no{
+  font-family:"Cormorant Garamond",serif;
+  font-size:32px;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:6px;
+  font-weight:700;
+}
+
+/* Calculator Box */
+.calc-box{
+  background:var(--alt);
+  border:1px solid var(--line);
+  padding:24px;
+  border-radius:4px;
+  margin:24px 0;
+}
+.calc-input-group{margin-bottom:16px}
+.calc-input-group label{display:block;font-weight:600;margin-bottom:6px;font-size:14px}
+.calc-input-group input[type="range"]{width:100%;accent-color:var(--green)}
+.calc-results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.calc-card{background:var(--card);border:1px solid var(--line);padding:16px;text-align:center}
+.calc-card .v{font-family:"Cormorant Garamond",serif;font-size:34px;font-weight:700;color:var(--green)}
+.calc-card.diff .v{color:var(--brick)}
+.calc-card.hw .v{color:var(--howard-border)}
+
+/* Watermark & Print */
+@media print{
+  header.nav,.tabs,.tbtn,.calc-box{display:none!important}
+  .panel{display:block!important;margin-bottom:20px}
+  section{padding:20px 0;break-inside:avoid-page}
+  body{font-size:12px;background:#fff;color:#000}
+  .card,.tw table{border:1px solid #999}
+}
+@media (max-width:960px){
+  .grid2,.grid3,.grid4,.pipeline{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .calc-results{grid-template-columns:1fr}
+}
+@media (max-width:540px){
+  .kpis{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+ <div class="in">
+  <div class="brand">廖倫豪 博士<small>× LITEON 光寶科技</small></div>
+  <nav class="links">
+   <a href="../index.html">← 回首頁</a>
+   <a href="#overview">策略定位</a>
+   <a href="#matrix">八大對比表</a>
+   <a href="#pipeline">流水線圖解</a>
+   <a href="#advantages">Howard Route 五大優勢</a>
+   <a href="#cases">製造實戰用例</a>
+   <a href="#finops">FinOps 試算</a>
+  </nav>
+  <button class="tbtn" id="theme" aria-label="切換主題">◐</button>
+ </div>
+</header>
+
+<main>
+
+<!-- Hero Section -->
+<section id="hero">
+ <div class="eyebrow">Enterprise AI Model Routing &amp; Sovereign Gateway Strategy</div>
+ <h1>企業級多雲 AI 路由戰略<br>與「光寶 Howard Route」主權混合雲架構</h1>
+ <p class="lead">
+  從 Google Vertex、AWS Bedrock、Microsoft Foundry、OpenAI、Claude 到 MixRoute、OpenRouter，乃至企業自建的「光寶 Howard Route」——全面解構八大方案之技術架構、優缺點、製造業核心機密合規、產線斷網韌性與 70%+ TCO 實質降本實踐。
+ </p>
+ 
+ <div class="kpis">
+  <div class="kpi hero-kpi">
+   <div class="v">−70%+</div>
+   <div class="l">實質 TCO 壓制</div>
+   <div class="s">地端 SLM 消化 70% 請求，邊際成本近 0</div>
+  </div>
+  <div class="kpi hero-kpi">
+   <div class="v">100%</div>
+   <div class="l">製程機密不落地</div>
+   <div class="s">內嵌 DLP / PII 脫敏，阻斷專利與 BOM 外洩</div>
+  </div>
+  <div class="kpi hero-kpi">
+   <div class="v">24/7</div>
+   <div class="l">斷網生產韌性</div>
+   <div class="s">產線海纜斷線或公網當機，地端 MES 依然運作</div>
+  </div>
+  <div class="kpi hero-kpi">
+   <div class="v">0</div>
+   <div class="l">單一廠商綁定</div>
+   <div class="s">跨雲多模型自由調度，掌握分流主權</div>
+  </div>
+ </div>
+</section>
+
+<!-- 01 Overview: The 4 Paradigms -->
+<section id="overview">
+ <div class="eyebrow">01 · Strategic Paradigms</div>
+ <h2>企業 AI 路由生態的四大架構原型</h2>
+ <p class="sub">From Consumer Tiering to Sovereign Edge-Cloud Gateway</p>
+
+ <div class="grid4">
+  <div class="card">
+   <span class="badge gold">原型 1</span>
+   <h3 style="margin-top:8px">消費端體驗路由</h3>
+   <p style="font-size:13.5px;color:var(--mute)">代表：ChatGPT (Fast vs Thinking)</p>
+   <p style="font-size:14px">
+    面向終端對話體驗，由原廠黑盒動態配置模型。但<b>缺乏 API 成本控制開關</b>，企業無法控管每筆請求的財務上限與合規名單。
+   </p>
+  </div>
+
+  <div class="card">
+   <span class="badge green">原型 2</span>
+   <h3 style="margin-top:8px">公有雲閉環生態</h3>
+   <p style="font-size:13.5px;color:var(--mute)">代表：Google Vertex、AWS Bedrock、MS Foundry</p>
+   <p style="font-size:14px">
+    在各自雲端 VPC 邊界內優化成本與調度。適合特許合規產業，但<b>存在嚴重的單一廠商鎖定（Vendor Lock-in）</b>，無法跨巨頭調度。
+   </p>
+  </div>
+
+  <div class="card">
+   <span class="badge brick">原型 3</span>
+   <h3 style="margin-top:8px">中立第三方代管閘道</h3>
+   <p style="font-size:13.5px;color:var(--mute)">代表：MixRoute、OpenRouter</p>
+   <p style="font-size:14px">
+    中立聚合全球商業與開源模型，隨插即用、雙層比價、降本 20%~40%。但<b>流量經由外部 Proxy</b>，製造業核心機密難以通過嚴苛資安稽核。
+   </p>
+  </div>
+
+  <div class="card howard-special">
+   <span class="badge green" style="background:var(--howard-border);color:#fff">原型 4 · 最佳實踐</span>
+   <h3 style="margin-top:8px">企業專有主權混合閘道</h3>
+   <p style="font-size:13.5px;color:var(--howard-border);font-weight:600">代表：光寶 Howard Route</p>
+   <p style="font-size:14px">
+    <b>在地邊緣私有算力 (vLLM) + 內嵌 DLP 脫敏 + 跨雲旗艦升級</b>。兼具數據絕對主權、工廠斷網容災與 70%+ TCO 實質降本。
+   </p>
+  </div>
+ </div>
+
+ <!-- SVG Ecosystem Map -->
+ <div class="diag-container">
+  <div style="font-weight:700;margin-bottom:12px;color:var(--green)">【圖 1】企業 AI 模型路由生態版圖與拓撲對比架構圖</div>
+  <svg viewBox="0 0 1000 360" width="1000" height="360" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background grid -->
+    <rect x="0" y="0" width="1000" height="360" fill="none" stroke="var(--line)" stroke-dasharray="4" rx="8"/>
+    
+    <!-- Hyperscalers Box -->
+    <rect x="30" y="30" width="280" height="150" fill="var(--alt)" stroke="var(--line)" rx="6"/>
+    <text x="45" y="55" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--green)">1. 公有雲閉環生態 (Hyperscalers)</text>
+    <rect x="45" y="70" width="250" height="30" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="55" y="90" font-family="Noto Sans TC, sans-serif" font-size="12" fill="var(--ink)">Google Vertex AI Model Optimizer</text>
+    <rect x="45" y="105" width="250" height="30" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="55" y="125" font-family="Noto Sans TC, sans-serif" font-size="12" fill="var(--ink)">AWS Bedrock Intelligent Routing</text>
+    <rect x="45" y="140" width="250" height="30" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="55" y="160" font-family="Noto Sans TC, sans-serif" font-size="12" fill="var(--ink)">Microsoft Azure AI Foundry Router</text>
+    
+    <!-- Frontier Labs Box -->
+    <rect x="30" y="200" width="280" height="130" fill="var(--alt)" stroke="var(--line)" rx="6"/>
+    <text x="45" y="225" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--green)">2. 頂級模型原廠 (Frontier Labs)</text>
+    <rect x="45" y="240" width="250" height="35" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="55" y="262" font-family="Noto Sans TC, sans-serif" font-size="12" fill="var(--ink)">OpenAI (Direct API / o1 / GPT-4o)</text>
+    <rect x="45" y="282" width="250" height="35" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="55" y="304" font-family="Noto Sans TC, sans-serif" font-size="12" fill="var(--ink)">Anthropic Claude (Sonnet / Prompt Cache)</text>
+    
+    <!-- 3rd Party Proxy Gateways -->
+    <rect x="350" y="30" width="270" height="300" fill="var(--alt)" stroke="var(--line)" rx="6"/>
+    <text x="365" y="55" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--brick)">3. 中立第三方代管閘道</text>
+    
+    <rect x="365" y="75" width="240" height="105" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="375" y="98" font-family="Noto Sans TC, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">MixRoute (生產級智能閘道)</text>
+    <text x="375" y="120" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• In-Memory 任務難度毫秒分析</text>
+    <text x="375" y="140" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• Zero Retention 零留存、省 20-40%</text>
+    <text x="375" y="160" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• 算力通道 Auto-Failover 自動容錯</text>
+    
+    <rect x="365" y="195" width="240" height="115" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="375" y="218" font-family="Noto Sans TC, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">OpenRouter (市場智慧聚合器)</text>
+    <text x="375" y="240" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• 55T+ tokens/週社群市場數據</text>
+    <text x="375" y="260" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• 雙層路由 (Model + Provider)</text>
+    <text x="375" y="280" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">• 數百款模型、即時價格比對</text>
+    
+    <!-- Howard Route Sovereign Architecture Box -->
+    <rect x="660" y="30" width="310" height="300" fill="var(--howard-bg)" stroke="var(--howard-border)" stroke-width="2.5" rx="8"/>
+    <text x="675" y="58" font-family="Noto Sans TC, sans-serif" font-size="15" font-weight="700" fill="var(--howard-border)">4. 光寶 Howard Route (主權架構)</text>
+    <rect x="675" y="75" width="280" height="65" fill="var(--card)" stroke="var(--howard-border)" rx="4"/>
+    <text x="685" y="98" font-family="Noto Sans TC, sans-serif" font-size="12.5" font-weight="700" fill="var(--green)">【地端 Tier 1】本地私有 SLM 叢集</text>
+    <text x="685" y="118" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">vLLM (Qwen/Llama) 吞吐 70% 內部查詢，斷網不停線</text>
+    
+    <rect x="675" y="148" width="280" height="65" fill="var(--card)" stroke="var(--gold)" rx="4"/>
+    <text x="685" y="171" font-family="Noto Sans TC, sans-serif" font-size="12.5" font-weight="700" fill="var(--gold)">【閘道 Tier 2】內嵌 DLP 脫敏 &amp; 分類器</text>
+    <text x="685" y="191" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">遮蔽客戶料號/專利/製程參數，按複雜度路由</text>
+    
+    <rect x="675" y="221" width="280" height="90" fill="var(--card)" stroke="var(--green2)" rx="4"/>
+    <text x="685" y="244" font-family="Noto Sans TC, sans-serif" font-size="12.5" font-weight="700" fill="var(--green2)">【雲端 Tier 3】動態多雲旗艦升級</text>
+    <text x="685" y="264" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">僅 30% 任務直達 Azure/AWS/GCP/Claude</text>
+    <text x="685" y="284" font-family="Noto Sans TC, sans-serif" font-size="11.5" fill="var(--mute)">具備多雲負載平衡與跨雲容錯，TCO 實降 70%+</text>
+  </svg>
+ </div>
+</section>
+
+<!-- 02 Comprehensive Comparison Table -->
+<section id="matrix">
+ <div class="eyebrow">02 · Full Evaluation Matrix</div>
+ <h2>八大架構方案橫向綜合評比矩陣</h2>
+ <p class="sub">Eight Architectural Options Across Seven Critical Dimensions</p>
+
+ <div class="note howard">
+  <b>架構師觀察：</b>單一公有雲方案（Google/AWS/MS）適合守成，第三方代管（MixRoute/OpenRouter）適合敏捷互聯網；而<b>「光寶 Howard Route」則是唯一兼顧製造業「智慧財產絕對機密」、「產線斷網持續運營」與「規模化 Token 零邊際成本」的終極混合架構</b>。
+ </div>
+
+ <div class="tw">
+  <table>
+   <thead>
+    <tr>
+     <th>方案名稱</th>
+     <th>所屬陣營</th>
+     <th>核心路由技術</th>
+     <th>模型覆蓋生態</th>
+     <th>資料機密與合規</th>
+     <th>斷網/離線韌性</th>
+     <th>FinOps 實質成效</th>
+     <th>廠商綁定風險</th>
+     <th class="hw">光寶適用度評級</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="lb">Google Vertex AI</td>
+     <td>雲端巨頭 (GCP)</td>
+     <td>Model Optimizer<br>(Cost / Balanced / Quality)</td>
+     <td>Gemini 2.0 / 1.5 系列<br>(Flash ↔ Pro)</td>
+     <td>最高 (GCP VPC / BAA 協議)</td>
+     <td>無 (斷網全停擺)</td>
+     <td>Flash 具性價比優勢，但限於 GCP 生態</td>
+     <td>極高 (鎖定 GCP)</td>
+     <td>⭐⭐⭐ (適合長文本)</td>
+    </tr>
+    <tr>
+     <td class="lb">AWS Bedrock</td>
+     <td>雲端巨頭 (AWS)</td>
+     <td>Intelligent Routing<br>+ Converse API</td>
+     <td>Amazon Nova / Claude / Llama / Mistral</td>
+     <td>最高 (PrivateLink / HIPAA / FedRAMP)</td>
+     <td>無 (斷網全停擺)</td>
+     <td>Nova 具超低牌價，Claude 託管首選</td>
+     <td>極高 (鎖定 AWS)</td>
+     <td>⭐⭐⭐⭐ (美廠雲端首選)</td>
+    </tr>
+    <tr>
+     <td class="lb">Microsoft Foundry</td>
+     <td>雲端巨頭 (Azure)</td>
+     <td>Model Router<br>(白名單 + 策略分流)</td>
+     <td>OpenAI (GPT-4o/o1) + Azure 託管開源模型</td>
+     <td>最高 (Azure Policy / M365 整合)</td>
+     <td>無 (斷網全停擺)</td>
+     <td>模型白名單控管超支，PTU 穩定算力</td>
+     <td>極高 (鎖定 Azure)</td>
+     <td>⭐⭐⭐⭐ (S/4HANA 整合佳)</td>
+    </tr>
+    <tr>
+     <td class="lb">OpenAI API</td>
+     <td>頂級模型原廠</td>
+     <td>無原生 API 路由<br>(需外層手動自建)</td>
+     <td>僅限 OpenAI 家族<br>(4o, 4o-mini, o1, o3)</td>
+     <td>需簽約企業條款承諾不訓練</td>
+     <td>無 (斷網全停擺)</td>
+     <td>無自動降本機制，高難度任務成本昂貴</td>
+     <td>極高 (鎖定 OpenAI)</td>
+     <td>⭐⭐⭐ (僅限特定大腦)</td>
+    </tr>
+    <tr>
+     <td class="lb">Anthropic Claude</td>
+     <td>頂級模型原廠</td>
+     <td>無原生跨廠路由<br>(內建 Prompt Caching)</td>
+     <td>僅限 Claude 家族<br>(Haiku, Sonnet, Opus)</td>
+     <td>商業 API 嚴格不訓練，合規政策佳</td>
+     <td>無 (斷網全停擺)</td>
+     <td>Prompt Cache 省 90% (限長重複 Context)</td>
+     <td>高 (需借道公有雲)</td>
+     <td>⭐⭐⭐⭐ (架構與代碼天花板)</td>
+    </tr>
+    <tr>
+     <td class="lb">MixRoute</td>
+     <td>中立跨雲閘道</td>
+     <td>In-Memory 毫秒難度映射<br>+ 算力健康容錯</td>
+     <td>跨主流商業與開源池<br>(OpenAI/Claude/Gemini)</td>
+     <td>宣稱 Zero Retention，但流量經第三方 Proxy</td>
+     <td>無 (斷網全停擺)</td>
+     <td>免改代碼<b>實省 20%~40% 雲端帳單</b></td>
+     <td>完全零綁定</td>
+     <td>⭐⭐⭐ (適合非機密業務)</td>
+    </tr>
+    <tr>
+     <td class="lb">OpenRouter</td>
+     <td>全球市場聚合</td>
+     <td>Auto Router (11維度判定)<br>+ Provider 雙層路由</td>
+     <td>全市場數百款商業與開源模型</td>
+     <td>依底層 Provider 而異，合規稽核難度大</td>
+     <td>無 (斷網全停擺)</td>
+     <td>全市場比價，尋求最低 Token 成本</td>
+     <td>完全零綁定</td>
+     <td>⭐⭐ (PoC 階段佳，製造業慎用)</td>
+    </tr>
+    <tr style="border-top:2px solid var(--howard-border)">
+     <td class="lb hw">光寶 Howard Route</td>
+     <td class="hw">企業私有主權混合雲</td>
+     <td class="hw"><b>三層混合智能路由：</b><br>在地邊緣SLM ➔ DLP脫敏 ➔ 跨雲升級</td>
+     <td class="hw">地端私有微調 (Qwen/Llama) + 跨雲頂級商業池</td>
+     <td class="hw"><b>絕對最高：</b><br>核心料號/BOM/專利不出廠，完全符合零信任</td>
+     <td class="hw"><b>極高：</b><br>外網斷線產線與地端 MES 依然 100% 正常運作</td>
+     <td class="hw"><b>實質降本 70%+：</b><br>70% 內部常規請求邊際成本為 0</td>
+     <td class="hw"><b>完全自主掌握：</b><br>反脆弱、防斷供</td>
+     <td class="hw" style="color:var(--howard-border);font-size:16px">⭐⭐⭐⭐⭐<br><b>(唯一推薦生產標準)</b></td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<!-- 03 Pipeline Diagram & Execution Details -->
+<section id="pipeline">
+ <div class="eyebrow">03 · Execution Pipeline</div>
+ <h2>「光寶 Howard Route」三層流水線運作機制</h2>
+ <p class="sub">How Howard Route Executes in Manufacturing Production</p>
+
+ <div class="pipeline">
+  <div class="pipeline-step">
+   <div class="step-no">01</div>
+   <h4 style="margin:0 0 6px;color:var(--green)">請求進入與特徵判定</h4>
+   <p style="font-size:13px;color:var(--mute)">來自工廠現場、MES、S/4HANA、PLM 或研發工程師的請求抵達內部 API 閘道。</p>
+  </div>
+  <div class="pipeline-step">
+   <div class="step-no">02</div>
+   <h4 style="margin:0 0 6px;color:var(--green)">Tier 1: 地端 SLM 攔截</h4>
+   <p style="font-size:13px;color:var(--mute)">內部 vLLM 叢集運行 Qwen-2.5 / Llama-3.3，<b>70% 常規查詢由本地在 30ms 內極速回傳</b>。</p>
+  </div>
+  <div class="pipeline-step">
+   <div class="step-no">03</div>
+   <h4 style="margin:0 0 6px;color:var(--gold)">Tier 2: 內嵌 DLP 脫敏</h4>
+   <p style="font-size:13px;color:var(--mute)">針對 30% 複雜任務，自動遮蔽製程參數、客戶料號、未公開專利，生成匿名 Token。</p>
+  </div>
+  <div class="pipeline-step">
+   <div class="step-no">04</div>
+   <h4 style="margin:0 0 6px;color:var(--green2)">Tier 3: 跨雲動態派發</h4>
+   <p style="font-size:13px;color:var(--mute)">將匿名任務派往 Azure GPT-4o、AWS Claude 3.7 或 GCP Gemini，遇故障毫秒級切換備援。</p>
+  </div>
+ </div>
+
+ <!-- Detailed Pipeline SVG -->
+ <div class="diag-container">
+  <div style="font-weight:700;margin-bottom:12px;color:var(--green)">【圖 2】光寶 Howard Route 內部運作拓撲與安全邊界</div>
+  <svg viewBox="0 0 1000 400" width="1000" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Factory Floor Boundary -->
+    <rect x="20" y="20" width="460" height="360" fill="color-mix(in srgb,var(--card) 95%,var(--green))" stroke="var(--green)" stroke-width="2" rx="8"/>
+    <text x="35" y="48" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--green)">光寶內網 / 工廠現場安全邊界 (On-Premises / Clean Core)</text>
+    
+    <!-- Plant Apps -->
+    <rect x="40" y="70" width="130" height="60" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="50" y="95" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">工廠產線 MES</text>
+    <text x="50" y="115" font-family="Noto Sans TC, sans-serif" font-size="10" fill="var(--mute)">不良品檢測 / 排程</text>
+
+    <rect x="40" y="145" width="130" height="60" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="50" y="170" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">SAP S/4HANA</text>
+    <text x="50" y="190" font-family="Noto Sans TC, sans-serif" font-size="10" fill="var(--mute)">替代料 / 供應鏈</text>
+
+    <rect x="40" y="220" width="130" height="60" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="50" y="245" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">研發 PLM / CAD</text>
+    <text x="50" y="265" font-family="Noto Sans TC, sans-serif" font-size="10" fill="var(--mute)">電源設計 / BOM 表</text>
+
+    <!-- Internal Howard Gateway -->
+    <rect x="210" y="70" width="250" height="290" fill="var(--howard-bg)" stroke="var(--howard-border)" stroke-width="2" rx="6"/>
+    <text x="225" y="95" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--howard-border)">Howard Route 智慧中樞</text>
+    
+    <rect x="225" y="115" width="220" height="70" fill="var(--card)" stroke="var(--howard-border)" rx="4"/>
+    <text x="235" y="138" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--green)">Tier 1: 私有 vLLM SLM 叢集</text>
+    <text x="235" y="156" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">消化 70% 任務：常規分類、SOP</text>
+    <text x="235" y="172" font-family="Noto Sans TC, sans-serif" font-size="11" font-weight="700" fill="var(--howard-border)">➔ 30ms 極速本機響應 (0 成本)</text>
+
+    <rect x="225" y="200" width="220" height="75" fill="var(--card)" stroke="var(--gold)" rx="4"/>
+    <text x="235" y="223" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--gold)">Tier 2: 內嵌 DLP 脫敏安全門</text>
+    <text x="235" y="243" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">專利特徵過濾 / BOM 匿名化</text>
+    <text x="235" y="261" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">任務複雜度分析 (Complexity Classifier)</text>
+
+    <rect x="225" y="290" width="220" height="55" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="235" y="312" font-family="Noto Sans TC, sans-serif" font-size="11.5" font-weight="700" fill="var(--ink)">內部 FinOps 計費與審計日誌</text>
+    <text x="235" y="330" font-family="Noto Sans TC, sans-serif" font-size="10.5" fill="var(--mute)">記錄各廠區/部門 Token 用量</text>
+
+    <!-- Connecting Arrows -->
+    <path d="M 170 100 L 210 140" stroke="var(--green)" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 170 175 L 210 160" stroke="var(--green)" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 170 250 L 210 230" stroke="var(--green)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Firewall / DMZ -->
+    <line x1="510" y1="20" x2="510" y2="380" stroke="var(--brick)" stroke-width="2" stroke-dasharray="6"/>
+    <text x="500" y="395" font-family="Noto Sans TC, sans-serif" font-size="11" font-weight="700" fill="var(--brick)" text-anchor="middle">光寶企業防火牆 / DMZ</text>
+
+    <!-- Public Multi-Cloud LLM Tier -->
+    <rect x="540" y="20" width="440" height="360" fill="var(--alt)" stroke="var(--line)" rx="8"/>
+    <text x="555" y="48" font-family="Noto Sans TC, sans-serif" font-size="14" font-weight="700" fill="var(--green)">公有雲頂級商業模型池 (Tier 3: 僅 30% 脫敏任務出網)</text>
+
+    <!-- Cloud Nodes -->
+    <rect x="560" y="70" width="400" height="55" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="575" y="93" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">Microsoft Azure OpenAI (GPT-4o / o1)</text>
+    <text x="575" y="112" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">處理重大架構決策、跨國法務、SAP 複雜流程模擬</text>
+
+    <rect x="560" y="135" width="400" height="55" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="575" y="158" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">AWS Bedrock (Claude 3.7 / 3.5 Sonnet)</text>
+    <text x="575" y="177" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">處理極限軟體架構重構、高難度代碼審查與深度推理</text>
+
+    <rect x="560" y="200" width="400" height="55" fill="var(--card)" stroke="var(--line)" rx="4"/>
+    <text x="575" y="223" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">Google Vertex AI (Gemini 2.5 Pro)</text>
+    <text x="575" y="242" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">處理 200 萬超長技術手冊、多廠設備日誌深度關聯</text>
+
+    <rect x="560" y="265" width="400" height="95" fill="color-mix(in srgb,var(--card) 95%,var(--gold))" stroke="var(--gold)" rx="4"/>
+    <text x="575" y="288" font-family="Noto Sans TC, sans-serif" font-size="12" font-weight="700" fill="var(--gold)">Dynamic Auto-Failover &amp; Token Budget Pool</text>
+    <text x="575" y="308" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">• 遇雲端 429 或當機，&lt;50ms 自動平滑切換次選旗艦</text>
+    <text x="575" y="326" font-family="Noto Sans TC, sans-serif" font-size="11" fill="var(--mute)">• 嚴格鎖定各廠區預算上限，絕不產生天價帳單</text>
+    <text x="575" y="344" font-family="Noto Sans TC, sans-serif" font-size="11" font-weight="700" fill="var(--green)">• 實質完成任務成本達到全球最佳曲線</text>
+
+    <!-- Outbound Bridge -->
+    <path d="M 445 240 L 560 100" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="4"/>
+    <path d="M 445 240 L 560 160" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="4"/>
+    <path d="M 445 240 L 560 220" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="4"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 04 The 5 Strategic Advantages -->
+<section id="advantages">
+ <div class="eyebrow">04 · Core Advantages</div>
+ <h2>光寶 Howard Route 的五大戰略護城河</h2>
+ <p class="sub">Why Sovereign Hybrid Gateway Outperforms Public Proxies</p>
+
+ <div class="grid3">
+  <div class="card howard-special">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--howard-border);font-weight:700">01</div>
+   <h3>製程機密與專利絕對安全</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    製造業核心資產在於<b>產線良率參數、BOM 配方表、新產品電源架構專利</b>。Howard Route 透過地端 SLM 第一線過濾與 DLP 脫敏，確保未經授權的製程敏感資訊絕不出廠，完全符合 ISO 27001、IEC 62443 與一線國際品牌客戶之稽核規範。
+   </p>
+  </div>
+
+  <div class="card howard-special">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--howard-border);font-weight:700">02</div>
+   <h3>工廠 24/7 斷網營運韌性</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    製造業一分鐘停線損失動輒數十萬。公有雲或外部代理（MixRoute/OpenRouter）一旦遭遇海纜中斷或原廠當機即告癱瘓；<b>Howard Route 本地部署私有 vLLM 叢集，70% 內部 SOP 與產線排錯即使完全斷網也能獨立運轉</b>。
+   </p>
+  </div>
+
+  <div class="card howard-special">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--howard-border);font-weight:700">03</div>
+   <h3>實質壓低 70%+ TCO 成本</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    外部中繼閘道宣稱省 20%~40%，但所有 Token 依然向公有雲按量計費。Howard Route 將龐大的低維、高頻次請求截流在地端邊緣算力，<b>地端邊際運算成本趨近於零</b>，僅 30% 複雜任務支付公有雲費用，達成實質 70% 以上的 TCO 節流。
+   </p>
+  </div>
+
+  <div class="card">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);font-weight:700">04</div>
+   <h3>完全消除第三方中介風險</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    企業不應將產線命脈寄託於外部 Proxy。MixRoute 與 OpenRouter 隨時面臨被原廠封鎖、隱私政策變更或網絡被攻擊的單點失效風險。Howard Route 是<b>完全屬於光寶自有的軟體資產</b>，代碼與主導權 100% 自主掌控。
+   </p>
+  </div>
+
+  <div class="card">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);font-weight:700">05</div>
+   <h3>無縫對接 Clean Core 與全球多廠</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    光寶正邁向 SAP S/4HANA 全球同步上線，並在越南、高雄二期與美國德州持續擴產。Howard Route 可標準化封裝為 Docker/K8s 容器，<b>一次建置、多廠標準化複製</b>，在不污染 SAP Clean Core 的前提下賦能全球 112 座工廠。
+   </p>
+  </div>
+
+  <div class="card">
+   <div style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--brick);font-weight:700">06</div>
+   <h3>跨雲負載平衡與自動容錯</h3>
+   <p style="font-size:14px;color:var(--ink)">
+    在需要公有雲算力時，Howard Route 自動在 Azure、AWS 與 GCP 間尋找延遲最低、具備 Prompt Caching 優惠的端點，並在遇到特定原廠 429 速率限制時，<b>在毫秒內平滑切換至備援旗艦</b>，確保高管與核心系統零中斷。
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- 05 Manufacturing Use Cases -->
+<section id="cases">
+ <div class="eyebrow">05 · Real-world Factory Scenarios</div>
+ <h2>光寶製造場景落地五大典型用例</h2>
+ <p class="sub">How Howard Route Empowers LITEON Production Lines</p>
+
+ <div class="tabs">
+  <button class="tab on" onclick="switchCase(0)">用例 1：產線不良預測與品質分析</button>
+  <button class="tab" onclick="switchCase(1)">用例 2：跨廠替代料與 BOM 結構化比對</button>
+  <button class="tab" onclick="switchCase(2)">用例 3：高功率電源架構與專利分析</button>
+  <button class="tab" onclick="switchCase(3)">用例 4：全球 112 座工廠預防性維護</button>
+  <button class="tab" onclick="switchCase(4)">用例 5：跨國供應鏈突發斷鏈重排</button>
+ </div>
+
+ <div class="panel on" id="case-0">
+  <div class="card">
+   <h3>產線不良即時預測（Edge SLM 本機秒回）</h3>
+   <p style="color:var(--mute);font-size:14px">業務痛點：8.5kW PSU 與高壓 Power Shelf 測試站需毫秒級回饋，外網延遲將導致產線節拍（Takt Time）拖慢。</p>
+   <div class="tw">
+    <table>
+     <tr><td class="lb">路由策略</td><td><b>Tier 1 地端 vLLM (Qwen-2.5-Coder) 本機消化</b></td></tr>
+     <tr><td class="lb">時延表現</td><td>&lt; 35 毫秒（地端區域網路）</td></tr>
+     <tr><td class="lb">資安考量</td><td>100% 產線電壓、電流、溫度波形數據不出廠</td></tr>
+     <tr><td class="lb">價值產出</td><td>產品良率預測精準度提升，零外網 Token 成本負擔</td></tr>
+    </table>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel" id="case-1">
+  <div class="card">
+   <h3>跨廠替代料與 BOM 表比對（脫敏後混合調度）</h3>
+   <p style="color:var(--mute);font-size:14px">業務痛點：各工廠替代料規格非結構化，既需要深入理解規格書，又不能將客戶敏感料號外洩。</p>
+   <div class="tw">
+    <table>
+     <tr><td class="lb">路由策略</td><td><b>Tier 2 DLP 遮蔽料號與客戶代碼 ➔ 轉發至 Azure OpenAI (GPT-4o) 深度推理</b></td></tr>
+     <tr><td class="lb">時延表現</td><td>800 毫秒～1.2 秒</td></tr>
+     <tr><td class="lb">資安考量</td><td>原始 BOM 表結構化保存在地端，出雲僅有脫敏後的抽象參數規格</td></tr>
+     <tr><td class="lb">價值產出</td><td>替代料比對時間由 3 天縮短為 5 分鐘，大幅降低缺料停線風險</td></tr>
+    </table>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel" id="case-2">
+  <div class="card">
+   <h3>高功率電源架構設計與專利審查（頂級旗艦升級）</h3>
+   <p style="color:var(--mute);font-size:14px">業務痛點：110kW Power Shelf、800VDC Power Rack 涉及極度複雜的熱流模擬與專利迴避設計。</p>
+   <div class="tw">
+    <table>
+     <tr><td class="lb">路由策略</td><td><b>自動升級至 Tier 3 頂級模型：Anthropic Claude 3.7 Sonnet (Thinking Mode)</b></td></tr>
+     <tr><td class="lb">時延表現</td><td>3 秒～8 秒（深度推理運算）</td></tr>
+     <tr><td class="lb">資安考量</td><td>採用企業級專用端點（免訓練協議），由高階架構師專屬憑證授權</td></tr>
+     <tr><td class="lb">價值產出</td><td>複雜專利與架構排查效率提升 60%，防範海外智財權侵權風險</td></tr>
+    </table>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel" id="case-3">
+  <div class="card">
+   <h3>全球 112 座工廠設備預防性維護（Edge-to-Cloud 協同）</h3>
+   <p style="color:var(--mute);font-size:14px">業務痛點：越南、高雄、德州廠設備日誌龐大，全部上雲將耗盡頻寬與運算成本。</p>
+   <div class="tw">
+    <table>
+     <tr><td class="lb">路由策略</td><td><b>地端 SLM 先行壓縮並抽取「異常特徵指標」 ➔ 僅將異常摘要發送至 Google Vertex AI (Gemini Flash)</b></td></tr>
+     <tr><td class="lb">時延表現</td><td>非同步批次處理（每 5 分鐘彙總）</td></tr>
+     <tr><td class="lb">資安考量</td><td>廠區原始振頻日誌在地化封存，雲端僅留存趨勢與告警中繼資料</td></tr>
+     <tr><td class="lb">價值產出</td><td>多廠跨區網路傳輸頻寬節省 92%，預測性維護 OEE 提升 18%</td></tr>
+    </table>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel" id="case-4">
+  <div class="card">
+   <h3>跨國供應鏈突發斷鏈重排（Multi-Cloud 自動容錯移轉）</h3>
+   <p style="color:var(--mute);font-size:14px">業務痛點：國際地緣政治或關稅突發變動，需在數分鐘內模擬數萬條訂單最佳改道路徑。</p>
+   <div class="tw">
+    <table>
+     <tr><td class="lb">路由策略</td><td><b>同時向 Azure、AWS 與 GCP 請求算力，Howard Route 內建負載均衡與容錯移轉</b></td></tr>
+     <tr><td class="lb">時延表現</td><td>高並發彈性調度，P95 &lt; 2.5 秒</td></tr>
+     <tr><td class="lb">資安考量</td><td>多雲通道皆經過企業專屬 PrivateLink 連線，無公網傳輸暴露</td></tr>
+     <tr><td class="lb">價值產出</td><td>供應鏈重大決策從數日縮短至 2 小時，保障百億營收交付</td></tr>
+    </table>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 06 FinOps & Simulator -->
+<section id="finops">
+ <div class="eyebrow">06 · FinOps &amp; ROI</div>
+ <h2>FinOps 成本量化與實質降本模型</h2>
+ <p class="sub">Quantifying the Financial Impact on LITEON Enterprise Budget</p>
+
+ <div class="note">
+  <b>企業級合格任務成本核心公式：</b><br>
+  $$	ext{每件合格任務成本} = rac{	ext{雲端 API 牌價費用} + 	ext{地端算力折舊} + 	ext{重試成本} + 	ext{人工覆核修正成本}}{	ext{達到品質驗收門檻之完成任務數}}$$
+ </div>
+
+ <div class="calc-box">
+  <h3 style="margin-top:0">🧮 企業月度 API 流量與 FinOps 降本效益模擬器</h3>
+  <div class="calc-input-group">
+   <label id="req-label">企業每月 AI 總請求次數：<b>5,000,000</b> 次 (500 萬次/月)</label>
+   <input type="range" id="req-slider" min="500000" max="20000000" step="500000" value="5000000" oninput="updateCalc()">
+  </div>
+
+  <div class="calc-results">
+   <div class="calc-card diff">
+    <div style="font-size:13px;color:var(--mute);font-weight:700">1. 全面呼叫公網商業 API<br>(純使用 GPT-4o / Claude)</div>
+    <div class="v" id="cost-pure">$75,000</div>
+    <div style="font-size:12px;color:var(--mute)">每月約 NT$ 2,400,000</div>
+    <p style="font-size:12px;color:var(--brick);margin-top:6px">⚠️ 成本昂貴、機密出廠風險高、斷網即癱瘓</p>
+   </div>
+
+   <div class="calc-card">
+    <div style="font-size:13px;color:var(--mute);font-weight:700">2. 接入第三方中立代理<br>(如 MixRoute 降本 30%)</div>
+    <div class="v" id="cost-mix">$52,500</div>
+    <div style="font-size:12px;color:var(--mute)">每月約 NT$ 1,680,000 (省 30%)</div>
+    <p style="font-size:12px;color:var(--gold);margin-top:6px">⚠️ 流量行經第三方、製造業合規有疑慮</p>
+   </div>
+
+   <div class="calc-card hw">
+    <div style="font-size:13px;color:var(--howard-border);font-weight:700">3. 光寶 Howard Route 主權架構<br>(70% 地端 + 30% 脫敏雲端)</div>
+    <div class="v" id="cost-howard">$22,500</div>
+    <div style="font-size:12px;color:var(--howard-border);font-weight:700">每月約 NT$ 720,000 (實省 70%+)</div>
+    <p style="font-size:12px;color:var(--howard-border);margin-top:6px">✅ 100% 機密不落地、24/7 斷網可用、無外部中介</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 07 Conclusion & Architectural Summary -->
+<section id="conclusion" style="border-bottom:none">
+ <div class="eyebrow">07 · Architectural Conclusion</div>
+ <h2>結論：把 AI 主導權牢牢收回光寶手中</h2>
+ <p class="lead">
+  在當前 AI 爆發期，依賴單一公有雲會被生態綁死，直接呼叫商業 API 會面臨天價帳單，接入第三方代理則難以跨越製造業資安紅線。
+ </p>
+ <p>
+  <b>「光寶 Howard Route」正是解答此一困境的最佳解</b>：它不排斥公有雲與頂級模型，而是以<b>「地端主權 SLM 守門、內嵌安全脫敏濾網、跨雲彈性升級容錯」</b>的精妙設計，在確保產線機密與連續性的同時，以最小成本撬動全球最強智能，成為光寶邁向 AI 驅動型跨國科技巨頭的核心中樞神經。
+ </p>
+ <div style="margin-top:30px">
+  <a class="tbtn" href="../index.html" style="background:var(--green);color:var(--bg);font-weight:600;padding:10px 20px;text-decoration:none">← 返回光寶 AI 平台負責人首頁</a>
+ </div>
+</section>
+
+</main>
+
+<footer style="text-align:center;padding:50px 20px;font-size:13px;color:var(--mute);border-top:1px solid var(--label)">
+ <p style="margin:0 0 6px">光寶科技 AI 平台負責人策略專案｜規格代碼：<code>DOC-LITEON-2301-ROUTE-2026-V1</code></p>
+ <p style="margin:0">作者：廖倫豪 博士 (Howard Liao, Ph.D.) · 盛欣／盛碁網絡 技術副總／CIO · 資訊科技管理博士・ISO 27001／42001 主導稽核員</p>
+</footer>
+
+<script>
+// Theme Switcher
+const themeBtn = document.getElementById('theme');
+themeBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+// Case switcher
+function switchCase(index) {
+  const tabs = document.querySelectorAll('#cases .tab');
+  const panels = document.querySelectorAll('#cases .panel');
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle('on', i === index);
+  });
+  panels.forEach((panel, i) => {
+    panel.classList.toggle('on', i === index);
+  });
+}
+
+// Calculator Logic
+function updateCalc() {
+  const slider = document.getElementById('req-slider');
+  const count = parseInt(slider.value, 10);
+  const formatted = count.toLocaleString();
+  document.getElementById('req-label').innerHTML = `企業每月 AI 總請求次數：<b>${formatted}</b> 次 (${(count/10000).toFixed(0)} 萬次/月)`;
+  
+  // Cost assumptions:
+  // Pure commercial flagship: avg $0.015 per call (approx input/output blend)
+  const pureCost = Math.round(count * 0.015);
+  // MixRoute: 30% savings on cloud token
+  const mixCost = Math.round(pureCost * 0.70);
+  // Howard Route: 70% handled by local SLM ($0 cloud API cost), 30% handled by cloud flagship
+  const howardCost = Math.round(pureCost * 0.30);
+  
+  document.getElementById('cost-pure').textContent = '$' + pureCost.toLocaleString();
+  document.getElementById('cost-mix').textContent = '$' + mixCost.toLocaleString();
+  document.getElementById('cost-howard').textContent = '$' + howardCost.toLocaleString();
+}
+</script>
+
+</body>
+</html>
