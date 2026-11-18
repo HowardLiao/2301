@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企業級主權 AI 平台：端到端生命週期與五層系統架構全景拓撲</title>
+<style>
+  :root {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-card: #1E293B;
+    --border-color: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-blue: #38BDF8;
+    --accent-emerald: #34D399;
+    --accent-amber: #FBBF24;
+    --accent-purple: #A78BFA;
+    --accent-rose: #FB7185;
+    --accent-cyan: #22D3EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: transparent;
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding: 12px;
+  }
+
+  /* 頂部標頭卡片 */
+  .header-card {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-title-box h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #F8FAFC;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-title-box p {
+    font-size: 13px;
+    color: #94A3B8;
+    margin-top: 4px;
+  }
+  .header-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    border: 1px solid transparent;
+  }
+  .badge-cyan { background: rgba(34, 211, 238, 0.1); color: #38BDF8; border-color: rgba(56, 189, 248, 0.3); }
+  .badge-emerald { background: rgba(52, 211, 153, 0.1); color: #34D399; border-color: rgba(52, 211, 153, 0.3); }
+  .badge-amber { background: rgba(251, 191, 36, 0.1); color: #FBBF24; border-color: rgba(251, 191, 36, 0.3); }
+
+  /* 指標條 */
+  .metrics-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .metric-item {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .metric-label { font-size: 12px; color: #94A3B8; font-weight: 600; }
+  .metric-val { font-size: 18px; font-weight: 800; font-family: monospace; }
+  .val-emerald { color: #34D399; }
+  .val-blue { color: #38BDF8; }
+  .val-amber { color: #FBBF24; }
+  .val-purple { color: #A78BFA; }
+
+  /* 雙欄主容器 */
+  .main-dual-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1.15fr;
+    gap: 20px;
+  }
+  @media (max-width: 1100px) {
+    .main-dual-layout { grid-template-columns: 1fr; }
+    .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* 專用面板 */
+  .panel-column {
+    background: #0B1120;
+    border: 1px solid #1E293B;
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #1E293B;
+  }
+  .panel-title {
+    font-size: 15px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* 左側步驟卡片 */
+  .step-card {
+    background: #131C31;
+    border: 1px solid #25334D;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .step-card:hover, .step-card.active {
+    border-color: #38BDF8;
+    background: #172440;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.15);
+  }
+  .step-card.active {
+    outline: 2px solid #38BDF8;
+  }
+  .step-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .step-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .step-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #F1F5F9;
+  }
+  .step-desc {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+  .tech-tag {
+    background: #1E293B;
+    border: 1px solid #334155;
+    color: #CBD5E1;
+    font-size: 10.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  .step-highlight {
+    font-size: 11px;
+    color: #38BDF8;
+    background: rgba(56, 189, 248, 0.08);
+    border-left: 3px solid #38BDF8;
+    padding: 3px 8px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* 流程連接線 */
+  .flow-arrow {
+    text-align: center;
+    color: #475569;
+    font-size: 12px;
+    margin: -6px 0 6px 0;
+  }
+
+  /* 右側拓撲層級 */
+  .tier-container {
+    background: #131C31;
+    border: 1px solid #25334D;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 14px;
+    transition: all 0.25s ease;
+  }
+  .tier-container.highlighted {
+    border-color: #34D399;
+    background: #142838;
+    box-shadow: 0 0 16px rgba(52, 211, 153, 0.2);
+  }
+  .tier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #25334D;
+  }
+  .tier-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: #F8FAFC;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tier-sub {
+    font-size: 11px;
+    color: #64748B;
+  }
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .tier-box {
+    background: #1A243B;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .tier-box-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #E2E8F0;
+    margin-bottom: 2px;
+  }
+  .tier-box-tech {
+    font-size: 10.5px;
+    color: #38BDF8;
+    font-family: monospace;
+    margin-bottom: 4px;
+  }
+  .tier-box-desc {
+    font-size: 11px;
+    color: #94A3B8;
+    line-height: 1.3;
+  }
+
+  /* 軌道分割 */
+  .dual-track-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .track-card {
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .track-local {
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  .track-cloud {
+    background: rgba(245, 158, 11, 0.06);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .track-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .text-emerald { color: #34D399; }
+  .text-amber { color: #FBBF24; }
+
+  /* 底部操作工具列 */
+  .actions-toolbar {
+    margin-top: 20px;
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .actions-info { font-size: 12px; color: #94A3B8; }
+  .btn-group { display: flex; gap: 10px; }
+  .btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: #38BDF8; color: #0F172A; }
+  .btn-primary:hover { background: #7DD3FC; }
+  .btn-secondary { background: #334155; color: #F8FAFC; border: 1px solid #475569; }
+  .btn-secondary:hover { background: #475569; }
+</style>
+</head>
+<body>
+
+<!-- 頂部標頭卡片 -->
+<div class="header-card">
+  <div class="header-title-box">
+    <h1>⚡ 企業級主權 AI 平台：端到端生命週期與五層系統架構拓撲</h1>
+    <p>左側「8 階段使用者調用生命週期」與右側「5 層全景實體架構拓撲」• 雲地混合雙軌分流 • 零洩密主權保障</p>
+  </div>
+  <div class="header-badges">
+    <span class="badge badge-cyan">架構負責人：Howard Liao Ph.D.</span>
+    <span class="badge badge-emerald">專案：鬥陣江湖 / SX</span>
+    <span class="badge badge-amber">格式：Draw.io 原生向量 (.drawio)</span>
+  </div>
+</div>
+
+<!-- 商業與技術影響 Bento 指標條 -->
+<div class="metrics-bar">
+  <div class="metric-item">
+    <span class="metric-label">雲端大模型 TCO 節省</span>
+    <span class="metric-val val-emerald">-73.8%</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-label">高頻問答快取直通延遲</span>
+    <span class="metric-val val-blue">&lt; 10 ms</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-label">企業核心專利機密外洩率</span>
+    <span class="metric-val val-purple">0% (Zero)</span>
+  </div>
+  <div class="metric-item">
+    <span class="metric-label">公網斷網離線自主營運率</span>
+    <span class="metric-val val-amber">100% (Air-Gapped)</span>
+  </div>
+</div>
+
+<!-- 雙欄主容器 -->
+<div class="main-dual-layout">
+
+  <!-- ==================== 左欄：使用者端到端調用生命週期 ==================== -->
+  <div class="panel-column">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span style="color:#38BDF8;">👤</span> 【左欄】端到端使用者調用生命週期 (User Request E2E Lifecycle)
+      </div>
+      <span style="font-size:11px; color:#64748B;">點擊各步驟可同步聯動右側系統拓撲</span>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card" onclick="highlightTier('tier-1', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 01. 終端業務調用發起 (User Prompt Ingress)</span>
+        <span class="step-badge" style="background:#DBEAFE; color:#1D4ED8;">階段 01</span>
+      </div>
+      <div class="step-desc">業務端 Web Portal / MES 智慧產線 / 研發 IDE 插件發起 OpenAI 兼容推論請求。</div>
+      <div class="tag-group">
+        <span class="tech-tag">/v1/chat/completions</span>
+        <span class="tech-tag">SSO JWT Token</span>
+        <span class="tech-tag">RAG Context</span>
+      </div>
+      <div class="step-highlight">👉 對應右側：Tier 1 客戶端展示層</div>
+    </div>
+    <div class="flow-arrow">⬇️ TLS 1.3 雙向加密傳輸 ⬇️</div>
+
+    <!-- Step 2 -->
+    <div class="step-card" onclick="highlightTier('tier-2', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 02. 邊界安全與零信任鑑權 (Zero-Trust Perimeter)</span>
+        <span class="step-badge" style="background:#FEF3C7; color:#B45309;">階段 02</span>
+      </div>
+      <div class="step-desc">Envoy 閘道 mTLS 終結，Keycloak 檢驗 JWT 簽名與 RBAC 權限，WAF 深度清洗注入攻擊。</div>
+      <div class="tag-group">
+        <span class="tech-tag">Envoy Gateway</span>
+        <span class="tech-tag">mTLS 終結</span>
+        <span class="tech-tag">WAF Anti-Injection</span>
+        <span class="tech-tag">Rate Limiter</span>
+      </div>
+      <div class="step-highlight">👉 對應右側：Tier 2 安全邊界入口閘道層</div>
+    </div>
+    <div class="flow-arrow">⬇️ 鑑權通過，進入內網專線 ⬇️</div>
+
+    <!-- Step 3 -->
+    <div class="step-card" onclick="highlightTier('tier-3', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 03. 語意向量快取比對 (Semantic Vector Cache)</span>
+        <span class="step-badge" style="background:#D1FAE5; color:#065F46;">階段 03</span>
+      </div>
+      <div class="step-desc">計算 Prompt Embedding，檢索 Redis Vector 餘弦相似度。若 Cosine > 0.95 判定為重複問答。</div>
+      <div class="tag-group">
+        <span class="tech-tag">Redis Vector DB</span>
+        <span class="tech-tag">Cosine &gt; 0.95</span>
+        <span class="tech-tag">⚡ 命中延遲 &lt; 10ms</span>
+        <span class="tech-tag">$0 零算力</span>
+      </div>
+      <div class="step-highlight">⚡ 命中分支：直接短路跳至步驟 08 回應用戶，跳過後續模型推論！</div>
+    </div>
+    <div class="flow-arrow">⬇️ 未命中快取，進入路由分析 ⬇️</div>
+
+    <!-- Step 4 -->
+    <div class="step-card" onclick="highlightTier('tier-3', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 04. 語意意圖分類與難度打分 (Lightweight Scorer)</span>
+        <span class="step-badge" style="background:#CFFAFE; color:#0E7490;">階段 04</span>
+      </div>
+      <div class="step-desc">輕量 Fine-tuned BERT 分類器 (&lt;15ms) 快速剖析意圖維度，計算複雜度評分 (0.0 ~ 1.0)。</div>
+      <div class="tag-group">
+        <span class="tech-tag">FastBERT (&lt;15ms)</span>
+        <span class="tech-tag">閥值 Tau = 0.65</span>
+        <span class="tech-tag">常規問答 vs 複雜推理</span>
+      </div>
+      <div class="step-highlight">👉 對應右側：Tier 3 智慧模型路由中樞核心</div>
+    </div>
+    <div class="flow-arrow">⬇️ 輸出分流決策權重 ⬇️</div>
+
+    <!-- Step 5 -->
+    <div class="step-card" onclick="highlightTier('tier-3', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 05. 專利機密與 PII 動態脫敏 (Enterprise DLP)</span>
+        <span class="step-badge" style="background:#FFE4E6; color:#BE123C;">階段 05</span>
+      </div>
+      <div class="step-desc">針對需調用雲端之請求，在本地動態遮蔽專利代碼、料號與個人資料，記憶體維護實體映射字典。</div>
+      <div class="tag-group">
+        <span class="tech-tag">Microsoft Presidio</span>
+        <span class="tech-tag">在地 NER 遮罩</span>
+        <span class="tech-tag">Token 雜湊替換</span>
+        <span class="tech-tag">零機密外洩</span>
+      </div>
+      <div class="step-highlight">👉 確保傳出內網之資料 100% 脫敏，絕無機密洩露</div>
+    </div>
+    <div class="flow-arrow">⬇️ 派發至最佳推論軌道 ⬇️</div>
+
+    <!-- Step 6 -->
+    <div class="step-card" onclick="highlightTier('tier-4', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 06. 雙軌混合算力智能分發 (Dual-Track Dispatch)</span>
+        <span class="step-badge" style="background:#EDE9FE; color:#6D28D9;">階段 06</span>
+      </div>
+      <div class="step-desc">常規 70% 負載派發地端私有 vLLM；攻堅 30% 難題經專線派發至 AWS Bedrock / OpenRouter。</div>
+      <div class="tag-group">
+        <span class="tech-tag">軌道 A: 70% 地端私有</span>
+        <span class="tech-tag">軌道 B: 30% 雲端攻堅</span>
+        <span class="tech-tag">軌道 C: OpenRouter 比價</span>
+      </div>
+      <div class="step-highlight">👉 對應右側：Tier 4 雙軌混合算力推論引擎層</div>
+    </div>
+    <div class="flow-arrow">⬇️ 模型推論完成，回傳結果 ⬇️</div>
+
+    <!-- Step 7 -->
+    <div class="step-card" onclick="highlightTier('tier-3', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 07. 安全護欄檢測與實體逆向還原 (De-anonymize)</span>
+        <span class="step-badge" style="background:#FFEDD5; color:#C2410C;">階段 07</span>
+      </div>
+      <div class="step-desc">Llama Guard 3 檢查輸出毒性與格式，藉由 Session 映射表將遮罩 Token 逆向還原為真實內容。</div>
+      <div class="tag-group">
+        <span class="tech-tag">Llama Guard 3</span>
+        <span class="tech-tag">逆向字典反遮罩</span>
+        <span class="tech-tag">向量快取非同步預熱</span>
+      </div>
+      <div class="step-highlight">👉 審核通過後，自動寫入 Redis 語意快取</div>
+    </div>
+    <div class="flow-arrow">⬇️ 流式推送至客戶端 ⬇️</div>
+
+    <!-- Step 8 -->
+    <div class="step-card" onclick="highlightTier('tier-5', this)">
+      <div class="step-head">
+        <span class="step-title">步驟 08. 流式響應交付與 FinOps 遙測稽核 (SSE & FinOps)</span>
+        <span class="step-badge" style="background:#DCFCE7; color:#15803D;">階段 08</span>
+      </div>
+      <div class="step-desc">SSE 打字機流式交付終端，OpenTelemetry 記錄 TTFT 首字延遲，Kafka 異步結算部門預算。</div>
+      <div class="tag-group">
+        <span class="tech-tag">SSE 打字機流</span>
+        <span class="tech-tag">OpenTelemetry</span>
+        <span class="tech-tag">Kafka / ClickHouse</span>
+        <span class="tech-tag">預算熔斷防護</span>
+      </div>
+      <div class="step-highlight">🎉 最終交付完成！成本節省 73.8%、延遲降低 42%</div>
+    </div>
+
+  </div>
+
+  <!-- ==================== 右欄：全景五層系統架構實體拓撲 ==================== -->
+  <div class="panel-column">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span style="color:#34D399;">⚙️</span> 【右欄】企業完整五層系統實體架構拓撲 (Full-Stack 5-Tier Blueprint)
+      </div>
+      <span style="font-size:11px; color:#64748B;">高可用 • 零信任 • 主權自研</span>
+    </div>
+
+    <!-- Tier 1 -->
+    <div class="tier-container" id="tier-1">
+      <div class="tier-header">
+        <span class="tier-name">📱 Tier 1: 終端展示與客戶端整合層 (Client & Presentation Tier)</span>
+        <span class="tier-sub">多終端標準化適配</span>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-box">
+          <div class="tier-box-title">企業內部 Web Portal</div>
+          <div class="tier-box-tech">React 19 / Next.js / Tailwind</div>
+          <div class="tier-box-desc">多輪對話、文件智慧問答、專利文檔審閱與生成介面</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">智慧產線 MES / ERP 終端</div>
+          <div class="tier-box-tech">C# / Python API Agent</div>
+          <div class="tier-box-desc">產線機台即時良率告警、異常工單自動化 AI 分析</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">研發工程師 IDE 插件</div>
+          <div class="tier-box-tech">VSCode / JetBrains Extension</div>
+          <div class="tier-box-desc">內部安全代碼補全、代碼重構、單元測試自動生成</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">企業統一內部 AI SDK</div>
+          <div class="tier-box-tech">Python / TS / Go SDK</div>
+          <div class="tier-box-desc">標準化調用庫，自帶身分宣告、斷線自動重試與指標收集</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier-container" id="tier-2">
+      <div class="tier-header">
+        <span class="tier-name">🛡️ Tier 2: 安全邊界防禦與入口閘道層 (Security Perimeter & Ingress Tier)</span>
+        <span class="tier-sub">TLS 1.3 終結 • WAF 深度清洗</span>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-box">
+          <div class="tier-box-title">Envoy API Gateway</div>
+          <div class="tier-box-tech">Envoy / NGINX Plus</div>
+          <div class="tier-box-desc">雙向 mTLS 終結、反向代理、高並發負載均衡與 Token 桶限流</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">企業 SSO 統一鑑權中心</div>
+          <div class="tier-box-tech">Keycloak / OAuth2.0 & OIDC</div>
+          <div class="tier-box-desc">驗證企業 JWT 簽章、部門 RBAC 權限校驗與審計權杖分發</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">智慧型 WAF 防火牆</div>
+          <div class="tier-box-tech">ModSecurity / Coraza WAF</div>
+          <div class="tier-box-desc">防範 Prompt Injection 提示詞注入、越獄 (Jailbreaking) 攔截</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">零信任邊界存取 (ZTNA)</div>
+          <div class="tier-box-tech">Cloudflare Tunnels / VPC Peering</div>
+          <div class="tier-box-desc">封閉外部未授權連線，僅允許內部專屬專線與 VPN 存取</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier-container" id="tier-3">
+      <div class="tier-header">
+        <span class="tier-name">🧠 Tier 3: Howard 主權智慧模型路由中樞 (Sovereign Routing Core)</span>
+        <span class="tier-sub">K8s 高可用叢集 • 毫秒級動態裁決</span>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-box">
+          <div class="tier-box-title">異步非阻塞調度引擎</div>
+          <div class="tier-box-tech">FastAPI / Go Core (Async)</div>
+          <div class="tier-box-desc">毫秒級事件驅動循環、請求排程池、SSE 打字機流式傳輸協同</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">Redis 語意快取資料庫</div>
+          <div class="tier-box-tech">Redis Vector / HNSW Index</div>
+          <div class="tier-box-desc">餘弦相似度比對 (&lt;10ms)，高頻重複提問短路直通，節省 100% 算力</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">語意意圖 & 複雜度評分器</div>
+          <div class="tier-box-tech">Fine-tuned BERT Classifier</div>
+          <div class="tier-box-desc">&lt;15ms 難度打分 (Tau=0.65)，精確識別常規問答與高難度多步邏輯</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">企業級 DLP 動態脫敏閘道</div>
+          <div class="tier-box-tech">Microsoft Presidio + 在地 NER</div>
+          <div class="tier-box-desc">專利代碼/個資在地遮罩，記憶體 Session 維護可逆還原字典</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">斷網熔斷與自動降級控制器</div>
+          <div class="tier-box-tech">Netflix Hystrix / Resilience4j</div>
+          <div class="tier-box-desc">雲端 API 超時或外部斷網時，1 秒內自動熔斷並降級至地端私有模型</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">安全護欄與實體逆向還原</div>
+          <div class="tier-box-tech">Llama Guard 3 + De-anonymizer</div>
+          <div class="tier-box-desc">幻覺與毒性過濾、Token 逆向反遮罩還原、向量快取非同步預熱</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 4 -->
+    <div class="tier-container" id="tier-4">
+      <div class="tier-header">
+        <span class="tier-name">⚡ Tier 4: 雙軌混合算力推論引擎層 (Hybrid Execution Engine Tier)</span>
+        <span class="tier-sub">地端 70% 負載 + 雲端 30% 攻堅</span>
+      </div>
+      <div class="dual-track-grid">
+        <div class="track-card track-local">
+          <div class="track-title text-emerald">
+            🔒 【軌道 A：70% 負載】地端私有 K8s GPU 算力叢集
+          </div>
+          <div class="tier-box" style="margin-bottom:6px;">
+            <div class="tier-box-title">vLLM 高並發推理伺服叢集</div>
+            <div class="tier-box-tech">Llama-3-70B / Qwen 2.5 / Mistral</div>
+            <div class="tier-box-desc">PagedAttention 顯存技術，P99 延遲 &lt; 800ms，100% 零洩密</div>
+          </div>
+          <div class="tier-box" style="margin-bottom:6px;">
+            <div class="tier-box-title">Milvus 企業私有向量庫</div>
+            <div class="tier-box-tech">Milvus / BGE-M3 Embeddings</div>
+            <div class="tier-box-desc">內部專利圖紙、產品 SOP、原始碼本地隔離檢索 (RAG)</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-box-title">TensorRT-LLM 量化引擎</div>
+            <div class="tier-box-tech">NVIDIA TensorRT / FP8 AWQ</div>
+            <div class="tier-box-desc">FP8 深度量化加速，單卡吞吐量提升 2.5 倍</div>
+          </div>
+        </div>
+
+        <div class="track-card track-cloud">
+          <div class="track-title text-amber">
+            🌐 【軌道 B & C：30% 難題】公有雲旗艦 & 市場中立代理
+          </div>
+          <div class="tier-box" style="margin-bottom:6px;">
+            <div class="tier-box-title">AWS Bedrock 專屬專線直連</div>
+            <div class="tier-box-tech">Claude 3.5 Sonnet / DirectConnect</div>
+            <div class="tier-box-desc">脫敏後專屬 VPC 專線傳輸，攻堅複雜架構與演算法重構</div>
+          </div>
+          <div class="tier-box" style="margin-bottom:6px;">
+            <div class="tier-box-title">Google Vertex AI & Azure OpenAI</div>
+            <div class="tier-box-tech">Gemini 1.5 Pro / GPT-4o 專屬 VPC</div>
+            <div class="tier-box-desc">百萬級超長上下文 (1M+ Tokens) 處理、多模態圖形解析</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-box-title">OpenRouter / MixRoute 中立代理</div>
+            <div class="tier-box-tech">openrouter/auto 動態比價與備援</div>
+            <div class="tier-box-desc">市場算力即時比價、SLA 自動容錯移轉、多供應商智慧容災</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tier 5 -->
+    <div class="tier-container" id="tier-5">
+      <div class="tier-header">
+        <span class="tier-name">📊 Tier 5: 治理、FinOps 成本核算與全域觀測中樞 (Governance & FinOps)</span>
+        <span class="tier-sub">全鏈路可觀測 • 預算動態熔斷</span>
+      </div>
+      <div class="tier-grid">
+        <div class="tier-box">
+          <div class="tier-box-title">Prometheus + Grafana 看板</div>
+          <div class="tier-box-tech">Prometheus / Grafana Enterprise</div>
+          <div class="tier-box-desc">70/30 流量佔比、P99 延遲、GPU 顯存與快取命中率即時監控</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">OpenTelemetry 分散式追蹤</div>
+          <div class="tier-box-tech">OTel Collector / Jaeger Tracing</div>
+          <div class="tier-box-desc">端到端 Trace ID 串聯、TTFT 首字延遲分析、模型瓶頸定位</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">ClickHouse + ELK 審計中樞</div>
+          <div class="tier-box-tech">ClickHouse / Elasticsearch</div>
+          <div class="tier-box-desc">全量脫敏日誌長效存證、合規安全性審計、不可篡改稽核軌跡</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-title">FinOps 成本分析與預算熔斷</div>
+          <div class="tier-box-tech">Kubecost / Custom FinOps Worker</div>
+          <div class="tier-box-desc">部門 Token 成本實時分攤、異常暴增用量動態阻斷與預警</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 底部操作工具列 -->
+<div class="actions-toolbar">
+  <div class="actions-info">
+    💾 檔案已同步至本機與 GitHub：<code>assets/drawio/enterprise_ai_end_to_end_architecture.drawio</code>
+  </div>
+  <div class="btn-group">
+    <a href="https://app.diagrams.net/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FHowardLiao%2F2301%2Fmain%2Fassets%2Fdrawio%2Fenterprise_ai_end_to_end_architecture.drawio" target="_blank" class="btn btn-primary">
+      🚀 在 diagrams.net / Draw.io 直接開啟編輯
+    </a>
+    <a href="https://github.com/HowardLiao/2301/blob/main/assets/drawio/enterprise_ai_end_to_end_architecture.drawio" target="_blank" class="btn btn-secondary">
+      📂 GitHub 查看來源檔
+    </a>
+  </div>
+</div>
+
+<script>
+  function highlightTier(tierId, stepEl) {
+    // 移除所有 step-card 的 active 狀態
+    document.querySelectorAll('.step-card').forEach(c => c.classList.remove('active'));
+    stepEl.classList.add('active');
+
+    // 移除所有 tier-container 的 highlighted 狀態
+    document.querySelectorAll('.tier-container').forEach(t => t.classList.remove('highlighted'));
+    const target = document.getElementById(tierId);
+    if (target) {
+      target.classList.add('highlighted');
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+</script>
+
+</body>
+</html>
