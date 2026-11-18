@@ -1,44 +1,44 @@
-<mxfile host="app.diagrams.net" modified="2026-11-19T08:00:00.000Z" agent="HermesAgent" version="24.0.0" type="device">
+<mxfile host="app.diagrams.net" modified="2026-11-19T08:30:00.000Z" agent="HermesAgent" version="24.0.0" type="device">
   <diagram id="deploy-diag" name="Howard Model Router - Deployment Diagram">
-    <mxGraphModel dx="1422" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="950" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1550" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- Node 1: Client Devices / Environment -->
         <mxCell id="node_client" value="&lt;b&gt;&amp;lt;&amp;lt;device / environment&amp;gt;&amp;gt;&lt;br&gt;企業內部終端環境 (Client Tier)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#F3F4F6;strokeColor=#4B5563;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#111827;" vertex="1" parent="1">
-          <mxGeometry x="40" y="60" width="260" height="760" as="geometry" />
+          <mxGeometry x="40" y="60" width="260" height="820" as="geometry" />
         </mxCell>
         <mxCell id="c_browser" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;企業員工瀏覽器 / Web Portal&lt;/b&gt;&lt;br&gt;(Chatbot / Knowledge Base)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=12;" vertex="1" parent="node_client">
           <mxGeometry x="25" y="60" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="c_mes" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;智慧工廠產線 MES / ERP 系統&lt;/b&gt;&lt;br&gt;(自動質檢 / 設備參數問答)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=12;" vertex="1" parent="node_client">
-          <mxGeometry x="25" y="240" width="210" height="80" as="geometry" />
+          <mxGeometry x="25" y="250" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="c_ide" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;工程研發 IDE 插件&lt;/b&gt;&lt;br&gt;(VSCode / JetBrains 輔助生成)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=12;" vertex="1" parent="node_client">
-          <mxGeometry x="25" y="420" width="210" height="80" as="geometry" />
+          <mxGeometry x="25" y="440" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="c_sdk" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;統一內部 AI SDK&lt;/b&gt;&lt;br&gt;(OpenAI Compatible Endpoint)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#E0E7FF;strokeColor=#4338CA;strokeWidth=1.5;fontSize=12;fontColor=#1E1B4B;" vertex="1" parent="node_client">
-          <mxGeometry x="25" y="600" width="210" height="80" as="geometry" />
+          <mxGeometry x="25" y="640" width="210" height="80" as="geometry" />
         </mxCell>
 
         <!-- Node 2: Enterprise DMZ & Gateway -->
         <mxCell id="node_dmz" value="&lt;b&gt;&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;安全邊界閘道 (DMZ / Ingress Tier)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#F8FAFC;strokeColor=#0284C7;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="360" y="60" width="260" height="760" as="geometry" />
+          <mxGeometry x="360" y="60" width="260" height="820" as="geometry" />
         </mxCell>
         <mxCell id="c_gw" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;API Gateway / Envoy Proxy&lt;/b&gt;&lt;br&gt;TLS 終結 / 負載均衡 / 速率限制" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontSize=12;fontColor=#0369A1;" vertex="1" parent="node_dmz">
-          <mxGeometry x="25" y="140" width="210" height="90" as="geometry" />
+          <mxGeometry x="25" y="160" width="210" height="90" as="geometry" />
         </mxCell>
         <mxCell id="c_idp" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;企業 SSO / AD 鑑權&lt;/b&gt;&lt;br&gt;OAuth2 / JWT / RBAC 權限" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0284C7;fontSize=12;" vertex="1" parent="node_dmz">
-          <mxGeometry x="25" y="340" width="210" height="80" as="geometry" />
+          <mxGeometry x="25" y="380" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="c_waf" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;WAF 防護牆 &amp;amp; 流量清洗&lt;/b&gt;&lt;br&gt;DDoS 緩解 / 惡意注入攔截" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#0284C7;fontSize=12;" vertex="1" parent="node_dmz">
-          <mxGeometry x="25" y="520" width="210" height="80" as="geometry" />
+          <mxGeometry x="25" y="580" width="210" height="80" as="geometry" />
         </mxCell>
 
         <!-- Node 3: Model Routing Core Cluster (K8s On-Premise) -->
         <mxCell id="node_router" value="&lt;b&gt;&amp;lt;&amp;lt;cluster&amp;gt;&amp;gt;&lt;br&gt;企業主權模型路由中樞 (Model Router K8s Cluster)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2.5;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#1E3A8A;" vertex="1" parent="1">
-          <mxGeometry x="680" y="60" width="340" height="760" as="geometry" />
+          <mxGeometry x="680" y="60" width="340" height="820" as="geometry" />
         </mxCell>
         <mxCell id="c_orch" value="&amp;lt;&amp;lt;microservice&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Routing Orchestrator Core&lt;/b&gt;&lt;br&gt;(FastAPI / Go 高並發異步調度引擎)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontSize=12;fontColor=#1E40AF;" vertex="1" parent="node_router">
           <mxGeometry x="25" y="70" width="290" height="90" as="geometry" />
@@ -46,7 +46,7 @@
         <mxCell id="c_scorer" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;語意意圖 &amp;amp; 難度評分引擎&lt;/b&gt;&lt;br&gt;輕量 BERT / Embedding 快速分類器&lt;br&gt;(&amp;lt;15ms 判定 70% 常規 vs 30% 難題)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#2563EB;fontSize=12;" vertex="1" parent="node_router">
           <mxGeometry x="25" y="190" width="290" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="c_dlp" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DLP 機密數據脫敏閘道&lt;/b&gt;&lt;br&gt;專利機密 / PII / 源碼正則脫敏遮罩&lt;br&gt;(阻絕明文直穿公有雲)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2;fontSize=12;fontColor=#991B1B;" vertex="1" parent="node_router">
+        <mxCell id="c_dlp" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DLP 機密數據脫敏閘道&lt;/b&gt;&lt;br&gt;專利機密 / PII / 源碼正則脫敏遮罩&lt;br&gt;(阻絕明文直穿公有雲與外部代管)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2;fontSize=12;fontColor=#991B1B;" vertex="1" parent="node_router">
           <mxGeometry x="25" y="305" width="290" height="85" as="geometry" />
         </mxCell>
         <mxCell id="c_fallback" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;斷網熔斷與高可用控制器&lt;/b&gt;&lt;br&gt;心跳檢測 / 海纜中斷自動切換本機" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#F3E8FF;strokeColor=#7C3AED;fontSize=12;fontColor=#5B21B6;" vertex="1" parent="node_router">
@@ -61,74 +61,82 @@
 
         <!-- Node 4: Private On-Premise GPU Compute (70% load) -->
         <mxCell id="node_onprem" value="&lt;b&gt;&amp;lt;&amp;lt;cluster / on-premise&amp;gt;&amp;gt;&lt;br&gt;地端私有算力中心 (Local GPU Pods - 70% 負載)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#14532D;" vertex="1" parent="1">
-          <mxGeometry x="1080" y="60" width="360" height="340" as="geometry" />
+          <mxGeometry x="1080" y="60" width="410" height="300" as="geometry" />
         </mxCell>
         <mxCell id="c_vllm" value="&amp;lt;&amp;lt;execution environment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;vLLM 高併發推理伺服叢集&lt;/b&gt;&lt;br&gt;Llama-3-70B / 8B, Mistral, Qwen 2.5&lt;br&gt;(數據 100% 留在光寶內部機房)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontSize=12;fontColor=#166534;" vertex="1" parent="node_onprem">
-          <mxGeometry x="25" y="65" width="310" height="90" as="geometry" />
+          <mxGeometry x="25" y="55" width="360" height="90" as="geometry" />
         </mxCell>
         <mxCell id="c_milvus" value="&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Milvus / Qdrant 企業私有向量庫&lt;/b&gt;&lt;br&gt;專利 RAG 知識庫 / 零外洩地端檢索" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#DCFCE7;strokeColor=#16A34A;fontSize=12;fontColor=#166534;" vertex="1" parent="node_onprem">
-          <mxGeometry x="25" y="185" width="310" height="95" as="geometry" />
+          <mxGeometry x="25" y="165" width="360" height="95" as="geometry" />
         </mxCell>
 
-        <!-- Node 5: Public Cloud Frontier LLMs (30% load via Dedicated Line) -->
-        <mxCell id="node_cloud" value="&lt;b&gt;&amp;lt;&amp;lt;cloud / multi-provider&amp;gt;&amp;gt;&lt;br&gt;公有雲旗艦模型群 (專線直連 - 30% 難題負載)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#78350F;" vertex="1" parent="1">
-          <mxGeometry x="1080" y="440" width="360" height="240" as="geometry" />
+        <!-- Node 5: Public Cloud Frontier LLMs & OpenRouter Hub -->
+        <mxCell id="node_cloud" value="&lt;b&gt;&amp;lt;&amp;lt;cloud / multi-provider&amp;gt;&amp;gt;&lt;br&gt;公有雲旗艦模型群 &amp;amp; OpenRouter 聚合代理 (30% 難題負載)&lt;/b&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=15;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=13;fontColor=#78350F;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="390" width="410" height="310" as="geometry" />
         </mxCell>
-        <mxCell id="c_bedrock" value="&amp;lt;&amp;lt;cloud service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;AWS Bedrock&lt;/b&gt;&lt;br&gt;Claude 3.5 Sonnet / Haiku (DirectConnect 專線)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=12;" vertex="1" parent="node_cloud">
-          <mxGeometry x="25" y="65" width="310" height="65" as="geometry" />
+        <mxCell id="c_bedrock" value="&amp;lt;&amp;lt;cloud service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;AWS Bedrock&lt;/b&gt; (Claude 3.5 Sonnet / Haiku 專線直連)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=12;" vertex="1" parent="node_cloud">
+          <mxGeometry x="25" y="55" width="360" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="c_gcp_azure" value="&amp;lt;&amp;lt;cloud service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Google Cloud Vertex AI &amp;amp; Azure OpenAI&lt;/b&gt;&lt;br&gt;Gemini 1.5 Pro / GPT-4o (跨雲容錯備援)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=12;" vertex="1" parent="node_cloud">
-          <mxGeometry x="25" y="145" width="310" height="65" as="geometry" />
+        <mxCell id="c_gcp_azure" value="&amp;lt;&amp;lt;cloud service&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Google Cloud Vertex AI &amp;amp; Azure OpenAI&lt;/b&gt;&lt;br&gt;(Gemini 1.5 Pro / GPT-4o 跨雲備援)" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=12;" vertex="1" parent="node_cloud">
+          <mxGeometry x="25" y="125" width="360" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c_openrouter" value="&amp;lt;&amp;lt;cloud gateway&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;OpenRouter / MixRoute (市場中立聚合代理)&lt;/b&gt;&lt;br&gt;openrouter/auto 動態比價 / 跨廠商容錯 / DeepSeek 支援" style="html=1;dropTarget=0;whiteSpace=wrap;fillColor=#FDF2F8;strokeColor=#DB2777;strokeWidth=2;fontSize=12;fontColor=#831843;" vertex="1" parent="node_cloud">
+          <mxGeometry x="25" y="195" width="360" height="75" as="geometry" />
         </mxCell>
 
         <!-- Node 6: Observability & Governance -->
         <mxCell id="node_obs" value="&lt;b&gt;&amp;lt;&amp;lt;subsystem&amp;gt;&amp;gt;&lt;br&gt;全域可觀測與合規監控 (Observability &amp;amp; Governance)&lt;/b&gt;" style="shape=rect;whiteSpace=wrap;html=1;dashed=1;strokeWidth=1.5;strokeColor=#64748B;fillColor=#F8FAFC;fontSize=12;fontColor=#334155;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
-          <mxGeometry x="1080" y="700" width="360" height="120" as="geometry" />
+          <mxGeometry x="1080" y="730" width="410" height="150" as="geometry" />
         </mxCell>
         <mxCell id="c_prom" value="&lt;b&gt;Prometheus + Grafana&lt;/b&gt;&lt;br&gt;70/30 分流比例 / 延遲 / 降本率監控" style="html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="node_obs">
-          <mxGeometry x="15" y="35" width="155" height="65" as="geometry" />
+          <mxGeometry x="20" y="45" width="175" height="75" as="geometry" />
         </mxCell>
         <mxCell id="c_otel" value="&lt;b&gt;OpenTelemetry + ELK&lt;/b&gt;&lt;br&gt;全生命週期 Trace 稽核日誌" style="html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="node_obs">
-          <mxGeometry x="185" y="35" width="160" height="65" as="geometry" />
+          <mxGeometry x="215" y="45" width="175" height="75" as="geometry" />
         </mxCell>
 
         <!-- Network Connections / Links -->
-        <!-- Client to DMZ -->
         <mxCell id="link_c_gw" value="HTTPS / mTLS&lt;br&gt;(REST / gRPC)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2;strokeColor=#0284C7;fontSize=11;" edge="1" parent="1" source="c_sdk" target="c_gw">
           <mxGeometry width="80" relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="330" y="700" />
-              <mxPoint x="330" y="245" />
+              <mxPoint x="330" y="740" />
+              <mxPoint x="330" y="265" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- DMZ to Orchestrator -->
         <mxCell id="link_gw_orch" value="Internal Private VPC&lt;br&gt;(Authenticated Proxy)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2;strokeColor=#2563EB;fontSize=11;" edge="1" parent="1" source="c_gw" target="c_orch">
           <mxGeometry width="80" relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Orchestrator to Local vLLM (70%) -->
         <mxCell id="link_orch_local" value="&lt;b&gt;70% 地端路由&lt;/b&gt;&lt;br&gt;(Low Latency / 0 外洩)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2.5;strokeColor=#16A34A;fontSize=11;" edge="1" parent="1" source="c_orch" target="c_vllm">
           <mxGeometry width="80" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1040" y="175" />
-              <mxPoint x="1040" y="170" />
+              <mxPoint x="1040" y="160" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- DLP to Cloud Bedrock (30%) -->
-        <mxCell id="link_dlp_cloud" value="&lt;b&gt;30% 難題路由&lt;/b&gt;&lt;br&gt;(脫敏後專線直連)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2.5;strokeColor=#D97706;fontSize=11;" edge="1" parent="1" source="c_dlp" target="c_bedrock">
+        <!-- DLP to Cloud (30%) including Bedrock, GCP, Azure, OpenRouter -->
+        <mxCell id="link_dlp_cloud" value="&lt;b&gt;30% 難題路由&lt;/b&gt;&lt;br&gt;(脫敏後專線/API調度)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;strokeWidth=2.5;strokeColor=#D97706;fontSize=11;" edge="1" parent="1" source="c_dlp" target="c_bedrock">
           <mxGeometry width="80" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1050" y="408" />
-              <mxPoint x="1050" y="538" />
+              <mxPoint x="1050" y="475" />
             </Array>
           </mxGeometry>
         </mxCell>
 
-        <!-- Orchestrator to Observability -->
+        <mxCell id="link_dlp_openrouter" value="&lt;b&gt;市場聚合比價 / 容錯&lt;/b&gt;" style="html=1;verticalAlign=bottom;endArrow=block;dashed=1;rounded=0;strokeWidth=1.5;strokeColor=#DB2777;fontSize=10;" edge="1" parent="1" source="c_dlp" target="c_openrouter">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="408" />
+              <mxPoint x="1050" y="622" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
         <mxCell id="link_orch_obs" value="Metrics &amp;amp; Traces" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endFill=0;rounded=0;strokeWidth=1.5;strokeColor=#64748B;fontSize=10;" edge="1" parent="1" source="c_circuit" target="node_obs">
           <mxGeometry width="80" relative="1" as="geometry" />
         </mxCell>
