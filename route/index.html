@@ -139,6 +139,78 @@ header.nav{
   white-space:nowrap;
 }
 
+/* Language Switcher matching index.html */
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--card)}
+.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap;transition:all .2s ease}
+.langs a.on{background:var(--green);color:var(--bg);font-weight:600}
+.langs a:hover:not(.on){background:var(--label);color:var(--green)}
+
+/* Milan Warm Amber Header Card matching architecture & index */
+.header-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-top:4px solid var(--gold);
+  border-radius:12px;
+  padding:32px 30px;
+  margin-bottom:24px;
+  box-shadow:0 8px 24px rgba(43,43,43,0.05);
+}
+.meta-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  font-size:14px;
+  color:var(--mute);
+  padding-bottom:14px;
+  margin-bottom:14px;
+  border-bottom:1px solid var(--label);
+}
+.meta-bar b{color:var(--green);font-weight:700}
+.download-bar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.btn-action{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--green);
+  color:var(--bg);
+  padding:8px 16px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  border:1px solid var(--green);
+  transition:all .2s ease;
+}
+.btn-action:hover{
+  background:var(--green2);
+  color:var(--white);
+  text-decoration:none;
+}
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--card);
+  color:var(--ink);
+  padding:8px 16px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  border:1px solid var(--line);
+  transition:all .2s ease;
+}
+.btn-outline:hover{
+  border-color:var(--gold);
+  color:var(--green);
+  text-decoration:none;
+}
+
 /* Layout & Typography */
 main{max-width:1240px;margin:auto;padding:0 20px}
 section{padding:54px 0 30px;border-bottom:1px solid var(--label)}
@@ -564,7 +636,7 @@ th.hw{background:var(--howard-border);color:#fff}
 
 <header class="nav">
  <div class="in">
-  <div class="brand">LITEON <small>光寶科技 · 廖倫豪 博士</small></div>
+  <a href="../index.html" class="brand" style="text-decoration:none">廖倫豪 博士<small>× LITEON</small></a>
   <nav class="links">
    <a href="#hero">首頁頂部</a>
    <a href="#overview">四原型演進</a>
@@ -576,6 +648,11 @@ th.hw{background:var(--howard-border);color:#fff}
    <a href="#cases">製造業用例</a>
    <a href="#finops">🧮 FinOps 試算</a>
   </nav>
+  <div class="langs">
+    <a href="index.html" class="on" hreflang="zh" title="繁體中文">繁中</a>
+    <a href="ja.html" class="" hreflang="ja" title="日本語 (日文)">日本語</a>
+    <a href="en.html" class="" hreflang="en" title="English (英文)">EN</a>
+  </div>
   <button id="theme" class="tbtn" title="切換深淺模式">🌓 主題</button>
   <a class="tbtn" href="../index.html" style="text-decoration:none;font-weight:600">← 返回主站</a>
  </div>
@@ -585,11 +662,36 @@ th.hw{background:var(--howard-border);color:#fff}
 
 <!-- Hero Section -->
 <section id="hero">
- <div class="eyebrow">Enterprise AI Model Routing &amp; Sovereign Gateway Strategy</div>
- <h1>企業級多雲 AI 路由戰略<br>與「光寶 Howard Route」主權混合雲架構</h1>
- <p class="lead">
-  從 Google Vertex (Cost/Balanced/Quality)、AWS Bedrock、Microsoft Foundry、OpenAI、Claude 到 MixRoute、OpenRouter，乃至企業自建的「光寶 Howard Route」——全面解構八大方案之技術架構、優缺點、製造業核心機密合規、產線斷網韌性與 70%+ TCO 實質降本實踐。
- </p>
+ <div class="header-card">
+  <div class="eyebrow">Enterprise Strategic AI Model Routing · LITEON Special Edition</div>
+  <h1>企業級多雲 AI 路由戰略<br>與「光寶 Howard Route」主權混合雲架構</h1>
+  <div style="font-size:18px;font-weight:700;color:var(--green);margin:4px 0 14px;line-height:1.4;">解構八大方案技術架構與優缺點，實現 70%+ TCO 實質降本與製造業機密零落地</div>
+  <div class="meta-bar">
+    <span>呈報對象：<b>光寶科技 董事長、資訊長 (To the Chairman &amp; CIO · LITEON Technology)</b></span>
+    <span>應徵職能：<b>IT AI 平台負責人 / 企業級 AI 架構師</b></span>
+    <span>架構與策略總設計：<b>廖倫豪 博士 (Howard Liao, Ph.D.) · 資訊管理博士・ISO 27001／42001</b></span>
+  </div>
+  <p class="lead" style="margin:0 0 16px;">
+   從 Google Vertex (Cost/Balanced/Quality)、AWS Bedrock、Microsoft Foundry、OpenAI、Claude 到 MixRoute、OpenRouter，乃至企業自建的「光寶 Howard Route」——全面解構八大方案之技術架構、優缺點、製造業核心機密合規、產線斷網韌性與 70%+ TCO 實質降本實踐。
+  </p>
+  <div class="download-bar">
+    <a href="../assets/drawio/drawio_interactive_viewer.html" target="_blank" class="btn-action" style="background:#0284C7;border-color:#0284C7;color:#FFF;">
+      📐 線上預覽 Draw.io 動態架構圖 (3 大圖即時切換) ↗
+    </a>
+    <a href="../assets/drawio/architecture_preview.html" target="_blank" class="btn-outline">
+      ⚡ 雙欄實體拓撲儀表板 ↗
+    </a>
+    <a href="#simulator" class="btn-outline">
+      ⚡ 立即執行路由實機模擬
+    </a>
+    <a href="#finops" class="btn-outline">
+      🧮 FinOps 成本試算
+    </a>
+    <a href="../index.html" class="btn-outline">
+      ← 返回主站門戶
+    </a>
+  </div>
+ </div>
  
  <div class="kpis">
   <div class="kpi hero-kpi">
