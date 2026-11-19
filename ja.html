@@ -9,6 +9,19 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon-192.png">
 <meta name="theme-color" content="#2F4538">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://howardliao.github.io/2301/ja.html">
+<meta property="og:title" content="Lead an AI-Driven Workforce Transformation｜廖倫豪 博士 × LITEON">
+<meta property="og:description" content="LITEON会長・CIO各位：IT AIプラットフォーム責任者候補 廖倫豪 博士によるエンタープライズAI基盤ブループリント、Howard Route戦略、180日着任計画。">
+<meta property="og:image" content="https://howardliao.github.io/2301/assets/howard_portrait.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lead an AI-Driven Workforce Transformation｜廖倫豪 博士 × LITEON">
+<meta name="twitter:description" content="LITEON会長・CIO各位：IT AIプラットフォーム責任者候補 廖倫豪 博士によるエンタープライズAI基盤ブループリント、Howard Route戦略、180日着任計画。">
+<meta name="twitter:image" content="https://howardliao.github.io/2301/assets/howard_portrait.jpg">
 <style>
 :root{--bg:#FAF7F2;--alt:#F2EEE8;--label:#E8E2D9;--line:#B8AFA3;--ink:#2B2B2B;--mute:#6B6459;--green:#2F4538;--green2:#3E5A4A;--gold:#C8A96A;--brick:#9C5B4A;--white:#FFFFFF;--card:#FFFFFF}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}}
@@ -112,7 +125,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
 .viewer[hidden]{display:none}
 .vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
-.tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vbar .tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
 .vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
 .vimg{position:relative;max-width:100%;max-height:100%;display:flex}
 .vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
@@ -197,10 +210,71 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .la-lb .cap{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;background:var(--bg);color:var(--ink);padding:6px 14px;font-size:14px;z-index:201;max-width:90vw}
 
 @media print{body{display:none!important}}
-@media print{header.nav,.btns,.tabs,.tbtn,.calc{display:none}.panel{display:block!important;margin-bottom:16px}section{padding:24px 0;break-inside:avoid-page}.reveal{opacity:1;transform:none}body{font-size:12px}}
+
+/* === Neon Executive Refine (Plan A: Milan Forest Green & Deep Obsidian Dark) === */
+:root{--shadow-sm:0 2px 10px rgba(47,69,56,.06);--shadow-md:0 12px 32px rgba(47,69,56,.10);--gold-soft:rgba(200,169,106,.16);--glass:rgba(250,247,242,.88)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141917;--alt:#1A211D;--label:#222B26;--line:#38443D;--ink:#EFECE6;--mute:#A9A59B;--green:#A9C8B5;--green2:#8BB09A;--gold:#DEC082;--brick:#D89583;--card:#1B221E;--shadow-sm:0 2px 12px rgba(0,0,0,.32);--shadow-md:0 14px 36px rgba(0,0,0,.45);--gold-soft:rgba(222,192,130,.14);--glass:rgba(20,25,23,.88)}}
+:root[data-theme="dark"]{--bg:#141917;--alt:#1A211D;--label:#222B26;--line:#38443D;--ink:#EFECE6;--mute:#A9A59B;--green:#A9C8B5;--green2:#8BB09A;--gold:#DEC082;--brick:#D89583;--card:#1B221E;--shadow-sm:0 2px 12px rgba(0,0,0,.32);--shadow-md:0 14px 36px rgba(0,0,0,.45);--gold-soft:rgba(222,192,130,.14);--glass:rgba(20,25,23,.88)}
+body{font-family:"Noto Sans TC","Noto Sans JP","Inter","PingFang TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow-sm)}
+.nav .tbtn{margin-left:0;color:var(--ink);border-color:var(--line);transition:all .2s ease}
+.nav .tbtn:hover{border-color:var(--gold);color:var(--green);background:var(--label)}
+.readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--green),var(--gold));z-index:120;pointer-events:none;transition:width .08s linear}
+.portrait{position:relative;padding:10px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-md);border-radius:4px}
+.portrait::after{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none;border-radius:2px}
+.btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;border-radius:3px}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.btn.p:hover{background:var(--green2);border-color:var(--green2)}
+.kpi,.card,.pf-card,.la-c,.doc{box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;border-radius:3px}
+.kpi:hover,.pf-card:hover,.la-c:hover,.doc:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.kpi .v{font-variant-numeric:tabular-nums}
+.drawio-hub{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0 24px}
+.drawio-card{display:flex;flex-direction:column;gap:8px;padding:18px 20px;background:linear-gradient(135deg,var(--card) 0%,var(--alt) 100%);border:1px solid var(--line);border-left:4px solid var(--gold);text-decoration:none;color:var(--ink);border-radius:3px;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.drawio-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.drawio-card .tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.drawio-card b{font-size:16.5px;color:var(--green);line-height:1.35}
+.drawio-card span.desc{font-size:13.5px;color:var(--mute);line-height:1.55}
+.drawio-card span.cta{margin-top:auto;padding-top:6px;font-size:13px;font-weight:600;color:var(--green)}
+@media (max-width:720px){.drawio-hub{grid-template-columns:1fr}}
+.matrix{position:relative}
+.mx-tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--gold);box-shadow:var(--shadow-md);padding:10px 13px;border-radius:4px;font-size:13px;max-width:250px;z-index:15;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
+.mx-tip.on{opacity:1;transform:none}
+.mx-tip b{color:var(--green);display:block;font-size:14px;margin-bottom:3px}
+.mx-tip .m-meta{font-size:12px;color:var(--gold);font-weight:600;margin-top:4px}
+#mx g.uc-pt{cursor:pointer;transition:opacity .18s ease}
+#mx g.uc-pt:hover circle{stroke:var(--gold);stroke-width:2.5}
+#uct tr.hl td{background:var(--gold-soft)!important}
+.calc-viz{margin-top:16px;padding-top:14px;border-top:1px solid var(--label)}
+.calc-bar-row{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:6px}
+.calc-bar-track{height:10px;background:var(--label);border-radius:999px;overflow:hidden;display:flex}
+.calc-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .25s ease}
+.mbtn{display:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:5px 10px;cursor:pointer;font:inherit;font-size:16px;line-height:1}
+.mback{position:fixed;inset:0;background:rgba(15,20,17,.55);z-index:140;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.mback.on{opacity:1;pointer-events:auto}
+.mdrawer{position:fixed;top:0;right:0;bottom:0;width:min(310px,86vw);background:var(--bg);border-left:1px solid var(--line);z-index:150;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;box-shadow:var(--shadow-md)}
+.mdrawer.on{transform:none}
+.mdrawer-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;color:var(--green)}
+.mdrawer-hd button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:15px}
+.mdrawer-bd{flex:1;overflow-y:auto;padding:12px 16px 28px;display:flex;flex-direction:column;gap:4px}
+.mdrawer-grp{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:12px 0 4px}
+.mdrawer-bd a{padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14.5px;transition:background .15s ease}
+.mdrawer-bd a:hover{background:var(--label);color:var(--green)}
+@media (max-width:860px){.links{display:none!important}.mbtn{display:inline-flex;align-items:center;justify-content:center;margin-left:auto}}
+.fab-wrap{position:fixed;right:18px;bottom:20px;z-index:90;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.fab{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:var(--shadow-md);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.fab:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--green)}
+.fab.primary{background:var(--green);color:var(--bg);border-color:var(--green)}
+.fab.primary:hover{background:var(--green2);color:var(--bg)}
+.fab.topbtn{opacity:0;pointer-events:none;transition:opacity .2s ease,transform .18s ease}
+.fab.topbtn.on{opacity:1;pointer-events:auto}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:var(--green);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow-md);z-index:220;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:640px){.fab-wrap{right:12px;bottom:14px}.fab span.lbl{display:none}.fab{padding:10px 12px}}
+
 </style>
 </head>
 <body>
+<div class="readbar" id="readbar" aria-hidden="true"></div>
 <header class="nav"><div class="in">
  <div class="brand">廖倫豪 博士<small>× LITEON</small></div>
  <nav class="links" id="links">
@@ -222,6 +296,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
       <a href="#arch">AI構造</a>
       <a href="#portfolio">ユースケース集</a>
       <a href="route/ja.html" style="color:var(--gold);font-weight:700">★ Howard Route 戦略</a>
+      <a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Draw.io 動的アーキテクチャ図 ↗</a>
+      <a href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener">🖥️ 物理トポロジーダッシュボード ↗</a>
     </div>
   </div>
   <div class="nav-item has-drop">
@@ -246,12 +322,14 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
     <a href="#docs" class="nav-link" data-group="docs">文書報告 <span class="arr">▾</span></a>
     <div class="nav-drop">
       <a href="#docs">文書オンライン閲覧</a>
-      <a href="architecture.html">企業AI白書</a>
+      <a href="architecture/index.html">企業AI白書</a>
+      <a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Draw.io アーキテクチャ図 ↗</a>
     </div>
   </div>
  </nav>
  <div class="langs"><a href="index.html" class="" hreflang="zh">繁中</a><a href="ja.html" class="on" hreflang="ja">日本語</a><a href="en.html" class="" hreflang="en">EN</a></div>
  <button class="tbtn" id="theme" aria-label="Theme">◐</button>
+ <button class="mbtn" id="mbtn" aria-label="Menu">☰</button>
 </div></header>
 <main>
 
@@ -318,6 +396,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <h3 style="margin-top:26px">LITEONのAI課題は、データ・規制・規模から始まる</h3><div class="tw"><table class=""><tr><th>観点</th><th>LITEONの現状（公開情報と棚卸しの前提）</th><th>AIアーキテクチャへの意味</th></tr><tr><td class="lb">製造ライン</td><td>SMT、挿入、組立、バーンイン・機能試験。電源、オプトエレクトロニクス、クラウド・IoTの製品ラインが並行</td><td>設備パラメータ、AOI、試験データが予測モデルの主原料。設備はインターネットに直接つながず、データは産業用DMZ経由でのみ送信</td></tr><tr><td class="lb">システム</td><td>SAP ECCからS/4HANAへ、2027.01.04に全世界同時稼働。MESはERPと密接に連携（代替部品、キット充足、スケジューリング）</td><td>AIは基幹システムの横でデータを読み、S/4HANAのコアは改修しない。切替期間中はコアに触れない</td></tr><tr><td class="lb">規制と顧客</td><td>ISO 27001でIT/OTセキュリティを統治。車載製品はIATF 16949。クラウド顧客やブランド顧客の定期監査</td><td>AIの出力は「提案」のみ。電子記録には監査証跡、電子署名、ALCOA+が必要</td></tr><tr><td class="lb">規模</td><td>子会社86社、工場112か所、世界20以上の拠点。ベトナム新工場、高雄第2期、米テキサス工場が順次稼働</td><td>基盤は一度作りテンプレートで展開。新工場はレガシーがなく最適な試行先。データの保管地はD06で決定</td></tr><tr><td class="lb">オペレーション</td><td>製品の複雑化（8.5kW PSU、BBU、パワーラック、CDU）。代替部品とキット充足の管理が日常の重点</td><td>欠品・代替部品アラート、仕様・見積のナレッジ検索が最も早く財務効果を示す</td></tr><tr><td class="lb">成長</td><td>AI関連売上比率は30%超、2027年は40〜50%の見込み</td><td>研究開発と品質の知見にAIの支援が必要で、新製品投入の速度に基盤が追随する必要がある</td></tr></table></div>
  <h3 style="margin-top:26px">LITEON AIプラットフォーム：6層＋ガバナンス軸</h3><p class="mute">各層を選ぶと、構成要素、技術の選択肢、LITEONでの重点が表示されます。</p><div class="la-lay"><div class="lb2" id="lalb"><button class="" data-i="0"><span class="id">L5</span><span>ユーザー窓口<small>Teams／ポータル／ライン掲示板／モバイル</small></span></button><button class="" data-i="1"><span class="id">L4</span><span>AIプロダクト<small>再利用できるユースケース雛形</small></span></button><button class=" on" data-i="2"><span class="id">L3</span><span>HowardAGent エージェントハブ<small>AIエージェント：エージェント型RAG＋ワークフロー＋MCP Hub</small></span></button><button class="" data-i="3"><span class="id">L2</span><span>HowardRoute ゲートウェイ＋HowardPro 予測コア<small>マルチモデルのルーティング＋AI製造予測</small></span></button><button class="" data-i="4"><span class="id">L1</span><span>データプロダクトとレイクハウス<small>Bronze／Silver／Gold＋マスターデータ</small></span></button><button class="" data-i="5"><span class="id">L0</span><span>ソースシステムと二重リング型データバス<small>ITリングKafka＋OTリングMQTT／OPC UA</small></span></button><button class="gv" data-i="6"><span class="id">GOV</span><span>ガバナンス・セキュリティ軸<small>全層を貫く</small></span></button></div><div class="la-det" id="ladet"></div></div>
  <h3 style="margin-top:26px">3つのコアコンポーネント</h3><div class="la-3"><div class="la-c"><h4>HowardAGent エージェントハブ</h4><ul><li>エージェント型RAG、回答には文書の版本と出典を必ず付記</li><li>OCRエージェント：請求書、出荷伝票、検査報告を構造化</li><li>MCP Hub：S/4HANA／MES／QMSを管理されたツール化、Text2SQLは読み取り専用</li><li>品質Copilot、見積アシスタント、NCR／8D下書き</li></ul><div class="r">S/4HANA／MESへの書き戻しは必ず人が承認</div></div><div class="la-c"><h4>HowardRoute マルチモデルゲートウェイ</h4><ul><li>OpenAI互換の単一エンドポイントでクラウドとオンプレミスの複数モデルに接続</li><li>Smart Routing：簡単なタスクは小型、複雑なタスクは大型モデル。トークン費用を20〜40%削減</li><li>429エラーや断線時にミリ秒単位で自動切替</li><li>認証、マスキング、ログを一元化し、費用を事業グループに配賦</li></ul><div class="r">顧客設計図と見積はオンプレミスモデルのみ、データ保持ゼロ</div></div><div class="la-c"><h4>HowardPro 製造予測コア</h4><ul><li>AutoML：工程パラメータの提案、設備寿命の予測</li><li>バーチャル計測とSPC／AOI異常の早期警告</li><li>Domain Twinのデジタル社員：熟練エンジニアの経験を継承</li><li>AILM：モデルの版本、ドリフト、根本原因分析</li></ul><div class="r">ラインのデータは工場と内湖にとどめ、パブリッククラウドに出さない</div></div></div>
+ <h3 style="margin-top:26px">インタラクティブ Draw.io アーキテクチャ図ハブ（3 大物理トポロジー）</h3><p class="mute">ズーム・パン操作とオリジナル .drawio ダウンロードに対応。8段階ライフサイクル、高可用マルチアクティブ配備、5層エンドツーエンド構造を収録。</p><div class="drawio-hub"><a class="drawio-card" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener"><span class="tag">📐 Interactive Draw.io Viewer</span><b>Draw.io 公式動的ビューア（3 大構造図切替）</b><span class="desc">ユースケース8段階図、HA配備トポロジー、5層エンドツーエンドAIアーキテクチャをワンクリック切替・拡大表示。</span><span class="cta">動的ビューアを開く ↗</span></a><a class="drawio-card" href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener"><span class="tag">🖥️ Live Topology Dashboard</span><b>2カラム物理トポロジーダッシュボード</b><span class="desc">左側に8段階セキュア呼び出しライフサイクル、右側にL1–L5物理トポロジーとソブリン境界防御を連動表示。</span><span class="cta">ダッシュボードを開く ↗</span></a></div>
  <h3 style="margin-top:26px">プラットフォーム設計図：全体構成＋UML 2.xの全14種類</h3><p class="mute">LITEONの品質保証シナリオ（NCR／8D、SPC警告、電子承認、IEC 62443ゾーニング）で3つのコアを示します。図をクリックすると拡大表示します。</p><div class="la-um" id="laum"><h4>全体構成</h4><div class="la-ug big"><figure data-src="assets/uml/ja/uml00.jpg" data-cap="00 アーキテクチャ全体構成｜L0–L5の6層＋ガバナンス軸、3つのコアの位置"><img src="assets/uml/ja/t/uml00.jpg" alt="アーキテクチャ全体構成" loading="lazy" draggable="false"><figcaption><b>00 アーキテクチャ全体構成</b>L0–L5の6層＋ガバナンス軸、3つのコアの位置</figcaption></figure></div><h4>構造図 Structure（7種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml02.jpg" data-cap="02 クラス図｜エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係"><img src="assets/uml/ja/t/uml02.jpg" alt="クラス図" loading="lazy" draggable="false"><figcaption><b>02 クラス図</b>エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係</figcaption></figure><figure data-src="assets/uml/ja/uml03.jpg" data-cap="03 オブジェクト図｜NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット"><img src="assets/uml/ja/t/uml03.jpg" alt="オブジェクト図" loading="lazy" draggable="false"><figcaption><b>03 オブジェクト図</b>NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット</figcaption></figure><figure data-src="assets/uml/ja/uml04.jpg" data-cap="04 コンポーネント図｜3つのコアとデータ基盤の提供・要求インターフェース"><img src="assets/uml/ja/t/uml04.jpg" alt="コンポーネント図" loading="lazy" draggable="false"><figcaption><b>04 コンポーネント図</b>3つのコアとデータ基盤の提供・要求インターフェース</figcaption></figure><figure data-src="assets/uml/ja/uml05.jpg" data-cap="05 複合構造図｜HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査"><img src="assets/uml/ja/t/uml05.jpg" alt="複合構造図" loading="lazy" draggable="false"><figcaption><b>05 複合構造図</b>HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査</figcaption></figure><figure data-src="assets/uml/ja/uml06.jpg" data-cap="06 パッケージ図｜L0–L5の階層パッケージとガバナンスの依存関係"><img src="assets/uml/ja/t/uml06.jpg" alt="パッケージ図" loading="lazy" draggable="false"><figcaption><b>06 パッケージ図</b>L0–L5の階層パッケージとガバナンスの依存関係</figcaption></figure><figure data-src="assets/uml/ja/uml07.jpg" data-cap="07 配置図｜内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM"><img src="assets/uml/ja/t/uml07.jpg" alt="配置図" loading="lazy" draggable="false"><figcaption><b>07 配置図</b>内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM</figcaption></figure><figure data-src="assets/uml/ja/uml08.jpg" data-cap="08 プロファイル図｜LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»"><img src="assets/uml/ja/t/uml08.jpg" alt="プロファイル図" loading="lazy" draggable="false"><figcaption><b>08 プロファイル図</b>LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»</figcaption></figure></div><h4>振る舞い図 Behavior（3種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml01.jpg" data-cap="01 ユースケース図｜品質保証、製造、営業、管理職、ITの5つの役割と基盤機能"><img src="assets/uml/ja/t/uml01.jpg" alt="ユースケース図" loading="lazy" draggable="false"><figcaption><b>01 ユースケース図</b>品質保証、製造、営業、管理職、ITの5つの役割と基盤機能</figcaption></figure><figure data-src="assets/uml/ja/uml09.jpg" data-cap="09 アクティビティ図｜NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン"><img src="assets/uml/ja/t/uml09.jpg" alt="アクティビティ図" loading="lazy" draggable="false"><figcaption><b>09 アクティビティ図</b>NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン</figcaption></figure><figure data-src="assets/uml/ja/uml10.jpg" data-cap="10 ステートマシン図｜AgentTaskのライフサイクル。書き戻し前に必ず人が承認"><img src="assets/uml/ja/t/uml10.jpg" alt="ステートマシン図" loading="lazy" draggable="false"><figcaption><b>10 ステートマシン図</b>AgentTaskのライフサイクル。書き戻し前に必ず人が承認</figcaption></figure></div><h4>相互作用図 Interaction（4種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml11.jpg" data-cap="11 シーケンス図｜NCR下書き：質問、経路選択、生成から承認・書き戻しまで"><img src="assets/uml/ja/t/uml11.jpg" alt="シーケンス図" loading="lazy" draggable="false"><figcaption><b>11 シーケンス図</b>NCR下書き：質問、経路選択、生成から承認・書き戻しまで</figcaption></figure><figure data-src="assets/uml/ja/uml12.jpg" data-cap="12 コミュニケーション図｜同じシナリオのオブジェクト連結とメッセージ番号"><img src="assets/uml/ja/t/uml12.jpg" alt="コミュニケーション図" loading="lazy" draggable="false"><figcaption><b>12 コミュニケーション図</b>同じシナリオのオブジェクト連結とメッセージ番号</figcaption></figure><figure data-src="assets/uml/ja/uml13.jpg" data-cap="13 相互作用概要図｜SPC警告後の分岐：NCRまたはパラメータ調整の提案"><img src="assets/uml/ja/t/uml13.jpg" alt="相互作用概要図" loading="lazy" draggable="false"><figcaption><b>13 相互作用概要図</b>SPC警告後の分岐：NCRまたはパラメータ調整の提案</figcaption></figure><figure data-src="assets/uml/ja/uml14.jpg" data-cap="14 タイミング図｜SPC異常 → 警告 → 対処の時間制約（SLO）"><img src="assets/uml/ja/t/uml14.jpg" alt="タイミング図" loading="lazy" draggable="false"><figcaption><b>14 タイミング図</b>SPC異常 → 警告 → 対処の時間制約（SLO）</figcaption></figure></div></div>
  <h3 style="margin-top:26px">LITEONのバリューチェーンに沿ったAIシナリオ</h3><p class="mute">「経済効果 × 実現可能性 × 再利用性」の3軸で評価。Aは優先投資、Bは第2弾、Cは数週間で成果が見えるクイックウィン。</p><div class="tabs" id="laucf"><button class="tab on" data-u="all">すべて</button><button class="tab" data-u="A">A 優先</button><button class="tab" data-u="B">B 第2弾</button><button class="tab" data-u="C">C クイックウィン</button></div><div class="la-uc" id="lauc"><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">SPC／AOI異常の早期警告</h4><p>MES、AOI、試験工程のデータを購読し、傾向のずれを検知して規格外になる前にエンジニアに知らせる。</p><div class="k">指標：不良率、手直し・廃棄コスト、出荷判定までの時間</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">製造</div><h4 style="margin-top:6px">予防保全</h4><p>実装機、リフロー炉、試験機の稼働データから保全時期を予測し、計画外停止を減らす。</p><div class="k">指標：OEE、計画外停止時間</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">サプライチェーン</div><h4 style="margin-top:6px">欠品・代替部品・滞留在庫アラート</h4><p>S/4HANAの受注と在庫、APS、PLMの変更を組み合わせ、欠品、代替部品の機会、滞留在庫を早期に把握する。</p><div class="k">指標：在庫日数、キット充足率、滞留在庫金額</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">NCR／8D下書きエージェント</h4><p>検査記録、類似の過去事例、SOPをまとめ、品質保証の承認用にNCRと8Dの下書きを作成する。</p><div class="k">指標：完了までの日数、再発率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">営業</div><h4 style="margin-top:6px">仕様・見積ナレッジ検索</h4><p>類似仕様、過去見積、工数を検索して見積準備を短縮。顧客設計図はオンプレミスモデルのみ。</p><div class="k">指標：見積サイクル、受注率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">研究開発／NPI</div><h4 style="margin-top:6px">ECN影響分析</h4><p>PLMの設計変更ごとに、影響を受けるBOM、作業指示、在庫、検査計画を自動で一覧化する。</p><div class="k">指標：変更起因の誤部品と手直し</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">品質／顧客</div><h4 style="margin-top:6px">顧客監査の準備アシスタント</h4><p>IATF 16949と顧客監査の条項に対応するSOP、記録、追跡データを見つけ、監査チェックリストにまとめる。</p><div class="k">指標：監査準備の人日、指摘数</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">製造</div><h4 style="margin-top:6px">バーチャル計測と試験時間予測</h4><p>工程パラメータから重要特性とバーンイン結果を推定し、待ち時間を減らす。正式な出荷判定は実測による。</p><div class="k">指標：試験待ち時間、抜取比率</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">オペレーション</div><h4 style="margin-top:6px">SOP・規程ナレッジベース</h4><p>エージェント型RAGが社員のSOPや帳票の質問に答え、文書の版本と出典を付記する。</p><div class="k">指標：新人の立ち上がり期間、重複質問数</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">財務</div><h4 style="margin-top:6px">帳票OCRによる自動仕訳</h4><p>請求書や帳票を読み取って仕訳の下書きを作り、経理が確認して転記する。</p><div class="k">指標：帳票1件あたりの処理時間</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">S/4HANA新プロセスQ&amp;A</h4><p>16の新機能と27のプロセス改善の教材とSOPをナレッジベース化し、切替後の利用者を支援する。</p><div class="k">指標：切替後のサービスデスク件数</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">AIコードレビュー</h4><p>社内開発とSIの納品コードをAIレビューとDevSecOpsの品質ゲートに通す。</p><div class="k">指標：リードタイム、欠陥流出率</div></div></div>
  <h3 style="margin-top:26px">AIガバナンス：ISO 27001を基盤に、ISO 42001と顧客監査へ拡張</h3><div class="tw"><table class=""><tr><th>観点</th><th>仕組み</th><th>根拠</th></tr><tr><td class="lb">データ分類</td><td>公開／社内／機密／顧客機密の4段階。顧客設計図、見積、配合は未承認の外部モデルに送らない</td><td>ISO 27001、各国の個人情報保護法</td></tr><tr><td class="lb">モデルリスク</td><td>稼働前に正答率とハルシネーション率を評価。回答に出典を必須化。高リスクのユースケースは人がレビュー</td><td>ISO 42001、NIST AI RMF</td></tr><tr><td class="lb">電子記録</td><td>AIの提案と人の承認をすべて監査証跡に残す。Bronze層は追記のみ</td><td>IATF 16949、顧客監査、ALCOA+</td></tr><tr><td class="lb">OTセキュリティ</td><td>AIは設備を直接制御しない。パラメータ提案はMESとエンジニアの承認後に実行</td><td>IEC 62443</td></tr><tr><td class="lb">権限監査</td><td>モデルゲートウェイで認証、マスキング、完全なログを一元化。トークンは事業グループに配賦</td><td>ゼロトラスト</td></tr><tr><td class="lb">ベンダー</td><td>データを学習に使わないこと、保管場所、削除期限を契約で明記</td><td>ISO 27036</td></tr></table></div>
@@ -339,7 +418,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <div class="eyebrow">06 · Portfolio</div>
  <h2>AIの優先導入領域とユースケース・ポートフォリオ</h2><p class="sub">Value × feasibility × reusability</p>
  <div class="grid2">
-  <div class="matrix"><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="ユースケースの価値と実現可能性のマトリクス"></svg></div>
+  <div class="matrix"><div class="mx-tip" id="mxtip"></div><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="ユースケースの価値と実現可能性のマトリクス"></svg></div>
   <div>
    <div class="tabs" id="ptabs"><button class="tab on" data-f="all">すべて</button><button class="tab" data-f="A">A　優先</button><button class="tab" data-f="B">B</button><button class="tab" data-f="C">C　クイックウィン</button></div>
    <div class="tw"><table id="uct"></table></div>
@@ -354,6 +433,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
    <div><label>AI欠品アラートによる在庫削減率（%）<span id="v3"></span></label><input type="range" id="s3" min="1" max="10" step="0.5" value="3"></div>
   </div>
   <div class="grid2" style="margin-top:14px"><div><div class="mute">解放される運転資金（億元）</div><div class="out" id="o1"></div></div><div><div class="mute">資本コスト6%での年間効果（億元）</div><div class="out" id="o2"></div></div></div>
+  <div class="calc-viz"><div class="calc-bar-row"><span>基準在庫に対する運転資金解放比率</span><b id="calcTxt"></b></div><div class="calc-bar-track"><div class="calc-bar-fill" id="calcBar" style="width:30%"></div></div></div>
  </div>
 </section>
 
@@ -532,6 +612,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 </div>
 </main>
 <div class="wm" aria-hidden="true"></div>
+<div class="mback" id="mback"></div><aside class="mdrawer" id="mdrawer" aria-label="Mobile Navigation"><div class="mdrawer-hd"><span>メニュー · LITEON AI</span><button id="mclose" aria-label="Close">✕</button></div><div class="mdrawer-bd"><div class="mdrawer-grp">概要</div><a href="#hero">トップ</a><a href="#context">光宝の現状</a><a href="#duties">6つの責務</a><a href="#fit">職能対照</a><div class="mdrawer-grp">基盤と構造</div><a href="#stack">AI基盤青写真</a><a href="#arch">AI構造</a><a href="#portfolio">ユースケース集</a><a href="route/ja.html">★ Howard Route 戦略</a><a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Draw.io 動的アーキテクチャ図 ↗</a><a href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener">🖥️ 物理トポロジーダッシュボード ↗</a><div class="mdrawer-grp">着任と統治</div><a href="#plan">180日着任計画</a><a href="#org">組織とPO</a><a href="#gov">AI統治</a><a href="#hive">実施青写真</a><div class="mdrawer-grp">実績と文書</div><a href="#cases">代表事例</a><a href="#works">構造作品集</a><a href="#profile">学歴・経歴</a><a href="#qa">質疑応答</a><a href="#docs">文書オンライン閲覧</a><a href="architecture/index.html">企業AI白書</a></div></aside>
+<div class="fab-wrap" aria-label="Quick Actions"><button class="fab primary" id="fabCopy" title="liao.howard@gmail.com">✉ <span class="lbl">メールをコピー</span></button><a class="fab" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 <span class="lbl">構造図ビューア</span></a><button class="fab topbtn" id="fabTop" aria-label="Back to top">↑ <span class="lbl">先頭へ</span></button></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <footer>© 2026 廖倫豪 博士（Howard Liao, Ph.D.）　·　LITEON会長・CIOのご審閲用に作成</footer>
 <script>
 const STACK=[["L5","ユーザー接点","企業向けメッセージングツール、ポータル、AIアシスタント画面、経営ダッシュボード","社員は既存のツールの中でAIを使い、新しいシステムを覚える必要がない"],["L4","AIプロダクト","サプライチェーン計画アシスタント、品質異常エージェント、研究開発ナレッジアシスタント、財務分析アシスタント","すべてのプロダクトにPO、KPI、バージョンを設定"],["L3","エージェント・オーケストレーション","マルチエージェント・オーケストレーション、ワークフローエンジン、Human-in-the-Loop承認","高リスクな操作は必ず人がレビュー"],["L2","モデルとナレッジ","LLMゲートウェイ（マルチモデルのルーティング、クォータ、コスト）、RAGナレッジベース、MLモデルレジストリ、評価","クラウドとオンプレミスのモデルを併用し、データ分類に応じてルーティング"],["L1","データプロダクト","レイクハウス（Bronze／Silver／Gold）、マスターデータ、フィーチャーストア、データ契約","品番、BOM、作業指示、歩留まりの定義を全世界で統一"],["L0","ソースシステム","SAP S/4HANA、PLM、MES、APS、QMS、テスト工程、IoT","API、CDC、イベントストリームで読み取り、コアに負荷をかけない"],["横断","ガバナンスとセキュリティ","ID・権限、監査ログ、モデル監視、コスト配賦、ISO 42001","プラットフォームに組み込み、すべてのユースケースが自動的に継承"]];
@@ -562,7 +644,7 @@ function calc(){const a=+$('#s1').value,b=+$('#s2').value,c=+$('#s3').value;$('#
 // phase
 $('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(!c)return;$$('#phase .card').forEach(x=>x.classList.toggle('on',x===c))});
 // reveal + nav highlight
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:0});$$('.reveal').forEach(x=>io.observe(x));
 const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links .nav-link').forEach(a=>{const group=(a.dataset.group||'').split(',');const href=(a.getAttribute('href')||'').replace('#','');const on=(href===cur)||group.includes(cur);a.classList.toggle('on',on)})},{passive:true});
 
 // document viewer: online preview only
@@ -577,6 +659,149 @@ document.addEventListener('contextmenu',e=>{if(e.target.closest('.viewer,.doc'))
 addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&['p','s'].includes(e.key.toLowerCase())){e.preventDefault()}});
 // service worker: new network-first worker replaces the old cache-first one
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+
+// === Neon Executive Refine Enhancements ===
+(function(){
+
+  // Reveal safety net for tall sections & anchor jumps
+  function ensureVisibleReveals(){
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight + 120 && r.bottom > -120) el.classList.add('in');
+    });
+  }
+  window.addEventListener('scroll', ensureVisibleReveals, {passive:true});
+  window.addEventListener('hashchange', () => setTimeout(ensureVisibleReveals, 60));
+  setTimeout(ensureVisibleReveals, 120);
+
+  // 1. Reading progress bar & Back-to-top visibility
+  const rb = document.getElementById('readbar'), topBtn = document.getElementById('fabTop');
+  function onScroll(){
+    const st = window.scrollY || document.documentElement.scrollTop;
+    const dh = document.documentElement.scrollHeight - window.innerHeight;
+    if(rb && dh > 0) rb.style.width = Math.min(100, Math.max(0, (st / dh) * 100)).toFixed(2) + '%';
+    if(topBtn) topBtn.classList.toggle('on', st > 480);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  if(topBtn) topBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+  // 2. Mobile Drawer Navigation
+  const mbtn = document.getElementById('mbtn'), md = document.getElementById('mdrawer'), mb = document.getElementById('mback'), mc = document.getElementById('mclose');
+  function toggleDrawer(open){
+    if(!md || !mb) return;
+    md.classList.toggle('on', open);
+    mb.classList.toggle('on', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if(mbtn) mbtn.onclick = () => toggleDrawer(true);
+  if(mc) mc.onclick = () => toggleDrawer(false);
+  if(mb) mb.onclick = () => toggleDrawer(false);
+  if(md) md.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+  window.addEventListener('keydown', e => { if(e.key === 'Escape' && md && md.classList.contains('on')) toggleDrawer(false); });
+
+  // 3. Floating Email Copy + Toast
+  const fabCopy = document.getElementById('fabCopy'), toast = document.getElementById('toast');
+  let toastTimer = null;
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('on'), 2400);
+  }
+  if(fabCopy) fabCopy.onclick = () => {
+    const email = 'liao.howard@gmail.com';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(() => showToast('コピーしました：liao.howard@gmail.com')).catch(() => showToast(email));
+    } else {
+      const ta = document.createElement('textarea'); ta.value = email; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+      showToast('コピーしました：liao.howard@gmail.com');
+    }
+  };
+
+  // 4. KPI Count-Up Animation
+  function animateCount(el){
+    if(el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const raw = (el.dataset.count || el.textContent || '').trim();
+    const m = raw.match(/^([^0-9]*?)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+    if(!m) return;
+    const pre = m[1], target = parseFloat(m[2]), suf = m[3];
+    const dec = (m[2].split('.')[1] || '').length;
+    const dur = 900, t0 = performance.now();
+    function step(now){
+      const p = Math.min(1, (now - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = (target * ease).toFixed(dec);
+      el.textContent = pre + val + suf;
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = raw;
+    }
+    requestAnimationFrame(step);
+  }
+  const kpiObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        en.target.querySelectorAll('.v').forEach(animateCount);
+        kpiObs.unobserve(en.target);
+      }
+    });
+  }, {threshold: 0.2});
+  document.querySelectorAll('.kpis').forEach(k => kpiObs.observe(k));
+
+  // 5. Interactive Matrix Tooltip & Row Highlight
+  const mx = document.getElementById('mx'), tip = document.getElementById('mxtip');
+  function bindMatrixTooltip(){
+    if(!mx || !tip || typeof UC === 'undefined') return;
+    const groups = mx.querySelectorAll('g');
+    groups.forEach((g, idx) => {
+      const u = UC[idx];
+      if(!u) return;
+      g.classList.add('uc-pt');
+      const showTip = (ev) => {
+        tip.innerHTML = '<b>' + u[0] + ' (' + u[3] + ')</b><div>' + u[1] + '</div><div class="m-meta">影響科目：' + u[2] + '<br>経済効果 / 実現性：' + u[4] + ' / ' + u[5] + '</div>';
+        const rect = mx.parentElement.getBoundingClientRect();
+        const cx = (ev.clientX || (rect.left + rect.width/2)) - rect.left;
+        const cy = (ev.clientY || (rect.top + rect.height/2)) - rect.top;
+        tip.style.left = Math.min(rect.width - 260, Math.max(8, cx + 14)) + 'px';
+        tip.style.top = Math.max(8, cy - 12) + 'px';
+        tip.classList.add('on');
+        document.querySelectorAll('#uct tr').forEach(tr => {
+          const lb = tr.querySelector('td.lb');
+          tr.classList.toggle('hl', lb && lb.textContent === u[0]);
+        });
+      };
+      const hideTip = () => {
+        tip.classList.remove('on');
+        document.querySelectorAll('#uct tr.hl').forEach(tr => tr.classList.remove('hl'));
+      };
+      g.addEventListener('mouseenter', showTip);
+      g.addEventListener('mousemove', showTip);
+      g.addEventListener('mouseleave', hideTip);
+      g.addEventListener('click', showTip);
+    });
+  }
+  bindMatrixTooltip();
+  const ptabs = document.getElementById('ptabs');
+  if(ptabs) ptabs.addEventListener('click', () => setTimeout(bindMatrixTooltip, 0));
+
+  // 6. ROI Calculator Visual Progress Bar Sync
+  function updateCalcViz(){
+    const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3');
+    const bar = document.getElementById('calcBar'), txt = document.getElementById('calcTxt');
+    if(!s1 || !s2 || !s3 || !bar || !txt) return;
+    const a = +s1.value, b = +s2.value, c = +s3.value;
+    const inv = a * b / 100, rel = inv * c / 100;
+    const pct = Math.min(100, (c / 10) * 100);
+    bar.style.width = pct.toFixed(1) + '%';
+    txt.textContent = rel.toFixed(1) + ' 億元（基準総在庫 ' + inv.toFixed(1) + ' 億元）';
+  }
+  ['#s1','#s2','#s3'].forEach(sel => { const el = document.querySelector(sel); if(el) el.addEventListener('input', updateCalcViz); });
+  updateCalcViz();
+})();
+
 </script>
 </body>
 </html>

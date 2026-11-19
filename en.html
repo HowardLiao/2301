@@ -9,6 +9,19 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon-192.png">
 <meta name="theme-color" content="#2F4538">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://howardliao.github.io/2301/en.html">
+<meta property="og:title" content="Lead an AI-Driven Workforce Transformation | Dr. Howard Liao × LITEON">
+<meta property="og:description" content="For the Chairman and CIO of LITEON Technology: Enterprise AI platform blueprint, Howard Route architecture, 180-day onboarding plan and ISO 42001 governance by Dr. Howard Liao.">
+<meta property="og:image" content="https://howardliao.github.io/2301/assets/howard_portrait.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lead an AI-Driven Workforce Transformation | Dr. Howard Liao × LITEON">
+<meta name="twitter:description" content="For the Chairman and CIO of LITEON Technology: Enterprise AI platform blueprint, Howard Route architecture, 180-day onboarding plan and ISO 42001 governance by Dr. Howard Liao.">
+<meta name="twitter:image" content="https://howardliao.github.io/2301/assets/howard_portrait.jpg">
 <style>
 :root{--bg:#FAF7F2;--alt:#F2EEE8;--label:#E8E2D9;--line:#B8AFA3;--ink:#2B2B2B;--mute:#6B6459;--green:#2F4538;--green2:#3E5A4A;--gold:#C8A96A;--brick:#9C5B4A;--white:#FFFFFF;--card:#FFFFFF}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211E;--alt:#232A26;--label:#2C342F;--line:#4A524C;--ink:#ECE7DF;--mute:#B3AC9F;--green:#A9C2B1;--green2:#8FAE9A;--gold:#D4B87C;--brick:#D08E7C;--card:#242B27}}
@@ -112,7 +125,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .viewer{position:fixed;inset:0;z-index:50;background:#1C211E;display:flex;flex-direction:column}
 .viewer[hidden]{display:none}
 .vbar{display:flex;align-items:center;gap:14px;padding:12px 16px;color:#FAF7F2}.vbar .mute{color:#B3AC9F}.vbar .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}.langs a{font-size:12px;text-decoration:none;color:var(--mute);padding:3px 9px;border-radius:999px;white-space:nowrap}.langs a.on{background:var(--green);color:var(--bg)}
-.tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
+.vbar .tbtn{margin-left:auto;color:#FAF7F2;border-color:#6B6459}
 .vstage{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 10px 16px;min-height:0}
 .vimg{position:relative;max-width:100%;max-height:100%;display:flex}
 .vimg img{max-width:min(1400px,calc(100vw - 120px));max-height:calc(100vh - 90px);object-fit:contain;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;background:#FAF7F2}
@@ -197,10 +210,71 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 .la-lb .cap{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;background:var(--bg);color:var(--ink);padding:6px 14px;font-size:14px;z-index:201;max-width:90vw}
 
 @media print{body{display:none!important}}
-@media print{header.nav,.btns,.tabs,.tbtn,.calc{display:none}.panel{display:block!important;margin-bottom:16px}section{padding:24px 0;break-inside:avoid-page}.reveal{opacity:1;transform:none}body{font-size:12px}}
+
+/* === Neon Executive Refine (Plan A: Milan Forest Green & Deep Obsidian Dark) === */
+:root{--shadow-sm:0 2px 10px rgba(47,69,56,.06);--shadow-md:0 12px 32px rgba(47,69,56,.10);--gold-soft:rgba(200,169,106,.16);--glass:rgba(250,247,242,.88)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141917;--alt:#1A211D;--label:#222B26;--line:#38443D;--ink:#EFECE6;--mute:#A9A59B;--green:#A9C8B5;--green2:#8BB09A;--gold:#DEC082;--brick:#D89583;--card:#1B221E;--shadow-sm:0 2px 12px rgba(0,0,0,.32);--shadow-md:0 14px 36px rgba(0,0,0,.45);--gold-soft:rgba(222,192,130,.14);--glass:rgba(20,25,23,.88)}}
+:root[data-theme="dark"]{--bg:#141917;--alt:#1A211D;--label:#222B26;--line:#38443D;--ink:#EFECE6;--mute:#A9A59B;--green:#A9C8B5;--green2:#8BB09A;--gold:#DEC082;--brick:#D89583;--card:#1B221E;--shadow-sm:0 2px 12px rgba(0,0,0,.32);--shadow-md:0 14px 36px rgba(0,0,0,.45);--gold-soft:rgba(222,192,130,.14);--glass:rgba(20,25,23,.88)}
+body{font-family:"Noto Sans TC","Noto Sans JP","Inter","PingFang TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow-sm)}
+.nav .tbtn{margin-left:0;color:var(--ink);border-color:var(--line);transition:all .2s ease}
+.nav .tbtn:hover{border-color:var(--gold);color:var(--green);background:var(--label)}
+.readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--green),var(--gold));z-index:120;pointer-events:none;transition:width .08s linear}
+.portrait{position:relative;padding:10px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-md);border-radius:4px}
+.portrait::after{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none;border-radius:2px}
+.btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;border-radius:3px}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.btn.p:hover{background:var(--green2);border-color:var(--green2)}
+.kpi,.card,.pf-card,.la-c,.doc{box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;border-radius:3px}
+.kpi:hover,.pf-card:hover,.la-c:hover,.doc:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.kpi .v{font-variant-numeric:tabular-nums}
+.drawio-hub{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0 24px}
+.drawio-card{display:flex;flex-direction:column;gap:8px;padding:18px 20px;background:linear-gradient(135deg,var(--card) 0%,var(--alt) 100%);border:1px solid var(--line);border-left:4px solid var(--gold);text-decoration:none;color:var(--ink);border-radius:3px;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.drawio-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold)}
+.drawio-card .tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.drawio-card b{font-size:16.5px;color:var(--green);line-height:1.35}
+.drawio-card span.desc{font-size:13.5px;color:var(--mute);line-height:1.55}
+.drawio-card span.cta{margin-top:auto;padding-top:6px;font-size:13px;font-weight:600;color:var(--green)}
+@media (max-width:720px){.drawio-hub{grid-template-columns:1fr}}
+.matrix{position:relative}
+.mx-tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--gold);box-shadow:var(--shadow-md);padding:10px 13px;border-radius:4px;font-size:13px;max-width:250px;z-index:15;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
+.mx-tip.on{opacity:1;transform:none}
+.mx-tip b{color:var(--green);display:block;font-size:14px;margin-bottom:3px}
+.mx-tip .m-meta{font-size:12px;color:var(--gold);font-weight:600;margin-top:4px}
+#mx g.uc-pt{cursor:pointer;transition:opacity .18s ease}
+#mx g.uc-pt:hover circle{stroke:var(--gold);stroke-width:2.5}
+#uct tr.hl td{background:var(--gold-soft)!important}
+.calc-viz{margin-top:16px;padding-top:14px;border-top:1px solid var(--label)}
+.calc-bar-row{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:6px}
+.calc-bar-track{height:10px;background:var(--label);border-radius:999px;overflow:hidden;display:flex}
+.calc-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .25s ease}
+.mbtn{display:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:5px 10px;cursor:pointer;font:inherit;font-size:16px;line-height:1}
+.mback{position:fixed;inset:0;background:rgba(15,20,17,.55);z-index:140;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.mback.on{opacity:1;pointer-events:auto}
+.mdrawer{position:fixed;top:0;right:0;bottom:0;width:min(310px,86vw);background:var(--bg);border-left:1px solid var(--line);z-index:150;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;box-shadow:var(--shadow-md)}
+.mdrawer.on{transform:none}
+.mdrawer-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);font-weight:700;color:var(--green)}
+.mdrawer-hd button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:15px}
+.mdrawer-bd{flex:1;overflow-y:auto;padding:12px 16px 28px;display:flex;flex-direction:column;gap:4px}
+.mdrawer-grp{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:12px 0 4px}
+.mdrawer-bd a{padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:14.5px;transition:background .15s ease}
+.mdrawer-bd a:hover{background:var(--label);color:var(--green)}
+@media (max-width:860px){.links{display:none!important}.mbtn{display:inline-flex;align-items:center;justify-content:center;margin-left:auto}}
+.fab-wrap{position:fixed;right:18px;bottom:20px;z-index:90;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.fab{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:var(--shadow-md);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.fab:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--green)}
+.fab.primary{background:var(--green);color:var(--bg);border-color:var(--green)}
+.fab.primary:hover{background:var(--green2);color:var(--bg)}
+.fab.topbtn{opacity:0;pointer-events:none;transition:opacity .2s ease,transform .18s ease}
+.fab.topbtn.on{opacity:1;pointer-events:auto}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:var(--green);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow-md);z-index:220;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:640px){.fab-wrap{right:12px;bottom:14px}.fab span.lbl{display:none}.fab{padding:10px 12px}}
+
 </style>
 </head>
 <body>
+<div class="readbar" id="readbar" aria-hidden="true"></div>
 <header class="nav"><div class="in">
  <div class="brand">Dr. Howard Liao<small>× LITEON</small></div>
  <nav class="links" id="links">
@@ -222,6 +296,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
       <a href="#arch">AI Architecture</a>
       <a href="#portfolio">Use Case Portfolio</a>
       <a href="route/en.html" style="color:var(--gold);font-weight:700">★ Howard Route Strategy</a>
+      <a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Interactive Draw.io Viewer ↗</a>
+      <a href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener">🖥️ Topology Dashboard ↗</a>
     </div>
   </div>
   <div class="nav-item has-drop">
@@ -246,12 +322,14 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
     <a href="#docs" class="nav-link" data-group="docs">Documents <span class="arr">▾</span></a>
     <div class="nav-drop">
       <a href="#docs">Online Document Preview</a>
-      <a href="architecture.html">Enterprise AI Whitepaper</a>
+      <a href="architecture/index.html">Enterprise AI Whitepaper</a>
+      <a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Draw.io Architecture Viewer ↗</a>
     </div>
   </div>
  </nav>
  <div class="langs"><a href="index.html" class="" hreflang="zh">繁中</a><a href="ja.html" class="" hreflang="ja">日本語</a><a href="en.html" class="on" hreflang="en">EN</a></div>
  <button class="tbtn" id="theme" aria-label="Theme">◐</button>
+ <button class="mbtn" id="mbtn" aria-label="Menu">☰</button>
 </div></header>
 <main>
 
@@ -318,6 +396,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <h3 style="margin-top:26px">LITEON’s AI questions start with data, regulation and scale</h3><div class="tw"><table class=""><tr><th>Area</th><th>LITEON today (public information and assumptions)</th><th>What it means for the AI architecture</th></tr><tr><td class="lb">Lines</td><td>SMT, through-hole, assembly, burn-in and functional test; power, optoelectronics, cloud and IoT product lines in parallel</td><td>Equipment parameters, AOI and test data feed the models; machines never connect to the internet and data goes up only through the industrial DMZ</td></tr><tr><td class="lb">Systems</td><td>SAP ECC to S/4HANA, global go-live on 2027.01.04; MES tightly linked to ERP (alternates, kitting, scheduling)</td><td>AI reads data beside the core systems and never customizes the S/4HANA core; nothing changes in the core during cut-over</td></tr><tr><td class="lb">Regulation and customers</td><td>IT/OT security governance on ISO 27001; IATF 16949 for automotive products; regular audits by cloud and brand customers</td><td>AI output is advice only; electronic records need an audit trail, e-signatures and ALCOA+</td></tr><tr><td class="lb">Scale</td><td>86 subsidiaries, 112 plants, 20+ sites worldwide; the Vietnam plant, Kaohsiung phase 2 and the Texas plant coming online</td><td>Build the platform once and replicate by template; new plants have no legacy and are the best pilots; data residency set by D06</td></tr><tr><td class="lb">Operations</td><td>Rising product complexity (8.5 kW PSU, BBU, power racks, CDUs); alternates and kitting are daily priorities</td><td>Shortage and alternate-part alerts and spec and quote search show financial value fastest</td></tr><tr><td class="lb">Growth</td><td>AI-related revenue above 30%, estimated 40–50% in 2027</td><td>R&amp;D and quality knowledge need AI support, and the platform must keep pace with new product introductions</td></tr></table></div>
  <h3 style="margin-top:26px">LITEON AI platform: six layers plus a governance axis</h3><p class="mute">Select a layer to see its components, technology options and LITEON focus.</p><div class="la-lay"><div class="lb2" id="lalb"><button class="" data-i="0"><span class="id">L5</span><span>User channels<small>Teams / portal / line boards / mobile</small></span></button><button class="" data-i="1"><span class="id">L4</span><span>AI products<small>Reusable use-case templates</small></span></button><button class=" on" data-i="2"><span class="id">L3</span><span>HowardAGent agent hub<small>AI agents: agentic RAG + workflows + MCP Hub</small></span></button><button class="" data-i="3"><span class="id">L2</span><span>HowardRoute gateway + HowardPro prediction core<small>Multi-model routing + AI manufacturing prediction</small></span></button><button class="" data-i="4"><span class="id">L1</span><span>Data products and lakehouse<small>Bronze / Silver / Gold + master data</small></span></button><button class="" data-i="5"><span class="id">L0</span><span>Source systems and dual-ring data bus<small>IT ring Kafka + OT ring MQTT / OPC UA</small></span></button><button class="gv" data-i="6"><span class="id">GOV</span><span>Governance and security axis<small>Across all layers</small></span></button></div><div class="la-det" id="ladet"></div></div>
  <h3 style="margin-top:26px">Three core components</h3><div class="la-3"><div class="la-c"><h4>HowardAGent agent hub</h4><ul><li>Agentic RAG that always cites document version and source</li><li>OCR agent for invoices, delivery notes and inspection reports</li><li>MCP Hub: S/4HANA / MES / QMS as governed tools; Text2SQL read-only</li><li>Quality Copilot, quote assistant, NCR / 8D drafts</li></ul><div class="r">Every write-back to S/4HANA / MES needs human approval</div></div><div class="la-c"><h4>HowardRoute multi-model gateway</h4><ul><li>One OpenAI-compatible endpoint for cloud and on-prem models</li><li>Smart Routing: small models for simple tasks, large models for complex ones; 20–40% token savings</li><li>Millisecond failover on 429 errors or outages</li><li>Unified identity, masking and logs; costs charged to business groups</li></ul><div class="r">Customer designs and quotes use on-prem models only, with zero data retention</div></div><div class="la-c"><h4>HowardPro manufacturing prediction core</h4><ul><li>AutoML: process parameter advice and equipment life prediction</li><li>Virtual metrology and SPC / AOI anomaly alerts</li><li>Domain Twin digital workers that keep senior engineers’ know-how</li><li>AILM: model versions, drift and root cause</li></ul><div class="r">Line data stays in the plants and Neihu, never on public cloud</div></div></div>
+ <h3 style="margin-top:26px">Interactive Draw.io Enterprise Architecture Hub (3 Live Topologies)</h3><p class="mute">Zoom, pan, and download native .drawio vector diagrams covering the 8-stage AI invocation lifecycle, HA multi-active deployment, and 5-layer end-to-end architecture.</p><div class="drawio-hub"><a class="drawio-card" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener"><span class="tag">📐 Interactive Draw.io Viewer</span><b>Official Draw.io Lightbox Viewer (3 Diagrams)</b><span class="desc">Switch seamlessly between Use Case Lifecycle, HA Deployment Topology, and 5-Layer End-to-End Enterprise AI Architecture with native zoom and download.</span><span class="cta">Launch Interactive Viewer ↗</span></a><a class="drawio-card" href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener"><span class="tag">🖥️ Live Topology Dashboard</span><b>Dual-Column Topology Dashboard (Lifecycle × 5 Layers)</b><span class="desc">Side-by-side view pairing the 8-stage secure invocation workflow with the L1–L5 physical topology and sovereign edge defense boundaries.</span><span class="cta">Open Topology Dashboard ↗</span></a></div>
  <h3 style="margin-top:26px">Platform design: overview plus all 14 UML 2.x diagram types</h3><p class="mute">The three core components shown through LITEON quality scenarios (NCR / 8D, SPC alerts, e-signature approval, IEC 62443 zoning). Click a diagram to enlarge it.</p><div class="la-um" id="laum"><h4>Overview</h4><div class="la-ug big"><figure data-src="assets/uml/en/uml00.jpg" data-cap="00 Architecture overview｜Six layers L0–L5 plus the governance axis, with the three cores in place"><img src="assets/uml/en/t/uml00.jpg" alt="Architecture overview" loading="lazy" draggable="false"><figcaption><b>00 Architecture overview</b>Six layers L0–L5 plus the governance axis, with the three cores in place</figcaption></figure></div><h4>Structure diagrams (7)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml02.jpg" data-cap="02 Class｜Classes and relations for agent tasks, tools, routing policies, model providers and prediction models"><img src="assets/uml/en/t/uml02.jpg" alt="Class" loading="lazy" draggable="false"><figcaption><b>02 Class</b>Classes and relations for agent tasks, tools, routing policies, model providers and prediction models</figcaption></figure><figure data-src="assets/uml/en/uml03.jpg" data-cap="03 Object｜Runtime snapshot of NCR draft request t-2261 at 09:42"><img src="assets/uml/en/t/uml03.jpg" alt="Object" loading="lazy" draggable="false"><figcaption><b>03 Object</b>Runtime snapshot of NCR draft request t-2261 at 09:42</figcaption></figure><figure data-src="assets/uml/en/uml04.jpg" data-cap="04 Component｜Provided and required interfaces of the three cores and the data platform"><img src="assets/uml/en/t/uml04.jpg" alt="Component" loading="lazy" draggable="false"><figcaption><b>04 Component</b>Provided and required interfaces of the three cores and the data platform</figcaption></figure><figure data-src="assets/uml/en/uml05.jpg" data-cap="05 Composite structure｜HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit"><img src="assets/uml/en/t/uml05.jpg" alt="Composite structure" loading="lazy" draggable="false"><figcaption><b>05 Composite structure</b>HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit</figcaption></figure><figure data-src="assets/uml/en/uml06.jpg" data-cap="06 Package｜Dependencies between the L0–L5 layer packages and governance"><img src="assets/uml/en/t/uml06.jpg" alt="Package" loading="lazy" draggable="false"><figcaption><b>06 Package</b>Dependencies between the L0–L5 layer packages and governance</figcaption></figure><figure data-src="assets/uml/en/uml07.jpg" data-cap="07 Deployment｜Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs"><img src="assets/uml/en/t/uml07.jpg" alt="Deployment" loading="lazy" draggable="false"><figcaption><b>07 Deployment</b>Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs</figcaption></figure><figure data-src="assets/uml/en/uml08.jpg" data-cap="08 Profile｜LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»"><img src="assets/uml/en/t/uml08.jpg" alt="Profile" loading="lazy" draggable="false"><figcaption><b>08 Profile</b>LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»</figcaption></figure></div><h4>Behavior diagrams (3)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml01.jpg" data-cap="01 Use case｜Five roles (QA, manufacturing, sales, managers, IT) and platform functions"><img src="assets/uml/en/t/uml01.jpg" alt="Use case" loading="lazy" draggable="false"><figcaption><b>01 Use case</b>Five roles (QA, manufacturing, sales, managers, IT) and platform functions</figcaption></figure><figure data-src="assets/uml/en/uml09.jpg" data-cap="09 Activity｜Swimlanes for NCR / 8D drafting, failover, approval and write-back"><img src="assets/uml/en/t/uml09.jpg" alt="Activity" loading="lazy" draggable="false"><figcaption><b>09 Activity</b>Swimlanes for NCR / 8D drafting, failover, approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml10.jpg" data-cap="10 State machine｜AgentTask lifecycle; human approval before any write-back"><img src="assets/uml/en/t/uml10.jpg" alt="State machine" loading="lazy" draggable="false"><figcaption><b>10 State machine</b>AgentTask lifecycle; human approval before any write-back</figcaption></figure></div><h4>Interaction diagrams (4)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml11.jpg" data-cap="11 Sequence｜NCR draft from question, routing and generation to approval and write-back"><img src="assets/uml/en/t/uml11.jpg" alt="Sequence" loading="lazy" draggable="false"><figcaption><b>11 Sequence</b>NCR draft from question, routing and generation to approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml12.jpg" data-cap="12 Communication｜Object links and message numbers for the same scenario"><img src="assets/uml/en/t/uml12.jpg" alt="Communication" loading="lazy" draggable="false"><figcaption><b>12 Communication</b>Object links and message numbers for the same scenario</figcaption></figure><figure data-src="assets/uml/en/uml13.jpg" data-cap="13 Interaction overview｜After an SPC alert: NCR or parameter adjustment"><img src="assets/uml/en/t/uml13.jpg" alt="Interaction overview" loading="lazy" draggable="false"><figcaption><b>13 Interaction overview</b>After an SPC alert: NCR or parameter adjustment</figcaption></figure><figure data-src="assets/uml/en/uml14.jpg" data-cap="14 Timing｜Time constraints (SLOs) from SPC anomaly to alert to action"><img src="assets/uml/en/t/uml14.jpg" alt="Timing" loading="lazy" draggable="false"><figcaption><b>14 Timing</b>Time constraints (SLOs) from SPC anomaly to alert to action</figcaption></figure></div></div>
  <h3 style="margin-top:26px">AI use cases along LITEON’s value chain</h3><p class="mute">Scored on value × feasibility × reusability. A = invest first, B = second wave, C = quick wins visible within weeks.</p><div class="tabs" id="laucf"><button class="tab on" data-u="all">All</button><button class="tab" data-u="A">A first</button><button class="tab" data-u="B">B second wave</button><button class="tab" data-u="C">C quick wins</button></div><div class="la-uc" id="lauc"><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Quality</div><h4 style="margin-top:6px">SPC / AOI anomaly alerts</h4><p>Subscribes to MES, AOI and test-station streams, detects drift and alerts engineers before parts go out of spec.</p><div class="k">Metrics: defect rate, rework and scrap cost, release time</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Manufacturing</div><h4 style="margin-top:6px">Preventive maintenance</h4><p>Predicts service timing for placement machines, reflow ovens and testers to cut unplanned downtime.</p><div class="k">Metrics: OEE, unplanned downtime hours</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Supply chain</div><h4 style="margin-top:6px">Shortage, alternate and slow-stock alerts</h4><p>Combines S/4HANA orders and stock, APS and PLM changes to spot shortages, alternate parts and slow-moving stock early.</p><div class="k">Metrics: inventory days, kit completeness, slow-stock value</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Quality</div><h4 style="margin-top:6px">NCR / 8D draft agent</h4><p>Gathers inspection records, similar past cases and SOPs to draft NCRs and 8D reports for QA approval.</p><div class="k">Metrics: days to close, repeat rate</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Sales</div><h4 style="margin-top:6px">Spec and quote search</h4><p>Finds similar specs, past quotes and labor hours to shorten quote preparation; customer designs use on-prem models only.</p><div class="k">Metrics: quote cycle time, win rate</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">R&amp;D / NPI</div><h4 style="margin-top:6px">ECN impact analysis</h4><p>Lists the BOMs, work orders, stock and inspection plans affected by each PLM change.</p><div class="k">Metrics: wrong parts and rework caused by changes</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Quality / customers</div><h4 style="margin-top:6px">Customer audit preparation assistant</h4><p>Maps IATF 16949 and customer audit clauses to SOPs, records and trace data and builds an audit checklist.</p><div class="k">Metrics: audit preparation days, findings</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Manufacturing</div><h4 style="margin-top:6px">Virtual metrology and test-time prediction</h4><p>Estimates key characteristics and burn-in results from process data to cut waiting; release still relies on real tests.</p><div class="k">Metrics: test waiting time, sampling ratio</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">Operations</div><h4 style="margin-top:6px">SOP and policy knowledge base</h4><p>Agentic RAG answers staff questions on SOPs and forms, citing document version and source.</p><div class="k">Metrics: onboarding time, repeat questions</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">Finance</div><h4 style="margin-top:6px">Document OCR to posting</h4><p>Reads invoices and documents and drafts journal entries for accountants to confirm.</p><div class="k">Metrics: handling time per document</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">S/4HANA new-process Q and A</h4><p>Turns training material and SOPs for the 16 new functions and 27 process improvements into a knowledge base for users after cut-over.</p><div class="k">Metrics: service-desk tickets after cut-over</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">AI code review</h4><p>Internal and SI-delivered code passes AI review and DevSecOps quality gates.</p><div class="k">Metrics: lead time, defect escape rate</div></div></div>
  <h3 style="margin-top:26px">AI governance: ISO 27001 as the base, extended to ISO 42001 and customer audits</h3><div class="tw"><table class=""><tr><th>Area</th><th>Mechanism</th><th>Basis</th></tr><tr><td class="lb">Data classes</td><td>Public / Internal / Confidential / Customer-confidential; customer designs, quotes and formulas never go to unapproved external models</td><td>ISO 27001, national privacy laws</td></tr><tr><td class="lb">Model risk</td><td>Accuracy and hallucination tests before launch; answers must cite sources; human review for high-risk use cases</td><td>ISO 42001, NIST AI RMF</td></tr><tr><td class="lb">Electronic records</td><td>AI advice and human approvals are kept in the audit trail; the Bronze layer is append-only</td><td>IATF 16949, customer audits, ALCOA+</td></tr><tr><td class="lb">OT security</td><td>AI never controls equipment directly; parameter advice runs only after MES and engineer approval</td><td>IEC 62443</td></tr><tr><td class="lb">Access audit</td><td>The model gateway unifies identity, masking and full logging; tokens charged to business groups</td><td>Zero trust</td></tr><tr><td class="lb">Vendors</td><td>Contracts forbid training on our data and set storage location and deletion deadlines</td><td>ISO 27036</td></tr></table></div>
@@ -339,7 +418,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
  <div class="eyebrow">06 · Portfolio</div>
  <h2>Priority AI domains and use-case portfolio</h2><p class="sub">Value × feasibility × reusability</p>
  <div class="grid2">
-  <div class="matrix"><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="Use-case value and feasibility matrix"></svg></div>
+  <div class="matrix"><div class="mx-tip" id="mxtip"></div><svg viewBox="0 0 520 380" id="mx" role="img" aria-label="Use-case value and feasibility matrix"></svg></div>
   <div>
   <div class="tabs" id="ptabs"><button class="tab on" data-f="all">All</button><button class="tab" data-f="A">A Priority</button><button class="tab" data-f="B">B</button><button class="tab" data-f="C">C Quick wins</button></div>
   <div class="tw"><table id="uct"></table></div>
@@ -354,6 +433,7 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
   <div><label>Inventory reduction from AI shortage alerts (%)<span id="v3"></span></label><input type="range" id="s3" min="1" max="10" step="0.5" value="3"></div>
   </div>
   <div class="grid2" style="margin-top:14px"><div><div class="mute">Working capital released (NT$100M)</div><div class="out" id="o1"></div></div><div><div class="mute">Annualized benefit at 6% cost of capital (NT$100M)</div><div class="out" id="o2"></div></div></div>
+  <div class="calc-viz"><div class="calc-bar-row"><span>Released working capital share of baseline inventory</span><b id="calcTxt"></b></div><div class="calc-bar-track"><div class="calc-bar-fill" id="calcBar" style="width:30%"></div></div></div>
  </div>
 </section>
 
@@ -532,6 +612,8 @@ footer{padding:40px 16px 60px;text-align:center;color:var(--mute);font-size:13px
 </div>
 </main>
 <div class="wm" aria-hidden="true"></div>
+<div class="mback" id="mback"></div><aside class="mdrawer" id="mdrawer" aria-label="Mobile Navigation"><div class="mdrawer-hd"><span>Navigation · LITEON AI</span><button id="mclose" aria-label="Close">✕</button></div><div class="mdrawer-bd"><div class="mdrawer-grp">Overview</div><a href="#hero">Home</a><a href="#context">LITEON Today</a><a href="#duties">Six Responsibilities</a><a href="#fit">Competency Fit</a><div class="mdrawer-grp">Platform & Arch</div><a href="#stack">Platform Blueprint</a><a href="#arch">AI Architecture</a><a href="#portfolio">Use Case Portfolio</a><a href="route/en.html">★ Howard Route Strategy</a><a href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 Interactive Draw.io Viewer ↗</a><a href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener">🖥️ Topology Dashboard ↗</a><div class="mdrawer-grp">Plan & Gov</div><a href="#plan">180-Day Plan</a><a href="#org">Organization & PO</a><a href="#gov">AI Governance</a><a href="#hive">Implementation Blueprint</a><div class="mdrawer-grp">Cases & Docs</div><a href="#cases">Key Cases</a><a href="#works">Architecture Portfolio</a><a href="#profile">Background & Credentials</a><a href="#qa">Q & A</a><a href="#docs">Online Document Preview</a><a href="architecture/index.html">Enterprise AI Whitepaper</a></div></aside>
+<div class="fab-wrap" aria-label="Quick Actions"><button class="fab primary" id="fabCopy" title="liao.howard@gmail.com">✉ <span class="lbl">Copy Email</span></button><a class="fab" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener">📐 <span class="lbl">Draw.io Diagrams</span></a><button class="fab topbtn" id="fabTop" aria-label="Back to top">↑ <span class="lbl">Top</span></button></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <footer>© 2026 Dr. Howard Liao  ·  Prepared for review by the Chairman and CIO of LITEON Technology</footer>
 <script>
 const STACK=[["L5","User access","Enterprise messaging, portal, AI assistant interface, executive dashboards","Employees use AI within existing tools, with no new system to learn"],["L4","AI products","Supply-chain planning assistant, quality anomaly agent, R and D knowledge assistant, financial analysis assistant","Every product has a PO, KPIs and versions"],["L3","Agent orchestration","Multi-agent orchestration, workflow engine, human-in-the-loop approval","High-risk actions always require human review"],["L2","Models and knowledge","LLM gateway (multi-model routing, quotas, cost), RAG knowledge base, ML model registry, evaluation","Cloud and on-prem models used together, routed by data classification"],["L1","Data products","Lakehouse (Bronze/Silver/Gold), master data, feature store, data contracts","Part numbers, BOMs, work orders and yield defined consistently worldwide"],["L0","Source systems","SAP S/4HANA, PLM, MES, APS, QMS, test stations, IoT","Read via APIs, CDC and event streams without adding load to the core"],["Cross-cutting","Governance and security","Identity and access, audit logs, model monitoring, cost allocation, ISO 42001","Built into the platform and inherited by every use case"]];
@@ -562,7 +644,7 @@ function calc(){const a=+$('#s1').value,b=+$('#s2').value,c=+$('#s3').value;$('#
 // phase
 $('#phase').addEventListener('click',ev=>{const c=ev.target.closest('.card');if(!c)return;$$('#phase.card').forEach(x=>x.classList.toggle('on',x===c))});
 // reveal + nav highlight
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:.08});$$('.reveal').forEach(x=>io.observe(x));
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');fill()}}),{threshold:0});$$('.reveal').forEach(x=>io.observe(x));
 const secs=$$('main section[id]');addEventListener('scroll',()=>{let cur='hero';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});$$('#links .nav-link').forEach(a=>{const group=(a.dataset.group||'').split(',');const href=(a.getAttribute('href')||'').replace('#','');const on=(href===cur)||group.includes(cur);a.classList.toggle('on',on)})},{passive:true});
 
 // document viewer: online preview only
@@ -577,6 +659,149 @@ document.addEventListener('contextmenu',e=>{if(e.target.closest('.viewer,.doc'))
 addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&['p','s'].includes(e.key.toLowerCase())){e.preventDefault()}});
 // service worker: new network-first worker replaces the old cache-first one
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+
+// === Neon Executive Refine Enhancements ===
+(function(){
+
+  // Reveal safety net for tall sections & anchor jumps
+  function ensureVisibleReveals(){
+    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight + 120 && r.bottom > -120) el.classList.add('in');
+    });
+  }
+  window.addEventListener('scroll', ensureVisibleReveals, {passive:true});
+  window.addEventListener('hashchange', () => setTimeout(ensureVisibleReveals, 60));
+  setTimeout(ensureVisibleReveals, 120);
+
+  // 1. Reading progress bar & Back-to-top visibility
+  const rb = document.getElementById('readbar'), topBtn = document.getElementById('fabTop');
+  function onScroll(){
+    const st = window.scrollY || document.documentElement.scrollTop;
+    const dh = document.documentElement.scrollHeight - window.innerHeight;
+    if(rb && dh > 0) rb.style.width = Math.min(100, Math.max(0, (st / dh) * 100)).toFixed(2) + '%';
+    if(topBtn) topBtn.classList.toggle('on', st > 480);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  if(topBtn) topBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+  // 2. Mobile Drawer Navigation
+  const mbtn = document.getElementById('mbtn'), md = document.getElementById('mdrawer'), mb = document.getElementById('mback'), mc = document.getElementById('mclose');
+  function toggleDrawer(open){
+    if(!md || !mb) return;
+    md.classList.toggle('on', open);
+    mb.classList.toggle('on', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  if(mbtn) mbtn.onclick = () => toggleDrawer(true);
+  if(mc) mc.onclick = () => toggleDrawer(false);
+  if(mb) mb.onclick = () => toggleDrawer(false);
+  if(md) md.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+  window.addEventListener('keydown', e => { if(e.key === 'Escape' && md && md.classList.contains('on')) toggleDrawer(false); });
+
+  // 3. Floating Email Copy + Toast
+  const fabCopy = document.getElementById('fabCopy'), toast = document.getElementById('toast');
+  let toastTimer = null;
+  function showToast(msg){
+    if(!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('on'), 2400);
+  }
+  if(fabCopy) fabCopy.onclick = () => {
+    const email = 'liao.howard@gmail.com';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(() => showToast('Copied: liao.howard@gmail.com')).catch(() => showToast(email));
+    } else {
+      const ta = document.createElement('textarea'); ta.value = email; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+      showToast('Copied: liao.howard@gmail.com');
+    }
+  };
+
+  // 4. KPI Count-Up Animation
+  function animateCount(el){
+    if(el.dataset.counted) return;
+    el.dataset.counted = '1';
+    const raw = (el.dataset.count || el.textContent || '').trim();
+    const m = raw.match(/^([^0-9]*?)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+    if(!m) return;
+    const pre = m[1], target = parseFloat(m[2]), suf = m[3];
+    const dec = (m[2].split('.')[1] || '').length;
+    const dur = 900, t0 = performance.now();
+    function step(now){
+      const p = Math.min(1, (now - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = (target * ease).toFixed(dec);
+      el.textContent = pre + val + suf;
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = raw;
+    }
+    requestAnimationFrame(step);
+  }
+  const kpiObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        en.target.querySelectorAll('.v').forEach(animateCount);
+        kpiObs.unobserve(en.target);
+      }
+    });
+  }, {threshold: 0.2});
+  document.querySelectorAll('.kpis').forEach(k => kpiObs.observe(k));
+
+  // 5. Interactive Matrix Tooltip & Row Highlight
+  const mx = document.getElementById('mx'), tip = document.getElementById('mxtip');
+  function bindMatrixTooltip(){
+    if(!mx || !tip || typeof UC === 'undefined') return;
+    const groups = mx.querySelectorAll('g');
+    groups.forEach((g, idx) => {
+      const u = UC[idx];
+      if(!u) return;
+      g.classList.add('uc-pt');
+      const showTip = (ev) => {
+        tip.innerHTML = '<b>' + u[0] + ' (' + u[3] + ')</b><div>' + u[1] + '</div><div class="m-meta">Impact：' + u[2] + '<br>Value / Feasibility：' + u[4] + ' / ' + u[5] + '</div>';
+        const rect = mx.parentElement.getBoundingClientRect();
+        const cx = (ev.clientX || (rect.left + rect.width/2)) - rect.left;
+        const cy = (ev.clientY || (rect.top + rect.height/2)) - rect.top;
+        tip.style.left = Math.min(rect.width - 260, Math.max(8, cx + 14)) + 'px';
+        tip.style.top = Math.max(8, cy - 12) + 'px';
+        tip.classList.add('on');
+        document.querySelectorAll('#uct tr').forEach(tr => {
+          const lb = tr.querySelector('td.lb');
+          tr.classList.toggle('hl', lb && lb.textContent === u[0]);
+        });
+      };
+      const hideTip = () => {
+        tip.classList.remove('on');
+        document.querySelectorAll('#uct tr.hl').forEach(tr => tr.classList.remove('hl'));
+      };
+      g.addEventListener('mouseenter', showTip);
+      g.addEventListener('mousemove', showTip);
+      g.addEventListener('mouseleave', hideTip);
+      g.addEventListener('click', showTip);
+    });
+  }
+  bindMatrixTooltip();
+  const ptabs = document.getElementById('ptabs');
+  if(ptabs) ptabs.addEventListener('click', () => setTimeout(bindMatrixTooltip, 0));
+
+  // 6. ROI Calculator Visual Progress Bar Sync
+  function updateCalcViz(){
+    const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3');
+    const bar = document.getElementById('calcBar'), txt = document.getElementById('calcTxt');
+    if(!s1 || !s2 || !s3 || !bar || !txt) return;
+    const a = +s1.value, b = +s2.value, c = +s3.value;
+    const inv = a * b / 100, rel = inv * c / 100;
+    const pct = Math.min(100, (c / 10) * 100);
+    bar.style.width = pct.toFixed(1) + '%';
+    txt.textContent = rel.toFixed(1) + ' NT$100M (Baseline Inventory ' + inv.toFixed(1) + ' NT$100M)';
+  }
+  ['#s1','#s2','#s3'].forEach(sel => { const el = document.querySelector(sel); if(el) el.addEventListener('input', updateCalcViz); });
+  updateCalcViz();
+})();
+
 </script>
 </body>
 </html>
