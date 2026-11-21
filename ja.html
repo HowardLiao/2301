@@ -271,7 +271,44 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:640px){.fab-wrap{right:12px;bottom:14px}.fab span.lbl{display:none}.fab{padding:10px 12px}}
 
+
+/* === NEON REFINE: A11y, Fluidity, Responsive FAB, Executive Lens & Chapter Rail === */
+:focus-visible{outline:2px solid var(--gold)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:1280px){
+  .fab-wrap{right:12px;bottom:14px;gap:6px}
+  .fab span.lbl{display:none}
+  .fab{padding:10px 12px;backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.14)}
+}
+@keyframes panelFadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel.on{animation:panelFadeSlide .22s ease-out}
+.exec-lens{margin:18px 0 28px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);display:flex;flex-direction:column;gap:10px}
+.exec-lens-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.exec-lens-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-right:4px}
+.lens-btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;transition:all .18s ease}
+.lens-btn:hover{border-color:var(--gold);color:var(--green)}
+.lens-btn.on{background:var(--green);border-color:var(--green);color:var(--bg)}
+.exec-lens-path{display:none;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--mute)}
+.exec-lens-path.on{display:flex;animation:panelFadeSlide .18s ease-out}
+.lens-jump{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--green);font-weight:600;font-size:12.5px;text-decoration:none;transition:all .16s ease}
+.lens-jump:hover{border-color:var(--gold);transform:translateY(-1px)}
+.calc-presets{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 14px}
+.calc-presets span{font-size:12.5px;color:var(--mute);font-weight:600}
+.preset-btn{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;cursor:pointer;transition:all .16s ease}
+.preset-btn:hover,.preset-btn.on{border-color:var(--gold);background:var(--green);color:var(--bg)}
+.ch-rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;display:none;flex-direction:column;gap:7px;padding:8px 6px;border-radius:999px;background:color-mix(in srgb,var(--card) 82%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px)}
+@media (min-width:1360px){.ch-rail{display:flex}}
+.ch-dot{position:relative;width:8px;height:8px;border-radius:999px;background:var(--line);border:none;padding:0;cursor:pointer;transition:all .2s ease}
+.ch-dot:hover,.ch-dot:focus-visible,.ch-dot.on{background:var(--gold);transform:scale(1.35)}
+.ch-dot::before{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(4px);white-space:nowrap;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--green);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .16s ease,transform .16s ease;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+.ch-dot:hover::before,.ch-dot:focus-visible::before{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
 </style>
+<link rel="stylesheet" href="assets/electro-fluid.css?v=1.0">
 </head>
 <body>
 <div class="readbar" id="readbar" aria-hidden="true"></div>
@@ -334,6 +371,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 <main>
 
 <section id="hero" class="hero">
+ <canvas id="ef-hero-canvas" aria-hidden="true"></canvas>
  <div>
   <div class="eyebrow">To the Chairman &amp; CIO · LITEON Technology</div>
   <h1>Lead an AI-Driven<br>Workforce Transformation</h1>
@@ -342,11 +380,20 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
   <div class="meta"><span>候補者</span><b>廖倫豪 博士（Howard Liao, Ph.D.）</b><span>応募職種</span><b>IT AIプラットフォーム責任者｜台北・内湖</b><span>現職</span><b>先端ハイテク企業　技術担当副社長（VP of Technology）</b><span>資格</span><b>情報技術管理学博士・ISO 27001／42001</b></div>
   <div class="btns"><a class="btn p" href="#stack">AIプラットフォームのブループリントを見る</a><a class="btn" href="#plan">着任後180日の計画</a><a class="btn" href="#docs">文書のオンライン閲覧</a><a class="btn" href="mailto:Liao.Howard@gmail.com">メールで連絡</a></div>
  </div>
- <div class="portrait"><img src="assets/howard_portrait.png" alt="廖倫豪 博士の肖像" loading="eager"></div>
+ <div class="portrait"><img src="assets/howard_portrait.png" alt="廖倫豪 博士の肖像" loading="eager" decoding="async"></div>
+ <div class="ef-hero-ctrl" id="efHeroCtrl" role="group" aria-label="物理フィールド操作">
+  <span class="ef-lbl"><i class="ef-dot" aria-hidden="true"></i>物理フィールド</span>
+  <button type="button" class="ef-mode-btn on" data-mode="coupled">⚡+💧 電熱流体連成</button>
+  <button type="button" class="ef-mode-btn" data-mode="electric">⚡ 800V 電流場</button>
+  <button type="button" class="ef-mode-btn" data-mode="fluid">💧 CDU 流体場</button>
+  <button type="button" class="ef-mode-btn" data-mode="off">⏸ 静止</button>
+ </div>
 </section>
 
 <div class="kpis reveal"><div class="kpi"><div class="v" data-count="+15%">+15%</div><div class="l">製品の歩留まり</div><div class="s">泓晏科技｜AI不良予測</div></div><div class="kpi"><div class="v" data-count="+18%">+18%</div><div class="l">OEE</div><div class="s">泓晏科技｜Edge AIoT</div></div><div class="kpi"><div class="v" data-count="−25%">−25%</div><div class="l">IT運用コスト</div><div class="s">泓晏科技｜システム統合</div></div><div class="kpi"><div class="v" data-count="−30%">−30%</div><div class="l">マルチクラウドTCO</div><div class="s">隆中網絡（GameSparcs、6542）｜FinOps</div></div></div>
 
+
+<nav class="exec-lens reveal" id="execLens" aria-label="立場別クイック導線"><div class="exec-lens-top"><span class="exec-lens-title">立場別クイック導線</span><button type="button" class="lens-btn on" data-role="all" aria-pressed="true">全章を見る（15章）</button><button type="button" class="lens-btn" data-role="exec" aria-pressed="false">会長／CEO 視点</button><button type="button" class="lens-btn" data-role="cio" aria-pressed="false">CIO／技術架構視点</button><button type="button" class="lens-btn" data-role="hr" aria-pressed="false">採用・ヘッドハンター視点</button></div><div class="exec-lens-path" id="execLensPath" aria-live="polite"></div></nav>
 <section id="context" class="reveal">
  <div class="eyebrow">01 · Context</div>
  <h2>LITEONの現状：AI関連売上が倍増し、社内オペレーションも追いつく必要がある</h2><p class="sub">LITEON at an inflection point</p>
@@ -396,11 +443,57 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h3 style="margin-top:26px">LITEONのAI課題は、データ・規制・規模から始まる</h3><div class="tw"><table class=""><tr><th>観点</th><th>LITEONの現状（公開情報と棚卸しの前提）</th><th>AIアーキテクチャへの意味</th></tr><tr><td class="lb">製造ライン</td><td>SMT、挿入、組立、バーンイン・機能試験。電源、オプトエレクトロニクス、クラウド・IoTの製品ラインが並行</td><td>設備パラメータ、AOI、試験データが予測モデルの主原料。設備はインターネットに直接つながず、データは産業用DMZ経由でのみ送信</td></tr><tr><td class="lb">システム</td><td>SAP ECCからS/4HANAへ、2027.01.04に全世界同時稼働。MESはERPと密接に連携（代替部品、キット充足、スケジューリング）</td><td>AIは基幹システムの横でデータを読み、S/4HANAのコアは改修しない。切替期間中はコアに触れない</td></tr><tr><td class="lb">規制と顧客</td><td>ISO 27001でIT/OTセキュリティを統治。車載製品はIATF 16949。クラウド顧客やブランド顧客の定期監査</td><td>AIの出力は「提案」のみ。電子記録には監査証跡、電子署名、ALCOA+が必要</td></tr><tr><td class="lb">規模</td><td>子会社86社、工場112か所、世界20以上の拠点。ベトナム新工場、高雄第2期、米テキサス工場が順次稼働</td><td>基盤は一度作りテンプレートで展開。新工場はレガシーがなく最適な試行先。データの保管地はD06で決定</td></tr><tr><td class="lb">オペレーション</td><td>製品の複雑化（8.5kW PSU、BBU、パワーラック、CDU）。代替部品とキット充足の管理が日常の重点</td><td>欠品・代替部品アラート、仕様・見積のナレッジ検索が最も早く財務効果を示す</td></tr><tr><td class="lb">成長</td><td>AI関連売上比率は30%超、2027年は40〜50%の見込み</td><td>研究開発と品質の知見にAIの支援が必要で、新製品投入の速度に基盤が追随する必要がある</td></tr></table></div>
  <h3 style="margin-top:26px">LITEON AIプラットフォーム：6層＋ガバナンス軸</h3><p class="mute">各層を選ぶと、構成要素、技術の選択肢、LITEONでの重点が表示されます。</p><div class="la-lay"><div class="lb2" id="lalb"><button class="" data-i="0"><span class="id">L5</span><span>ユーザー窓口<small>Teams／ポータル／ライン掲示板／モバイル</small></span></button><button class="" data-i="1"><span class="id">L4</span><span>AIプロダクト<small>再利用できるユースケース雛形</small></span></button><button class=" on" data-i="2"><span class="id">L3</span><span>HowardAGent エージェントハブ<small>AIエージェント：エージェント型RAG＋ワークフロー＋MCP Hub</small></span></button><button class="" data-i="3"><span class="id">L2</span><span>HowardRoute ゲートウェイ＋HowardPro 予測コア<small>マルチモデルのルーティング＋AI製造予測</small></span></button><button class="" data-i="4"><span class="id">L1</span><span>データプロダクトとレイクハウス<small>Bronze／Silver／Gold＋マスターデータ</small></span></button><button class="" data-i="5"><span class="id">L0</span><span>ソースシステムと二重リング型データバス<small>ITリングKafka＋OTリングMQTT／OPC UA</small></span></button><button class="gv" data-i="6"><span class="id">GOV</span><span>ガバナンス・セキュリティ軸<small>全層を貫く</small></span></button></div><div class="la-det" id="ladet"></div></div>
  <h3 style="margin-top:26px">3つのコアコンポーネント</h3><div class="la-3"><div class="la-c"><h4>HowardAGent エージェントハブ</h4><ul><li>エージェント型RAG、回答には文書の版本と出典を必ず付記</li><li>OCRエージェント：請求書、出荷伝票、検査報告を構造化</li><li>MCP Hub：S/4HANA／MES／QMSを管理されたツール化、Text2SQLは読み取り専用</li><li>品質Copilot、見積アシスタント、NCR／8D下書き</li></ul><div class="r">S/4HANA／MESへの書き戻しは必ず人が承認</div></div><div class="la-c"><h4>HowardRoute マルチモデルゲートウェイ</h4><ul><li>OpenAI互換の単一エンドポイントでクラウドとオンプレミスの複数モデルに接続</li><li>Smart Routing：簡単なタスクは小型、複雑なタスクは大型モデル。トークン費用を20〜40%削減</li><li>429エラーや断線時にミリ秒単位で自動切替</li><li>認証、マスキング、ログを一元化し、費用を事業グループに配賦</li></ul><div class="r">顧客設計図と見積はオンプレミスモデルのみ、データ保持ゼロ</div></div><div class="la-c"><h4>HowardPro 製造予測コア</h4><ul><li>AutoML：工程パラメータの提案、設備寿命の予測</li><li>バーチャル計測とSPC／AOI異常の早期警告</li><li>Domain Twinのデジタル社員：熟練エンジニアの経験を継承</li><li>AILM：モデルの版本、ドリフト、根本原因分析</li></ul><div class="r">ラインのデータは工場と内湖にとどめ、パブリッククラウドに出さない</div></div></div>
+ <div class="ef-lab" id="ef-twin-lab">
+  <div class="ef-lab-head">
+   <div>
+    <h3>⚡💧 800V DC × 120kW CDU 電熱流体デジタルツイン・シミュレーター <span class="ef-badge">LIVE PHYSICS · INTERACTIVE</span></h3>
+    <p class="mute" style="margin:0">LITEON 800V DC給電バスバー（電流・銅損 I²R）と 120kW 液冷CDU（レイノルズ数 Re 層流・乱流熱伝達）に HowardPro AI 閉ループ温度制御を連成。</p>
+   </div>
+   <div class="ef-lab-presets" id="efPresets">
+    <button type="button" class="ef-pbtn" data-kw="65">標準推論 65kW</button>
+    <button type="button" class="ef-pbtn on" data-kw="110">ピーク学習 110kW</button>
+    <button type="button" class="ef-pbtn" data-kw="128">限界負荷 128kW</button>
+    <button type="button" class="ef-pbtn surge" data-surge="1">⚡ 局所熱衝撃を注入</button>
+   </div>
+  </div>
+  <div class="ef-stage-wrap">
+   <canvas id="ef-twin-canvas" aria-label="800V DC電流と120kW CDU液冷流体力学のリアルタイムシミュレーター"></canvas>
+   <div class="ef-ai-pill" id="efAiPill">● HowardPro AI 閉ループPID制御中 · 最適冷却</div>
+   <div class="ef-stage-hint">💡 キャンバスをクリック／ドラッグして局所熱負荷と流体渦を注入できます</div>
+  </div>
+  <div class="ef-controls">
+   <div class="ef-ctrl-group">
+    <label for="efLoad"><span>AI ラック電力負荷（Power Load）</span><b id="efLoadVal">110 kW</b></label>
+    <input type="range" id="efLoad" min="30" max="130" step="1" value="110">
+    <div class="ef-toggle-row"><span>HowardPro AI 自動PID温調</span><button type="button" id="efAiAuto" class="ef-switch on">ON</button></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label for="efFlow"><span>CDU 冷却水流量（Coolant Flow）</span><b id="efFlowVal">115 LPM</b></label>
+    <input type="range" id="efFlow" min="40" max="180" step="1" value="115">
+    <div class="ef-toggle-row"><span class="mute">流量変化による Re 層流→乱流遷移を確認</span></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label><span>DC バス電圧アーキテクチャ</span></label>
+    <div class="ef-seg">
+     <button type="button" id="efV800" class="on">⚡ 800V DC（LITEON）</button>
+     <button type="button" id="efV48">48V DC（従来）</button>
+    </div>
+    <div class="ef-toggle-row"><span class="mute">電流 I=P/V とバスバー銅損 I²R を比較</span></div>
+   </div>
+  </div>
+  <div class="ef-telemetry">
+   <div class="ef-tel-card gold"><div class="ef-tel-k">バスバー電流 Current (I)</div><div class="ef-tel-v" id="efOutCurrent">137.5 A</div><div class="ef-tel-s" id="efOutCurrentSub">800V DC · 110.0 kW</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">バスバー銅損 I²R Loss</div><div class="ef-tel-v" id="efOutLoss">0.04 kW</div><div class="ef-tel-s" id="efOutLossSub">48V比 銅損 -99.6%</div></div>
+   <div class="ef-tel-card cyan"><div class="ef-tel-k">レイノルズ数・流態 Re</div><div class="ef-tel-v" id="efOutRe">Re 4,738</div><div class="ef-tel-s" id="efOutReSub">乱流高熱伝達 Turbulent</div></div>
+   <div class="ef-tel-card brick"><div class="ef-tel-k">GPU ジャンクション温度</div><div class="ef-tel-v" id="efOutTemp">54.2 °C</div><div class="ef-tel-s" id="efOutTempSub">安全温度域（≤ 60°C）</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">推定 PUE</div><div class="ef-tel-v" id="efOutPue">1.05</div><div class="ef-tel-s" id="efOutPueSub">HowardRoute 計算負荷 -31%</div></div>
+  </div>
+ </div>
  <h3 style="margin-top:26px">インタラクティブ Draw.io アーキテクチャ図ハブ（3 大物理トポロジー）</h3><p class="mute">ズーム・パン操作とオリジナル .drawio ダウンロードに対応。8段階ライフサイクル、高可用マルチアクティブ配備、5層エンドツーエンド構造を収録。</p><div class="drawio-hub"><a class="drawio-card" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener"><span class="tag">📐 Interactive Draw.io Viewer</span><b>Draw.io 公式動的ビューア（3 大構造図切替）</b><span class="desc">ユースケース8段階図、HA配備トポロジー、5層エンドツーエンドAIアーキテクチャをワンクリック切替・拡大表示。</span><span class="cta">動的ビューアを開く ↗</span></a><a class="drawio-card" href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener"><span class="tag">🖥️ Live Topology Dashboard</span><b>2カラム物理トポロジーダッシュボード</b><span class="desc">左側に8段階セキュア呼び出しライフサイクル、右側にL1–L5物理トポロジーとソブリン境界防御を連動表示。</span><span class="cta">ダッシュボードを開く ↗</span></a></div>
- <h3 style="margin-top:26px">プラットフォーム設計図：全体構成＋UML 2.xの全14種類</h3><p class="mute">LITEONの品質保証シナリオ（NCR／8D、SPC警告、電子承認、IEC 62443ゾーニング）で3つのコアを示します。図をクリックすると拡大表示します。</p><div class="la-um" id="laum"><h4>全体構成</h4><div class="la-ug big"><figure data-src="assets/uml/ja/uml00.jpg" data-cap="00 アーキテクチャ全体構成｜L0–L5の6層＋ガバナンス軸、3つのコアの位置"><img src="assets/uml/ja/t/uml00.jpg" alt="アーキテクチャ全体構成" loading="lazy" draggable="false"><figcaption><b>00 アーキテクチャ全体構成</b>L0–L5の6層＋ガバナンス軸、3つのコアの位置</figcaption></figure></div><h4>構造図 Structure（7種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml02.jpg" data-cap="02 クラス図｜エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係"><img src="assets/uml/ja/t/uml02.jpg" alt="クラス図" loading="lazy" draggable="false"><figcaption><b>02 クラス図</b>エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係</figcaption></figure><figure data-src="assets/uml/ja/uml03.jpg" data-cap="03 オブジェクト図｜NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット"><img src="assets/uml/ja/t/uml03.jpg" alt="オブジェクト図" loading="lazy" draggable="false"><figcaption><b>03 オブジェクト図</b>NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット</figcaption></figure><figure data-src="assets/uml/ja/uml04.jpg" data-cap="04 コンポーネント図｜3つのコアとデータ基盤の提供・要求インターフェース"><img src="assets/uml/ja/t/uml04.jpg" alt="コンポーネント図" loading="lazy" draggable="false"><figcaption><b>04 コンポーネント図</b>3つのコアとデータ基盤の提供・要求インターフェース</figcaption></figure><figure data-src="assets/uml/ja/uml05.jpg" data-cap="05 複合構造図｜HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査"><img src="assets/uml/ja/t/uml05.jpg" alt="複合構造図" loading="lazy" draggable="false"><figcaption><b>05 複合構造図</b>HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査</figcaption></figure><figure data-src="assets/uml/ja/uml06.jpg" data-cap="06 パッケージ図｜L0–L5の階層パッケージとガバナンスの依存関係"><img src="assets/uml/ja/t/uml06.jpg" alt="パッケージ図" loading="lazy" draggable="false"><figcaption><b>06 パッケージ図</b>L0–L5の階層パッケージとガバナンスの依存関係</figcaption></figure><figure data-src="assets/uml/ja/uml07.jpg" data-cap="07 配置図｜内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM"><img src="assets/uml/ja/t/uml07.jpg" alt="配置図" loading="lazy" draggable="false"><figcaption><b>07 配置図</b>内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM</figcaption></figure><figure data-src="assets/uml/ja/uml08.jpg" data-cap="08 プロファイル図｜LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»"><img src="assets/uml/ja/t/uml08.jpg" alt="プロファイル図" loading="lazy" draggable="false"><figcaption><b>08 プロファイル図</b>LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»</figcaption></figure></div><h4>振る舞い図 Behavior（3種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml01.jpg" data-cap="01 ユースケース図｜品質保証、製造、営業、管理職、ITの5つの役割と基盤機能"><img src="assets/uml/ja/t/uml01.jpg" alt="ユースケース図" loading="lazy" draggable="false"><figcaption><b>01 ユースケース図</b>品質保証、製造、営業、管理職、ITの5つの役割と基盤機能</figcaption></figure><figure data-src="assets/uml/ja/uml09.jpg" data-cap="09 アクティビティ図｜NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン"><img src="assets/uml/ja/t/uml09.jpg" alt="アクティビティ図" loading="lazy" draggable="false"><figcaption><b>09 アクティビティ図</b>NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン</figcaption></figure><figure data-src="assets/uml/ja/uml10.jpg" data-cap="10 ステートマシン図｜AgentTaskのライフサイクル。書き戻し前に必ず人が承認"><img src="assets/uml/ja/t/uml10.jpg" alt="ステートマシン図" loading="lazy" draggable="false"><figcaption><b>10 ステートマシン図</b>AgentTaskのライフサイクル。書き戻し前に必ず人が承認</figcaption></figure></div><h4>相互作用図 Interaction（4種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml11.jpg" data-cap="11 シーケンス図｜NCR下書き：質問、経路選択、生成から承認・書き戻しまで"><img src="assets/uml/ja/t/uml11.jpg" alt="シーケンス図" loading="lazy" draggable="false"><figcaption><b>11 シーケンス図</b>NCR下書き：質問、経路選択、生成から承認・書き戻しまで</figcaption></figure><figure data-src="assets/uml/ja/uml12.jpg" data-cap="12 コミュニケーション図｜同じシナリオのオブジェクト連結とメッセージ番号"><img src="assets/uml/ja/t/uml12.jpg" alt="コミュニケーション図" loading="lazy" draggable="false"><figcaption><b>12 コミュニケーション図</b>同じシナリオのオブジェクト連結とメッセージ番号</figcaption></figure><figure data-src="assets/uml/ja/uml13.jpg" data-cap="13 相互作用概要図｜SPC警告後の分岐：NCRまたはパラメータ調整の提案"><img src="assets/uml/ja/t/uml13.jpg" alt="相互作用概要図" loading="lazy" draggable="false"><figcaption><b>13 相互作用概要図</b>SPC警告後の分岐：NCRまたはパラメータ調整の提案</figcaption></figure><figure data-src="assets/uml/ja/uml14.jpg" data-cap="14 タイミング図｜SPC異常 → 警告 → 対処の時間制約（SLO）"><img src="assets/uml/ja/t/uml14.jpg" alt="タイミング図" loading="lazy" draggable="false"><figcaption><b>14 タイミング図</b>SPC異常 → 警告 → 対処の時間制約（SLO）</figcaption></figure></div></div>
+ <h3 style="margin-top:26px">プラットフォーム設計図：全体構成＋UML 2.xの全14種類</h3><p class="mute">LITEONの品質保証シナリオ（NCR／8D、SPC警告、電子承認、IEC 62443ゾーニング）で3つのコアを示します。図をクリックすると拡大表示します。</p><div class="la-um" id="laum"><h4>全体構成</h4><div class="la-ug big"><figure data-src="assets/uml/ja/uml00.jpg" data-cap="00 アーキテクチャ全体構成｜L0–L5の6層＋ガバナンス軸、3つのコアの位置"><img src="assets/uml/ja/t/uml00.jpg" alt="アーキテクチャ全体構成" loading="lazy" draggable="false" decoding="async"><figcaption><b>00 アーキテクチャ全体構成</b>L0–L5の6層＋ガバナンス軸、3つのコアの位置</figcaption></figure></div><h4>構造図 Structure（7種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml02.jpg" data-cap="02 クラス図｜エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係"><img src="assets/uml/ja/t/uml02.jpg" alt="クラス図" loading="lazy" draggable="false" decoding="async"><figcaption><b>02 クラス図</b>エージェントタスク、ツール、ルーティングポリシー、モデル提供者、予測モデルのクラスと関係</figcaption></figure><figure data-src="assets/uml/ja/uml03.jpg" data-cap="03 オブジェクト図｜NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット"><img src="assets/uml/ja/t/uml03.jpg" alt="オブジェクト図" loading="lazy" draggable="false" decoding="async"><figcaption><b>03 オブジェクト図</b>NCR下書き要求 t-2261 の 09:42 時点の実行スナップショット</figcaption></figure><figure data-src="assets/uml/ja/uml04.jpg" data-cap="04 コンポーネント図｜3つのコアとデータ基盤の提供・要求インターフェース"><img src="assets/uml/ja/t/uml04.jpg" alt="コンポーネント図" loading="lazy" draggable="false" decoding="async"><figcaption><b>04 コンポーネント図</b>3つのコアとデータ基盤の提供・要求インターフェース</figcaption></figure><figure data-src="assets/uml/ja/uml05.jpg" data-cap="05 複合構造図｜HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査"><img src="assets/uml/ja/t/uml05.jpg" alt="複合構造図" loading="lazy" draggable="false" decoding="async"><figcaption><b>05 複合構造図</b>HowardRouteの内部部品：マスキング、ポリシー、ルーティング、遮断、計量、監査</figcaption></figure><figure data-src="assets/uml/ja/uml06.jpg" data-cap="06 パッケージ図｜L0–L5の階層パッケージとガバナンスの依存関係"><img src="assets/uml/ja/t/uml06.jpg" alt="パッケージ図" loading="lazy" draggable="false" decoding="async"><figcaption><b>06 パッケージ図</b>L0–L5の階層パッケージとガバナンスの依存関係</figcaption></figure><figure data-src="assets/uml/ja/uml07.jpg" data-cap="07 配置図｜内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM"><img src="assets/uml/ja/t/uml07.jpg" alt="配置図" loading="lazy" draggable="false" decoding="async"><figcaption><b>07 配置図</b>内湖本社データセンター、オンプレミスGPU、産業用DMZ、生産拠点OTゾーン、クラウドLLM</figcaption></figure><figure data-src="assets/uml/ja/uml08.jpg" data-cap="08 プロファイル図｜LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»"><img src="assets/uml/ja/t/uml08.jpg" alt="プロファイル図" loading="lazy" draggable="false" decoding="async"><figcaption><b>08 プロファイル図</b>LiteonAIのステレオタイプ：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»</figcaption></figure></div><h4>振る舞い図 Behavior（3種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml01.jpg" data-cap="01 ユースケース図｜品質保証、製造、営業、管理職、ITの5つの役割と基盤機能"><img src="assets/uml/ja/t/uml01.jpg" alt="ユースケース図" loading="lazy" draggable="false" decoding="async"><figcaption><b>01 ユースケース図</b>品質保証、製造、営業、管理職、ITの5つの役割と基盤機能</figcaption></figure><figure data-src="assets/uml/ja/uml09.jpg" data-cap="09 アクティビティ図｜NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン"><img src="assets/uml/ja/t/uml09.jpg" alt="アクティビティ図" loading="lazy" draggable="false" decoding="async"><figcaption><b>09 アクティビティ図</b>NCR／8D下書き生成、フェイルオーバー、承認、書き戻しのスイムレーン</figcaption></figure><figure data-src="assets/uml/ja/uml10.jpg" data-cap="10 ステートマシン図｜AgentTaskのライフサイクル。書き戻し前に必ず人が承認"><img src="assets/uml/ja/t/uml10.jpg" alt="ステートマシン図" loading="lazy" draggable="false" decoding="async"><figcaption><b>10 ステートマシン図</b>AgentTaskのライフサイクル。書き戻し前に必ず人が承認</figcaption></figure></div><h4>相互作用図 Interaction（4種）</h4><div class="la-ug"><figure data-src="assets/uml/ja/uml11.jpg" data-cap="11 シーケンス図｜NCR下書き：質問、経路選択、生成から承認・書き戻しまで"><img src="assets/uml/ja/t/uml11.jpg" alt="シーケンス図" loading="lazy" draggable="false" decoding="async"><figcaption><b>11 シーケンス図</b>NCR下書き：質問、経路選択、生成から承認・書き戻しまで</figcaption></figure><figure data-src="assets/uml/ja/uml12.jpg" data-cap="12 コミュニケーション図｜同じシナリオのオブジェクト連結とメッセージ番号"><img src="assets/uml/ja/t/uml12.jpg" alt="コミュニケーション図" loading="lazy" draggable="false" decoding="async"><figcaption><b>12 コミュニケーション図</b>同じシナリオのオブジェクト連結とメッセージ番号</figcaption></figure><figure data-src="assets/uml/ja/uml13.jpg" data-cap="13 相互作用概要図｜SPC警告後の分岐：NCRまたはパラメータ調整の提案"><img src="assets/uml/ja/t/uml13.jpg" alt="相互作用概要図" loading="lazy" draggable="false" decoding="async"><figcaption><b>13 相互作用概要図</b>SPC警告後の分岐：NCRまたはパラメータ調整の提案</figcaption></figure><figure data-src="assets/uml/ja/uml14.jpg" data-cap="14 タイミング図｜SPC異常 → 警告 → 対処の時間制約（SLO）"><img src="assets/uml/ja/t/uml14.jpg" alt="タイミング図" loading="lazy" draggable="false" decoding="async"><figcaption><b>14 タイミング図</b>SPC異常 → 警告 → 対処の時間制約（SLO）</figcaption></figure></div></div>
  <h3 style="margin-top:26px">LITEONのバリューチェーンに沿ったAIシナリオ</h3><p class="mute">「経済効果 × 実現可能性 × 再利用性」の3軸で評価。Aは優先投資、Bは第2弾、Cは数週間で成果が見えるクイックウィン。</p><div class="tabs" id="laucf"><button class="tab on" data-u="all">すべて</button><button class="tab" data-u="A">A 優先</button><button class="tab" data-u="B">B 第2弾</button><button class="tab" data-u="C">C クイックウィン</button></div><div class="la-uc" id="lauc"><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">SPC／AOI異常の早期警告</h4><p>MES、AOI、試験工程のデータを購読し、傾向のずれを検知して規格外になる前にエンジニアに知らせる。</p><div class="k">指標：不良率、手直し・廃棄コスト、出荷判定までの時間</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">製造</div><h4 style="margin-top:6px">予防保全</h4><p>実装機、リフロー炉、試験機の稼働データから保全時期を予測し、計画外停止を減らす。</p><div class="k">指標：OEE、計画外停止時間</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">サプライチェーン</div><h4 style="margin-top:6px">欠品・代替部品・滞留在庫アラート</h4><p>S/4HANAの受注と在庫、APS、PLMの変更を組み合わせ、欠品、代替部品の機会、滞留在庫を早期に把握する。</p><div class="k">指標：在庫日数、キット充足率、滞留在庫金額</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">NCR／8D下書きエージェント</h4><p>検査記録、類似の過去事例、SOPをまとめ、品質保証の承認用にNCRと8Dの下書きを作成する。</p><div class="k">指標：完了までの日数、再発率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">営業</div><h4 style="margin-top:6px">仕様・見積ナレッジ検索</h4><p>類似仕様、過去見積、工数を検索して見積準備を短縮。顧客設計図はオンプレミスモデルのみ。</p><div class="k">指標：見積サイクル、受注率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">研究開発／NPI</div><h4 style="margin-top:6px">ECN影響分析</h4><p>PLMの設計変更ごとに、影響を受けるBOM、作業指示、在庫、検査計画を自動で一覧化する。</p><div class="k">指標：変更起因の誤部品と手直し</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">品質／顧客</div><h4 style="margin-top:6px">顧客監査の準備アシスタント</h4><p>IATF 16949と顧客監査の条項に対応するSOP、記録、追跡データを見つけ、監査チェックリストにまとめる。</p><div class="k">指標：監査準備の人日、指摘数</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">製造</div><h4 style="margin-top:6px">バーチャル計測と試験時間予測</h4><p>工程パラメータから重要特性とバーンイン結果を推定し、待ち時間を減らす。正式な出荷判定は実測による。</p><div class="k">指標：試験待ち時間、抜取比率</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">オペレーション</div><h4 style="margin-top:6px">SOP・規程ナレッジベース</h4><p>エージェント型RAGが社員のSOPや帳票の質問に答え、文書の版本と出典を付記する。</p><div class="k">指標：新人の立ち上がり期間、重複質問数</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">財務</div><h4 style="margin-top:6px">帳票OCRによる自動仕訳</h4><p>請求書や帳票を読み取って仕訳の下書きを作り、経理が確認して転記する。</p><div class="k">指標：帳票1件あたりの処理時間</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">S/4HANA新プロセスQ&amp;A</h4><p>16の新機能と27のプロセス改善の教材とSOPをナレッジベース化し、切替後の利用者を支援する。</p><div class="k">指標：切替後のサービスデスク件数</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">AIコードレビュー</h4><p>社内開発とSIの納品コードをAIレビューとDevSecOpsの品質ゲートに通す。</p><div class="k">指標：リードタイム、欠陥流出率</div></div></div>
  <h3 style="margin-top:26px">AIガバナンス：ISO 27001を基盤に、ISO 42001と顧客監査へ拡張</h3><div class="tw"><table class=""><tr><th>観点</th><th>仕組み</th><th>根拠</th></tr><tr><td class="lb">データ分類</td><td>公開／社内／機密／顧客機密の4段階。顧客設計図、見積、配合は未承認の外部モデルに送らない</td><td>ISO 27001、各国の個人情報保護法</td></tr><tr><td class="lb">モデルリスク</td><td>稼働前に正答率とハルシネーション率を評価。回答に出典を必須化。高リスクのユースケースは人がレビュー</td><td>ISO 42001、NIST AI RMF</td></tr><tr><td class="lb">電子記録</td><td>AIの提案と人の承認をすべて監査証跡に残す。Bronze層は追記のみ</td><td>IATF 16949、顧客監査、ALCOA+</td></tr><tr><td class="lb">OTセキュリティ</td><td>AIは設備を直接制御しない。パラメータ提案はMESとエンジニアの承認後に実行</td><td>IEC 62443</td></tr><tr><td class="lb">権限監査</td><td>モデルゲートウェイで認証、マスキング、完全なログを一元化。トークンは事業グループに配賦</td><td>ゼロトラスト</td></tr><tr><td class="lb">ベンダー</td><td>データを学習に使わないこと、保管場所、削除期限を契約で明記</td><td>ISO 27036</td></tr></table></div>
- <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" alt="" draggable="false"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
+ <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="" draggable="false" decoding="async"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
  <script>(function(){var D=[{"id":"L5","t":"ユーザー窓口","it":["社員アシスタント：TeamsやポータルでSOP、仕様、帳票を質問","ライン掲示板：OEE、SPC、AOI異常アラート","経営ビュー：歩留まり、在庫回転、納期、粗利を事業グループ・工場別に表示"],"tech":"Power BIまたはSuperset／Grafana、Teams Bot","f":"全工場で同じ指標定義、事業グループ別に切替可能"},{"id":"L4","t":"AIプロダクト","it":["品質Copilot：NCR下書き、8D根本原因の提案、クレーム回答案","見積アシスタント：類似仕様と過去見積の検索","サプライチェーンアラート：欠品、代替部品、滞留在庫、納期リスク"],"tech":"各プロダクトに事業部門PO、受入基準、損益科目。新ユースケースはゴールデンパスで稼働","f":"各AIプロダクトに事業部門POを指名し、稼働前に受入基準を決める"},{"id":"L3","t":"HowardAGent エージェントハブ","it":["エージェント型RAG：SOP、IATF 16949文書、顧客仕様。回答には必ず出典を付記","OCRエージェント：請求書、出荷伝票、検査報告を構造化","MCPツール：S/4HANA／MES／QMSの照会を管理されたツール化、Text2SQLは読み取り専用","Human-in-the-Loop：書き戻しはすべて人が承認"],"tech":"LangGraph型の編成、QdrantまたはpgvectorのベクトルDB","f":"回答には文書の版本と出典を必ず付記し、S/4HANAへの書き戻しは必ず人が承認"},{"id":"L2","t":"HowardRoute ゲートウェイ＋HowardPro 予測コア","it":["HowardRoute：OpenAI互換の単一エンドポイント、タスク別振り分け、ミリ秒単位のフェイルオーバー、トークン費用を事業グループに配賦","オンプレミスモデル：顧客設計図と機密データは内湖のGPUのみで処理","HowardPro：予防保全、工程パラメータの提案、バーチャル計測、SPC／AOI異常検知、Domain Twin","モデル監視：ドリフト、版本、根本原因分析"],"tech":"LiteLLM型ゲートウェイ、AutoML＋MLflow、オンプレミスGPUサーバー","f":"顧客設計図と見積はオンプレミスモデルのみ"},{"id":"L1","t":"データプロダクトとレイクハウス","it":["Goldテーマ：ロット／シリアル追跡、歩留まりとOEE、在庫回転、キット充足、SPC","マスターデータ：品番、ロット、顧客、設備を一意に命名","データカタログとリネージ：AIの回答がどのデータに基づくかを把握","特徴量ストア：設備・工程の特徴量を各工場のモデルで再利用"],"tech":"ハイブD04に従う：SAP Datasphere／Fabric／MinIO＋Iceberg＋Trino、DataHub","f":"ハイブ計画のレイクハウスを流用し、新たなデータのサイロを作らない"},{"id":"L0","t":"ソースシステムと二重リング型データバス","it":["ITリング：S/4HANA、PLM、QMS、APSをCDCとAPIでレイクハウスへ","OTリング：SMT、AOI、ICT、試験設備をOPC UA／SECS-GEM、MQTTでエッジゲートウェイから送信","断線してもラインは止めない：エッジゲートウェイがローカルに蓄積し、復旧後に順次再送"],"tech":"KafkaまたはService Bus、EMQX、Debezium CDC","f":"ハイブ計画のAPI基盤と各工場のエッジゲートウェイを流用"},{"id":"GOV","t":"ガバナンス・セキュリティ軸","it":["ISO 42001 AIマネジメントシステムと利用規程","ISO 27001 データ分類、ゼロトラストの認証","IEC 62443 IT／OTゾーニング","IATF 16949と顧客監査：電子記録と監査証跡"],"tech":"WAAP＋アウトオブバンドのAPIセキュリティ、ゲートウェイのログ一元化","f":"AI規程をLITEONの既存ISO 27001文書体系に組み込む"}];var L={"t":"技術の選択肢","f":"LITEONでの重点","c":"："};
  function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
  var bs=document.querySelectorAll('#lalb button'),dt=document.getElementById('ladet');
@@ -427,6 +520,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <div class="card calc" style="margin-top:20px">
   <h3>効果シナリオの試算（参考）</h3>
   <p class="mute">以下は意思決定のロジックを説明するための試算モデルであり、数値はLITEONの実データではありません。着任後にCFOが確認したベースラインに置き換えます。</p>
+  <div class="calc-presets"><span>シナリオ一括設定：</span><button type="button" class="preset-btn" data-s1="1800" data-s2="11" data-s3="1.5">保守的 (1.5%)</button><button type="button" class="preset-btn on" data-s1="2000" data-s2="12" data-s3="3.0">基準値 (3.0%)</button><button type="button" class="preset-btn" data-s1="2400" data-s2="14" data-s3="5.0">積極的 (5.0%)</button></div>
   <div class="grid3">
    <div><label>年間売上高（億元）<span id="v1"></span></label><input type="range" id="s1" min="500" max="3000" step="50" value="2000"></div>
    <div><label>売上高に対する在庫比率（%）<span id="v2"></span></label><input type="range" id="s2" min="5" max="25" step="1" value="12"></div>
@@ -599,16 +693,16 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h2>文書のオンライン閲覧とダウンロード</h2><p class="sub">View online or download PDF</p>
  <p class="mute">表紙をクリックするとオンラインでページ閲覧でき、PDFのダウンロードも可能です。</p>
  <div class="grid3">
-  <div class="docw"><button class="doc" data-d="deck" data-n="41" data-t="経営層向けプレゼンテーション（全41ページ）"><img src="assets/preview/ja/deck/01.jpg" alt="経営層向けプレゼンテーションの表紙" draggable="false" loading="lazy"><b>経営層向けプレゼンテーション</b><span class="mute">全41ページ｜AI戦略、プラットフォームのブループリント、着任計画</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_41%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
-  <div class="docw"><button class="doc" data-d="report" data-n="27" data-t="面接レポート（全27ページ）"><img src="assets/preview/ja/report/01.jpg" alt="面接レポートの表紙" draggable="false" loading="lazy"><b>面接レポート</b><span class="mute">全27ページ｜コンピテンシーの適合、事例、経歴</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_27%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
-  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="職務経歴書（全12ページ）"><img src="assets/preview/ja/cv/01.jpg" alt="職務経歴書の表紙" draggable="false" loading="lazy"><b>職務経歴書</b><span class="mute">全12ページ｜経歴、資格、定量成果</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
-  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="自己紹介とアドバイザリーレポート（全27ページ）"><img src="assets/preview/ja/mag/01.jpg" alt="自己紹介とアドバイザリーレポート" draggable="false" loading="lazy"><b>自己紹介とアドバイザリーレポート</b><span class="mute">全27ページ｜ミラノ風マガジン版｜会長・CIO・CHRO 向け</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
-  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="付属スライド（全14ページ）"><img src="assets/preview/ja/magx/01.jpg" alt="付属スライド" draggable="false" loading="lazy"><b>付属スライド</b><span class="mute">全14ページ｜事例一覧、パターン、UML、WBS、RACI、リスク、KPI</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
+  <div class="docw"><button class="doc" data-d="deck" data-n="41" data-t="経営層向けプレゼンテーション（全41ページ）"><img src="assets/preview/ja/deck/01.jpg" alt="経営層向けプレゼンテーションの表紙" draggable="false" loading="lazy" decoding="async"><b>経営層向けプレゼンテーション</b><span class="mute">全41ページ｜AI戦略、プラットフォームのブループリント、着任計画</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_41%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
+  <div class="docw"><button class="doc" data-d="report" data-n="27" data-t="面接レポート（全27ページ）"><img src="assets/preview/ja/report/01.jpg" alt="面接レポートの表紙" draggable="false" loading="lazy" decoding="async"><b>面接レポート</b><span class="mute">全27ページ｜コンピテンシーの適合、事例、経歴</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_27%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
+  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="職務経歴書（全12ページ）"><img src="assets/preview/ja/cv/01.jpg" alt="職務経歴書の表紙" draggable="false" loading="lazy" decoding="async"><b>職務経歴書</b><span class="mute">全12ページ｜経歴、資格、定量成果</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
+  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="自己紹介とアドバイザリーレポート（全27ページ）"><img src="assets/preview/ja/mag/01.jpg" alt="自己紹介とアドバイザリーレポート" draggable="false" loading="lazy" decoding="async"><b>自己紹介とアドバイザリーレポート</b><span class="mute">全27ページ｜ミラノ風マガジン版｜会長・CIO・CHRO 向け</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
+  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="付属スライド（全14ページ）"><img src="assets/preview/ja/magx/01.jpg" alt="付属スライド" draggable="false" loading="lazy" decoding="async"><b>付属スライド</b><span class="mute">全14ページ｜事例一覧、パターン、UML、WBS、RACI、リスク、KPI</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E6%97%A5%E6%9C%AC%E8%AA%9E.pdf" download>PDFをダウンロード</a></div>
  </div>
 </section>
 <div id="viewer" class="viewer" hidden>
  <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="閉じる">閉じる ✕</button></div>
- <div class="vstage"><button class="vnav" id="vp" aria-label="前のページ">‹</button><div class="vimg"><img id="vi" alt="文書ページ" draggable="false"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="次のページ">›</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="前のページ">‹</button><div class="vimg"><img id="vi" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="文書ページ" draggable="false" decoding="async"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="次のページ">›</button></div>
 </div>
 </main>
 <div class="wm" aria-hidden="true"></div>
@@ -730,11 +824,13 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
     if(!m) return;
     const pre = m[1], target = parseFloat(m[2]), suf = m[3];
     const dec = (m[2].split('.')[1] || '').length;
-    const dur = 900, t0 = performance.now();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = raw; return; }
+    const dur = 900; let t0 = null;
     function step(now){
-      const p = Math.min(1, (now - t0) / dur);
+      if(t0 === null) t0 = now;
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
       const ease = 1 - Math.pow(1 - p, 3);
-      const val = (target * ease).toFixed(dec);
+      const val = Math.max(0, target * ease).toFixed(dec);
       el.textContent = pre + val + suf;
       if(p < 1) requestAnimationFrame(step);
       else el.textContent = raw;
@@ -803,5 +899,86 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 })();
 
 </script>
+
+<script>
+/* === NEON REFINE JS === */
+(function(){
+  // A. Executive Role Lens
+  const ROLE_PATHS = {"all": [], "exec": [["#context", "01 現状分析"], ["#portfolio", "06 ROI試算"], ["#plan", "09 180日計画"], ["#qa", "14 想定問答"]], "cio": [["#stack", "04 AI基盤"], ["#arch", "05 アーキテクチャ"], ["#gov", "08 ガバナンス"], ["#hive", "10 ハイブ計画"]], "hr": [["#duties", "02 職務対応"], ["#fit", "03 適合度"], ["#cases", "11 実績事例"], ["#profile", "13 経歴"]]};
+  const LENS_HINT = "ご関心に合わせて主要章へ直接ジャンプできます：";
+  const lensWrap = document.getElementById('execLens');
+  const lensPath = document.getElementById('execLensPath');
+  if(lensWrap && lensPath){
+    lensWrap.querySelectorAll('.lens-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.dataset.role;
+        lensWrap.querySelectorAll('.lens-btn').forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        const items = ROLE_PATHS[role] || [];
+        if(!items.length){
+          lensPath.classList.remove('on');
+          lensPath.innerHTML = '';
+        } else {
+          lensPath.innerHTML = '<span>' + LENS_HINT + '</span>' + items.map(([href, text]) =>
+            '<a class="lens-jump" href="' + href + '">' + text + ' →</a>'
+          ).join('');
+          lensPath.classList.add('on');
+        }
+      });
+    });
+  }
+
+  // B. ROI Simulator Scenario Presets
+  const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3');
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(!s1 || !s2 || !s3) return;
+      s1.value = btn.dataset.s1;
+      s2.value = btn.dataset.s2;
+      s3.value = btn.dataset.s3;
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('on', b === btn));
+      s1.dispatchEvent(new Event('input', {bubbles:true}));
+    });
+  });
+
+  // C. Desktop Scrollspy Chapter Rail
+  const secs = Array.from(document.querySelectorAll('main > section[id]'));
+  if(secs.length && !document.getElementById('chRail')){
+    const rail = document.createElement('nav');
+    rail.id = 'chRail';
+    rail.className = 'ch-rail';
+    rail.setAttribute('aria-label', "章ナビゲーション");
+    const dots = secs.map((sec, i) => {
+      const ey = sec.querySelector('.eyebrow');
+      const h = sec.querySelector('h2, h1');
+      const label = i === 0 ? 'Top · Hero' : ((ey ? ey.textContent.trim() : '') || sec.id);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ch-dot' + (i === 0 ? ' on' : '');
+      b.dataset.target = sec.id;
+      b.dataset.label = label;
+      b.setAttribute('aria-label', label);
+      b.addEventListener('click', () => sec.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}));
+      rail.appendChild(b);
+      return b;
+    });
+    document.body.appendChild(rail);
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          const id = en.target.id;
+          dots.forEach(d => d.classList.toggle('on', d.dataset.target === id));
+        }
+      });
+    }, {rootMargin: '-35% 0px -55% 0px', threshold: 0});
+    secs.forEach(s => spy.observe(s));
+  }
+})();
+</script>
+
+<script src="assets/electro-fluid.js?v=1.0" defer></script>
 </body>
 </html>

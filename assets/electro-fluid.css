@@ -1,0 +1,495 @@
+/* === LITEON 2301 Electro-Fluid Physics & Interactive Layer === */
+
+/* 1. Hero Ambient Electro-Fluid Canvas */
+#hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+#hero > * {
+  position: relative;
+  z-index: 2;
+}
+#ef-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.92;
+}
+.ef-hero-ctrl {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: -10px;
+  padding: 10px 14px;
+  background: color-mix(in srgb, var(--card) 86%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12.5px;
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: var(--shadow-sm);
+}
+.ef-hero-ctrl .ef-lbl {
+  color: var(--mute);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 4px;
+}
+.ef-hero-ctrl .ef-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+  animation: efPulse 2s ease-in-out infinite;
+}
+@keyframes efPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+.ef-mode-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.ef-mode-btn:hover {
+  border-color: var(--gold);
+  color: var(--green);
+}
+.ef-mode-btn.on {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+
+/* 2. Interactive 800V DC × 120kW CDU Electro-Fluid Digital Twin Lab */
+.ef-lab {
+  margin: 26px 0 28px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+}
+.ef-lab-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.ef-lab-head h3 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ef-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: var(--green);
+  border: 1px solid var(--gold);
+}
+.ef-lab-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ef-pbtn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.ef-pbtn:hover {
+  border-color: var(--gold);
+  color: var(--green);
+}
+.ef-pbtn.on {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+.ef-pbtn.surge {
+  border-color: var(--brick);
+  color: var(--brick);
+}
+.ef-pbtn.surge:hover {
+  background: var(--brick);
+  color: #FAF7F2;
+}
+
+.ef-stage-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  min-height: 290px;
+  background: #0F1714;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;
+}
+#ef-twin-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.ef-stage-hint {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 20, 0.78);
+  border: 1px solid rgba(222, 192, 130, 0.35);
+  color: #EFECE6;
+  font-size: 11.5px;
+  pointer-events: none;
+}
+.ef-ai-pill {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(15, 23, 20, 0.84);
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  color: #6EE7B7;
+  font-size: 11.5px;
+  font-weight: 600;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ef-ai-pill.warn {
+  border-color: rgba(245, 158, 11, 0.7);
+  color: #FCD34D;
+}
+.ef-ai-pill.alert {
+  border-color: rgba(239, 68, 68, 0.8);
+  color: #FCA5A5;
+}
+
+.ef-controls {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 14px;
+  background: var(--alt);
+  border: 1px solid var(--label);
+  border-radius: 6px;
+}
+.ef-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.ef-ctrl-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ef-ctrl-group label b {
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+}
+.ef-ctrl-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.ef-seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.ef-seg button {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.ef-seg button.on {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+.ef-seg button.on.v48 {
+  background: var(--brick);
+  border-color: var(--brick);
+  color: #FAF7F2;
+}
+.ef-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.ef-switch {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--mute);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.ef-switch.on {
+  background: #10B981;
+  border-color: #10B981;
+  color: #06281E;
+}
+
+.ef-telemetry {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+.ef-tel-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--green);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-width: 0;
+}
+.ef-tel-card.gold { border-left-color: var(--gold); }
+.ef-tel-card.cyan { border-left-color: #0EA5E9; }
+.ef-tel-card.brick { border-left-color: var(--brick); }
+.ef-tel-k {
+  font-size: 11.5px;
+  color: var(--mute);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ef-tel-v {
+  font-family: "Cormorant Garamond", "Inter", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.15;
+  margin: 2px 0;
+  font-variant-numeric: tabular-nums;
+}
+.ef-tel-s {
+  font-size: 11.5px;
+  color: var(--mute);
+  line-height: 1.3;
+}
+
+/* 3. Interactive Enterprise Architecture Energy Flow */
+.la-ea .la-row {
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  position: relative;
+}
+.la-ea .la-row:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+.la-ea .la-row.ef-active {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px var(--gold-soft), var(--shadow-md);
+}
+.ef-ea-brief {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: var(--alt);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  font-size: 13.5px;
+  color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ef-ea-brief b {
+  color: var(--green);
+}
+
+/* 4. Spotlight Quick Search Modal (Cmd+K / '/') */
+.ef-search-btn {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 5px 11px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+.ef-search-btn:hover {
+  border-color: var(--gold);
+  color: var(--green);
+  background: var(--label);
+}
+.ef-search-btn kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--mute);
+}
+.ef-spot-back {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  background: rgba(12, 16, 14, 0.65);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 16px 24px;
+}
+.ef-spot-back[hidden] {
+  display: none;
+}
+.ef-spot {
+  width: min(620px, 100%);
+  background: var(--card);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 76vh;
+}
+.ef-spot-hd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.ef-spot-hd input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15.5px;
+  outline: none;
+}
+.ef-spot-hd button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--mute);
+  border-radius: 6px;
+  padding: 3px 9px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.ef-spot-list {
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ef-spot-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid transparent;
+  transition: background 0.14s ease, border-color 0.14s ease;
+}
+.ef-spot-item:hover, .ef-spot-item.sel {
+  background: var(--label);
+  border-color: var(--gold);
+}
+.ef-spot-item b {
+  color: var(--green);
+  font-size: 14px;
+}
+.ef-spot-item span {
+  font-size: 12.5px;
+  color: var(--mute);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .ef-controls { grid-template-columns: 1fr; }
+  .ef-telemetry { grid-template-columns: repeat(2, 1fr); }
+  .ef-stage-wrap { aspect-ratio: 4 / 3; min-height: 270px; }
+}
+@media (max-width: 640px) {
+  .ef-search-btn kbd { display: none; }
+  .ef-stage-hint { display: none; }
+  .ef-hero-ctrl { border-radius: 12px; }
+  .ef-telemetry { grid-template-columns: 1fr 1fr; }
+  .ef-tel-v { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ef-hero-ctrl .ef-dot { animation: none; }
+}

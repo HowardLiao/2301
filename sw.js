@@ -1,5 +1,5 @@
-// v3: network-first so updates reach visitors immediately; old caches are cleared.
-const CACHE_NAME = 'liteon-2301-v3';
+// v4: network-first so updates reach visitors immediately; old caches are cleared.
+const CACHE_NAME = 'liteon-2301-v4';
 self.addEventListener('install', e => { self.skipWaiting(); });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()));

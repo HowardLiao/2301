@@ -271,7 +271,44 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:640px){.fab-wrap{right:12px;bottom:14px}.fab span.lbl{display:none}.fab{padding:10px 12px}}
 
+
+/* === NEON REFINE: A11y, Fluidity, Responsive FAB, Executive Lens & Chapter Rail === */
+:focus-visible{outline:2px solid var(--gold)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:1280px){
+  .fab-wrap{right:12px;bottom:14px;gap:6px}
+  .fab span.lbl{display:none}
+  .fab{padding:10px 12px;backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.14)}
+}
+@keyframes panelFadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel.on{animation:panelFadeSlide .22s ease-out}
+.exec-lens{margin:18px 0 28px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);display:flex;flex-direction:column;gap:10px}
+.exec-lens-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.exec-lens-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-right:4px}
+.lens-btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;transition:all .18s ease}
+.lens-btn:hover{border-color:var(--gold);color:var(--green)}
+.lens-btn.on{background:var(--green);border-color:var(--green);color:var(--bg)}
+.exec-lens-path{display:none;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--mute)}
+.exec-lens-path.on{display:flex;animation:panelFadeSlide .18s ease-out}
+.lens-jump{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--green);font-weight:600;font-size:12.5px;text-decoration:none;transition:all .16s ease}
+.lens-jump:hover{border-color:var(--gold);transform:translateY(-1px)}
+.calc-presets{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 14px}
+.calc-presets span{font-size:12.5px;color:var(--mute);font-weight:600}
+.preset-btn{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;cursor:pointer;transition:all .16s ease}
+.preset-btn:hover,.preset-btn.on{border-color:var(--gold);background:var(--green);color:var(--bg)}
+.ch-rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;display:none;flex-direction:column;gap:7px;padding:8px 6px;border-radius:999px;background:color-mix(in srgb,var(--card) 82%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px)}
+@media (min-width:1360px){.ch-rail{display:flex}}
+.ch-dot{position:relative;width:8px;height:8px;border-radius:999px;background:var(--line);border:none;padding:0;cursor:pointer;transition:all .2s ease}
+.ch-dot:hover,.ch-dot:focus-visible,.ch-dot.on{background:var(--gold);transform:scale(1.35)}
+.ch-dot::before{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(4px);white-space:nowrap;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--green);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .16s ease,transform .16s ease;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+.ch-dot:hover::before,.ch-dot:focus-visible::before{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
 </style>
+<link rel="stylesheet" href="assets/electro-fluid.css?v=1.0">
 </head>
 <body>
 <div class="readbar" id="readbar" aria-hidden="true"></div>
@@ -334,6 +371,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 <main>
 
 <section id="hero" class="hero">
+ <canvas id="ef-hero-canvas" aria-hidden="true"></canvas>
  <div>
   <div class="eyebrow">To the Chairman &amp; CIO · LITEON Technology</div>
   <h1>Lead an AI-Driven<br>Workforce Transformation</h1>
@@ -342,11 +380,20 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
   <div class="meta"><span>候選人</span><b>廖倫豪 博士　Howard Liao, Ph.D.</b><span>應徵職務</span><b>IT AI 平台負責人｜台北內湖</b><span>現職</span><b>跨國高科技集團 技術部副總</b><span>資格</span><b>資訊科技管理博士・ISO 27001／42001</b></div>
   <div class="btns"><a class="btn p" href="#stack">看 AI 平台藍圖</a><a class="btn" href="#plan">180 天到任計畫</a><a class="btn" href="#docs">文件線上預覽</a><a class="btn" href="mailto:Liao.Howard@gmail.com">Email 聯繫</a></div>
  </div>
- <div class="portrait"><img src="assets/howard_portrait.png" alt="廖倫豪博士肖像" loading="eager"></div>
+ <div class="portrait"><img src="assets/howard_portrait.png" alt="廖倫豪博士肖像" loading="eager" decoding="async"></div>
+ <div class="ef-hero-ctrl" id="efHeroCtrl" role="group" aria-label="物理場域互動控制">
+  <span class="ef-lbl"><i class="ef-dot" aria-hidden="true"></i>即時物理場</span>
+  <button type="button" class="ef-mode-btn on" data-mode="coupled">⚡+💧 電熱流體耦合</button>
+  <button type="button" class="ef-mode-btn" data-mode="electric">⚡ 800V 電流場</button>
+  <button type="button" class="ef-mode-btn" data-mode="fluid">💧 CDU 流體場</button>
+  <button type="button" class="ef-mode-btn" data-mode="off">⏸ 靜態</button>
+ </div>
 </section>
 
 <div class="kpis reveal"><div class="kpi"><div class="v" data-count="+15%">+15%</div><div class="l">產品良率</div><div class="s">泓晏科技｜AI 不良預測</div></div><div class="kpi"><div class="v" data-count="+18%">+18%</div><div class="l">OEE</div><div class="s">泓晏科技｜Edge AIoT</div></div><div class="kpi"><div class="v" data-count="−25%">−25%</div><div class="l">IT 維運成本</div><div class="s">泓晏科技｜系統整併</div></div><div class="kpi"><div class="v" data-count="−30%">−30%</div><div class="l">多雲 TCO</div><div class="s">隆中網絡（6542）｜FinOps</div></div></div>
 
+
+<nav class="exec-lens reveal" id="execLens" aria-label="快速視角導覽"><div class="exec-lens-top"><span class="exec-lens-title">快速視角導覽</span><button type="button" class="lens-btn on" data-role="all" aria-pressed="true">完整閱讀（15 章）</button><button type="button" class="lens-btn" data-role="exec" aria-pressed="false">董事長／CEO 視角</button><button type="button" class="lens-btn" data-role="cio" aria-pressed="false">CIO／架構視角</button><button type="button" class="lens-btn" data-role="hr" aria-pressed="false">獵才／HR 視角</button></div><div class="exec-lens-path" id="execLensPath" aria-live="polite"></div></nav>
 <section id="context" class="reveal">
  <div class="eyebrow">01 · Context</div>
  <h2>光寶現況：AI 營收倍增，內部營運必須跟上</h2><p class="sub">LITEON at an inflection point</p>
@@ -396,11 +443,57 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h3 style="margin-top:26px">光寶的 AI 問題，從資料、法規與規模開始</h3><div class="tw"><table class=""><tr><th>面向</th><th>光寶現況（公開資訊與盤點假設）</th><th>對 AI 架構的含義</th></tr><tr><td class="lb">產線</td><td>SMT、插件、組裝、Burn-in 與功能測試；電源、光電、雲端與物聯網產品線並行</td><td>機台參數、AOI 與測試資料是預測模型的主原料；機台不直接上網，資料只經工業 DMZ 上送</td></tr><tr><td class="lb">系統</td><td>SAP ECC 轉 S/4HANA，2027.01.04 全球同步上線；MES 已與 ERP 緊密結合（替代料、齊套料、排程）</td><td>AI 站在核心系統旁邊讀資料，不客製 S/4HANA 核心；切換期間不動核心</td></tr><tr><td class="lb">法規與客戶</td><td>以 ISO 27001 建立 IT/OT 資安治理；車用產品適用 IATF 16949；雲端客戶與品牌客戶定期稽核</td><td>AI 產出只能是「建議」，電子紀錄要有稽核軌跡、電子簽章與 ALCOA+</td></tr><tr><td class="lb">規模</td><td>86 家子公司、112 座工廠、全球 20 多個據點；越南新廠、高雄二期、美國德州廠陸續營運</td><td>平台一次建置、按範本複製；新廠無歷史包袱，是最佳試點；資料落地依 D06 決定</td></tr><tr><td class="lb">營運</td><td>產品複雜度上升（8.5kW PSU、BBU、Power Rack、CDU）；替代料與齊套料管理是日常重點</td><td>缺料與替代料預警、規格與報價知識檢索，是財務效益最快看得見的用例</td></tr><tr><td class="lb">成長</td><td>AI 相關營收占比超過 30%，2027 年估 40–50%</td><td>研發與品質知識需要 AI 輔助，AI 平台要跟得上新產品導入的速度</td></tr></table></div>
  <h3 style="margin-top:26px">光寶 AI 平台：六層加一條治理主軸</h3><p class="mute">點選各層看組件、技術選項與光寶落地重點。</p><div class="la-lay"><div class="lb2" id="lalb"><button class="" data-i="0"><span class="id">L5</span><span>使用者入口<small>Teams／入口網站／產線看板／行動端</small></span></button><button class="" data-i="1"><span class="id">L4</span><span>AI 產品<small>可重複使用的用例範本</small></span></button><button class=" on" data-i="2"><span class="id">L3</span><span>HowardAGent 應用中樞<small>AI Agent：Agentic RAG＋工作流＋MCP Hub</small></span></button><button class="" data-i="3"><span class="id">L2</span><span>HowardRoute 網關＋HowardPro 預測核心<small>多模型路由＋AI 製造預測</small></span></button><button class="" data-i="4"><span class="id">L1</span><span>資料產品與湖倉<small>Bronze／Silver／Gold＋主資料</small></span></button><button class="" data-i="5"><span class="id">L0</span><span>系統來源與雙環資料匯流排<small>IT 環 Kafka＋OT 環 MQTT／OPC UA</small></span></button><button class="gv" data-i="6"><span class="id">GOV</span><span>治理與安全主軸<small>橫跨所有層</small></span></button></div><div class="la-det" id="ladet"></div></div>
  <h3 style="margin-top:26px">四大多核心中樞：AI 算力、網關、預測與 Agent</h3><div class="la-4"><div class="la-c"><h4>HowardAGent 應用中樞</h4><ul><li>Agentic RAG：SOP、IATF 規範、客戶規格，Hybrid 檢索強制附版本來源</li><li>跨部門 Agent 工作流：HR 履歷篩選、財務對帳、採購詢比價</li><li>MCP Hub：將 S/4HANA、MES、PLM 封裝為標準受控工具，Text2SQL 嚴格唯讀</li><li>品質 Copilot、報價助理、NCR／8D 初稿生成</li></ul><div class="r">寫回 S/4HANA／MES 一律需人員核可 (Human-in-the-Loop)</div></div><div class="la-c"><h4>HowardRoute 企業模型網關</h4><ul><li>單一 OpenAI 相容網關（LiteLLM），串接雲端商業 API 與地端私有開源模型</li><li>Smart Routing：日常任務走 8B/14B 小模型，複雜推理走大模型，Token 成本省 30%+</li><li>毫秒級自動備援容錯（Fallback）與速率限制（Rate Limiting）</li><li>AI FinOps 成本治理：Token 級即時看板、部門配額隔離與用量分攤 (Chargeback)</li></ul><div class="r">客戶設計圖與報價只走地端模型，零資料保留</div></div><div class="la-c"><h4>HowardAIDC 算力推論中心</h4><ul><li>地端 AIDC 運算中樞：完美契合光寶 800V DC、Power Shelf 與液冷 CDU 架構</li><li>K8s GPU 資源調度：NVIDIA GPU Operator、MIG (Multi-Instance GPU) / vGPU 虛擬切片</li><li>高吞吐推論服務叢集：vLLM 叢集部署（PagedAttention、Continuous Batching），延遲降 35%</li><li>私有模型選型微調：Llama 3 / Qwen / Mistral 地端 LoRA/QLoRA 領域特化微調</li></ul><div class="r">敏感推論地端算力就近運算，兼顧極致效能與資料主權</div></div><div class="la-c"><h4>HowardPro 製造預測核心</h4><ul><li>攻堅 Clean Core 痛點：替代料智能選用推演、工單齊套料即時預警與排產</li><li>AutoML：製程參數建議、設備預防保養（置件機、回焊爐壽命預測）</li><li>虛擬量測與 SPC／AOI 異常預警、Domain Twin 傳承資深工程師經驗</li><li>AILM：模型版本、漂移監控與根因分析</li></ul><div class="r">產線敏感數據留在廠內與內湖，絕不上公有雲</div></div></div>
+ <div class="ef-lab" id="ef-twin-lab">
+  <div class="ef-lab-head">
+   <div>
+    <h3>⚡💧 800V DC × 120kW CDU 電熱流體數位孿生模擬器 <span class="ef-badge">LIVE PHYSICS · INTERACTIVE</span></h3>
+    <p class="mute" style="margin:0">即時演繹光寶 800V DC 電源匯流排（電流與銅損 I²R）與 120kW 液冷 CDU（雷諾數 Re 層流／紊流換熱），結合 HowardPro AI 閉環溫控。</p>
+   </div>
+   <div class="ef-lab-presets" id="efPresets">
+    <button type="button" class="ef-pbtn" data-kw="65">標準推論 65kW</button>
+    <button type="button" class="ef-pbtn on" data-kw="110">尖峰訓練 110kW</button>
+    <button type="button" class="ef-pbtn" data-kw="128">極限壓測 128kW</button>
+    <button type="button" class="ef-pbtn surge" data-surge="1">⚡ 注入熱點衝擊</button>
+   </div>
+  </div>
+  <div class="ef-stage-wrap">
+   <canvas id="ef-twin-canvas" aria-label="800V DC 電流與 120kW CDU 液冷流體力學即時模擬畫布"></canvas>
+   <div class="ef-ai-pill" id="efAiPill">● HowardPro AI 閉環調控中 · 自動抑溫</div>
+   <div class="ef-stage-hint">💡 點擊或拖曳畫布注入「局部熱點＋流體渦流」，觀察流線偏轉與 AI 調控</div>
+  </div>
+  <div class="ef-controls">
+   <div class="ef-ctrl-group">
+    <label for="efLoad"><span>AI 機櫃負載（Power Load）</span><b id="efLoadVal">110 kW</b></label>
+    <input type="range" id="efLoad" min="30" max="130" step="1" value="110">
+    <div class="ef-toggle-row"><span>HowardPro AI 閉環自動溫控（PID）</span><button type="button" id="efAiAuto" class="ef-switch on">ON</button></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label for="efFlow"><span>CDU 冷卻流速（Coolant Flow）</span><b id="efFlowVal">115 LPM</b></label>
+    <input type="range" id="efFlow" min="40" max="180" step="1" value="115">
+    <div class="ef-toggle-row"><span class="mute">調整流速觀察 Re 層流 → 紊流換熱轉換</span></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label><span>DC 供電匯流排架構（Bus Voltage）</span></label>
+    <div class="ef-seg">
+     <button type="button" id="efV800" class="on">⚡ 800V DC（光寶）</button>
+     <button type="button" id="efV48">48V DC（傳統）</button>
+    </div>
+    <div class="ef-toggle-row"><span class="mute">切換比較電流 I=P/V 與匯流排銅損 I²R</span></div>
+   </div>
+  </div>
+  <div class="ef-telemetry">
+   <div class="ef-tel-card gold"><div class="ef-tel-k">匯流排電流 Current (I)</div><div class="ef-tel-v" id="efOutCurrent">137.5 A</div><div class="ef-tel-s" id="efOutCurrentSub">800V DC · 110.0 kW</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">匯流排銅損 Busbar Loss</div><div class="ef-tel-v" id="efOutLoss">0.04 kW</div><div class="ef-tel-s" id="efOutLossSub">較 48V 降損 99.6%</div></div>
+   <div class="ef-tel-card cyan"><div class="ef-tel-k">雷諾數與流態 Reynolds</div><div class="ef-tel-v" id="efOutRe">Re 4,738</div><div class="ef-tel-s" id="efOutReSub">紊流高效換熱 Turbulent</div></div>
+   <div class="ef-tel-card brick"><div class="ef-tel-k">GPU 節點溫度 (Tj)</div><div class="ef-tel-v" id="efOutTemp">54.2 °C</div><div class="ef-tel-s" id="efOutTempSub">安全溫區（≤ 60°C）</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">即時推估 PUE</div><div class="ef-tel-v" id="efOutPue">1.05</div><div class="ef-tel-s" id="efOutPueSub">HowardRoute 省 31% 算力</div></div>
+  </div>
+ </div>
  <h3 style="margin-top:26px">互動式 Draw.io 企業架構圖中心（3 大實體拓撲）</h3><p class="mute">支援滑鼠滾輪縮放、拖曳檢視與原始 .drawio 向量檔下載，涵蓋 8 階段調用鏈、多活邊界部署與五層端到端架構。</p><div class="drawio-hub"><a class="drawio-card" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener"><span class="tag">📐 Interactive Draw.io Viewer</span><b>Draw.io 官方動態燈箱預覽器（3 大圖切換）</b><span class="desc">一鍵切換「使用者 8 階段調用圖」、「高可用多活部署拓撲」與「企業端到端五層 AI 架構圖」，支援原生縮放與 .drawio 下載。</span><span class="cta">立即開啟動態預覽燈箱 ↗</span></a><a class="drawio-card" href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener"><span class="tag">🖥️ Live Topology Dashboard</span><b>雙欄實體拓撲儀表板（生命週期 × 五層架構）</b><span class="desc">左側呈現 8 階段安全調用生命週期，右側聯動展示 L1–L5 系統實體拓撲與主權邊界防禦節點。</span><span class="cta">開啟雙欄實體拓撲儀表板 ↗</span></a></div>
- <h3 style="margin-top:26px">平台設計圖：架構總覽＋UML 2.x 全 14 種圖型</h3><p class="mute">以光寶品保情境（NCR／8D、SPC 預警、電子簽核、IEC 62443 分區）描述三個核心元件。點圖可放大檢視。</p><div class="la-um" id="laum"><h4>總覽</h4><div class="la-ug big"><figure data-src="assets/uml/zh/uml00.jpg" data-cap="00 架構總覽｜L0–L5 六層＋治理主軸，三核心位置一目了然"><img src="assets/uml/zh/t/uml00.jpg" alt="架構總覽" loading="lazy" draggable="false"><figcaption><b>00 架構總覽</b>L0–L5 六層＋治理主軸，三核心位置一目了然</figcaption></figure></div><h4>結構圖 Structure（7 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml02.jpg" data-cap="02 類別圖｜Agent 任務、工具、路由政策、模型供應商、預測模型的類別與關係"><img src="assets/uml/zh/t/uml02.jpg" alt="類別圖" loading="lazy" draggable="false"><figcaption><b>02 類別圖</b>Agent 任務、工具、路由政策、模型供應商、預測模型的類別與關係</figcaption></figure><figure data-src="assets/uml/zh/uml03.jpg" data-cap="03 物件圖｜NCR 初稿請求 t-2261 在 09:42 的執行快照"><img src="assets/uml/zh/t/uml03.jpg" alt="物件圖" loading="lazy" draggable="false"><figcaption><b>03 物件圖</b>NCR 初稿請求 t-2261 在 09:42 的執行快照</figcaption></figure><figure data-src="assets/uml/zh/uml04.jpg" data-cap="04 元件圖｜三核心與資料平台的提供與需求介面"><img src="assets/uml/zh/t/uml04.jpg" alt="元件圖" loading="lazy" draggable="false"><figcaption><b>04 元件圖</b>三核心與資料平台的提供與需求介面</figcaption></figure><figure data-src="assets/uml/zh/uml05.jpg" data-cap="05 組合結構圖｜HowardRoute 內部零件：遮罩、政策、路由、熔斷、計量、稽核"><img src="assets/uml/zh/t/uml05.jpg" alt="組合結構圖" loading="lazy" draggable="false"><figcaption><b>05 組合結構圖</b>HowardRoute 內部零件：遮罩、政策、路由、熔斷、計量、稽核</figcaption></figure><figure data-src="assets/uml/zh/uml06.jpg" data-cap="06 套件圖｜L0–L5 分層套件與治理套件的相依"><img src="assets/uml/zh/t/uml06.jpg" alt="套件圖" loading="lazy" draggable="false"><figcaption><b>06 套件圖</b>L0–L5 分層套件與治理套件的相依</figcaption></figure><figure data-src="assets/uml/zh/uml07.jpg" data-cap="07 部署圖｜內湖總部資料中心、地端 GPU、工業 DMZ、生產基地 OT 區、雲端 LLM"><img src="assets/uml/zh/t/uml07.jpg" alt="部署圖" loading="lazy" draggable="false"><figcaption><b>07 部署圖</b>內湖總部資料中心、地端 GPU、工業 DMZ、生產基地 OT 區、雲端 LLM</figcaption></figure><figure data-src="assets/uml/zh/uml08.jpg" data-cap="08 剖面圖｜LiteonAI 自訂構造型：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»"><img src="assets/uml/zh/t/uml08.jpg" alt="剖面圖" loading="lazy" draggable="false"><figcaption><b>08 剖面圖</b>LiteonAI 自訂構造型：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»</figcaption></figure></div><h4>行為圖 Behavior（3 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml01.jpg" data-cap="01 使用案例圖｜品保、製造、業務、主管、資訊五類角色與平台功能"><img src="assets/uml/zh/t/uml01.jpg" alt="使用案例圖" loading="lazy" draggable="false"><figcaption><b>01 使用案例圖</b>品保、製造、業務、主管、資訊五類角色與平台功能</figcaption></figure><figure data-src="assets/uml/zh/uml09.jpg" data-cap="09 活動圖｜NCR／8D 初稿產生、備援切換、核可與寫回泳道"><img src="assets/uml/zh/t/uml09.jpg" alt="活動圖" loading="lazy" draggable="false"><figcaption><b>09 活動圖</b>NCR／8D 初稿產生、備援切換、核可與寫回泳道</figcaption></figure><figure data-src="assets/uml/zh/uml10.jpg" data-cap="10 狀態機圖｜AgentTask 生命週期，寫回前必經人員核可"><img src="assets/uml/zh/t/uml10.jpg" alt="狀態機圖" loading="lazy" draggable="false"><figcaption><b>10 狀態機圖</b>AgentTask 生命週期，寫回前必經人員核可</figcaption></figure></div><h4>互動圖 Interaction（4 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml11.jpg" data-cap="11 循序圖｜NCR 初稿從提問、選路、生成到核可寫回"><img src="assets/uml/zh/t/uml11.jpg" alt="循序圖" loading="lazy" draggable="false"><figcaption><b>11 循序圖</b>NCR 初稿從提問、選路、生成到核可寫回</figcaption></figure><figure data-src="assets/uml/zh/uml12.jpg" data-cap="12 通訊圖｜同一情境的物件連結與訊息編號"><img src="assets/uml/zh/t/uml12.jpg" alt="通訊圖" loading="lazy" draggable="false"><figcaption><b>12 通訊圖</b>同一情境的物件連結與訊息編號</figcaption></figure><figure data-src="assets/uml/zh/uml13.jpg" data-cap="13 互動概觀圖｜SPC 預警後分流：NCR 或參數調整建議"><img src="assets/uml/zh/t/uml13.jpg" alt="互動概觀圖" loading="lazy" draggable="false"><figcaption><b>13 互動概觀圖</b>SPC 預警後分流：NCR 或參數調整建議</figcaption></figure><figure data-src="assets/uml/zh/uml14.jpg" data-cap="14 時序圖｜SPC 異常 → 預警 → 處置的時間約束（SLO）"><img src="assets/uml/zh/t/uml14.jpg" alt="時序圖" loading="lazy" draggable="false"><figcaption><b>14 時序圖</b>SPC 異常 → 預警 → 處置的時間約束（SLO）</figcaption></figure></div></div>
+ <h3 style="margin-top:26px">平台設計圖：架構總覽＋UML 2.x 全 14 種圖型</h3><p class="mute">以光寶品保情境（NCR／8D、SPC 預警、電子簽核、IEC 62443 分區）描述三個核心元件。點圖可放大檢視。</p><div class="la-um" id="laum"><h4>總覽</h4><div class="la-ug big"><figure data-src="assets/uml/zh/uml00.jpg" data-cap="00 架構總覽｜L0–L5 六層＋治理主軸，三核心位置一目了然"><img src="assets/uml/zh/t/uml00.jpg" alt="架構總覽" loading="lazy" draggable="false" decoding="async"><figcaption><b>00 架構總覽</b>L0–L5 六層＋治理主軸，三核心位置一目了然</figcaption></figure></div><h4>結構圖 Structure（7 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml02.jpg" data-cap="02 類別圖｜Agent 任務、工具、路由政策、模型供應商、預測模型的類別與關係"><img src="assets/uml/zh/t/uml02.jpg" alt="類別圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>02 類別圖</b>Agent 任務、工具、路由政策、模型供應商、預測模型的類別與關係</figcaption></figure><figure data-src="assets/uml/zh/uml03.jpg" data-cap="03 物件圖｜NCR 初稿請求 t-2261 在 09:42 的執行快照"><img src="assets/uml/zh/t/uml03.jpg" alt="物件圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>03 物件圖</b>NCR 初稿請求 t-2261 在 09:42 的執行快照</figcaption></figure><figure data-src="assets/uml/zh/uml04.jpg" data-cap="04 元件圖｜三核心與資料平台的提供與需求介面"><img src="assets/uml/zh/t/uml04.jpg" alt="元件圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>04 元件圖</b>三核心與資料平台的提供與需求介面</figcaption></figure><figure data-src="assets/uml/zh/uml05.jpg" data-cap="05 組合結構圖｜HowardRoute 內部零件：遮罩、政策、路由、熔斷、計量、稽核"><img src="assets/uml/zh/t/uml05.jpg" alt="組合結構圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>05 組合結構圖</b>HowardRoute 內部零件：遮罩、政策、路由、熔斷、計量、稽核</figcaption></figure><figure data-src="assets/uml/zh/uml06.jpg" data-cap="06 套件圖｜L0–L5 分層套件與治理套件的相依"><img src="assets/uml/zh/t/uml06.jpg" alt="套件圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>06 套件圖</b>L0–L5 分層套件與治理套件的相依</figcaption></figure><figure data-src="assets/uml/zh/uml07.jpg" data-cap="07 部署圖｜內湖總部資料中心、地端 GPU、工業 DMZ、生產基地 OT 區、雲端 LLM"><img src="assets/uml/zh/t/uml07.jpg" alt="部署圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>07 部署圖</b>內湖總部資料中心、地端 GPU、工業 DMZ、生產基地 OT 區、雲端 LLM</figcaption></figure><figure data-src="assets/uml/zh/uml08.jpg" data-cap="08 剖面圖｜LiteonAI 自訂構造型：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»"><img src="assets/uml/zh/t/uml08.jpg" alt="剖面圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>08 剖面圖</b>LiteonAI 自訂構造型：«AIAgent»«ModelGateway»«PredictionCore»«OtZone»</figcaption></figure></div><h4>行為圖 Behavior（3 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml01.jpg" data-cap="01 使用案例圖｜品保、製造、業務、主管、資訊五類角色與平台功能"><img src="assets/uml/zh/t/uml01.jpg" alt="使用案例圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>01 使用案例圖</b>品保、製造、業務、主管、資訊五類角色與平台功能</figcaption></figure><figure data-src="assets/uml/zh/uml09.jpg" data-cap="09 活動圖｜NCR／8D 初稿產生、備援切換、核可與寫回泳道"><img src="assets/uml/zh/t/uml09.jpg" alt="活動圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>09 活動圖</b>NCR／8D 初稿產生、備援切換、核可與寫回泳道</figcaption></figure><figure data-src="assets/uml/zh/uml10.jpg" data-cap="10 狀態機圖｜AgentTask 生命週期，寫回前必經人員核可"><img src="assets/uml/zh/t/uml10.jpg" alt="狀態機圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>10 狀態機圖</b>AgentTask 生命週期，寫回前必經人員核可</figcaption></figure></div><h4>互動圖 Interaction（4 種）</h4><div class="la-ug"><figure data-src="assets/uml/zh/uml11.jpg" data-cap="11 循序圖｜NCR 初稿從提問、選路、生成到核可寫回"><img src="assets/uml/zh/t/uml11.jpg" alt="循序圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>11 循序圖</b>NCR 初稿從提問、選路、生成到核可寫回</figcaption></figure><figure data-src="assets/uml/zh/uml12.jpg" data-cap="12 通訊圖｜同一情境的物件連結與訊息編號"><img src="assets/uml/zh/t/uml12.jpg" alt="通訊圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>12 通訊圖</b>同一情境的物件連結與訊息編號</figcaption></figure><figure data-src="assets/uml/zh/uml13.jpg" data-cap="13 互動概觀圖｜SPC 預警後分流：NCR 或參數調整建議"><img src="assets/uml/zh/t/uml13.jpg" alt="互動概觀圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>13 互動概觀圖</b>SPC 預警後分流：NCR 或參數調整建議</figcaption></figure><figure data-src="assets/uml/zh/uml14.jpg" data-cap="14 時序圖｜SPC 異常 → 預警 → 處置的時間約束（SLO）"><img src="assets/uml/zh/t/uml14.jpg" alt="時序圖" loading="lazy" draggable="false" decoding="async"><figcaption><b>14 時序圖</b>SPC 異常 → 預警 → 處置的時間約束（SLO）</figcaption></figure></div></div>
  <h3 style="margin-top:26px">沿著光寶價值鏈排的 AI 場景</h3><p class="mute">以「經濟效益 × 可行性 × 可重用」三軸評分。A 為優先投入、B 為第二波、C 為數週內可見成果的快速勝利。</p><div class="tabs" id="laucf"><button class="tab on" data-u="all">全部</button><button class="tab" data-u="A">A 優先</button><button class="tab" data-u="B">B 第二波</button><button class="tab" data-u="C">C 快速勝利</button></div><div class="la-uc" id="lauc"><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">SPC／AOI 異常預警</h4><p>訂閱 MES、AOI 與測試站資料流，偵測趨勢偏移，在超規前提醒工程師。</p><div class="k">指標：不良率、重工與報廢成本、出貨放行時間</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">製造</div><h4 style="margin-top:6px">設備預防保養</h4><p>以置件機、回焊爐與測試機台的運轉資料預測保養時點，減少非計畫停機。</p><div class="k">指標：OEE、非計畫停機時數</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">供應鏈</div><h4 style="margin-top:6px">缺料、替代料與呆滯預警</h4><p>結合 S/4HANA 訂單、庫存、APS 與 PLM 變更，提早發現缺料、替代料機會與呆滯料。</p><div class="k">指標：存貨周轉天數、齊套率、呆滯金額</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">品質</div><h4 style="margin-top:6px">NCR／8D 初稿 Agent</h4><p>彙整檢驗紀錄、相似歷史案例與 SOP，產出 NCR 與 8D 初稿供品保核可。</p><div class="k">指標：結案天數、重複發生率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">業務</div><h4 style="margin-top:6px">規格與報價知識檢索</h4><p>相似規格、歷史報價與工時檢索，縮短報價準備時間；客戶設計圖只走地端模型。</p><div class="k">指標：報價週期、報價命中率</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">研發／NPI</div><h4 style="margin-top:6px">ECN 影響分析</h4><p>PLM 設計變更自動列出受影響的 BOM、工單、庫存與檢驗計畫。</p><div class="k">指標：變更導致的錯料與重工</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">品質／客戶</div><h4 style="margin-top:6px">客戶稽核文件準備助理</h4><p>依 IATF 16949 與客戶稽核條文找出對應 SOP、紀錄與追溯資料，整理成稽核清單。</p><div class="k">指標：稽核準備人天、缺失數</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">製造</div><h4 style="margin-top:6px">虛擬量測與測試時間預測</h4><p>以製程參數預估關鍵特性與 Burn-in 結果，減少等待；正式放行仍以實測為準。</p><div class="k">指標：測試等待時間、抽檢比例</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">營運</div><h4 style="margin-top:6px">SOP／規範知識庫</h4><p>Agentic RAG 回答同仁的 SOP 與表單問題，答案附文件版本與來源。</p><div class="k">指標：新人上手時間、重複詢問數</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">財務</div><h4 style="margin-top:6px">單據 OCR 自動入帳</h4><p>發票與單據辨識後產生傳票草稿，會計確認後過帳。</p><div class="k">指標：每張單據處理時間</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">資訊</div><h4 style="margin-top:6px">S/4HANA 新流程問答</h4><p>把 16 項新功能與 27 項流程優化的教材與 SOP 做成知識庫，支援切換後的使用者。</p><div class="k">指標：切換後服務台工單數</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">資訊</div><h4 style="margin-top:6px">AI 程式審查</h4><p>內部開發與 SI 交付程式經 AI 審查與 DevSecOps 品質關卡。</p><div class="k">指標：Lead Time、缺陷逃逸率</div></div></div>
  <h3 style="margin-top:26px">AI 治理：以 ISO 27001 為底，延伸到 ISO 42001 與客戶稽核</h3><div class="tw"><table class=""><tr><th>面向</th><th>機制</th><th>依據</th></tr><tr><td class="lb">資料分級</td><td>公開／內部／機密／客戶機密四級；客戶設計圖、報價與配方不送未核准的外部模型</td><td>ISO 27001、各國個資法</td></tr><tr><td class="lb">模型風險</td><td>上線前評測正確率、幻覺率；回答強制附來源；高風險用例人工複核</td><td>ISO 42001、NIST AI RMF</td></tr><tr><td class="lb">電子紀錄</td><td>AI 產出的建議與人員核可都留稽核軌跡；Bronze 層只增不改</td><td>IATF 16949、客戶稽核、ALCOA+</td></tr><tr><td class="lb">OT 安全</td><td>AI 不直接控制機台；參數建議經 MES 與工程師核可後執行</td><td>IEC 62443</td></tr><tr><td class="lb">權限稽核</td><td>模型網關統一身分驗證、遮罩、完整日誌；Token 依事業群分攤</td><td>零信任</td></tr><tr><td class="lb">供應商</td><td>合約明訂資料不得用於訓練、資料留存地點與刪除時限</td><td>ISO 27036</td></tr></table></div>
- <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" alt="" draggable="false"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
+ <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="" draggable="false" decoding="async"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
  <script>(function(){var D=[{"id":"L5","t":"使用者入口","it":["員工助理：在 Teams 或入口網站直接問 SOP、規格、表單","產線看板：OEE、SPC、AOI 異常告警推播","主管戰情：良率、存貨周轉、交期與毛利，依事業群與廠別呈現"],"tech":"Power BI 或 Superset／Grafana；Teams Bot","f":"全球各廠同一套指標口徑，報表可依事業群切換"},{"id":"L4","t":"AI 產品","it":["品質 Copilot：NCR 初稿、8D 根因建議、客訴回覆草稿","報價助理：相似規格與歷史報價檢索","供應鏈預警：缺料、替代料、呆滯與交期風險"],"tech":"每個產品有事業群 PO、驗收標準與損益科目；新用例照黃金路徑上線","f":"每個 AI 產品指定事業群 PO，上線前先定驗收標準"},{"id":"L3","t":"HowardAGent 應用中樞","it":["Agentic RAG：SOP、IATF 16949 文件、客戶規範，Hybrid 向量檢索強制附版本來源","Model Context Protocol (MCP)：把 S/4HANA、MES、PLM、QMS 封裝為受控 Tool（Text2SQL 嚴格唯讀）","跨部門業務 Agent：HR 履歷初步篩選、財務對帳、採購詢價比價、產線品質 NCR／8D 初稿生成","Human-in-the-Loop：所有寫回 S/4HANA 與工單動作一律經主管人員線上審核核可"],"tech":"LangGraph / n8n 編排；MCP 協議；向量庫 Qdrant / pgvector","f":"回答必附文件版本與來源，寫回 S/4HANA 一律人員核可"},{"id":"L2","t":"HowardRoute 閘道＋HowardAIDC 算力＋HowardPro 預測核心","it":["HowardRoute（LiteLLM）：單一 OpenAI 相容網關、Smart Routing 智慧動態分流（小模型分流省 30%+ 成本）、毫秒級自動備援 Fallback、事業群 Token 配額與計費","HowardAIDC 算力中心：K8s GPU 資源調度、NVIDIA GPU Operator、MIG 虛擬切片、Volcano 排程、多租戶配額隔離、地端 AIDC 800V DC 液冷機櫃適配","推論服務叢集：vLLM 高吞吐叢集（PagedAttention、Continuous Batching、KV Cache 優化），延遲降 35%、吞吐量提升 3 倍","HowardPro 預測大腦：替代料智能比對選用、工單齊套料預測、設備預防保養、虛擬量測、Domain Twin 數位員工","AI FinOps 與全鏈路監控：Token 級即時看板、Langfuse/OTel 鏈路追蹤、漂移分析與異常熔斷"],"tech":"LiteLLM 閘道；vLLM 推論叢集；K8s GPU Operator＋Volcano；AutoML＋MLflow","f":"客戶機密與製造數據地端 vLLM 推論；替代料與齊套料主動預測不改動 SAP Clean Core"},{"id":"L1","t":"資料產品與湖倉","it":["Gold 主題：批號／序號追溯、良率與 OEE、存貨周轉、齊套料、SPC","主資料：料號、批號、客戶、機台一物一名","資料目錄與血緣：知道每個 AI 答案的資料從哪來","特徵庫：機台與製程特徵供各廠模型重用"],"tech":"依蜂巢 D04：SAP Datasphere／Fabric／MinIO＋Iceberg＋Trino；DataHub","f":"沿用蜂巢計畫資料湖倉，不另建資料孤島"},{"id":"L0","t":"系統來源與雙環資料匯流排（蜂巢計畫）","it":["IT 環：S/4HANA（Clean Core）、PLM、QMS、APS 經 CDC 異動捕捉與 API 實時進湖","OT 環：SMT、AOI、ICT、測試機台經 OPC UA／SECS-GEM、MQTT 由各廠邊緣閘道上送","斷線不停線：邊緣閘道本地佇列，網路中斷產線不停，復網後依時序自動補傳與去重","雙核心資料底座：總部 S/4HANA 為財務交易單一真理源，廠區邊緣節點離線自治"],"tech":"Kafka 或 Azure Service Bus；EMQX 邊緣閘道；Debezium CDC","f":"沿用蜂巢計畫 API 平台與各廠邊緣閘道，不碰 SAP 核心"},{"id":"GOV","t":"治理與安全主軸","it":["ISO 42001 AI 管理系統與使用規範","ISO 27001 資料分級、零信任身分","IEC 62443 IT／OT 分區","IATF 16949 與客戶稽核：電子紀錄與稽核軌跡"],"tech":"WAAP＋旁路 API 安全；模型網關統一日誌","f":"AI 規範納入光寶既有 ISO 27001 文件體系"}];var L={"t":"技術選項","f":"光寶重點","c":"："};
  function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
  var bs=document.querySelectorAll('#lalb button'),dt=document.getElementById('ladet');
@@ -427,6 +520,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <div class="card calc" style="margin-top:20px">
   <h3>效益情境試算（示意）</h3>
   <p class="mute">以下為說明決策邏輯的示意模型，數字非光寶實際資料；到任後以財務長確認的基準值取代。</p>
+  <div class="calc-presets"><span>一鍵情境預設：</span><button type="button" class="preset-btn" data-s1="1800" data-s2="11" data-s3="1.5">保守情境 (1.5%)</button><button type="button" class="preset-btn on" data-s1="2000" data-s2="12" data-s3="3.0">基準情境 (3.0%)</button><button type="button" class="preset-btn" data-s1="2400" data-s2="14" data-s3="5.0">積極情境 (5.0%)</button></div>
   <div class="grid3">
    <div><label>年營收規模（億元）<span id="v1"></span></label><input type="range" id="s1" min="500" max="3000" step="50" value="2000"></div>
    <div><label>存貨占營收比例（%）<span id="v2"></span></label><input type="range" id="s2" min="5" max="25" step="1" value="12"></div>
@@ -599,18 +693,18 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
   <tr><td class="lb">2024.09</td><td>主題演講</td><td>MongoDB.local Taipei Keynote：運用 MongoDB Atlas 建構全球規模遊戲資料管理平台</td></tr>
  </table></div>
  <div class="grid3" style="margin-top:12px;gap:10px">
-  <figure style="margin:0"><img src="assets/profile/cio_cover.jpg" alt="CIO Taiwan 風雲人物專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)"><figcaption class="mute">CIO Taiwan《IT 經理人》風雲人物專訪</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/mongodb_local.jpg" alt="MongoDB 與 iThome 專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)"><figcaption class="mute">MongoDB × iThome 專訪</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/egov.jpg" alt="e等公務園＋ 課程" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--line)"><figcaption class="mute">行政院 e等公務園＋ 大師講座</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/cio_mag.jpg" alt="CIO IT 經理人 2024 年 5 月號" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--line)"><figcaption class="mute">《IT 經理人》2024 年 5 月號</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/ithome.jpg" alt="iThome 專題企劃" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:left top;border:1px solid var(--line)"><figcaption class="mute">iThome 專題企劃（2024.09）</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/ace.jpg" alt="產業專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)"><figcaption class="mute">產業專訪 Be the ACE</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/cio_cover.jpg" alt="CIO Taiwan 風雲人物專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)" decoding="async"><figcaption class="mute">CIO Taiwan《IT 經理人》風雲人物專訪</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/mongodb_local.jpg" alt="MongoDB 與 iThome 專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)" decoding="async"><figcaption class="mute">MongoDB × iThome 專訪</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/egov.jpg" alt="e等公務園＋ 課程" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--line)" decoding="async"><figcaption class="mute">行政院 e等公務園＋ 大師講座</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/cio_mag.jpg" alt="CIO IT 經理人 2024 年 5 月號" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:top;border:1px solid var(--line)" decoding="async"><figcaption class="mute">《IT 經理人》2024 年 5 月號</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/ithome.jpg" alt="iThome 專題企劃" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:left top;border:1px solid var(--line)" decoding="async"><figcaption class="mute">iThome 專題企劃（2024.09）</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/ace.jpg" alt="產業專訪" loading="lazy" style="width:100%;height:220px;object-fit:cover;border:1px solid var(--line)" decoding="async"><figcaption class="mute">產業專訪 Be the ACE</figcaption></figure>
  </div>
  <h3 style="margin-top:22px">證照與結業證書</h3>
  <div class="grid3" style="gap:10px">
-  <figure style="margin:0"><img src="assets/profile/cert_oracle.jpg" alt="Oracle University 結業證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)"><figcaption class="mute">Oracle University：EBS R12 供應鏈模組</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/cert_gs1.jpg" alt="GS1 條碼管理師證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)"><figcaption class="mute">GS1 條碼管理師</figcaption></figure>
-  <figure style="margin:0"><img src="assets/profile/cert_wbsa.jpg" alt="WBSA 行銷企劃師證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)"><figcaption class="mute">WBSA 行銷企劃師</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/cert_oracle.jpg" alt="Oracle University 結業證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)" decoding="async"><figcaption class="mute">Oracle University：EBS R12 供應鏈模組</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/cert_gs1.jpg" alt="GS1 條碼管理師證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)" decoding="async"><figcaption class="mute">GS1 條碼管理師</figcaption></figure>
+  <figure style="margin:0"><img src="assets/profile/cert_wbsa.jpg" alt="WBSA 行銷企劃師證書" loading="lazy" style="width:100%;height:200px;object-fit:contain;background:#fff;border:1px solid var(--line)" decoding="async"><figcaption class="mute">WBSA 行銷企劃師</figcaption></figure>
  </div>
  <h3 style="margin-top:22px">專案建議書</h3>
  <div class="tw"><table><tr><th>建議書</th><th>重點</th></tr>
@@ -639,16 +733,16 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h2>文件線上預覽與下載</h2><p class="sub">View online or download PDF</p>
  <p class="mute">點選封面可線上翻頁預覽，或下載 PDF。</p>
  <div class="grid3">
-  <div class="docw"><button class="doc" data-d="deck" data-n="40" data-t="高階報告簡報（40 頁）"><img src="assets/preview/zh/deck/01.jpg" alt="高階報告簡報封面" draggable="false" loading="lazy"><b>高階報告簡報</b><span class="mute">40 頁｜AI 策略、平台架構、到任計畫與白皮書</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_40%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
-  <div class="docw"><button class="doc" data-d="report" data-n="29" data-t="面試報告（29 頁）"><img src="assets/preview/zh/report/01.jpg" alt="面試報告封面" draggable="false" loading="lazy"><b>面試報告</b><span class="mute">29 頁｜職能對照、案例、平台與蜂巢藍圖</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_29%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
-  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="個人簡歷（12 頁）"><img src="assets/preview/zh/cv/01.jpg" alt="個人簡歷封面" draggable="false" loading="lazy"><b>個人簡歷</b><span class="mute">12 頁｜學經歷、認證與量化成果</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
-  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="個人簡介與顧問報告（27 頁）"><img src="assets/preview/zh/mag/01.jpg" alt="個人簡介與顧問報告" draggable="false" loading="lazy"><b>個人簡介與顧問報告</b><span class="mute">27 頁｜米蘭風格雜誌版｜給董事長、CIO 與人資長</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
-  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="附件投影片（14 頁）"><img src="assets/preview/zh/magx/01.jpg" alt="附件投影片" draggable="false" loading="lazy"><b>附件投影片</b><span class="mute">14 頁｜案例總表、架構矩陣、UML、WBS、RACI、風險、KPI</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
+  <div class="docw"><button class="doc" data-d="deck" data-n="40" data-t="高階報告簡報（40 頁）"><img src="assets/preview/zh/deck/01.jpg" alt="高階報告簡報封面" draggable="false" loading="lazy" decoding="async"><b>高階報告簡報</b><span class="mute">40 頁｜AI 策略、平台架構、到任計畫與白皮書</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_40%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
+  <div class="docw"><button class="doc" data-d="report" data-n="29" data-t="面試報告（29 頁）"><img src="assets/preview/zh/report/01.jpg" alt="面試報告封面" draggable="false" loading="lazy" decoding="async"><b>面試報告</b><span class="mute">29 頁｜職能對照、案例、平台與蜂巢藍圖</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_29%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
+  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="個人簡歷（12 頁）"><img src="assets/preview/zh/cv/01.jpg" alt="個人簡歷封面" draggable="false" loading="lazy" decoding="async"><b>個人簡歷</b><span class="mute">12 頁｜學經歷、認證與量化成果</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
+  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="個人簡介與顧問報告（27 頁）"><img src="assets/preview/zh/mag/01.jpg" alt="個人簡介與顧問報告" draggable="false" loading="lazy" decoding="async"><b>個人簡介與顧問報告</b><span class="mute">27 頁｜米蘭風格雜誌版｜給董事長、CIO 與人資長</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
+  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="附件投影片（14 頁）"><img src="assets/preview/zh/magx/01.jpg" alt="附件投影片" draggable="false" loading="lazy" decoding="async"><b>附件投影片</b><span class="mute">14 頁｜案例總表、架構矩陣、UML、WBS、RACI、風險、KPI</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_%E7%B9%81%E4%B8%AD.pdf" download>下載 PDF</a></div>
  </div>
 </section>
 <div id="viewer" class="viewer" hidden>
  <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="關閉">關閉 ✕</button></div>
- <div class="vstage"><button class="vnav" id="vp" aria-label="上一頁">‹</button><div class="vimg"><img id="vi" alt="文件頁面" draggable="false"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="下一頁">›</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="上一頁">‹</button><div class="vimg"><img id="vi" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="文件頁面" draggable="false" decoding="async"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="下一頁">›</button></div>
 </div>
 </main>
 <div class="wm" aria-hidden="true"></div>
@@ -770,11 +864,13 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
     if(!m) return;
     const pre = m[1], target = parseFloat(m[2]), suf = m[3];
     const dec = (m[2].split('.')[1] || '').length;
-    const dur = 900, t0 = performance.now();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = raw; return; }
+    const dur = 900; let t0 = null;
     function step(now){
-      const p = Math.min(1, (now - t0) / dur);
+      if(t0 === null) t0 = now;
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
       const ease = 1 - Math.pow(1 - p, 3);
-      const val = (target * ease).toFixed(dec);
+      const val = Math.max(0, target * ease).toFixed(dec);
       el.textContent = pre + val + suf;
       if(p < 1) requestAnimationFrame(step);
       else el.textContent = raw;
@@ -843,5 +939,86 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 })();
 
 </script>
+
+<script>
+/* === NEON REFINE JS === */
+(function(){
+  // A. Executive Role Lens
+  const ROLE_PATHS = {"all": [], "exec": [["#context", "01 光寶現況"], ["#portfolio", "06 效益試算"], ["#plan", "09 180天計畫"], ["#qa", "14 關鍵問答"]], "cio": [["#stack", "04 平台藍圖"], ["#arch", "05 系統架構"], ["#gov", "08 AI 治理"], ["#hive", "10 蜂巢計畫"]], "hr": [["#duties", "02 職缺對應"], ["#fit", "03 適配度"], ["#cases", "11 實戰案例"], ["#profile", "13 個人履歷"]]};
+  const LENS_HINT = "依您的決策關注點，一鍵直達核心章節：";
+  const lensWrap = document.getElementById('execLens');
+  const lensPath = document.getElementById('execLensPath');
+  if(lensWrap && lensPath){
+    lensWrap.querySelectorAll('.lens-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.dataset.role;
+        lensWrap.querySelectorAll('.lens-btn').forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        const items = ROLE_PATHS[role] || [];
+        if(!items.length){
+          lensPath.classList.remove('on');
+          lensPath.innerHTML = '';
+        } else {
+          lensPath.innerHTML = '<span>' + LENS_HINT + '</span>' + items.map(([href, text]) =>
+            '<a class="lens-jump" href="' + href + '">' + text + ' →</a>'
+          ).join('');
+          lensPath.classList.add('on');
+        }
+      });
+    });
+  }
+
+  // B. ROI Simulator Scenario Presets
+  const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3');
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(!s1 || !s2 || !s3) return;
+      s1.value = btn.dataset.s1;
+      s2.value = btn.dataset.s2;
+      s3.value = btn.dataset.s3;
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('on', b === btn));
+      s1.dispatchEvent(new Event('input', {bubbles:true}));
+    });
+  });
+
+  // C. Desktop Scrollspy Chapter Rail
+  const secs = Array.from(document.querySelectorAll('main > section[id]'));
+  if(secs.length && !document.getElementById('chRail')){
+    const rail = document.createElement('nav');
+    rail.id = 'chRail';
+    rail.className = 'ch-rail';
+    rail.setAttribute('aria-label', "章節快速定位");
+    const dots = secs.map((sec, i) => {
+      const ey = sec.querySelector('.eyebrow');
+      const h = sec.querySelector('h2, h1');
+      const label = i === 0 ? 'Top · Hero' : ((ey ? ey.textContent.trim() : '') || sec.id);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ch-dot' + (i === 0 ? ' on' : '');
+      b.dataset.target = sec.id;
+      b.dataset.label = label;
+      b.setAttribute('aria-label', label);
+      b.addEventListener('click', () => sec.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}));
+      rail.appendChild(b);
+      return b;
+    });
+    document.body.appendChild(rail);
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          const id = en.target.id;
+          dots.forEach(d => d.classList.toggle('on', d.dataset.target === id));
+        }
+      });
+    }, {rootMargin: '-35% 0px -55% 0px', threshold: 0});
+    secs.forEach(s => spy.observe(s));
+  }
+})();
+</script>
+
+<script src="assets/electro-fluid.js?v=1.0" defer></script>
 </body>
 </html>

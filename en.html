@@ -271,7 +271,44 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:640px){.fab-wrap{right:12px;bottom:14px}.fab span.lbl{display:none}.fab{padding:10px 12px}}
 
+
+/* === NEON REFINE: A11y, Fluidity, Responsive FAB, Executive Lens & Chapter Rail === */
+:focus-visible{outline:2px solid var(--gold)!important;outline-offset:3px!important;border-radius:4px}
+@media (max-width:1280px){
+  .fab-wrap{right:12px;bottom:14px;gap:6px}
+  .fab span.lbl{display:none}
+  .fab{padding:10px 12px;backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.14)}
+}
+@keyframes panelFadeSlide{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel.on{animation:panelFadeSlide .22s ease-out}
+.exec-lens{margin:18px 0 28px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);display:flex;flex-direction:column;gap:10px}
+.exec-lens-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.exec-lens-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700;margin-right:4px}
+.lens-btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;transition:all .18s ease}
+.lens-btn:hover{border-color:var(--gold);color:var(--green)}
+.lens-btn.on{background:var(--green);border-color:var(--green);color:var(--bg)}
+.exec-lens-path{display:none;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--mute)}
+.exec-lens-path.on{display:flex;animation:panelFadeSlide .18s ease-out}
+.lens-jump{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--green);font-weight:600;font-size:12.5px;text-decoration:none;transition:all .16s ease}
+.lens-jump:hover{border-color:var(--gold);transform:translateY(-1px)}
+.calc-presets{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0 14px}
+.calc-presets span{font-size:12.5px;color:var(--mute);font-weight:600}
+.preset-btn{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;cursor:pointer;transition:all .16s ease}
+.preset-btn:hover,.preset-btn.on{border-color:var(--gold);background:var(--green);color:var(--bg)}
+.ch-rail{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:80;display:none;flex-direction:column;gap:7px;padding:8px 6px;border-radius:999px;background:color-mix(in srgb,var(--card) 82%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px)}
+@media (min-width:1360px){.ch-rail{display:flex}}
+.ch-dot{position:relative;width:8px;height:8px;border-radius:999px;background:var(--line);border:none;padding:0;cursor:pointer;transition:all .2s ease}
+.ch-dot:hover,.ch-dot:focus-visible,.ch-dot.on{background:var(--gold);transform:scale(1.35)}
+.ch-dot::before{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(4px);white-space:nowrap;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--green);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .16s ease,transform .16s ease;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+.ch-dot:hover::before,.ch-dot:focus-visible::before{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
 </style>
+<link rel="stylesheet" href="assets/electro-fluid.css?v=1.0">
 </head>
 <body>
 <div class="readbar" id="readbar" aria-hidden="true"></div>
@@ -334,6 +371,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
 <main>
 
 <section id="hero" class="hero">
+ <canvas id="ef-hero-canvas" aria-hidden="true"></canvas>
  <div>
   <div class="eyebrow">To the Chairman &amp; CIO · LITEON Technology</div>
   <h1>Lead an AI-Driven<br>Workforce Transformation</h1>
@@ -342,11 +380,20 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
   <div class="meta"><span>Candidate</span><b>Dr. Howard Liao</b><span>Position applied for</span><b>IT AI Platform Lead | Neihu, Taipei</b><span>Current role</span><b>VP of Technology (Multinational High-Tech Group)</b><span>Credentials</span><b>Ph.D. in IT Management · ISO 27001/42001</b></div>
   <div class="btns"><a class="btn p" href="#stack">View the AI platform blueprint</a><a class="btn" href="#plan">180-day onboarding plan</a><a class="btn" href="#docs">Online document preview</a><a class="btn" href="mailto:Liao.Howard@gmail.com">Email</a></div>
  </div>
- <div class="portrait"><img src="assets/howard_portrait.png" alt="Portrait of Dr. Howard Liao" loading="eager"></div>
+ <div class="portrait"><img src="assets/howard_portrait.png" alt="Portrait of Dr. Howard Liao" loading="eager" decoding="async"></div>
+ <div class="ef-hero-ctrl" id="efHeroCtrl" role="group" aria-label="Live Physics Field Controls">
+  <span class="ef-lbl"><i class="ef-dot" aria-hidden="true"></i>Live Physics</span>
+  <button type="button" class="ef-mode-btn on" data-mode="coupled">⚡+💧 Coupled Field</button>
+  <button type="button" class="ef-mode-btn" data-mode="electric">⚡ 800V Current</button>
+  <button type="button" class="ef-mode-btn" data-mode="fluid">💧 CDU Fluid</button>
+  <button type="button" class="ef-mode-btn" data-mode="off">⏸ Static</button>
+ </div>
 </section>
 
 <div class="kpis reveal"><div class="kpi"><div class="v" data-count="+15%">+15%</div><div class="l">Product yield</div><div class="s">Hongyan Technology | AI defect prediction</div></div><div class="kpi"><div class="v" data-count="+18%">+18%</div><div class="l">OEE</div><div class="s">Hongyan Technology | Edge AIoT</div></div><div class="kpi"><div class="v" data-count="−25%">−25%</div><div class="l">IT operating cost</div><div class="s">Hongyan Technology | System consolidation</div></div><div class="kpi"><div class="v" data-count="−30%">−30%</div><div class="l">Multi-cloud TCO</div><div class="s">GameSparcs (6542) | FinOps</div></div></div>
 
+
+<nav class="exec-lens reveal" id="execLens" aria-label="Executive Reading Lens"><div class="exec-lens-top"><span class="exec-lens-title">Executive Reading Lens</span><button type="button" class="lens-btn on" data-role="all" aria-pressed="true">Full Dossier (15 Chapters)</button><button type="button" class="lens-btn" data-role="exec" aria-pressed="false">Chairman / CEO Lens</button><button type="button" class="lens-btn" data-role="cio" aria-pressed="false">CIO / Architecture Lens</button><button type="button" class="lens-btn" data-role="hr" aria-pressed="false">Executive Search / HR</button></div><div class="exec-lens-path" id="execLensPath" aria-live="polite"></div></nav>
 <section id="context" class="reveal">
  <div class="eyebrow">01 · Context</div>
  <h2>LITEON today: AI revenue is doubling and internal operations must keep up</h2><p class="sub">LITEON at an inflection point</p>
@@ -396,11 +443,57 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h3 style="margin-top:26px">LITEON’s AI questions start with data, regulation and scale</h3><div class="tw"><table class=""><tr><th>Area</th><th>LITEON today (public information and assumptions)</th><th>What it means for the AI architecture</th></tr><tr><td class="lb">Lines</td><td>SMT, through-hole, assembly, burn-in and functional test; power, optoelectronics, cloud and IoT product lines in parallel</td><td>Equipment parameters, AOI and test data feed the models; machines never connect to the internet and data goes up only through the industrial DMZ</td></tr><tr><td class="lb">Systems</td><td>SAP ECC to S/4HANA, global go-live on 2027.01.04; MES tightly linked to ERP (alternates, kitting, scheduling)</td><td>AI reads data beside the core systems and never customizes the S/4HANA core; nothing changes in the core during cut-over</td></tr><tr><td class="lb">Regulation and customers</td><td>IT/OT security governance on ISO 27001; IATF 16949 for automotive products; regular audits by cloud and brand customers</td><td>AI output is advice only; electronic records need an audit trail, e-signatures and ALCOA+</td></tr><tr><td class="lb">Scale</td><td>86 subsidiaries, 112 plants, 20+ sites worldwide; the Vietnam plant, Kaohsiung phase 2 and the Texas plant coming online</td><td>Build the platform once and replicate by template; new plants have no legacy and are the best pilots; data residency set by D06</td></tr><tr><td class="lb">Operations</td><td>Rising product complexity (8.5 kW PSU, BBU, power racks, CDUs); alternates and kitting are daily priorities</td><td>Shortage and alternate-part alerts and spec and quote search show financial value fastest</td></tr><tr><td class="lb">Growth</td><td>AI-related revenue above 30%, estimated 40–50% in 2027</td><td>R&amp;D and quality knowledge need AI support, and the platform must keep pace with new product introductions</td></tr></table></div>
  <h3 style="margin-top:26px">LITEON AI platform: six layers plus a governance axis</h3><p class="mute">Select a layer to see its components, technology options and LITEON focus.</p><div class="la-lay"><div class="lb2" id="lalb"><button class="" data-i="0"><span class="id">L5</span><span>User channels<small>Teams / portal / line boards / mobile</small></span></button><button class="" data-i="1"><span class="id">L4</span><span>AI products<small>Reusable use-case templates</small></span></button><button class=" on" data-i="2"><span class="id">L3</span><span>HowardAGent agent hub<small>AI agents: agentic RAG + workflows + MCP Hub</small></span></button><button class="" data-i="3"><span class="id">L2</span><span>HowardRoute gateway + HowardPro prediction core<small>Multi-model routing + AI manufacturing prediction</small></span></button><button class="" data-i="4"><span class="id">L1</span><span>Data products and lakehouse<small>Bronze / Silver / Gold + master data</small></span></button><button class="" data-i="5"><span class="id">L0</span><span>Source systems and dual-ring data bus<small>IT ring Kafka + OT ring MQTT / OPC UA</small></span></button><button class="gv" data-i="6"><span class="id">GOV</span><span>Governance and security axis<small>Across all layers</small></span></button></div><div class="la-det" id="ladet"></div></div>
  <h3 style="margin-top:26px">Three core components</h3><div class="la-3"><div class="la-c"><h4>HowardAGent agent hub</h4><ul><li>Agentic RAG that always cites document version and source</li><li>OCR agent for invoices, delivery notes and inspection reports</li><li>MCP Hub: S/4HANA / MES / QMS as governed tools; Text2SQL read-only</li><li>Quality Copilot, quote assistant, NCR / 8D drafts</li></ul><div class="r">Every write-back to S/4HANA / MES needs human approval</div></div><div class="la-c"><h4>HowardRoute multi-model gateway</h4><ul><li>One OpenAI-compatible endpoint for cloud and on-prem models</li><li>Smart Routing: small models for simple tasks, large models for complex ones; 20–40% token savings</li><li>Millisecond failover on 429 errors or outages</li><li>Unified identity, masking and logs; costs charged to business groups</li></ul><div class="r">Customer designs and quotes use on-prem models only, with zero data retention</div></div><div class="la-c"><h4>HowardPro manufacturing prediction core</h4><ul><li>AutoML: process parameter advice and equipment life prediction</li><li>Virtual metrology and SPC / AOI anomaly alerts</li><li>Domain Twin digital workers that keep senior engineers’ know-how</li><li>AILM: model versions, drift and root cause</li></ul><div class="r">Line data stays in the plants and Neihu, never on public cloud</div></div></div>
+ <div class="ef-lab" id="ef-twin-lab">
+  <div class="ef-lab-head">
+   <div>
+    <h3>⚡💧 800V DC × 120kW CDU Electro-Fluid Digital Twin Lab <span class="ef-badge">LIVE PHYSICS · INTERACTIVE</span></h3>
+    <p class="mute" style="margin:0">Real-time simulation of LITEON 800V DC power busbars (current &amp; I²R copper loss) coupled with 120kW Liquid Cooling CDU fluid dynamics (Reynolds number Re laminar-to-turbulent convection) and HowardPro AI PID control.</p>
+   </div>
+   <div class="ef-lab-presets" id="efPresets">
+    <button type="button" class="ef-pbtn" data-kw="65">Inference 65kW</button>
+    <button type="button" class="ef-pbtn on" data-kw="110">Peak Train 110kW</button>
+    <button type="button" class="ef-pbtn" data-kw="128">Stress 128kW</button>
+    <button type="button" class="ef-pbtn surge" data-surge="1">⚡ Inject Thermal Surge</button>
+   </div>
+  </div>
+  <div class="ef-stage-wrap">
+   <canvas id="ef-twin-canvas" aria-label="800V DC Electric Current and 120kW CDU Fluid Dynamics Live Canvas"></canvas>
+   <div class="ef-ai-pill" id="efAiPill">● HowardPro AI Closed-Loop PID · Active</div>
+   <div class="ef-stage-hint">💡 Click or drag on the canvas to inject a localized thermal spike &amp; fluid vortex</div>
+  </div>
+  <div class="ef-controls">
+   <div class="ef-ctrl-group">
+    <label for="efLoad"><span>AI Rack Power Load</span><b id="efLoadVal">110 kW</b></label>
+    <input type="range" id="efLoad" min="30" max="130" step="1" value="110">
+    <div class="ef-toggle-row"><span>HowardPro AI Closed-Loop PID</span><button type="button" id="efAiAuto" class="ef-switch on">ON</button></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label for="efFlow"><span>CDU Coolant Flow Rate</span><b id="efFlowVal">115 LPM</b></label>
+    <input type="range" id="efFlow" min="40" max="180" step="1" value="115">
+    <div class="ef-toggle-row"><span class="mute">Adjust flow to inspect Re Laminar → Turbulent shift</span></div>
+   </div>
+   <div class="ef-ctrl-group">
+    <label><span>DC Bus Architecture</span></label>
+    <div class="ef-seg">
+     <button type="button" id="efV800" class="on">⚡ 800V DC (LITEON)</button>
+     <button type="button" id="efV48">48V DC (Legacy)</button>
+    </div>
+    <div class="ef-toggle-row"><span class="mute">Compare current I=P/V &amp; I²R busbar losses</span></div>
+   </div>
+  </div>
+  <div class="ef-telemetry">
+   <div class="ef-tel-card gold"><div class="ef-tel-k">Busbar Current (I)</div><div class="ef-tel-v" id="efOutCurrent">137.5 A</div><div class="ef-tel-s" id="efOutCurrentSub">800V DC · 110.0 kW</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">Busbar I²R Loss</div><div class="ef-tel-v" id="efOutLoss">0.04 kW</div><div class="ef-tel-s" id="efOutLossSub">-99.6% copper loss vs 48V</div></div>
+   <div class="ef-tel-card cyan"><div class="ef-tel-k">Reynolds &amp; Regime</div><div class="ef-tel-v" id="efOutRe">Re 4,738</div><div class="ef-tel-s" id="efOutReSub">Turbulent High-Transfer</div></div>
+   <div class="ef-tel-card brick"><div class="ef-tel-k">GPU Junction Temp (Tj)</div><div class="ef-tel-v" id="efOutTemp">54.2 °C</div><div class="ef-tel-s" id="efOutTempSub">Optimal Zone (≤ 60°C)</div></div>
+   <div class="ef-tel-card"><div class="ef-tel-k">Live Estimated PUE</div><div class="ef-tel-v" id="efOutPue">1.05</div><div class="ef-tel-s" id="efOutPueSub">HowardRoute saves 31% compute</div></div>
+  </div>
+ </div>
  <h3 style="margin-top:26px">Interactive Draw.io Enterprise Architecture Hub (3 Live Topologies)</h3><p class="mute">Zoom, pan, and download native .drawio vector diagrams covering the 8-stage AI invocation lifecycle, HA multi-active deployment, and 5-layer end-to-end architecture.</p><div class="drawio-hub"><a class="drawio-card" href="assets/drawio/drawio_interactive_viewer.html" target="_blank" rel="noopener"><span class="tag">📐 Interactive Draw.io Viewer</span><b>Official Draw.io Lightbox Viewer (3 Diagrams)</b><span class="desc">Switch seamlessly between Use Case Lifecycle, HA Deployment Topology, and 5-Layer End-to-End Enterprise AI Architecture with native zoom and download.</span><span class="cta">Launch Interactive Viewer ↗</span></a><a class="drawio-card" href="assets/drawio/architecture_preview.html" target="_blank" rel="noopener"><span class="tag">🖥️ Live Topology Dashboard</span><b>Dual-Column Topology Dashboard (Lifecycle × 5 Layers)</b><span class="desc">Side-by-side view pairing the 8-stage secure invocation workflow with the L1–L5 physical topology and sovereign edge defense boundaries.</span><span class="cta">Open Topology Dashboard ↗</span></a></div>
- <h3 style="margin-top:26px">Platform design: overview plus all 14 UML 2.x diagram types</h3><p class="mute">The three core components shown through LITEON quality scenarios (NCR / 8D, SPC alerts, e-signature approval, IEC 62443 zoning). Click a diagram to enlarge it.</p><div class="la-um" id="laum"><h4>Overview</h4><div class="la-ug big"><figure data-src="assets/uml/en/uml00.jpg" data-cap="00 Architecture overview｜Six layers L0–L5 plus the governance axis, with the three cores in place"><img src="assets/uml/en/t/uml00.jpg" alt="Architecture overview" loading="lazy" draggable="false"><figcaption><b>00 Architecture overview</b>Six layers L0–L5 plus the governance axis, with the three cores in place</figcaption></figure></div><h4>Structure diagrams (7)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml02.jpg" data-cap="02 Class｜Classes and relations for agent tasks, tools, routing policies, model providers and prediction models"><img src="assets/uml/en/t/uml02.jpg" alt="Class" loading="lazy" draggable="false"><figcaption><b>02 Class</b>Classes and relations for agent tasks, tools, routing policies, model providers and prediction models</figcaption></figure><figure data-src="assets/uml/en/uml03.jpg" data-cap="03 Object｜Runtime snapshot of NCR draft request t-2261 at 09:42"><img src="assets/uml/en/t/uml03.jpg" alt="Object" loading="lazy" draggable="false"><figcaption><b>03 Object</b>Runtime snapshot of NCR draft request t-2261 at 09:42</figcaption></figure><figure data-src="assets/uml/en/uml04.jpg" data-cap="04 Component｜Provided and required interfaces of the three cores and the data platform"><img src="assets/uml/en/t/uml04.jpg" alt="Component" loading="lazy" draggable="false"><figcaption><b>04 Component</b>Provided and required interfaces of the three cores and the data platform</figcaption></figure><figure data-src="assets/uml/en/uml05.jpg" data-cap="05 Composite structure｜HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit"><img src="assets/uml/en/t/uml05.jpg" alt="Composite structure" loading="lazy" draggable="false"><figcaption><b>05 Composite structure</b>HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit</figcaption></figure><figure data-src="assets/uml/en/uml06.jpg" data-cap="06 Package｜Dependencies between the L0–L5 layer packages and governance"><img src="assets/uml/en/t/uml06.jpg" alt="Package" loading="lazy" draggable="false"><figcaption><b>06 Package</b>Dependencies between the L0–L5 layer packages and governance</figcaption></figure><figure data-src="assets/uml/en/uml07.jpg" data-cap="07 Deployment｜Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs"><img src="assets/uml/en/t/uml07.jpg" alt="Deployment" loading="lazy" draggable="false"><figcaption><b>07 Deployment</b>Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs</figcaption></figure><figure data-src="assets/uml/en/uml08.jpg" data-cap="08 Profile｜LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»"><img src="assets/uml/en/t/uml08.jpg" alt="Profile" loading="lazy" draggable="false"><figcaption><b>08 Profile</b>LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»</figcaption></figure></div><h4>Behavior diagrams (3)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml01.jpg" data-cap="01 Use case｜Five roles (QA, manufacturing, sales, managers, IT) and platform functions"><img src="assets/uml/en/t/uml01.jpg" alt="Use case" loading="lazy" draggable="false"><figcaption><b>01 Use case</b>Five roles (QA, manufacturing, sales, managers, IT) and platform functions</figcaption></figure><figure data-src="assets/uml/en/uml09.jpg" data-cap="09 Activity｜Swimlanes for NCR / 8D drafting, failover, approval and write-back"><img src="assets/uml/en/t/uml09.jpg" alt="Activity" loading="lazy" draggable="false"><figcaption><b>09 Activity</b>Swimlanes for NCR / 8D drafting, failover, approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml10.jpg" data-cap="10 State machine｜AgentTask lifecycle; human approval before any write-back"><img src="assets/uml/en/t/uml10.jpg" alt="State machine" loading="lazy" draggable="false"><figcaption><b>10 State machine</b>AgentTask lifecycle; human approval before any write-back</figcaption></figure></div><h4>Interaction diagrams (4)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml11.jpg" data-cap="11 Sequence｜NCR draft from question, routing and generation to approval and write-back"><img src="assets/uml/en/t/uml11.jpg" alt="Sequence" loading="lazy" draggable="false"><figcaption><b>11 Sequence</b>NCR draft from question, routing and generation to approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml12.jpg" data-cap="12 Communication｜Object links and message numbers for the same scenario"><img src="assets/uml/en/t/uml12.jpg" alt="Communication" loading="lazy" draggable="false"><figcaption><b>12 Communication</b>Object links and message numbers for the same scenario</figcaption></figure><figure data-src="assets/uml/en/uml13.jpg" data-cap="13 Interaction overview｜After an SPC alert: NCR or parameter adjustment"><img src="assets/uml/en/t/uml13.jpg" alt="Interaction overview" loading="lazy" draggable="false"><figcaption><b>13 Interaction overview</b>After an SPC alert: NCR or parameter adjustment</figcaption></figure><figure data-src="assets/uml/en/uml14.jpg" data-cap="14 Timing｜Time constraints (SLOs) from SPC anomaly to alert to action"><img src="assets/uml/en/t/uml14.jpg" alt="Timing" loading="lazy" draggable="false"><figcaption><b>14 Timing</b>Time constraints (SLOs) from SPC anomaly to alert to action</figcaption></figure></div></div>
+ <h3 style="margin-top:26px">Platform design: overview plus all 14 UML 2.x diagram types</h3><p class="mute">The three core components shown through LITEON quality scenarios (NCR / 8D, SPC alerts, e-signature approval, IEC 62443 zoning). Click a diagram to enlarge it.</p><div class="la-um" id="laum"><h4>Overview</h4><div class="la-ug big"><figure data-src="assets/uml/en/uml00.jpg" data-cap="00 Architecture overview｜Six layers L0–L5 plus the governance axis, with the three cores in place"><img src="assets/uml/en/t/uml00.jpg" alt="Architecture overview" loading="lazy" draggable="false" decoding="async"><figcaption><b>00 Architecture overview</b>Six layers L0–L5 plus the governance axis, with the three cores in place</figcaption></figure></div><h4>Structure diagrams (7)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml02.jpg" data-cap="02 Class｜Classes and relations for agent tasks, tools, routing policies, model providers and prediction models"><img src="assets/uml/en/t/uml02.jpg" alt="Class" loading="lazy" draggable="false" decoding="async"><figcaption><b>02 Class</b>Classes and relations for agent tasks, tools, routing policies, model providers and prediction models</figcaption></figure><figure data-src="assets/uml/en/uml03.jpg" data-cap="03 Object｜Runtime snapshot of NCR draft request t-2261 at 09:42"><img src="assets/uml/en/t/uml03.jpg" alt="Object" loading="lazy" draggable="false" decoding="async"><figcaption><b>03 Object</b>Runtime snapshot of NCR draft request t-2261 at 09:42</figcaption></figure><figure data-src="assets/uml/en/uml04.jpg" data-cap="04 Component｜Provided and required interfaces of the three cores and the data platform"><img src="assets/uml/en/t/uml04.jpg" alt="Component" loading="lazy" draggable="false" decoding="async"><figcaption><b>04 Component</b>Provided and required interfaces of the three cores and the data platform</figcaption></figure><figure data-src="assets/uml/en/uml05.jpg" data-cap="05 Composite structure｜HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit"><img src="assets/uml/en/t/uml05.jpg" alt="Composite structure" loading="lazy" draggable="false" decoding="async"><figcaption><b>05 Composite structure</b>HowardRoute internals: masking, policy, routing, circuit breaker, metering, audit</figcaption></figure><figure data-src="assets/uml/en/uml06.jpg" data-cap="06 Package｜Dependencies between the L0–L5 layer packages and governance"><img src="assets/uml/en/t/uml06.jpg" alt="Package" loading="lazy" draggable="false" decoding="async"><figcaption><b>06 Package</b>Dependencies between the L0–L5 layer packages and governance</figcaption></figure><figure data-src="assets/uml/en/uml07.jpg" data-cap="07 Deployment｜Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs"><img src="assets/uml/en/t/uml07.jpg" alt="Deployment" loading="lazy" draggable="false" decoding="async"><figcaption><b>07 Deployment</b>Neihu HQ data center, on-prem GPUs, industrial DMZ, plant OT zone, cloud LLMs</figcaption></figure><figure data-src="assets/uml/en/uml08.jpg" data-cap="08 Profile｜LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»"><img src="assets/uml/en/t/uml08.jpg" alt="Profile" loading="lazy" draggable="false" decoding="async"><figcaption><b>08 Profile</b>LiteonAI stereotypes: «AIAgent» «ModelGateway» «PredictionCore» «OtZone»</figcaption></figure></div><h4>Behavior diagrams (3)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml01.jpg" data-cap="01 Use case｜Five roles (QA, manufacturing, sales, managers, IT) and platform functions"><img src="assets/uml/en/t/uml01.jpg" alt="Use case" loading="lazy" draggable="false" decoding="async"><figcaption><b>01 Use case</b>Five roles (QA, manufacturing, sales, managers, IT) and platform functions</figcaption></figure><figure data-src="assets/uml/en/uml09.jpg" data-cap="09 Activity｜Swimlanes for NCR / 8D drafting, failover, approval and write-back"><img src="assets/uml/en/t/uml09.jpg" alt="Activity" loading="lazy" draggable="false" decoding="async"><figcaption><b>09 Activity</b>Swimlanes for NCR / 8D drafting, failover, approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml10.jpg" data-cap="10 State machine｜AgentTask lifecycle; human approval before any write-back"><img src="assets/uml/en/t/uml10.jpg" alt="State machine" loading="lazy" draggable="false" decoding="async"><figcaption><b>10 State machine</b>AgentTask lifecycle; human approval before any write-back</figcaption></figure></div><h4>Interaction diagrams (4)</h4><div class="la-ug"><figure data-src="assets/uml/en/uml11.jpg" data-cap="11 Sequence｜NCR draft from question, routing and generation to approval and write-back"><img src="assets/uml/en/t/uml11.jpg" alt="Sequence" loading="lazy" draggable="false" decoding="async"><figcaption><b>11 Sequence</b>NCR draft from question, routing and generation to approval and write-back</figcaption></figure><figure data-src="assets/uml/en/uml12.jpg" data-cap="12 Communication｜Object links and message numbers for the same scenario"><img src="assets/uml/en/t/uml12.jpg" alt="Communication" loading="lazy" draggable="false" decoding="async"><figcaption><b>12 Communication</b>Object links and message numbers for the same scenario</figcaption></figure><figure data-src="assets/uml/en/uml13.jpg" data-cap="13 Interaction overview｜After an SPC alert: NCR or parameter adjustment"><img src="assets/uml/en/t/uml13.jpg" alt="Interaction overview" loading="lazy" draggable="false" decoding="async"><figcaption><b>13 Interaction overview</b>After an SPC alert: NCR or parameter adjustment</figcaption></figure><figure data-src="assets/uml/en/uml14.jpg" data-cap="14 Timing｜Time constraints (SLOs) from SPC anomaly to alert to action"><img src="assets/uml/en/t/uml14.jpg" alt="Timing" loading="lazy" draggable="false" decoding="async"><figcaption><b>14 Timing</b>Time constraints (SLOs) from SPC anomaly to alert to action</figcaption></figure></div></div>
  <h3 style="margin-top:26px">AI use cases along LITEON’s value chain</h3><p class="mute">Scored on value × feasibility × reusability. A = invest first, B = second wave, C = quick wins visible within weeks.</p><div class="tabs" id="laucf"><button class="tab on" data-u="all">All</button><button class="tab" data-u="A">A first</button><button class="tab" data-u="B">B second wave</button><button class="tab" data-u="C">C quick wins</button></div><div class="la-uc" id="lauc"><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Quality</div><h4 style="margin-top:6px">SPC / AOI anomaly alerts</h4><p>Subscribes to MES, AOI and test-station streams, detects drift and alerts engineers before parts go out of spec.</p><div class="k">Metrics: defect rate, rework and scrap cost, release time</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Manufacturing</div><h4 style="margin-top:6px">Preventive maintenance</h4><p>Predicts service timing for placement machines, reflow ovens and testers to cut unplanned downtime.</p><div class="k">Metrics: OEE, unplanned downtime hours</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Supply chain</div><h4 style="margin-top:6px">Shortage, alternate and slow-stock alerts</h4><p>Combines S/4HANA orders and stock, APS and PLM changes to spot shortages, alternate parts and slow-moving stock early.</p><div class="k">Metrics: inventory days, kit completeness, slow-stock value</div></div><div class="la-c" data-p="A"><span class="p">A</span><div class="v">Quality</div><h4 style="margin-top:6px">NCR / 8D draft agent</h4><p>Gathers inspection records, similar past cases and SOPs to draft NCRs and 8D reports for QA approval.</p><div class="k">Metrics: days to close, repeat rate</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Sales</div><h4 style="margin-top:6px">Spec and quote search</h4><p>Finds similar specs, past quotes and labor hours to shorten quote preparation; customer designs use on-prem models only.</p><div class="k">Metrics: quote cycle time, win rate</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">R&amp;D / NPI</div><h4 style="margin-top:6px">ECN impact analysis</h4><p>Lists the BOMs, work orders, stock and inspection plans affected by each PLM change.</p><div class="k">Metrics: wrong parts and rework caused by changes</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Quality / customers</div><h4 style="margin-top:6px">Customer audit preparation assistant</h4><p>Maps IATF 16949 and customer audit clauses to SOPs, records and trace data and builds an audit checklist.</p><div class="k">Metrics: audit preparation days, findings</div></div><div class="la-c" data-p="B"><span class="p">B</span><div class="v">Manufacturing</div><h4 style="margin-top:6px">Virtual metrology and test-time prediction</h4><p>Estimates key characteristics and burn-in results from process data to cut waiting; release still relies on real tests.</p><div class="k">Metrics: test waiting time, sampling ratio</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">Operations</div><h4 style="margin-top:6px">SOP and policy knowledge base</h4><p>Agentic RAG answers staff questions on SOPs and forms, citing document version and source.</p><div class="k">Metrics: onboarding time, repeat questions</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">Finance</div><h4 style="margin-top:6px">Document OCR to posting</h4><p>Reads invoices and documents and drafts journal entries for accountants to confirm.</p><div class="k">Metrics: handling time per document</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">S/4HANA new-process Q and A</h4><p>Turns training material and SOPs for the 16 new functions and 27 process improvements into a knowledge base for users after cut-over.</p><div class="k">Metrics: service-desk tickets after cut-over</div></div><div class="la-c" data-p="C"><span class="p">C</span><div class="v">IT</div><h4 style="margin-top:6px">AI code review</h4><p>Internal and SI-delivered code passes AI review and DevSecOps quality gates.</p><div class="k">Metrics: lead time, defect escape rate</div></div></div>
  <h3 style="margin-top:26px">AI governance: ISO 27001 as the base, extended to ISO 42001 and customer audits</h3><div class="tw"><table class=""><tr><th>Area</th><th>Mechanism</th><th>Basis</th></tr><tr><td class="lb">Data classes</td><td>Public / Internal / Confidential / Customer-confidential; customer designs, quotes and formulas never go to unapproved external models</td><td>ISO 27001, national privacy laws</td></tr><tr><td class="lb">Model risk</td><td>Accuracy and hallucination tests before launch; answers must cite sources; human review for high-risk use cases</td><td>ISO 42001, NIST AI RMF</td></tr><tr><td class="lb">Electronic records</td><td>AI advice and human approvals are kept in the audit trail; the Bronze layer is append-only</td><td>IATF 16949, customer audits, ALCOA+</td></tr><tr><td class="lb">OT security</td><td>AI never controls equipment directly; parameter advice runs only after MES and engineer approval</td><td>IEC 62443</td></tr><tr><td class="lb">Access audit</td><td>The model gateway unifies identity, masking and full logging; tokens charged to business groups</td><td>Zero trust</td></tr><tr><td class="lb">Vendors</td><td>Contracts forbid training on our data and set storage location and deletion deadlines</td><td>ISO 27036</td></tr></table></div>
- <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" alt="" draggable="false"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
+ <div class="la-lb" id="lalbx" hidden role="dialog" aria-modal="true"><button class="x" id="lalbc">✕</button><div class="in" id="lalbi"><img id="lalbimg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="" draggable="false" decoding="async"><div class="wm3 wm2"></div></div><div class="cap" id="lalbcap"></div></div>
  <script>(function(){var D=[{"id":"L5","t":"User channels","it":["Employee assistant: ask about SOPs, specs and forms in Teams or the portal","Line boards: OEE, SPC and AOI anomaly alerts","Management view: yield, inventory turns, delivery and margin by business group and plant"],"tech":"Power BI or Superset / Grafana; Teams Bot","f":"One set of metric definitions for every plant, with views by business group"},{"id":"L4","t":"AI products","it":["Quality Copilot: NCR drafts, 8D root-cause suggestions, complaint replies","Quote assistant: search similar specs and past quotes","Supply chain alerts: shortages, alternates, slow-moving stock and delivery risk"],"tech":"Each product has a business-group PO, acceptance criteria and a P and L line; new use cases follow the golden path","f":"Every AI product has a business-group PO, with acceptance criteria agreed before launch"},{"id":"L3","t":"HowardAGent agent hub","it":["Agentic RAG over SOPs, IATF 16949 documents and customer specs, always citing sources","OCR agent: structures invoices, delivery notes and inspection reports","MCP tools: S/4HANA / MES / QMS queries as governed tools; Text2SQL is read-only","Human-in-the-loop: every write-back needs human approval"],"tech":"LangGraph-style orchestration; Qdrant or pgvector","f":"Answers always cite document version and source; every write-back to S/4HANA needs approval"},{"id":"L2","t":"HowardRoute gateway + HowardPro prediction core","it":["HowardRoute: one OpenAI-compatible endpoint, routing by task, millisecond failover, token cost charged to business groups","On-prem models: customer designs and confidential data stay on the Neihu GPUs","HowardPro: preventive maintenance, process parameter advice, virtual metrology, SPC / AOI anomaly detection, Domain Twin","Model monitoring: drift, versions and root cause"],"tech":"LiteLLM-style gateway; AutoML + MLflow; on-prem GPU servers","f":"Customer designs and quotes use on-prem models only"},{"id":"L1","t":"Data products and lakehouse","it":["Gold subjects: lot / serial tracing, yield and OEE, inventory turns, kitting, SPC","Master data: one name for each part, lot, customer and machine","Catalog and lineage: know where every AI answer’s data came from","Feature store: equipment and process features reused by every plant’s models"],"tech":"Per Hive D04: SAP Datasphere / Fabric / MinIO + Iceberg + Trino; DataHub","f":"Reuse the Project Hive lakehouse; no new data silos"},{"id":"L0","t":"Source systems and dual-ring data bus","it":["IT ring: S/4HANA, PLM, QMS and APS feed the lakehouse via CDC and APIs","OT ring: SMT, AOI, ICT and test equipment send data via OPC UA / SECS-GEM and MQTT through edge gateways","Outages never stop the line: edge gateways queue locally and resend in order"],"tech":"Kafka or Service Bus; EMQX; Debezium CDC","f":"Reuse the Project Hive API platform and plant edge gateways"},{"id":"GOV","t":"Governance and security axis","it":["ISO 42001 AI management system and usage policy","ISO 27001 data classification and zero-trust identity","IEC 62443 IT / OT zoning","IATF 16949 and customer audits: electronic records and audit trails"],"tech":"WAAP + out-of-band API security; unified gateway logs","f":"AI rules added to LITEON’s existing ISO 27001 document system"}];var L={"t":"Technology options","f":"LITEON focus","c":": "};
  function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
  var bs=document.querySelectorAll('#lalb button'),dt=document.getElementById('ladet');
@@ -427,6 +520,7 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <div class="card calc" style="margin-top:20px">
   <h3>Benefit scenario calculator (illustrative)</h3>
   <p class="mute">The illustrative model below explains the decision logic; the figures are not LITEON data and will be replaced with baselines confirmed by the CFO after I join.</p>
+  <div class="calc-presets"><span>Scenario Presets:</span><button type="button" class="preset-btn" data-s1="1800" data-s2="11" data-s3="1.5">Conservative (1.5%)</button><button type="button" class="preset-btn on" data-s1="2000" data-s2="12" data-s3="3.0">Baseline (3.0%)</button><button type="button" class="preset-btn" data-s1="2400" data-s2="14" data-s3="5.0">Ambitious (5.0%)</button></div>
   <div class="grid3">
   <div><label>Annual revenue (NT$100M)<span id="v1"></span></label><input type="range" id="s1" min="500" max="3000" step="50" value="2000"></div>
   <div><label>Inventory as a share of revenue (%)<span id="v2"></span></label><input type="range" id="s2" min="5" max="25" step="1" value="12"></div>
@@ -599,16 +693,16 @@ header.nav{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-f
  <h2>Online preview and download</h2><p class="sub">View online or download PDF</p>
  <p class="mute">Click a cover to preview page by page online, or download the PDF.</p>
  <div class="grid3">
-  <div class="docw"><button class="doc" data-d="deck" data-n="41" data-t="Executive briefing deck (41 pages)"><img src="assets/preview/en/deck/01.jpg" alt="Executive briefing deck cover" draggable="false" loading="lazy"><b>Executive briefing deck</b><span class="mute">41 pages | AI strategy, platform blueprint and onboarding plan</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_41%E9%A0%81_EN.pdf" download>Download PDF</a></div>
-  <div class="docw"><button class="doc" data-d="report" data-n="27" data-t="Interview dossier (27 pages)"><img src="assets/preview/en/report/01.jpg" alt="Interview dossier cover" draggable="false" loading="lazy"><b>Interview dossier</b><span class="mute">27 pages | Competency fit, case studies and background</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_27%E9%A0%81_EN.pdf" download>Download PDF</a></div>
-  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="Curriculum vitae (12 pages)"><img src="assets/preview/en/cv/01.jpg" alt="Curriculum vitae cover" draggable="false" loading="lazy"><b>Curriculum vitae</b><span class="mute">12 pages | Background, certifications and quantified results</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_EN.pdf" download>Download PDF</a></div>
-  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="Profile and advisory report (27 pages)"><img src="assets/preview/en/mag/01.jpg" alt="Profile and advisory report" draggable="false" loading="lazy"><b>Profile and advisory report</b><span class="mute">27 pages | Milan-style magazine for the Chairman, CIO and CHRO</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_EN.pdf" download>Download PDF</a></div>
-  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="Appendix slides (14 pages)"><img src="assets/preview/en/magx/01.jpg" alt="Appendix slides" draggable="false" loading="lazy"><b>Appendix slides</b><span class="mute">14 pages | Cases, pattern matrix, UML, WBS, RACI, risks, KPIs</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_EN.pdf" download>Download PDF</a></div>
+  <div class="docw"><button class="doc" data-d="deck" data-n="41" data-t="Executive briefing deck (41 pages)"><img src="assets/preview/en/deck/01.jpg" alt="Executive briefing deck cover" draggable="false" loading="lazy" decoding="async"><b>Executive briefing deck</b><span class="mute">41 pages | AI strategy, platform blueprint and onboarding plan</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6AI%E5%B9%B3%E5%8F%B0%E7%AD%96%E7%95%A5_%E9%AB%98%E9%9A%8E%E5%A0%B1%E5%91%8A_41%E9%A0%81_EN.pdf" download>Download PDF</a></div>
+  <div class="docw"><button class="doc" data-d="report" data-n="27" data-t="Interview dossier (27 pages)"><img src="assets/preview/en/report/01.jpg" alt="Interview dossier cover" draggable="false" loading="lazy" decoding="async"><b>Interview dossier</b><span class="mute">27 pages | Competency fit, case studies and background</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%85%89%E5%AF%B6IT_AI%E5%B9%B3%E5%8F%B0%E8%B2%A0%E8%B2%AC%E4%BA%BA_%E9%9D%A2%E8%A9%A6%E5%A0%B1%E5%91%8A_27%E9%A0%81_EN.pdf" download>Download PDF</a></div>
+  <div class="docw"><button class="doc" data-d="cv" data-n="12" data-t="Curriculum vitae (12 pages)"><img src="assets/preview/en/cv/01.jpg" alt="Curriculum vitae cover" draggable="false" loading="lazy" decoding="async"><b>Curriculum vitae</b><span class="mute">12 pages | Background, certifications and quantified results</span></button><a class="btn p dl" href="pdf/%E5%BB%96%E5%80%AB%E8%B1%AA%E5%8D%9A%E5%A3%AB_%E5%80%8B%E4%BA%BA%E7%B0%A1%E6%AD%B7_12%E9%A0%81_EN.pdf" download>Download PDF</a></div>
+  <div class="docw"><button class="doc" data-d="mag" data-n="27" data-t="Profile and advisory report (27 pages)"><img src="assets/preview/en/mag/01.jpg" alt="Profile and advisory report" draggable="false" loading="lazy" decoding="async"><b>Profile and advisory report</b><span class="mute">27 pages | Milan-style magazine for the Chairman, CIO and CHRO</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E5%80%8B%E4%BA%BA%E7%B0%A1%E4%BB%8B%E8%88%87%E9%A1%A7%E5%95%8F%E5%A0%B1%E5%91%8A_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_EN.pdf" download>Download PDF</a></div>
+  <div class="docw"><button class="doc" data-d="magx" data-n="14" data-t="Appendix slides (14 pages)"><img src="assets/preview/en/magx/01.jpg" alt="Appendix slides" draggable="false" loading="lazy" decoding="async"><b>Appendix slides</b><span class="mute">14 pages | Cases, pattern matrix, UML, WBS, RACI, risks, KPIs</span></button><a class="btn p dl" href="pdf/%E5%85%89%E5%AF%B6%E7%A7%91%E6%8A%80_%E9%99%84%E4%BB%B6%E6%8A%95%E5%BD%B1%E7%89%87_%E7%B1%B3%E8%98%AD%E9%A2%A8%E6%A0%BC_HowardLiao_EN.pdf" download>Download PDF</a></div>
  </div>
 </section>
 <div id="viewer" class="viewer" hidden>
  <div class="vbar"><b id="vt"></b><span id="vc" class="mute"></span><button class="tbtn" id="vx" aria-label="Close">Close ✕</button></div>
- <div class="vstage"><button class="vnav" id="vp" aria-label="Previous page">‹</button><div class="vimg"><img id="vi" alt="Document page" draggable="false"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="Next page">›</button></div>
+ <div class="vstage"><button class="vnav" id="vp" aria-label="Previous page">‹</button><div class="vimg"><img id="vi" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Document page" draggable="false" decoding="async"><div class="vshield wm2"></div></div><button class="vnav" id="vn" aria-label="Next page">›</button></div>
 </div>
 </main>
 <div class="wm" aria-hidden="true"></div>
@@ -730,11 +824,13 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
     if(!m) return;
     const pre = m[1], target = parseFloat(m[2]), suf = m[3];
     const dec = (m[2].split('.')[1] || '').length;
-    const dur = 900, t0 = performance.now();
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = raw; return; }
+    const dur = 900; let t0 = null;
     function step(now){
-      const p = Math.min(1, (now - t0) / dur);
+      if(t0 === null) t0 = now;
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
       const ease = 1 - Math.pow(1 - p, 3);
-      const val = (target * ease).toFixed(dec);
+      const val = Math.max(0, target * ease).toFixed(dec);
       el.textContent = pre + val + suf;
       if(p < 1) requestAnimationFrame(step);
       else el.textContent = raw;
@@ -803,5 +899,86 @@ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch
 })();
 
 </script>
+
+<script>
+/* === NEON REFINE JS === */
+(function(){
+  // A. Executive Role Lens
+  const ROLE_PATHS = {"all": [], "exec": [["#context", "01 Context"], ["#portfolio", "06 ROI Simulator"], ["#plan", "09 180-Day Plan"], ["#qa", "14 Key Q&A"]], "cio": [["#stack", "04 AI Stack"], ["#arch", "05 Architecture"], ["#gov", "08 Governance"], ["#hive", "10 Hive Program"]], "hr": [["#duties", "02 Mandate"], ["#fit", "03 Fit Matrix"], ["#cases", "11 Track Record"], ["#profile", "13 Profile"]]};
+  const LENS_HINT = "Jump straight to the chapters aligned with your review focus:";
+  const lensWrap = document.getElementById('execLens');
+  const lensPath = document.getElementById('execLensPath');
+  if(lensWrap && lensPath){
+    lensWrap.querySelectorAll('.lens-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.dataset.role;
+        lensWrap.querySelectorAll('.lens-btn').forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        const items = ROLE_PATHS[role] || [];
+        if(!items.length){
+          lensPath.classList.remove('on');
+          lensPath.innerHTML = '';
+        } else {
+          lensPath.innerHTML = '<span>' + LENS_HINT + '</span>' + items.map(([href, text]) =>
+            '<a class="lens-jump" href="' + href + '">' + text + ' →</a>'
+          ).join('');
+          lensPath.classList.add('on');
+        }
+      });
+    });
+  }
+
+  // B. ROI Simulator Scenario Presets
+  const s1 = document.getElementById('s1'), s2 = document.getElementById('s2'), s3 = document.getElementById('s3');
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(!s1 || !s2 || !s3) return;
+      s1.value = btn.dataset.s1;
+      s2.value = btn.dataset.s2;
+      s3.value = btn.dataset.s3;
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.toggle('on', b === btn));
+      s1.dispatchEvent(new Event('input', {bubbles:true}));
+    });
+  });
+
+  // C. Desktop Scrollspy Chapter Rail
+  const secs = Array.from(document.querySelectorAll('main > section[id]'));
+  if(secs.length && !document.getElementById('chRail')){
+    const rail = document.createElement('nav');
+    rail.id = 'chRail';
+    rail.className = 'ch-rail';
+    rail.setAttribute('aria-label', "Chapter Navigation Rail");
+    const dots = secs.map((sec, i) => {
+      const ey = sec.querySelector('.eyebrow');
+      const h = sec.querySelector('h2, h1');
+      const label = i === 0 ? 'Top · Hero' : ((ey ? ey.textContent.trim() : '') || sec.id);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ch-dot' + (i === 0 ? ' on' : '');
+      b.dataset.target = sec.id;
+      b.dataset.label = label;
+      b.setAttribute('aria-label', label);
+      b.addEventListener('click', () => sec.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}));
+      rail.appendChild(b);
+      return b;
+    });
+    document.body.appendChild(rail);
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if(en.isIntersecting){
+          const id = en.target.id;
+          dots.forEach(d => d.classList.toggle('on', d.dataset.target === id));
+        }
+      });
+    }, {rootMargin: '-35% 0px -55% 0px', threshold: 0});
+    secs.forEach(s => spy.observe(s));
+  }
+})();
+</script>
+
+<script src="assets/electro-fluid.js?v=1.0" defer></script>
 </body>
 </html>
